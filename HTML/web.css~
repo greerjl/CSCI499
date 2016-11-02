@@ -1,0 +1,11 @@
+body{
+	background-color: maroon;
+	color: whitesmoke;
+}
+
+header {
+	text-align: center;
+	font-family: fantasy;
+	font-size: 32px;
+	color: white;
+}

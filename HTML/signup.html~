@@ -11,9 +11,9 @@
 	<body>
 		<header>Household Utilities Manager</header>
 
-	<form id="LogIn" method="post" action="">
+	<form id="SignUp" method="post" action="">
 		<fieldset>
-				<legend> Log In </legend>
+				<legend> Sign Up </legend>
 
 				<label for="username"> User name: <em>*</em> </label>
 				<input type="text" id="username" name="usnm" autofocus required>
