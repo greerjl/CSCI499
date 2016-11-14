@@ -1,0 +1,87 @@
+body {
+	height: 100%;
+	width: 100%;
+	margin: 2px;
+}
+
+nav {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	border: 1 px solid black;
+}
+
+.clear::after {
+    content:    " ";
+    display:    table;
+    clear:       both;
+}
+div.navbar {
+	background-color: gray;
+	color: white;
+	padding: 5px 10px 5px 10px;
+	text-decoration: none;
+	border-radius: 8px 8px 0px 0px;
+	margin-bottom: 0px;
+	border: 1px solid black;
+}
+
+div.menubtn {
+	border-radius: 8px;
+	margin-right: 10px;
+	position: relative;
+	border: 1px solid black;
+	width: 75px;
+}
+
+div.navbar:hover a.menubtn {
+	background-color: black;	
+	color: white;
+}
+
+div.navbar a:hover {
+	background-color: wheat;
+	color: blueviolet;
+}
+
+div.navbar:hover a:hover {
+	background-color: yellowgreen;
+	color: bisque;
+}
+
+
+h1{
+	padding: 5px;
+	margin: 10px;
+	border: 1px solid black;
+	color: white;
+	background-color: black;
+	font-family: Book Antiqua;
+}
+
+div.body1{
+	padding: 5px 10px 5px 10px;
+	text-align: justify;
+	float: right;
+	color: teal;
+	border: 1 px solid black;
+}
+
+div.body2{
+	padding: 5px 10px 5px 10px;
+	text-align: justify;
+	float: right;
+	color: red;
+	border: 1 px solid black;
+}
+
+div.body3{
+	padding: 5px 10px 5px 10px;
+	text-align: justify;
+	float: right;
+	color: blue;
+	border: 1 px solid black;
+}
+
+
