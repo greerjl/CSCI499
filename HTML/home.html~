@@ -11,14 +11,29 @@
 
 <body>
 	<h1> Home Utilities Manager </h1>
+	<div class = "print-logo">	
+		//<img src="../images/HUM_logo"	/>
+	</div>
 	<div class="navbar">		
 		<nav>
-			<a href="" class="menubtn"> Chores </a>
-			<a href="" class="menubtn"> Tasks </a>
-			<a href="" class="menubtn"> Events </a>
-			<a href="" class="menubtn"> Schedule </a>
-			<a href="" class="menubtn"> Settings </a>
-			<a href="" class="menubtn"> Log Out </a> 
+			<div class="menubtn">
+				<a href="" class="menubtn"> Chores </a>
+			</div>
+			<div class="menubtn">
+				<a href="" class="menubtn"> Tasks </a>
+			</div>
+			<div class="menubtn">
+				<a href="" class="menubtn"> Events </a>
+			</div>
+			<div class="menubtn">
+				<a href="" class="menubtn"> Schedule </a>
+			</div>
+			<div class="menubtn">
+				<a href="" class="menubtn"> Settings </a>
+			</div>
+			<div class="menubtn">
+				<a href="" class="menubtn"> Log Out </a> 
+			</div>
 		</nav>
 	</div>	
 	<div class="body1">

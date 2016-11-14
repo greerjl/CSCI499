@@ -55,7 +55,10 @@ h1{
 	padding: 5px;
 	margin: 10px;
 	border: 1px solid black;
-	color: blue;
+	color: white;
+	background-color: black;
+	font-family: Book Antiqua;
+	text-align: center;
 }
 
 div.body1{

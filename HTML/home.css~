@@ -41,7 +41,7 @@ div.navbar:hover a.menubtn {
 }
 
 div.navbar a:hover {
-	#background-color: wheat;
+	background-color: wheat;
 	color: blueviolet;
 }
 
@@ -50,11 +50,14 @@ div.navbar:hover a:hover {
 	color: bisque;
 }
 
+
 h1{
 	padding: 5px;
 	margin: 10px;
 	border: 1px solid black;
-	color: blue;
+	color: white;
+	background-color: black;
+	font-family: Book Antiqua;
 }
 
 div.body1{
@@ -64,6 +67,7 @@ div.body1{
 	color: teal;
 	border: 1 px solid black;
 }
+
 div.body2{
 	padding: 5px 10px 5px 10px;
 	text-align: justify;
@@ -71,6 +75,7 @@ div.body2{
 	color: red;
 	border: 1 px solid black;
 }
+
 div.body3{
 	padding: 5px 10px 5px 10px;
 	text-align: justify;
@@ -78,4 +83,5 @@ div.body3{
 	color: blue;
 	border: 1 px solid black;
 }
+
 
