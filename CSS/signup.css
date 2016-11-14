@@ -1,0 +1,30 @@
+body {
+  margin: 5px;
+  padding: 3px;
+}
+
+fieldset {
+  margin: 5px;
+  padding: 3px;
+}
+
+label {
+  font-family: cursive;
+  display: inline-block;
+  float: left;
+  width: 20em;
+  vertical-align: top;
+  text-align: right;
+  margin-right: 15px;
+  margin-top: 5px;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  margin: 3px;
+}
+
+input.mems {
+  position: relative;
+  margin-left: 3px;
+
+}
