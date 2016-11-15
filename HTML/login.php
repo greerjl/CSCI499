@@ -1,7 +1,37 @@
 <!DOCTYPE html>
+<?php
+   define('DB_SERVER', '152.177.180.234:3306');
+   define('DB_USERNAME', 'remote');
+   define('DB_PASSWORD', 'getserved69');
+   define('DB_DATABASE', 'sys');
+   $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
 
-<!-- index.html = login.html -->
+   if(!empty($_POST['usnm'])) {
+      // username and password sent from form
 
+      $myusername = mysqli_real_escape_string($db,$_POST['usnm']);
+      $mypassword = mysqli_real_escape_string($db,$_POST['pswd']);
+
+      $sql = "SELECT * FROM user_info WHERE username = '$myusername' and password = '$mypassword'";
+      $result = mysqli_query($db,$sql);
+      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+      $active = $row['active'];
+
+      $count = mysqli_num_rows($result);
+
+      // If result matched $myusername and $mypassword, table row must be 1 row
+
+      if($count == 1) {
+         //session_register("myusername");
+         //$_SESSION['login_user'] = $myusername;
+
+         header("location: index.html");
+      }else {
+         $error = "Your Login Name or Password is invalid";
+				 echo "Your Login Name or Password is invalid";
+      }
+   }
+?>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
