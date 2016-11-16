@@ -5,11 +5,11 @@
 		<meta charset="utf-8">
 		<meta http-equiv="cache-control" content="no-cache"/>
 		<link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/>
-		<link rel="stylesheet" type="text/css" href="../../css/login.css"/>
+		<link rel="stylesheet" type="text/css" href="152.117.180.234/var/www/html/CSCI499/CSS/login.css"/>
 		<title>HUM-login</title>
 	</head>
   <?php
-     define('DB_SERVER', '152.177.180.234:3306');
+     define('DB_SERVER', '152.117.180.234:3306');
      define('DB_USERNAME', 'remote');
      define('DB_PASSWORD', 'getserved69');
      define('DB_DATABASE', 'sys');
