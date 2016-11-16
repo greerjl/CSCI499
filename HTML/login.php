@@ -4,8 +4,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="cache-control" content="no-cache"/>
-		<link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/>
-		<link rel="stylesheet" type="text/css" href="152.117.180.234/var/www/html/CSCI499/CSS/login.css"/>
+		<link rel="stylesheet" type="text/css" href="/var/www/html/CSCI499/CSS/normalize.css"/>
+		<link rel="stylesheet" type="text/css" href="/var/www/html/CSCI499/CSS/login.css"/>
 		<title>HUM-login</title>
 	</head>
 
