@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="cache-control" content="no-cache"/>
 		<link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/>
-		<link rel="stylesheet" type="text/css" href="/var/www/html/CSCI499/CSS/login.css"/>
+		<link rel="stylesheet" type="text/css" href="../CSS/login.css"/>
 		<title>HUM-login</title>
 	</head>
 
@@ -41,7 +41,7 @@
              //session_register("myusername");
              //$_SESSION['login_user'] = $myusername;
 
-             header("location: index.html");
+             header("location: welcome.html");
           }else {
              $error = "Your Login Name or Password is invalid";
     				 echo "Your Login Name or Password is invalid";
