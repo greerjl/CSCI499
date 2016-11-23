@@ -40,8 +40,8 @@
           	}//ifelse
        	}
        	else{
-       		$error = "Passwords Do Not Match";
-    			echo "Passwords Do Not Match";
+       		$error = "Passwords do not Match";
+    			echo "Passwords do not Match";
        	}
        }//if
     ?>
