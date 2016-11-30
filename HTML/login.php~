@@ -32,10 +32,6 @@
 
 	</head>
 	<body>
-		<header>Household Utilities Manager</header>
-		<div class="intro">
-			HUM is ...
-		</div>
 		<?php include dbconnect.php ?>
     	<?php
 		   
