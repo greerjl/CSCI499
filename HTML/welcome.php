@@ -1,19 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-   	<meta charset="utf-8">
+   <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="A layout example with a side menu that hides on mobile, just like the Pure website.">
    <title>Home Utilities Manager &ndash; </title>
-	<link rel="stylesheet" href="/CSCI499/HTML/pure-min.css">
-	<link rel="stylesheet" type="text/css" href="/CSCI499/HTML/normalize.css"/> <!-- normalize -->
-	<link rel="stylesheet" type="text/css" href="/CSCI499/HTML/welcome.css"/> <!-- css -->
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/> <!-- normalize -->
+	<link rel="stylesheet" type="text/css" href="../CSS/welcome.css"/> <!-- css -->
 
     <!--[if lte IE 8]>
         <link rel="stylesheet" href="/combo/1.18.13?/css/layouts/side-menu-old-ie.css">
     <![endif]-->
     <!--[if gt IE 8]><!-->
-        <link rel="stylesheet" href="/combo/1.18.13?/css/layouts/side-menu.css">
     <!--<![endif]-->
 	 <!--[if lt IE 9]>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
@@ -68,33 +66,45 @@
         <div class="content">
             <h2 class="content-subhead">Your Chore: </h2>
             <p>
-               
+              
             </p>
 
             <h2 class="content-subhead">Your schedule: </h2>
             <p>
-                
+                <table class="pure-table pure-table-horizontal">
+                <tbody>
+                    <tr>
+                        <td>Sunday</td>
+                    </tr>
+            
+                    <tr>
+                        <td>Monday</td>
+                    </tr>
+            
+                    <tr>
+                        <td>Tuesday</td>
+                    </tr>
+                    <tr>
+                        <td>Wednesday</td>
+                    </tr>
+                    <tr>
+                        <td>Thursday</td>
+                    </tr>
+                    <tr>
+                        <td>Friday</td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                    </tr>
+                </tbody>
+            </table> 
             </p>
 
-            <div class="pure-g">
-                <div class="pure-u-1-4">
-                    <img class="pure-img-responsive" src="" alt="">
-                </div>
-                <div class="pure-u-1-4">
-                    <img class="pure-img-responsive" src="" alt="">
-                </div>
-                <div class="pure-u-1-4">
-                    <img class="pure-img-responsive" src="" alt="">
-                </div>
-                <div class="pure-u-1-4">
-                    <img class="pure-img-responsive" src="" alt="">
-                </div>
-            </div>
         </div>
     </div>
 </div>
 
-<script src="/CSCI499/HTML/ui.js"></script>
+<script src="http://cs.plu.edu/~greerjl/CSCI499/ui.js"></script>
 
 </body>
 </html>
