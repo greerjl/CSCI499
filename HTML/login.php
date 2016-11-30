@@ -37,7 +37,33 @@
 			HUM is ...
 		</div>
 		<?php include dbconnect.php ?>
-    <?php
+    	<?php
+		   
+		   if($_SERVER["REQUEST_METHOD"] == "POST") {
+		      // username and password sent from form 
+		      
+		      $myusername = mysqli_real_escape_string($db,$_POST['usnm']);
+		      $mypassword = mysqli_real_escape_string($db,$_POST['pswd']); 
+		      
+		      $sql = "SELECT * FROM user_info WHERE username = '$myusername' and password = '$mypassword'";
+		      $result = mysqli_query($db,$sql);
+		      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+		      $active = $row['active'];
+		      
+		      $count = mysqli_num_rows($result);
+		      
+		      // If result matched $myusername and $mypassword, table row must be 1 row
+				
+		      if($count == 1) {
+		         //session_register("myusername");
+		         //$_SESSION['login_user'] = $myusername;
+		         
+		         header("location: welcome.php");
+		      }else {
+		         echo "Your Login Name or Password is invalid";
+		      }
+		   }
+		?>
 	<div id="layout">
     <!-- Menu toggle -->
     <a href="#menu" id="menuLink" class="menu-link">
