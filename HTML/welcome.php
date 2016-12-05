@@ -16,7 +16,7 @@
 	 <!--[if lt IE 9]>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
 	 <![endif]-->
-    
+
 	<script>
 (function(i,s,o,g,r,a,m)
 	{i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -42,16 +42,16 @@
             <a class="pure-menu-heading" href="#">HUM</a>
 
             <ul class="pure-menu-list">
-					 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Chores</a></li>            
-            
+					 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Chores</a></li>
+
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Tasks</a></li>
-               
+
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Events</a></li>
 
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Schedule</a></li>
 
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Settings</a></li>
-                
+
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Log Out</a></li>
             </ul>
         </div>
@@ -66,7 +66,7 @@
         <div class="content">
             <h2 class="content-subhead">Your Chore: </h2>
             <p>
-              
+
             </p>
 
             <h2 class="content-subhead">Your schedule: </h2>
@@ -76,11 +76,11 @@
                     <tr>
                         <td>Sunday</td>
                     </tr>
-            
+
                     <tr>
                         <td>Monday</td>
                     </tr>
-            
+
                     <tr>
                         <td>Tuesday</td>
                     </tr>
@@ -97,7 +97,7 @@
                         <td>Saturday</td>
                     </tr>
                 </tbody>
-            </table> 
+            </table>
             </p>
 
         </div>

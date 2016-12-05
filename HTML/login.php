@@ -32,28 +32,37 @@
 
 	</head>
 	<body>
+		  <div class="header">
+        		<div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+                	<a class="pure-menu-heading" href="">Home Utilities Manager</a>
+
+        		<ul class="pure-menu-list">
+            		<li class="pure-menu-item"><a href="./login.php" class="pure-menu-link">Log-In</a></li>
+            		<li class="pure-menu-item"><a href="./signup.php" class="pure-menu-link">Sign Up</a></li>
+        		</ul>
+		</div>
 		<?php include "dbconnect.php" ?>
     	<?php
-		   
+
 		   if($_SERVER["REQUEST_METHOD"] == "POST") {
-		      // username and password sent from form 
-		      
+		      // username and password sent from form
+
 		      $myusername = mysqli_real_escape_string($db,$_POST['usnm']);
-		      $mypassword = mysqli_real_escape_string($db,$_POST['pswd']); 
-		      
+		      $mypassword = mysqli_real_escape_string($db,$_POST['pswd']);
+
 		      $sql = "SELECT * FROM user_info WHERE username = '$myusername' and password = '$mypassword'";
 		      $result = mysqli_query($db,$sql);
 		      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 		      $active = $row['active'];
-		      
+
 		      $count = mysqli_num_rows($result);
-		      
+
 		      // If result matched $myusername and $mypassword, table row must be 1 row
-				
+
 		      if($count == 1) {
 		         //session_register("myusername");
 		         //$_SESSION['login_user'] = $myusername;
-		         
+
 		         header("location: welcome.php");
 		      }else {
 		         echo "Your Login Name or Password is invalid";
