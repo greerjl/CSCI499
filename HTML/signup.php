@@ -14,9 +14,9 @@
 	<?php
     if(!empty($_POST['email']) && !empty($_POST['pswd']) && !empty($_POST['rpswd'])) {
           // username and password sent from form
-			 if(mysqli_real_escape_string($_POST['pswd']) == mysqli_real_escape_string($_POST['rpswd'])){
-          	$myusername = mysqli_real_escape_string($db,$_POST['email']);
-          	$mypassword = mysqli_real_escape_string($db,$_POST['pswd']);
+			 if(mysqli_real_escape_string($db,$_POST['pswd'] == mysqli_real_escape_string($db,$_POST['rpswd']){
+          	$myusername = mysqli_real_escape_string($_POST['email']);
+          	$mypassword = mysqli_real_escape_string($_POST['pswd']);
 
           	$sql = "INSERT INTO user_info (username, password) VALUES '$myusername','$mypassword'";
           	$result = mysqli_query($db,$sql);
@@ -35,6 +35,7 @@
              		//$_SESSION['login_user'] = $myusername;
 
              		header("location: welcome.html");
+             		echo "Your Login Name and Password have been sent to database";
           	}else {
             		$error = "Your Username or Password is invalid";
     				 	echo "Your Userame or Password is invalid";
