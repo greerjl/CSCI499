@@ -14,7 +14,7 @@
 	<?php
     if(!empty($_POST['email']) && !empty($_POST['pswd']) && !empty($_POST['rpswd'])) {
           // username and password sent from form
-			 if(mysqli_real_escape_string($_POST['pswd'] == mysqli_real_escape_string($_POST['rpswd']){
+			 if(mysqli_real_escape_string($_POST['pswd']) == mysqli_real_escape_string($_POST['rpswd'])){
           	$myusername = mysqli_real_escape_string($_POST['email']);
           	$mypassword = mysqli_real_escape_string($_POST['pswd']);
 
