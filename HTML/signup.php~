@@ -7,19 +7,20 @@
 		<meta http-equiv="cache-control" content="no-cache"/>
 		<link rel="stylesheet" type="text/css" href="../CSS/normalize.css">
 		<link rel="stylesheet" type="text/css" href="../CSS/signup.css"/>
+		<title>HUM - signup</title>
 	</head>
 	<body>
-	<?php include dbconnect.php ?>
+	<?php include 'dbconnect.php' ?>
 	<?php
-       if(!empty($_POST['email']) && !empty($_POST['pswd']) && !empty($_POST['rpswd'])) {
+    if(!empty($_POST['email']) && !empty($_POST['pswd']) && !empty($_POST['rpswd'])) {
           // username and password sent from form
-			 if(mysqli_real_escape_string($db,$_POST['pswd'] == mysqli_real_escape_string($db,$_POST['rpswd']){
+			 if(mysqli_real_escape_string($_POST['pswd'] == mysqli_real_escape_string($_POST['rpswd']){
           	$myusername = mysqli_real_escape_string($_POST['email']);
           	$mypassword = mysqli_real_escape_string($_POST['pswd']);
 
           	$sql = "INSERT INTO user_info (username, password) VALUES '$myusername','$mypassword'";
           	$result = mysqli_query($db,$sql);
-          
+
           	$sql = "SELECT * FROM user_info WHERE username = '$myusername' and password = '$mypassword'";
           	$result = mysqli_query($db,$sql);
           	$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
@@ -29,14 +30,15 @@
 
           	// If result matched $myusername and $mypassword, table row must be 1 row
 
-         	if($count == 1) {
+         		if($count == 1) {
              	//session_register("myusername");
              		//$_SESSION['login_user'] = $myusername;
 
              		header("location: welcome.html");
+             		echo "Your Login Name and Password have been sent to database";
           	}else {
-            		$error = "Your Login Name or Password is invalid";
-    				 	echo "Your Login Name or Password is invalid";
+            		$error = "Your Username or Password is invalid";
+    				 	echo "Your Userame or Password is invalid";
           	}//ifelse
        	}
        	else{
