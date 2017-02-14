@@ -71,8 +71,9 @@
 
 	<?php include 'dbconnect.php' ?>
 	<?php
+	if($_SERVER["REQUEST_METHOD"] == "POST"){
 		echo "before first if";
-    if(!empty($_POST['email']) && !empty($_POST['pswd']) && !empty($_POST['rpswd'])) {
+    	if(!empty($_POST['email']) && !empty($_POST['pswd']) && !empty($_POST['rpswd'])) {
           // username and password sent from form
 			 echo "between ifs";
 			 if(mysqli_real_escape_string($_POST['pswd']) == mysqli_real_escape_string($_POST['rpswd'])){
@@ -89,28 +90,28 @@
           	$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
           	$active = $row['active'];
 
-          		$count = mysqli_num_rows($result);
+          	$count = mysqli_num_rows($result);
 
-          		// If result matched $myusername and $mypassword, table row must be 1 row
+          	// If result matched $myusername and $mypassword, table row must be 1 row
 
-         		if($count == 1) {
+         	if($count == 1) {
              		//session_register("myusername");
              		//$_SESSION['login_user'] = $myusername;
 
              		header("location: welcome.html");
              		echo "Your Login Name and Password have been sent to database";
-          		}
+          	}
           	
-          		else {
+          	else {
             		$error = "Your Username or Password is invalid";
     				 	echo "Your Username or Password is invalid";
-          		}//ifelse
-       		}
+          	}//ifelse
+       	}
        	else{
        		$error = "Passwords Do Not Match";
     			echo "Passwords Do Not Match";
        	}
-       }//if
+      }//if
     }
     ?>
 
