@@ -102,20 +102,19 @@
             <h2>An application housing all your home management needs. </h2>
         </div>
 	<div class="content">
-		<form id="LogIn" method="POST" action="">
+		<form id="LogIn" class="pure-form pure-form-aligned" 
+			method="POST" action="">
 			<fieldset>
 				<legend> Log In </legend>
-
+			<div class="pure-control-group">
 				<label for="username"> User name: <em>*</em> </label>
 				<input type="text" id="username" name="usnm" autofocus required>
-				<br/>
-				<br/>
-				<label for="password"> Password: (Must contain 6 or more characters and at least one number)
+			</div> <div class="pure-control-group">
+				<label for="password"> Password: 
 					<em>*</em>
 				</label>
-				<input type="password" id="password" name="pswd" pattern="(?=.*\d).{6,}"required>
-				<br/>
-				<br/>
+				<input type="password" id="password" name="pswd" pattern="(?=.*\d).{6,}"placeholder="Must contain 6 or more characters and at least one number)" required>
+			</div>	
 			</fieldset>
 
 			<p><input type="submit" value="Log In"></p>
