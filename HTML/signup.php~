@@ -11,7 +11,7 @@
 	</head>
 	<body>
 	<?php include 'dbconnect.php' ?>
-	<?php
+	<?php 
     if(!empty($_POST['email']) && !empty($_POST['pswd']) && !empty($_POST['rpswd'])) {
           // username and password sent from form
 			 if(mysqli_real_escape_string($_POST['pswd']) == mysqli_real_escape_string($_POST['rpswd'])){
@@ -30,13 +30,15 @@
 
           	// If result matched $myusername and $mypassword, table row must be 1 row
 
-         		if($count == 1) {
+         	if($count == 1) {
              	//session_register("myusername");
-             		//$_SESSION['login_user'] = $myusername;
+             	//$_SESSION['login_user'] = $myusername;
 
-             		header("location: welcome.html");
-             		echo "Your Login Name and Password have been sent to database";
-          	}else {
+             	header("location: welcome.html");
+             	echo "Your Login Name and Password have been sent to database";
+          	}
+          	
+          	else {
             		$error = "Your Username or Password is invalid";
     				 	echo "Your Username or Password is invalid";
           	}//ifelse
