@@ -136,9 +136,9 @@
 				<input type="password" id="pw" name="pswd" pattern="(?=.*\d).{6,}" required>
 				<br/>
 				<br/>
-				<label for="pw"> Re-Enter Password:
+				<label for="rpw"> Re-Enter Password:
 					<em>*</em> </label>
-				<input type="password" id="pw" name="rpswd" pattern="(?=.*\d).{6,}" required>
+				<input type="password" id="rpw" name="rpswd" pattern="(?=.*\d).{6,}" required>
 				<br/>
 				<br/>
 			</fieldset>
