@@ -32,15 +32,7 @@
 
 	</head>
 	<body>
-		  <div class="header">
-        		<div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
-                	<a class="pure-menu-heading" href="">Home Utilities Manager</a>
-
-        		<ul class="pure-menu-list">
-            		<li class="pure-menu-item"><a href="./login.php" class="pure-menu-link">Log-In</a></li>
-            		<li class="pure-menu-item"><a href="./signup.php" class="pure-menu-link">Sign Up</a></li>
-        		</ul>
-		</div>
+		<?php include '../INCLUDES/topMenu.html' ;?>	
 		<?php include "dbconnect.php" ?>
     	<?php
 
@@ -70,31 +62,7 @@
 		   }
 		?>
 	<div id="layout">
-    <!-- Menu toggle -->
-    <a href="#menu" id="menuLink" class="menu-link">
-        <!-- Hamburger icon -->
-        <span></span>
-    </a>
-
-    <div id="menu">
-        <div class="pure-menu">
-            <a class="pure-menu-heading" href="../index.html">HUM</a>
-
-            <ul class="pure-menu-list">
-	 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Chores</a></li>
-
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Tasks</a></li>
-
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Events</a></li>
-
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Schedule</a></li>
-
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Settings</a></li>
-
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Log Out</a></li>
-            </ul>
-        </div>
-    </div>
+	<?php include '../INCLUDES/sideMenu.html' ;?>
 
     <div id="main">
         <div class="header">
