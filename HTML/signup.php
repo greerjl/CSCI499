@@ -70,50 +70,6 @@
 
 	<?php include 'dbconnect.php'; ?>
 	<?php include './PHP/processSignup.php'; ?>
-	<?php
-	if($_SERVER["REQUEST_METHOD"] == "POST"){
-		echo "before first if";
-    	if(!empty($_POST['email']) && !empty($_POST['pswd']) && !empty($_POST['rpswd'])) {
-          // username and password sent from form
-			 echo "between ifs";
-			 if(mysqli_real_escape_string($_POST['pswd']) == mysqli_real_escape_string($_POST['rpswd'])){
-				 		echo "inner if";
-          	$myusername = mysqli_real_escape_string($db,$_POST['email']);
-          	$mypassword = mysqli_real_escape_string($db,$_POST['pswd']);
-
-          	$sql = "INSERT INTO user_info (username, password) VALUES '$myusername','$mypassword';";
-          	$result = mysqli_query($db, $sql);
-						echo "$result";
-
-          	$sql = "SELECT * FROM user_info WHERE username = '$myusername' and password = '$mypassword';";
-          	$result = mysqli_query($db,$sql);
-          	$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-          	$active = $row['active'];
-
-          	$count = mysqli_num_rows($result);
-
-          	// If result matched $myusername and $mypassword, table row must be 1 row
-
-         	if($count == 1) {
-             		//session_register("myusername");
-             		//$_SESSION['login_user'] = $myusername;
-
-             		header("location: welcome.html");
-             		echo "Your Login Name and Password have been sent to database";
-          	}
-          	
-          	else {
-            		$error = "Your Username or Password is invalid";
-    				 	echo "Your Username or Password is invalid";
-          	}//ifelse
-       	}
-       	else{
-       		$error = "Passwords Do Not Match";
-    			echo "Passwords Do Not Match";
-       	}
-      }//if
-    }
-    ?>
 
 		<header>HUM Sign Up Page</header>
 		<h6>All fields with an * are required</h6>
@@ -172,7 +128,9 @@
 		</form>
 		<?php }//if
 			if($_SERVER['REQUEST_METHOD']=="POST" && !hasErrors){
-				include "./PHP/sendSignupData.php";
+          			$sql = "INSERT INTO user_info (username, password) VALUES '$email','$pswd';";
+          			$result = mysqli_query($db, $sql);
+
 				$url = htmlspecialchars($_SERVER['PHP_SELF']);
 				header("Location: $url", true, 303);
 				exit;
