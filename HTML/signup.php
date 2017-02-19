@@ -80,7 +80,7 @@
 				<legend> Sign Up </legend>
 
 				<label for="useremail"> Email (will be used as username): <em>*</em> </label>
-				<input type="email" id="useremail" name="email" required>
+				<input type="email" id="useremail" name="email" autofocus required>
 				<span style="color: red"><?php print $emailErr; ?></span>
 				<br/>
 				<br/>
@@ -129,7 +129,7 @@
 		print "email = $email, password = $pswd \n";
 
 			if($_SERVER['REQUEST_METHOD']=="POST" && !hasErrors){
-          			$sql = "INSERT INTO user_info (username, password) VALUES '$email','$pswd';";
+          			$sql = "INSERT INTO user_info (username, password) VALUES ('$email','$pswd')";
           			$result = mysqli_query($db, $sql);
 				print "result = $result";
 				if($result){
