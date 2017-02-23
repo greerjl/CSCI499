@@ -86,13 +86,14 @@
 				<br/>
 				<label for="pw"> Password: (Must contain 6 or more characters and at least one number)
 					<em>*</em> </label>
-				<input type="password" id="pw" name="pswd" pattern="^[a-zA-Z0-9]{6,}$" required>
+				<input type="password" id="pw" name="pswd" pattern="/^(?=.*\d)(?=.*[a-zA-Z])(?!.*[\W_\x7B-\xFF]).
+{6,15}$/" required>
 				<span style="color: red"><?php print $pswdErr; ?></span>
 				<br/>
 				<br/>
 				<label for="rpw"> Re-Enter Password:
 					<em>*</em> </label>
-				<input type="password" id="rpw" name="rpswd" pattern="^[a-zA-Z0-9]{6,}$" required>
+				<input type="password" id="rpw" name="rpswd" pattern="/^(?=.*\d)(?=.*[a-zA-Z])(?!.*[\W_\x7B-\xFF]).{6,15}$/" required>
 				<span style="color: red"><?php print $rpswdErr; ?></span>
 				<br/>
 				<br/>
