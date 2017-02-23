@@ -1,6 +1,5 @@
 <?php
 	$hash = md5( rand(0,1000) ); // Generate random 32 character hash and assign it to a local variable.
-	// Example output: f4552671f8909587cf485ea990207f3b
 
 	$to      = $email; // Send email to our user
 	$subject = 'Signup | Verification'; // Give the email a subject 
@@ -17,8 +16,8 @@
 	Please click this link to activate your account:
 	http://152.117.180.234/signupConfirm.html?email='.$email.'&hash='.$hash.'
  
-	'; // Our message above including the link
+	'; // Message that includes link
                      
-	$headers = 'From:noreply@HomeUtilityManagement.com' . "\r\n"; // Set from headers
-	mail($to, $subject, $message, $headers); // Send our email
+	$headers = 'From:noreply@HomeUtilityManagement.com' . "\r\n"; // Set from header
+	mail($to, $subject, $message, $headers); // Send email
 ?>
