@@ -41,9 +41,8 @@
 
 			case 'password': {
 				if(!empty($data)){
-					$regex = "^[a-zA-Z0-9]{6,}$";
-					if(!preg_match($regex, $data)){
-						return "Invalid password. 6 chars including a number.";
+					if(!preg_match('/^(?=.*\d)(?=.*[a-zA-Z])(?!.*[\W_\x7B-\xFF]).{6,15}$/', $data)){
+						return "Invalid password.";
 					}//if
 				}else{
 					return "Must create a password.";
@@ -51,19 +50,25 @@
 				return "";
 			}//case pswd
 
+			default: break;
+
 		}//switch statement
 	}//validate
 
 	function validate2($data, $data2, $field){
 		switch($field){
 			case 'password': {
-				if(strcmp($data, $data2) !== 0){
-					return "Passwords must match.";
+				if(!empty($data2)){
+					if(strcmp($data, $data2) !== 0){
+						return "Passwords must match.";
+					}//if
 				}else{
 					return "Please re-enter password.";
 				}//ifelse
 				return "";
 			}//case password
+
+			default: break;
 
 		}//switch
 	}//validate2

@@ -117,6 +117,7 @@
 				<input class="mems" type="email" id="members" name="groupmembers">
 				<input class="mems" type="email" id="members" name="groupmembers">
 				<input class="mems" type="email" id="members" name="groupmembers">
+			</div>
 				<br/>
 				<br/>
 
@@ -126,14 +127,13 @@
 
 		</form>
 		<?php }//if
-		print "email = $email, password = $pswd \n";
-
 			if($_SERVER['REQUEST_METHOD']=="POST" && !hasErrors){
+				print "emailErr = $emailErr, pswdErr = $pswdErr, rpswdErr = $rpswdErr";
+				print "email = $email, password = $pswd \n";
           			$sql = "INSERT INTO user_info (username, password) VALUES ('$email','$pswd')";
           			$result = mysqli_query($db, $sql);
 				print "result = $result";
 				if($result){
-					//
 					$url = htmlspecialchars($_SERVER['PHP_SELF']);
 					header("Location: $url", true, 303);
 					exit();

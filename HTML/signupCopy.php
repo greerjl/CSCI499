@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+<!--this is a copy of a previous form of signup.php. As of right now keep this file until signup is fully functional-->
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
