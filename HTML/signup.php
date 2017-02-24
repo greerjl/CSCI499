@@ -133,7 +133,7 @@
 			print "emailErr = $emailErr, pswdErr = $pswdErr, rpswdErr = $rpswdErr";
 			if($_SERVER['REQUEST_METHOD']=="POST" && !hasErrors){
 				print "email = $email, password = $pswd \n";
-          			$sql = "INSERT INTO user_info (email, password) VALUES ('$email','$pswd')";
+          			$sql = "INSERT INTO user_info (email, password, hash, username) VALUES ('$email','$pswd', 555, '$email')";
           			//$sql = "INSERT INTO user_info (email, password, hash) VALUES ('$email','$pswd','$hash')";
           			$result = mysqli_query($db, $sql);
 				print "result = $result";
