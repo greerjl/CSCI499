@@ -70,6 +70,9 @@
 
 	<?php include 'dbconnect.php'; ?>
 	<?php include './PHP/processSignupForm.php'; ?>
+	<!-- 
+	<?php include './PHP/emailVerify.php'; ?>
+	-->
 
 		<header>HUM Sign Up Page</header>
 		<h6>All fields with an * are required</h6>
@@ -128,10 +131,11 @@
 
 		</form>
 		<?php }//if
+			print "emailErr = $emailErr, pswdErr = $pswdErr, rpswdErr = $rpswdErr";
 			if($_SERVER['REQUEST_METHOD']=="POST" && !hasErrors){
-				print "emailErr = $emailErr, pswdErr = $pswdErr, rpswdErr = $rpswdErr";
 				print "email = $email, password = $pswd \n";
-          			$sql = "INSERT INTO user_info (username, password) VALUES ('$email','$pswd')";
+          			$sql = "INSERT INTO user_info (email, password) VALUES ('$email','$pswd')";
+          			//$sql = "INSERT INTO user_info (email, password, hash) VALUES ('$email','$pswd','$hash')";
           			$result = mysqli_query($db, $sql);
 				print "result = $result";
 				if($result){
