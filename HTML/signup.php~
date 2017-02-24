@@ -89,8 +89,7 @@
 				<br/>
 				<label for="pw"> Password: (Must contain 6 or more characters and at least one number)
 					<em>*</em> </label>
-				<input type="password" id="pw" name="pswd" pattern="/^(?=.*\d)(?=.*[a-zA-Z])(?!.*[\W_\x7B-\xFF]).
-{6,15}$/" required>
+				<input type="password" id="pw" name="pswd" pattern="/^(?=.*\d)(?=.*[a-zA-Z])(?!.*[\W_\x7B-\xFF]).{6,15}$/" required>
 				<span style="color: red"><?php print $pswdErr; ?></span>
 				<br/>
 				<br/>
