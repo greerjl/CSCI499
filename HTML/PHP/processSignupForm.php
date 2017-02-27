@@ -14,7 +14,7 @@
 			if(!empty($pswdErr)) $hasErrors = true;
 
 		$rpswd = cleanData($_POST['rpswd']);
-			$rpswdErr = validate2($rpswd, $pswd, 'password');
+			$rpswdErr = validate2($rpswd, $pswd);
 			if(!empty($rpswdErr)) $hasErrors = true;
 	}
 
@@ -55,20 +55,16 @@
 		}//switch statement
 	}//validate
 
-	function validate2($data, $data2, $field){
-		switch($field){
-			case 'password': {
-				if(!empty($data2)){
-					if(strcmp($data, $data2) !== 0){
-						return "Passwords must match.";
-					}//if
-				}else{
-					return "Please re-enter password.";
-				}//ifelse
-				return "";
-			}//case password
-
-			default: break;
+	//data = rpswd, data2 = pswd
+	function validate2($data, $data2){
+			if(empty($data){
+				return "Please reenter password.";
+			}else{
+				if(strcmp($data, $data2) != 0){
+					return "Passwords must match.";
+				}//if
+			}//ifelse
+			return "";
 
 		}//switch
 	}//validate2

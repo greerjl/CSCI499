@@ -138,7 +138,7 @@
           			$result = mysqli_query($db, $sql);
 				print "result = $result";
 				if($result){
-					$url = htmlspecialchars($_SERVER['PHP_SELF']);
+					$url = htmlspecialchars($_SERVER['successDebug.php']);
 					header("Location: $url", true, 303);
 					exit();
 				}//if
