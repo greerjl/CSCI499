@@ -72,6 +72,9 @@
 	<br/>
 	<p>
 		<h1>Success!!!</h1>
+		<br/>
+		<h4>Please check the email you provided for a validation email. Click the link :)</h4>
+		<br/>
 	</p>
 
 		<script src="./ui.js"></script>

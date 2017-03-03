@@ -57,7 +57,7 @@
 
 	//data = rpswd, data2 = pswd
 	function validate2($data, $data2){
-			if(empty($data){
+			if(empty($data)){
 				return "Please reenter password.";
 			}else{
 				if(strcmp($data, $data2) != 0){
@@ -66,7 +66,6 @@
 			}//ifelse
 			return "";
 
-		}//switch
 	}//validate2
 
 ?>
