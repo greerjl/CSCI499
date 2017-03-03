@@ -61,6 +61,7 @@ dfn {
 }
 h1 {
   margin: .67em 0;
+  font-family:sans-serif;
   font-size: 2em;
 }
 mark {
@@ -228,6 +229,11 @@ th {
   img {
     max-width: 100% !important;
   }
+ 
+  h2 {
+    color:#ff0;
+  }
+ 
   p,
   h2,
   h3 {
@@ -1411,6 +1417,7 @@ a.bg-danger:focus {
   padding-bottom: 9px;
   margin: 40px 0 20px;
   border-bottom: 1px solid #eee;
+  text-align: center;
 }
 ul,
 ol {

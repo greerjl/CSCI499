@@ -14,7 +14,7 @@
     <title>HUM-login</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -407,7 +407,7 @@
       <div class="starter-template">
         <div class="page-header">
             <h1>Home Utilities Manager</h1>
-            <h2> An application housing all your home management needs.</h2>
+            <h3> An application housing all your home management needs.</h2>
         </div><!-- /.page-header-->
         <?php include 'dbconnect.php' ;?>
         <?php
@@ -462,8 +462,8 @@
   </div> <!-- /.container -->
     <footer class="footer">
       <div class="container">
-        <p class="text muted">Capstone Production: September 2016 - May 2017. Authors <a href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
-        <a href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
+        <p class="text muted">Capstone Production: September 2016 - May 2017. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
+        <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
       </div><!--/.container-->
     </footer>
 
