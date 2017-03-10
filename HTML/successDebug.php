@@ -3,7 +3,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>HUM successDegug</title>
+		<title>HUM successDebug</title>
 		<meta http-equiv="cache-control" content="no-cache"/>
 		<link rel="stylesheet" href="../CSS/pure-min.css"/>
 		<link rel="stylesheet" type="text/css" href="../CSS/normalize.css">
@@ -71,9 +71,11 @@
 	<br/>
 	<br/>
 	<p>
-		<h1>Success!!!</h1>
+		<h1>Success!</h1>
 		<br/>
-		<h4>Please check the email you provided for a validation email. Click the link :)</h4>
+		<h4>
+		Congratulations! You have successfully registered. You should receive an account activation email shortly. Click on the link in the email to activate your account. Then, start customizing your housing manager. 
+		</h4>
 		<br/>
 	</p>
 

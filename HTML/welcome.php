@@ -39,10 +39,10 @@
 
     <div id="menu">
         <div class="pure-menu">
-            <a class="pure-menu-heading" href="#">HUM</a>
+            <a class="pure-menu-heading" href="../index.html">HUM</a>
 
             <ul class="pure-menu-list">
-					 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Chores</a></li>
+		 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Chores</a></li>
 
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Tasks</a></li>
 
@@ -71,34 +71,8 @@
 
             <h2 class="content-subhead">Your schedule: </h2>
             <p>
-                <table class="pure-table pure-table-horizontal">
-                <tbody>
-                    <tr>
-                        <td>Sunday</td>
-                    </tr>
-
-                    <tr>
-                        <td>Monday</td>
-                    </tr>
-
-                    <tr>
-                        <td>Tuesday</td>
-                    </tr>
-                    <tr>
-                        <td>Wednesday</td>
-                    </tr>
-                    <tr>
-                        <td>Thursday</td>
-                    </tr>
-                    <tr>
-                        <td>Friday</td>
-                    </tr>
-                    <tr>
-                        <td>Saturday</td>
-                    </tr>
-                </tbody>
-            </table>
-            </p>
+	<iframe src="https://calendar.google.com/calendar/embed?title=My%20Calendar&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=greerjl%40plu.edu&amp;color=%2329527A&amp;ctz=America%2FLos_Angeles" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>	
+	</p>
 
         </div>
     </div>

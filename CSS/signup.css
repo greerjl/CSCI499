@@ -112,7 +112,13 @@ The content `<div>` is where all your content goes.
     color: #888;
 }
 
+h1 {
+	font-family:Century Gothic,sans-serif;
+}
 
+h6 {
+
+}
 
 /*
 The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
@@ -291,14 +297,24 @@ label{
 	display: inline-block;
 	float: left;
 	clear: left;
-  width: 30em;
+	width: 25em;
 	text-align: right;
 	vertical-align: top;
 	margin: 3px;
 	padding: 3px;
-	width: 250px;
 }
 
 input {
 	margin: 5px;
+}
+
+input.addmem {
+	margin: 5px;
+	float: right;
+	position: relative;
+}
+
+input.submit {
+	float: right;
+	position: relative;
 }

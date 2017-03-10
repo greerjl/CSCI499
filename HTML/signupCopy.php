@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 
-<!--this is a copy of a previous form of signup.php. As of right now keep this file until signup is fully functional-->
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -33,105 +32,51 @@
 
 	</head>
 	<body>
+	<div id="layout">
+    	<!-- Menu toggle -->
+    		<a href="#menu" id="menuLink" class="menu-link">
+        	<!-- Hamburger icon -->
+        		<span></span>
+    		</a>
 
-		<div class="header">
-        		<div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
-                	<a class="pure-menu-heading" href="">Home Utilities Manager</a>
+    	<div id="menu">
+        	<div class="pure-menu">
+            	<a class="pure-menu-heading" href="../index.html">HUM</a>
 
-        		<ul class="pure-menu-list">
-            		<li class="pure-menu-item"><a href="./login.php" class="pure-menu-link">Log-In</a></li>
-            		<li class="pure-menu-item"><a href="./signup.php" class="pure-menu-link">Sign Up</a></li>
-        		</ul>
-		</div>
-		    		<div id="layout">
-    <!-- Menu toggle -->
-    <a href="#menu" id="menuLink" class="menu-link">
-        <!-- Hamburger icon -->
-        <span></span>
-    </a>
+            	<ul class="pure-menu-list">
+		 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Chores</a></li>
 
-    <div id="menu">
-        <div class="pure-menu">
-            <a class="pure-menu-heading" href="../index.html">HUM</a>
+                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Tasks</a></li>
 
-            <ul class="pure-menu-list">
-	 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Chores</a></li>
+                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Events</a></li>
 
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Tasks</a></li>
+                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Schedule</a></li>
 
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Events</a></li>
+                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Settings</a></li>
 
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Schedule</a></li>
-
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Settings</a></li>
-
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Log Out</a></li>
-            </ul>
-        </div>
-    </div>
-
+                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Log Out</a></li>
+            	</ul>
+        	</div>
+    	</div>
 	<?php include 'dbconnect.php'; ?>
-	<?php include './PHP/processSignup.php'; ?>
-	<?php
-	if($_SERVER["REQUEST_METHOD"] == "POST"){
-		echo "before first if";
-    	if(!empty($_POST['email']) && !empty($_POST['pswd']) && !empty($_POST['rpswd'])) {
-          // username and password sent from form
-			 echo "between ifs";
-			 if(mysqli_real_escape_string($_POST['pswd']) == mysqli_real_escape_string($_POST['rpswd'])){
-				 		echo "inner if";
-          	$myusername = mysqli_real_escape_string($db,$_POST['email']);
-          	$mypassword = mysqli_real_escape_string($db,$_POST['pswd']);
-
-          	$sql = "INSERT INTO user_info (username, password) VALUES '$myusername','$mypassword';";
-          	$result = mysqli_query($db, $sql);
-						echo "$result";
-
-          	$sql = "SELECT * FROM user_info WHERE username = '$myusername' and password = '$mypassword';";
-          	$result = mysqli_query($db,$sql);
-          	$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-          	$active = $row['active'];
-
-          	$count = mysqli_num_rows($result);
-
-          	// If result matched $myusername and $mypassword, table row must be 1 row
-
-         	if($count == 1) {
-             		//session_register("myusername");
-             		//$_SESSION['login_user'] = $myusername;
-
-             		header("location: welcome.html");
-             		echo "Your Login Name and Password have been sent to database";
-          	}
-          	
-          	else {
-            		$error = "Your Username or Password is invalid";
-    				 	echo "Your Username or Password is invalid";
-          	}//ifelse
-       	}
-       	else{
-       		$error = "Passwords Do Not Match";
-    			echo "Passwords Do Not Match";
-       	}
-      }//if
-    }
-    ?>
-
-		<header>HUM Sign Up Page</header>
-		<h6>All fields with an * are required</h6>
+	<?php include './PHP/processSignupForm.php'; ?>
 
 		<div class="content">
+		  <div class="header">
+			<h1> HUM Sign Up Page </header>
+			<h6> All fields with an * are required </h6>
+		  </div>	
 		<?php if($_SERVER['REQUEST_METHOD']=="GET" || $hasErrors){ ?>
 		<form id="SignUp" class="pure-form pure-form-aligned" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" />
 			<fieldset>
 				<legend> Sign Up </legend>
 
 				<label for="useremail"> Email (will be used as username): <em>*</em> </label>
-				<input type="email" id="useremail" name="email" required>
+				<input type="email" id="useremail" name="email" autofocus required>
 				<span style="color: red"><?php print $emailErr; ?></span>
 				<br/>
 				<br/>
-				<label for="pw"> Password: (Must contain 6 or more characters and at least one number)
+				<label for="pw"> Password (6+ characters including 1+ numbers):
 					<em>*</em> </label>
 				<input type="password" id="pw" name="pswd" pattern="(?=.*\d).{6,}" required>
 				<span style="color: red"><?php print $pswdErr; ?></span>
@@ -143,41 +88,45 @@
 				<span style="color: red"><?php print $rpswdErr; ?></span>
 				<br/>
 				<br/>
-			</fieldset>
-			<fieldset>
+
 				<legend> Group information - optional </legend>
-			<div class="pure-control-group">
 				<label for="gnameJ">Groupname to join:</label>
 				<input type="text" id="gnameJ" name="groupnamejoin">
-			</div>  <div class="pure-control-group">
+<br/>
+<br/>
 				<label for="acode">Access Code:</label>
 				<input type="text" id="acode" name="accesscode">
+<br/>
 				<label>OR</label>
-			</div>  <div class="pure-control-group">
+<br/>
+<br/>
 				<label for="gnameC">Groupname to create:</label>
 				<input type="text" id="gnameC" name="groupnamecreate">
-			</div>  <div class="pure-control-group">
+<br/>
+<br/>
 				<label for="members">Enter group members' emails:</label>
 				<input class="mems" type="email" id="members" name="groupmembers">
-			</div>  <div class="pure-control-group">
-				<input class="mems" type="email" id="members" name="groupmembers">
-				<input class="mems" type="email" id="members" name="groupmembers">
-				<input class="mems" type="email" id="members" name="groupmembers">
-				<input class="mems" type="email" id="members" name="groupmembers">
+				<br/>
+				<input type="button" id="addMember" value="Add Member" />	
 				<br/>
 				<br/>
-
-			</fieldset>
 
 			<p><input type="submit" value="Sign Up"></p>
+			</fieldset>
+
 
 		</form>
 		<?php }//if
-			if($_SERVER['REQUEST_METHOD']=="POST" && !hasErrors){
-				include "./PHP/sendSignupData.php";
-				$url = htmlspecialchars($_SERVER['PHP_SELF']);
-				header("Location: $url", true, 303);
-				exit;
+			if($_SERVER['REQUEST_METHOD']=="POST" && !$hasErrors){
+          			$sql = "INSERT INTO user_info (username, password, hash, email) VALUES ('$email','$pswd', 555, '$email')";
+          			$result = mysqli_query($db, $sql);
+				print "result = $result";
+				if($result){
+					$url = htmlspecialchars('successDebug.php');
+					include './PHP/emailVerify.php';
+					header("Location: $url", true, 303);
+					exit();
+				}//if
 			}//if
 		?>
 		</div>
