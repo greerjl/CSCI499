@@ -412,7 +412,7 @@
         <?php include 'dbconnect.php'; ?>
         <?php if($_SERVER["REQUEST_METHOD"] == "GET") { ?>
         <div class="content">
-            <form id="LogIn" class="form-signin" method="POST" action="<?php echo ($_SERVER["welcome.php"]);?>">
+            <form id="LogIn" class="form-signin" method="POST" > <!--action="welcome.php-->
             <h2 class="form-signin-heading"> Log In </h2>
             <label for="username" class="sr-only"> Email address </label>
             <input type="email" id="username" class="form-control"
@@ -449,9 +449,9 @@
     // If result matched $myusername and $mypassword, table row must be 1 row
 
     if($count == 1) {
+      header('Location: welcome.php');
       //session_register("myusername");
       //$_SESSION['login_user'] = $myusername;
-      header("Location: welcome.php");
     }else {
       echo "Your Login Name or Password is invalid";
     }//end else

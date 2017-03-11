@@ -456,7 +456,7 @@
 
       Don't have an account?<a href="./signup.php"> Sign up</a>
     </br>
-    <!--   <a href="./loginCopy.php"> test test test</a>--> 
+    <a href="./loginCopy.php"> test test test</a> <!-- --> 
 	</form>
 
       </div><!-- /.content -->
