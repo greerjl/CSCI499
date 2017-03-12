@@ -1,13 +1,15 @@
 <?php
 
-	$email = $pswd = $rpswd = "";
-	$emailErr = $pswdErr = $rpswdErr = "";
+	$email = $pswd = $rpswd = $sql = "";
+	$emailErr = $pswdErr = $rpswdErr = $dbErr = "";
 	$hasErrors = false;
 
 	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
 		$email = cleanData($_POST['email']);
 			$emailErr = validate($email, 'email');
 			if(!empty($emailErr)) $hasErrors = true;
+			$dbErr = DBCheck($email, 'email');
+			if(!empty($dbErr)) $hasErrors = true;
 
 		$pswd = cleanData($_POST['pswd']);
 			$pswdErr = validate($pswd, 'password');
@@ -67,5 +69,29 @@
 			return "";
 
 	}//validate2
+	
+	
+	function DBCheck($data, $field){
+		switch($field){
+			case 'email': {
+				$sql = "SELECT * FROM user_info WHERE email = '$data'";
+				$result = ($db, $sql);
+				
+				$count = mysqli_num_rows($result);
+				if($count != 0){
+					return "This email has already been registered."
+				}
+			}
+			//case 'username': {
+				//$sql = "SELECT * FROM user_info WHERE username = '$data'";
+				//$result = ($db, $sql);
+				
+				//$count = mysqli_num_rows($result);
+				//if($count == 1){
+					//return "This username has already been registered."
+				//}
+			//}
+		}
+	}
 
 ?>
