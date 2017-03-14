@@ -410,31 +410,7 @@
             <h3> An application housing all your home management needs.</h2>
         </div><!-- /.page-header-->
         <?php include 'dbconnect.php' ;?>
-        <?php
-          if($_SERVER["REQUEST_METHOD"] == "POST") {
-          // username and password sent from form
-            $myusername = mysqli_real_escape_string($db,$_POST['usnm']);
-            $mypassword = mysqli_real_escape_string($db,$_POST['pswd']);
-
-            $sql = "SELECT * FROM user_info WHERE username = '$myusername' and password = '$mypassword'";
-            $result = mysqli_query($db,$sql);
-            $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-            $active = $row['active'];
-
-            $count = mysqli_num_rows($result);
-
-            // If result matched $myusername and $mypassword, table row must be 1 row
-
-            if($count == 1) {
-              session_register("myusername");
-              $_SESSION['login_user'] = $myusername;
-
-              header("location: welcome.php");
-            }else {
-              echo "Your Login Name or Password is invalid";
-            }//end else
-          }//end POST if stmt
-        ?>
+	<?php include './PHP/processLoginForm.php'; ?>
         <div class="content">
             <form id="LogIn" class="form-signin" method="POST" action="./welcome.php">
             <h2 class="form-signin-heading"> Log In </h2>
@@ -449,7 +425,7 @@
 
             <div class="checkbox">
               <label>
-                <input type="checkbox" value="remember-me"> Remember me
+                <input type="checkbox" value="remember-me"> Remember me </input>
               </label>
             </div> <!--End checkbox -->
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>

@@ -409,10 +409,15 @@
             <h1>Home Utilities Manager</h1>
             <h3> An application housing all your home management needs.</h2>
         </div><!-- /.page-header-->
+<?php echo $flag?>
+
+
         <?php include 'dbconnect.php'; ?>
+	<?php include './PHP/processLoginForm.php'; ?>
+
         <?php if($_SERVER["REQUEST_METHOD"] == "GET") { ?>
         <div class="content">
-            <form id="LogIn" class="form-signin" method="POST" > <!--action="welcome.php-->
+            <form id="LogIn" class="form-signin" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <h2 class="form-signin-heading"> Log In </h2>
             <label for="username" class="sr-only"> Email address </label>
             <input type="email" id="username" class="form-control"
@@ -433,29 +438,13 @@
       Don't have an account?<a href="./signup.php"> Sign up</a>
 	</form>
   <?php }
-  if($_SERVER["REQUEST_METHOD"] == "POST") {
-
-  // username and password sent from form
-    $username = mysqli_real_escape_string($db,$_POST['usnm']);
-    $password = mysqli_real_escape_string($db,$_POST['pswd']);
-
-    $sql = "SELECT UID FROM user_info WHERE username = '$username' and password = '$password'";
-    $result = mysqli_query($db,$sql);
-    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-    $active = $row['active'];
-
-    $count = 0;
-    $count = mysqli_num_rows($result);
-    // If result matched $myusername and $mypassword, table row must be 1 row
-
-    if($count == 1) {
-      header('Location: welcome.php');
-      //session_register("myusername");
-      //$_SESSION['login_user'] = $myusername;
-    }else {
-      echo "Your Login Name or Password is invalid";
-    }//end else
-  }//end POST if stmt
+	echo 'flag = '.$flag;
+	if($flag == 1){
+	echo 'flag inside if = '.$flag;
+		$url = htmlspecialchars('./welcome.php');
+		header("Location: $url", true, 303);
+		exit();
+	}//if	
   ?>
       </div><!-- /.content -->
     </div><!--/.starter template -->

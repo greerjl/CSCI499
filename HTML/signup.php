@@ -120,7 +120,6 @@
 			if($_SERVER['REQUEST_METHOD']=="POST" && !$hasErrors){
           			$sql = "INSERT INTO user_info (username, password, hash, email) VALUES ('$email','$pswd', 555, '$email')";
           			$result = mysqli_query($db, $sql);
-				print "result = $result";
 				if($result){
 					$url = htmlspecialchars('successDebug.php');
 					include './PHP/emailVerify.php';
