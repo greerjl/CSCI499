@@ -67,7 +67,7 @@
 			<h6> All fields with an * are required </h6>
 		  </div>
 		<?php if($_SERVER['REQUEST_METHOD']=="GET" || $hasErrors){ ?>
-		<form id="SignUp" class="pure-form pure-form-aligned" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" />
+		<form id="SignUp" class="pure-form pure-form-aligned" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
 			<fieldset>
 				<legend> Sign Up </legend>
 

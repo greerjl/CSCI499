@@ -415,7 +415,13 @@
         <?php include 'dbconnect.php'; ?>
 	<?php include './PHP/processLoginForm.php'; ?>
 
-        <?php if($_SERVER["REQUEST_METHOD"] == "GET") { ?>
+        <?php if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
+		if($hasErrors){ ?>
+			<div class="alert alert-danger">
+				<strong>Error!</strong> User credentials are incorrect. Enter correct username and password.
+			</div>
+		<?php }//if ?>
+
         <div class="content">
             <form id="LogIn" class="form-signin" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <h2 class="form-signin-heading"> Log In </h2>
@@ -438,14 +444,17 @@
       Don't have an account?<a href="./signup.php"> Sign up</a>
 	</form>
   <?php }
-	echo 'flag = '.$flag;
-	if($flag == 1){
-	echo 'flag inside if = '.$flag;
+	//echo 'flag = '.$flag;
+	if($flag == 1 && !$hasErrors){
+		//echo 'flag inside if = '.$flag;
 		$url = htmlspecialchars('./welcome.php');
 		header("Location: $url", true, 303);
 		exit();
-	}//if	
+		//session_start();
+	}//if
   ?>
+
+
       </div><!-- /.content -->
     </div><!--/.starter template -->
   </div> <!-- /.container -->

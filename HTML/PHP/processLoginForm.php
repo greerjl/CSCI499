@@ -1,6 +1,8 @@
 <?php
-	//include '../dbconnect.php';
+	$hasErrors = false;
 	$flag = 0;
+
+
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
 		//username and password sent from form
 		$myusername = mysqli_real_escape_string($db, $_POST['usnm']);
@@ -16,7 +18,7 @@
 		$count = mysqli_num_rows($result);
 
 		//if result matched $myusername and $mypassword, table row must be 1 row
-		echo 'flag before if in processLogin = '.$flag."<br/>";
+		//echo 'flag before if in processLogin = '.$flag."<br/>";
 		if($count == 1){
 			
 			$_SESSION['login_user'] = $myusername;
@@ -24,13 +26,11 @@
 			$_SESSION['timeout'] = time() + 300;
 
 			$flag = 1;
-			echo 'flag after if in processLogin = '.$flag."<br/>";
-
-			session_start();
+			//echo 'flag after if in processLogin = '.$flag."<br/>";
 
 		}else{
 			$flag = 0;
-			echo "Your login name or password is invalid.";
+			$hasErrors = true;
 		}//ifelse
 	}//POST if
 

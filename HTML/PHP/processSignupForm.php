@@ -75,23 +75,24 @@
 		switch($field){
 			case 'email': {
 				$sql = "SELECT * FROM user_info WHERE email = '$data'";
-				$result = ($db, $sql);
+				$result = mysqli_query($db, $sql);
 				
 				$count = mysqli_num_rows($result);
 				if($count != 0){
-					return "This email has already been registered."
+					return "This email has already been registered.";
+				}//if
+			}//case email
+			/*case 'username': {
+				$sql = "SELECT * FROM user_info WHERE username = '$data'";
+				$result = mysqli_query($db, $sql);
+				
+				$count = mysqli_num_rows($result);
+				if($count == 1){
+					return "This username has already been registered."
 				}
 			}
-			//case 'username': {
-				//$sql = "SELECT * FROM user_info WHERE username = '$data'";
-				//$result = ($db, $sql);
-				
-				//$count = mysqli_num_rows($result);
-				//if($count == 1){
-					//return "This username has already been registered."
-				//}
-			//}
-		}
-	}
+			*/
+		}//switch
+	}//function DBCheck
 
 ?>
