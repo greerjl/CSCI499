@@ -74,13 +74,15 @@
 	function dbCheck($data, $field){
 		switch($field){
 			case 'email': {
-				echo 'within case';
+				echo 'within case\n';
 				$sql = "SELECT * FROM user_info WHERE email = '$data'";
-				echo $sql;
+				
+				echo $sql'\n';
 				$result = mysqli_query($db, $sql);
 				
 				$count = mysqli_num_rows($result);
-				echo $count;
+				
+				echo $count'\n';
 				if($count != 0){
 					return "This email has already been registered.";
 				}//if
