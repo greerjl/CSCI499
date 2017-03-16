@@ -69,31 +69,27 @@
 			return "";
 
 	}//validate2
-	
-	
+
+
 	function dbCheck($data, $field){
 		switch($field){
 			case 'email': {
-				echo 'within case\n';
 				$sql = "SELECT * FROM user_info WHERE email = '$data'";
-				echo $sql;
-				
+
 				$result = mysqli_query($db, $sql);
-				
 				$count = mysqli_num_rows($result);
-				echo $count;
-				
+
 				if($count != 0){
 					return "This email has already been registered.";
 				}//if
 				else{
-					return "";				
+					return "";
 				}
 			}//case email
 			/*case 'username': {
 				$sql = "SELECT * FROM user_info WHERE username = '$data'";
 				$result = mysqli_query($db, $sql);
-				
+
 				$count = mysqli_num_rows($result);
 				if($count == 1){
 					return "This username has already been registered."
