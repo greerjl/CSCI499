@@ -74,6 +74,7 @@
 				<label for="useremail"> Email (will be used as username): <em>*</em> </label>
 				<input type="email" id="useremail" name="email" autofocus required>
 				<span style="color: red"><?php print $emailErr; ?></span>
+				<span style="color: red"><?php print $dbErr; ?></span>
 				<br/>
 				<br/>
 				<label for="pw"> Password (6+ characters including 1+ numbers):
