@@ -81,6 +81,9 @@
 				if($count != 0){
 					return "This email has already been registered.";
 				}//if
+				else{
+					return "";				
+				}
 			}//case email
 			/*case 'username': {
 				$sql = "SELECT * FROM user_info WHERE username = '$data'";
