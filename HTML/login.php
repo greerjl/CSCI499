@@ -409,10 +409,21 @@
             <h1>Home Utilities Manager</h1>
             <h3> An application housing all your home management needs.</h2>
         </div><!-- /.page-header-->
-        <?php include 'dbconnect.php' ;?>
+<?php echo $flag?>
+
+
+        <?php include 'dbconnect.php'; ?>
 	<?php include './PHP/processLoginForm.php'; ?>
+
+        <?php if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
+		if($hasErrors){ ?>
+			<div class="alert alert-danger">
+				<strong>Error!</strong> User credentials are incorrect. Enter correct username and password.
+			</div>
+		<?php }//if ?>
+
         <div class="content">
-            <form id="LogIn" class="form-signin" method="POST" action="./welcome.php">
+            <form id="LogIn" class="form-signin" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <h2 class="form-signin-heading"> Log In </h2>
             <label for="username" class="sr-only"> Email address </label>
             <input type="email" id="username" class="form-control"
@@ -425,15 +436,25 @@
 
             <div class="checkbox">
               <label>
-                <input type="checkbox" value="remember-me"> Remember me </input>
+                <input type="checkbox" value="remember-me"> Remember me
               </label>
             </div> <!--End checkbox -->
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 
-      Don't have an account?<a href="./signup.php"> Sign up</a>
-    </br>
-    <a href="./loginCopy.php"> test test test</a> <!-- --> 
+      Don't have an account? <a href="./signup.php"> Sign up</a>
 	</form>
+  <?php }
+	//echo 'flag = '.$flag;
+	if($flag == 1 && !$hasErrors){
+		//echo 'flag inside if = '.$flag;
+		//include './PHP/loginRedirect.php';
+  ?>
+	<meta http-equiv="refresh" content="0; url=./welcome.php" />
+  <?php
+		session_start();
+	}//if
+  ?>
+
 
       </div><!-- /.content -->
     </div><!--/.starter template -->
