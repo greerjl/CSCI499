@@ -1,4 +1,5 @@
 <?php
+	include '../dbconnect.php';
 
 	$email = $pswd = $rpswd = $sql = "";
 	$emailErr = $pswdErr = $rpswdErr = $dbErr = "";
@@ -62,7 +63,7 @@
 			if(empty($data)){
 				return "Please reenter password.";
 			}else{
-				if(strcmp($data, $data2) != 0){
+				if(strcmp($data, $data2) !== 0){
 					return "Passwords must match.";
 				}//if
 			}//ifelse
@@ -78,13 +79,11 @@
 
 				$result = mysqli_query($db, $sql);
 				$count = mysqli_num_rows($result);
-
+echo $count;
 				if($count != 0){
 					return "This email has already been registered.";
 				}//if
-				else{
 					return "";
-				}
 			}//case email
 			/*case 'username': {
 				$sql = "SELECT * FROM user_info WHERE username = '$data'";
