@@ -1,8 +1,9 @@
 <?php
 	include '../dbconnect.php';
 
-	$email = $pswd = $rpswd = $sql = "";
-	$emailErr = $pswdErr = $rpswdErr = $dbErr = "";
+	$email = $pswd = $rpswd = $groupnameJ = $accesscode = $groupnameC = $mems = "";
+	$sql = "";
+	$emailErr = $pswdErr = $rpswdErr = $dbErr = $groupnameJErr = $accesscodeErr = $groupnameCErr = $dbgnameErr = $dbaccesscodeErr = "";
 	$hasErrors = false;
 
 	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
@@ -19,6 +20,10 @@
 		$rpswd = cleanData($_POST['rpswd']);
 			$rpswdErr = validate2($rpswd, $pswd);
 			if(!empty($rpswdErr)) $hasErrors = true;
+
+		$groupnameJ = cleanData($_POST['groupnameJ']);
+			$groupnameJErr = validate($groupnameJ, 'groupnameJ');
+			if(!empty($groupnameJErr)) $hasErrors = true;
 	}
 
 	//FUNCTIONS

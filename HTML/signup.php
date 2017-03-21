@@ -92,7 +92,7 @@
 
 				<legend> Group information - optional </legend>
 				<label for="gnameJ">Groupname to join:</label>
-				<input type="text" id="gnameJ" name="groupnamejoin">
+				<input type="text" id="gnameJ" name="groupnameJ">
 <br/>
 <br/>
 				<label for="acode">Access Code:</label>
@@ -102,13 +102,13 @@
 <br/>
 <br/>
 				<label for="gnameC">Groupname to create:</label>
-				<input type="text" id="gnameC" name="groupnamecreate">
+				<input type="text" id="gnameC" name="groupnameC">
 <br/>
 <br/>
 				<label for="members">Enter group members' emails:</label>
 				<input class="mems" type="email" id="members" name="groupmembers">
 				<br/>
-				<input class="addmem" type="button" id="addMember" value="Add Member" />
+				<input class="addmem" type="button" id="addMember" name="mems" value="Add Member" />
 				<br/>
 				<br/>
 
