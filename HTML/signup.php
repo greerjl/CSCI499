@@ -93,20 +93,24 @@
 				<legend> Group information - optional </legend>
 				<label for="gnameJ">Groupname to join:</label>
 				<input type="text" id="gnameJ" name="groupnameJ">
+				<span style="color: red"><?php print $groupnameJErr; ?></span>
 <br/>
 <br/>
 				<label for="acode">Access Code:</label>
 				<input type="text" id="acode" name="accesscode">
+				<span style="color: red"><?php print $accesscodeErr; ?></span>
 <br/>
 				<label>OR</label>
 <br/>
 <br/>
 				<label for="gnameC">Groupname to create:</label>
 				<input type="text" id="gnameC" name="groupnameC">
+				<span style="color: red"><?php print $groupnameCErr; ?></span>
 <br/>
 <br/>
 				<label for="members">Enter group members' emails:</label>
 				<input class="mems" type="email" id="members" name="groupmembers">
+				<span style="color: red"><?php print $memsErr; ?></span>
 				<br/>
 				<input class="addmem" type="button" id="addMember" name="mems" value="Add Member" />
 				<br/>

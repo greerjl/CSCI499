@@ -3,10 +3,12 @@
 
 	$email = $pswd = $rpswd = $groupnameJ = $accesscode = $groupnameC = $mems = "";
 	$sql = "";
-	$emailErr = $pswdErr = $rpswdErr = $dbErr = $groupnameJErr = $accesscodeErr = $groupnameCErr = $dbgnameErr = $dbaccesscodeErr = "";
+	$emailErr = $pswdErr = $rpswdErr = $dbErr = $groupnameCErr = $dbgnameJErr = $dbgnameCErr = $dbaccesscodeErr = $memsErr = "";
 	$hasErrors = false;
 
 	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
+
+		/*USER CREDENTIALS*/
 		$email = cleanData($_POST['email']);
 			$emailErr = validate($email, 'email');
 			if(!empty($emailErr)) $hasErrors = true;
@@ -21,10 +23,26 @@
 			$rpswdErr = validate2($rpswd, $pswd);
 			if(!empty($rpswdErr)) $hasErrors = true;
 
+		/*GROUP CREDENTIALS*/
 		$groupnameJ = cleanData($_POST['groupnameJ']);
-			$groupnameJErr = validate($groupnameJ, 'groupnameJ');
-			if(!empty($groupnameJErr)) $hasErrors = true;
-	}
+			$dbgnameJErr = dbCheck($groupnameJ, 'groupname');
+			if(!empty($dbgnameErr)) $hasErrors = true;
+
+		$accesscode = cleanData($_POST['accesscode']);
+			$dbaccesscodeErr = dbCheck($accesscode, 'accesscode');
+			if(!empty($dbaccesscodeErr)) $hasErrors = true;
+
+		$groupnameC = cleanData($_POST['groupnameC']);
+			$groupnameCErr = validate($groupnameC, 'groupnameC');
+			if(!empty($groupnameCErr)) $hasErrors = true;
+			$dbgnameCErr = dbCheck($groupnameC, 'groupnameC');
+			if(!empty($groupnameCErr)) $hasErrors = true;
+
+		$mems = cleanData($_POST['mems']);
+			$memsErr = validate($mems, 'memsemail');
+			if(!empty($memsErr)) $hasErrors = true;
+
+	}//if
 
 	//FUNCTIONS
 	function cleanData($data){
@@ -58,6 +76,24 @@
 				return "";
 			}//case pswd
 
+			case 'groupnameC': {
+				if(!empty($data)){
+					if(!preg_match('^.{6,30}$', $data)){
+						return "Name must be 6-30 characters.";
+					}//if
+				}
+				return "";
+			}//case groupnameC
+
+			case 'memsemail': {
+				if(!empty($data)){
+					if(!filter_var($data, FILTER_VALIDATE_EMAIL)){
+						return "Invalid email address.";
+					}//if
+				}//if
+				return "";
+			}//case memsemail
+
 			default: break;
 
 		}//switch statement
@@ -76,7 +112,7 @@
 
 	}//validate2
 
-
+/*EVEN IF NEW EMAIL (MAYBE GNAME) IS ENTERED, ERROR RETURNED SAYING ALREADY EXISTS*/
 	function dbCheck($data, $field){
 		switch($field){
 			case 'email': {
@@ -84,12 +120,12 @@
 
 				$result = mysqli_query($db, $sql);
 				$count = mysqli_num_rows($result);
-echo $count;
 				if($count != 0){
 					return "This email has already been registered.";
 				}//if
 					return "";
 			}//case email
+
 			/*case 'username': {
 				$sql = "SELECT * FROM user_info WHERE username = '$data'";
 				$result = mysqli_query($db, $sql);
@@ -97,9 +133,38 @@ echo $count;
 				$count = mysqli_num_rows($result);
 				if($count == 1){
 					return "This username has already been registered."
-				}
-			}
+				}//if
+			}//case username
 			*/
+
+			case 'groupnameC': {
+				$sql = "SELECT * FROM group_info WHERE group_name = '$groupnameC'";
+
+				$result = mysqli_query($db, $sql);
+				$count = mysqli_num_rows($result);
+				if(!empty($groupnameC)){
+					if($count != 0){
+						return "This group name already exists.";
+					}//if
+				}//if
+				return "";
+
+			}//case groupnameJ
+
+			case 'groupnameJ': {
+				$sql = "SELECT * FROM group_info WHERE group_name = '$groupnameJ'";
+
+				$result = mysqli_query($db, $sql);
+				$count = mysqli_num_rows($result);
+				if(!empty($groupnameJ)){
+					if($count == 0){
+						return "This group does not exist.";
+					}//if
+				}//if
+				return "";
+
+			}//case groupnameJ
+
 		}//switch
 	}//function dbCheck
 
