@@ -1,17 +1,17 @@
 <?php
 	include '../dbconnect.php';
-	$cTitle = $cDesc = $username = $sql = "";
-	$titleErr = $descErr = $uidErr = "";
+	$eTitle = $eDesc = $roomName = $username = $sql = $startTime = $endTime = "";
+	$titleErr = $descErr = $uidErr = $roomErr = "";
 	$hasErrors = false;
 	
 	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
-		$cTitle = cleanData($_POST['title']);
-			$titleErr = validate($cTitle, 'cTitle');
+		$eTitle = cleanData($_POST['title']);
+			$titleErr = validate($eTitle, 'eTitle');
 			if(!empty($titleErr)){
 				$hasErrors = true;			
 			}//if
-		$cDesc = cleadData($_POST['description']);
-			$descErr = validate($cDesc, 'cDesc');
+		$eDesc = cleadData($_POST['description']);
+			$descErr = validate($eDesc, 'eDesc');
 			if(!empty($descErr)){
 				$hasErrors = true;			
 			}//if
@@ -20,7 +20,11 @@
 			if(!empty($uidErr)){
 				$hasErrors = true;			
 			}//if
-		
+		$roomName = cleanData($_POST['roomName']);
+			$roomErr = validate($roomName, 'roomName');
+			if(!empty($roomErr)){
+				$hasErrors = true;			
+			}//if
 	}//if
 	
 	//FUNCTIONS
@@ -33,21 +37,21 @@
 	
 	function validate($data, $field) {//, $gid
 		switch($field) {
-			case 'cTitle':{
+			case 'eTitle':{
 				$data = strtolower($data);
 				$data = ucfirst($data);
-				$sql = "SELECT * FROM chore WHERE title = '$data'"/* AND GID = '$gid'"*/;
+				$sql = "SELECT * FROM event WHERE name = '$data'"/* AND GID = '$gid'"*/;
 				$result = mysqli_query($db, $sql) /*or die("could not connect to DB")*/;
 				
 				$count = mysqli_num_rows($result);				
 				if($count != 0){
-					return "Chore already exists";				
+					return "Event of the same name already exists";				
 				}
 				else {
 					return "";				
 				}
-			}//case cTitle
-			case 'cDesc':{
+			}//case eTitle
+			case 'eDesc':{
 				if(strlen($data) > 140){
 					return "Description is too long.";			
 				}
@@ -57,7 +61,7 @@
 				else{
 					return "";				
 				}
-			}//case cDesc
+			}//case eDesc
 			case 'username':{
 				$data = strtolower($data);
 				$sql = "SELECT UID FROM user_info WHERE username = '$data'"/* AND GID = '$gid'"*/;
@@ -71,6 +75,20 @@
 					return "";				
 				}
 			}//case username
+			case 'roomName':{
+				$data = strtolower($data);
+				$data = ucfirst($data);
+				$sql = "SELECT RID FROM room WHERE name = '$data'"/* AND GID = '$gid'"*/;
+				$result = mysqli_query($db, $sql) /*or die("could not connect to DB")*/;
+				
+				$count = mysqli_num_rows($result);
+				if($count == 0){
+					return "House does not have such a room or incorrect room name";			
+				}
+				else{
+					return "";				
+				}
+			}//case roomName
 		}
 	}
 ?>
