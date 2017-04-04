@@ -57,10 +57,6 @@
             <h2>An application housing all your home management needs. </h2>
         </div>
 
-        <div class="top-settings-bar">
-            chores, tasks, make a reservation/event
-        </div>
-
         <div class="content">
             <h2 class="content-subhead">Your Chore: </h2>
             <p>
