@@ -1,6 +1,6 @@
 <?php
 	include '../../dbconnect.php';
-	$sql = "SELECT username, title, description FROM user_info, chore WHERE username = '$myusername' AND user_info.UID = chore.UID";
+	$sql = "SELECT username, title, description FROM user_info, chore WHERE user_info.GID = chore.GID AND user_info.UID = chore.UID";
 	$result = mysqli_query($db, $sql);
 	
 	$count = mysqli_num_rows($result);
