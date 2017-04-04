@@ -451,7 +451,7 @@
   ?>
 	<meta http-equiv="refresh" content="0; url=./welcome.php" />
   <?php
-		session_start(); 
+    
 	}//if
   ?>
 

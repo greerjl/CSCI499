@@ -20,10 +20,11 @@
 		//if result matched $myusername and $mypassword, table row must be 1 row
 		//echo 'flag before if in processLogin = '.$flag."<br/>";
 		if($count == 1){
-			
+
 			$_SESSION['login_user'] = $myusername;
-			$_SESSION['valid'] = true;
-			$_SESSION['timeout'] = time() + 300;
+	    $_SESSION['valid'] = true;
+	    $_SESSION['timeout'] = time() + 300;
+			session_start();
 
 			$flag = 1;
 			//echo 'flag after if in processLogin = '.$flag."<br/>";

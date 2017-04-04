@@ -57,10 +57,33 @@
             <h2>An application housing all your home management needs. </h2>
         </div>
 
+
+
         <div class="content">
             <h2 class="content-subhead">Your Chore: </h2>
             <p>
-					<h3> <?php include 'choreTest.php' ?> </h3>
+					         <?php include '../../dbconnect.php';?>
+                   <table>
+                     <tr><td>
+                        <?php
+                          $sql = "SELECT username, title, description FROM user_info, chore WHERE user_info.GID = chore.GID AND user_info.UID = chore.UID";
+                          $result = mysqli_query($db, $sql);
+
+                          $count = mysqli_num_rows($result);
+
+                          if($count == 0){
+                            die('Error: '.mysqli_error());
+                          }
+                          else{
+                            while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                              foreach ($line as $col_value) {
+                           			print $col_value;
+                        			}//foreach
+                            }//while
+                          }//else
+                        ?>
+                    </td></tr>
+                  </table>
             </p>
 
             <h2 class="content-subhead">Your schedule: </h2>
