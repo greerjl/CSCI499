@@ -13,7 +13,7 @@
 			while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
     			echo "<tr>";
     			foreach ($line as $col_value) {
-       			echo "<td>"$col_value"</td>";
+       			echo "<td>".$col_value."</td>";
     			}
     			echo "</tr>";
 			}
