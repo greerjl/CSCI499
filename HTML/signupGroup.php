@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="../CSS/pure-min.css"/>
 		<link rel="stylesheet" type="text/css" href="../CSS/normalize.css">
 		<link rel="stylesheet" type="text/css" href="../CSS/signup.css"/>
-		<title>HUM - signup</title>
+		<title>HUM-signup</title>
 
 		<!--[if lte IE 8]>
 		<link rel="stylesheet" href="/combo/1.18.13?/css/layouts/side-menu-old-ie.css">
@@ -30,7 +30,22 @@
 	ga('send', 'pageview');
 	</script>
 
+	<script language="text/javascript">
+		function add(type){
+			var element = document.createElement("input");
+
+			element.setAttribute("type", email);
+			element.setAttribute("name", groupmembers);
+
+			var addmember = document.getElementById("addMemberButton");
+
+			addmember.appendChild(element);
+		}
+	</script>
+
 	</head>
+
+
 	<body>
 	<div id="layout">
     	<!-- Menu toggle -->
@@ -58,60 +73,46 @@
             	</ul>
         	</div>
     	</div>
-	<?php include 'dbconnect.php'; ?>
+	<?php include '../../dbconnect.php'; ?>
 	<?php include './PHP/processSignupForm.php'; ?>
 
 		<div class="content">
 		  <div class="header">
 			<h1> HUM Sign Up Page </header>
 			<h6> All fields with an * are required </h6>
-		  </div>	
+		  </div>
 		<?php if($_SERVER['REQUEST_METHOD']=="GET" || $hasErrors){ ?>
-		<form id="SignUp" class="pure-form pure-form-aligned" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" />
+		<form id="SignUp" class="pure-form pure-form-aligned" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
 			<fieldset>
-				<legend> Sign Up </legend>
-
-				<label for="useremail"> Email (will be used as username): <em>*</em> </label>
-				<input type="email" id="useremail" name="email" autofocus required>
-				<span style="color: red"><?php print $emailErr; ?></span>
-				<br/>
-				<br/>
-				<label for="pw"> Password (6+ characters including 1+ numbers):
-					<em>*</em> </label>
-				<input type="password" id="pw" name="pswd" pattern="(?=.*\d).{6,}" required>
-				<span style="color: red"><?php print $pswdErr; ?></span>
-				<br/>
-				<br/>
-				<label for="rpw"> Re-Enter Password:
-					<em>*</em> </label>
-				<input type="password" id="rpw" name="rpswd" pattern="(?=.*\d).{6,}" required>
-				<span style="color: red"><?php print $rpswdErr; ?></span>
-				<br/>
-				<br/>
-
-				<legend> Group information - optional </legend>
+				<legend> Group information</legend>
 				<label for="gnameJ">Groupname to join:</label>
-				<input type="text" id="gnameJ" name="groupnamejoin">
+				<input type="text" id="gnameJ" name="groupnameJ">
+				<span style="color: red"><?php print $groupnameJErr; ?></span>
 <br/>
 <br/>
 				<label for="acode">Access Code:</label>
 				<input type="text" id="acode" name="accesscode">
+				<span style="color: red"><?php print $accesscodeErr; ?></span>
 <br/>
 				<label>OR</label>
 <br/>
 <br/>
 				<label for="gnameC">Groupname to create:</label>
-				<input type="text" id="gnameC" name="groupnamecreate">
+				<input type="text" id="gnameC" name="groupnameC">
+				<span style="color: red"><?php print $groupnameCErr; ?></span>
 <br/>
 <br/>
 				<label for="members">Enter group members' emails:</label>
 				<input class="mems" type="email" id="members" name="groupmembers">
+				<span style="color: red"><?php print $memsErr; ?></span>
 				<br/>
-				<input type="button" id="addMember" value="Add Member" />	
+				<span id="addMemberButton">&nbsp;</span>
+				<br/>
+				<input class="addmem" type="button" id="addMember" name="mems" value="Add Member" onclick="add(document.forms[0].groupmembers.value)" />
 				<br/>
 				<br/>
 
-			<p><input type="submit" value="Sign Up"></p>
+			<p><input class="submit" type="submit" value="Sign Up"></p>
 			</fieldset>
 
 
@@ -120,7 +121,6 @@
 			if($_SERVER['REQUEST_METHOD']=="POST" && !$hasErrors){
           			$sql = "INSERT INTO user_info (username, password, hash, email) VALUES ('$email','$pswd', 555, '$email')";
           			$result = mysqli_query($db, $sql);
-				print "result = $result";
 				if($result){
 					$url = htmlspecialchars('successDebug.php');
 					include './PHP/emailVerify.php';

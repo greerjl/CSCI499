@@ -1,5 +1,5 @@
 <?php
-	include '../dbconnect.php';
+	include '../../../dbconnect.php';
 	/*This need to be different, needs to be dynamic to fill a drop box.*/
 	if($_SERVER['REQUEST_METHOD']=='GET' && $_GET){
 		$sql="SELECT name FROM room WHERE GID = '$gid'";

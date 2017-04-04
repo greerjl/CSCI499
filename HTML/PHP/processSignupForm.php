@@ -1,5 +1,5 @@
 <?php
-	include '../dbconnect.php';
+	//include '../../../dbconnect.php';
 
 	$email = $pswd = $rpswd = $groupnameJ = $accesscode = $groupnameC = $mems = "";
 	$sql = "";

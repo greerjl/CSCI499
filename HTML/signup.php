@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="../CSS/pure-min.css"/>
 		<link rel="stylesheet" type="text/css" href="../CSS/normalize.css">
 		<link rel="stylesheet" type="text/css" href="../CSS/signup.css"/>
-		<title>HUM - signup</title>
+		<title>HUM-signup</title>
 
 		<!--[if lte IE 8]>
 		<link rel="stylesheet" href="/combo/1.18.13?/css/layouts/side-menu-old-ie.css">
@@ -58,7 +58,7 @@
             	</ul>
         	</div>
     	</div>
-	<?php include 'dbconnect.php'; ?>
+	<?php include '../../dbconnect.php'; ?>
 	<?php include './PHP/processSignupForm.php'; ?>
 
 		<div class="content">
@@ -90,31 +90,6 @@
 				<br/>
 				<br/>
 
-				<legend> Group information - optional </legend>
-				<label for="gnameJ">Groupname to join:</label>
-				<input type="text" id="gnameJ" name="groupnameJ">
-				<span style="color: red"><?php print $groupnameJErr; ?></span>
-<br/>
-<br/>
-				<label for="acode">Access Code:</label>
-				<input type="text" id="acode" name="accesscode">
-				<span style="color: red"><?php print $accesscodeErr; ?></span>
-<br/>
-				<label>OR</label>
-<br/>
-<br/>
-				<label for="gnameC">Groupname to create:</label>
-				<input type="text" id="gnameC" name="groupnameC">
-				<span style="color: red"><?php print $groupnameCErr; ?></span>
-<br/>
-<br/>
-				<label for="members">Enter group members' emails:</label>
-				<input class="mems" type="email" id="members" name="groupmembers">
-				<span style="color: red"><?php print $memsErr; ?></span>
-				<br/>
-				<input class="addmem" type="button" id="addMember" name="mems" value="Add Member" />
-				<br/>
-				<br/>
 
 			<p><input class="submit" type="submit" value="Sign Up"></p>
 			</fieldset>
@@ -133,6 +108,7 @@
 				}//if
 			}//if
 		?>
+		Need to join/create a group? Click <a href="./signupGroup.php">here</a>.
 		</div>
 		<script src="./ui.js"></script>
 	</body>

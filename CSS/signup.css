@@ -318,3 +318,8 @@ input.submit {
 	float: right;
 	position: relative;
 }
+
+p {
+	border-top: 2px solid black;
+	margin: 3px;
+}

@@ -412,7 +412,7 @@
 <?php echo $flag?>
 
 
-        <?php include 'dbconnect.php'; ?>
+  <?php include '../../dbconnect.php'; ?>
 	<?php include './PHP/processLoginForm.php'; ?>
 
         <?php if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
@@ -451,7 +451,7 @@
   ?>
 	<meta http-equiv="refresh" content="0; url=./welcome.php" />
   <?php
-		session_start();
+		session_start(); 
 	}//if
   ?>
 
