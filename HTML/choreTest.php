@@ -9,14 +9,14 @@
 		die('Error: ' . mysqli_error());
 	}
 	else{
-		echo "<table>\n";
+		echo "<table>";
 			while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
-    			echo "\t<tr>\n";
+    			echo "<tr>";
     			foreach ($line as $col_value) {
-       			echo "\t\t<td>$col_value</td>\n";
+       			echo "<td>$col_value</td>";
     			}
-    			echo "\t</tr>\n";
+    			echo "</tr>";
 			}
-		echo "</table>\n";	
+		echo "</table>";	
 	}
 ?>

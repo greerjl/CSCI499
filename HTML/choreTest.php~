@@ -5,7 +5,7 @@
 	
 	$count = mysqli_num_rows($result);
 	
-	if($count != 1){
+	if($count == 0){
 		die('Error: ' . mysqli_error());
 	}
 	else{
