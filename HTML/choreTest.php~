@@ -1,0 +1,20 @@
+<?php
+	include '../../dbconnect.php';
+	$sql = "SELECT username, title, description FROM user_info, chore WHERE username = $myusername AND user_info.UID = chore.UID";
+	$result = mysqli_query($db, $sql);
+	
+	$count = mysqli_num_rows($result);
+	
+	if($count != 1){
+		die('Error: ' . mysqli_error());
+	}
+	else{
+		$chores = array();
+ 		$i = 0;
+ 		while($row = mysqli_fetch_array($result)){
+  			$chores[$i] = $row['name'];
+   		echo $row['name'];
+   		$i = $i+1;
+  		}	
+	}
+?>
