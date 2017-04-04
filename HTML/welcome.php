@@ -42,17 +42,11 @@
             <a class="pure-menu-heading" href="../index.html">HUM</a>
 
             <ul class="pure-menu-list">
-		 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Chores</a></li>
-
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Tasks</a></li>
-
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Events</a></li>
-
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Schedule</a></li>
 
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Settings</a></li>
 
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Log Out</a></li>
+
             </ul>
         </div>
     </div>
@@ -63,6 +57,10 @@
             <h2>An application housing all your home management needs. </h2>
         </div>
 
+        <div class="top-settings-bar">
+            chores, tasks, make a reservation/event
+        </div>
+
         <div class="content">
             <h2 class="content-subhead">Your Chore: </h2>
             <p>
@@ -71,7 +69,7 @@
 
             <h2 class="content-subhead">Your schedule: </h2>
             <p>
-	<iframe src="https://calendar.google.com/calendar/embed?title=My%20Calendar&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=greerjl%40plu.edu&amp;color=%2329527A&amp;ctz=America%2FLos_Angeles" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>	
+	<iframe src="https://calendar.google.com/calendar/embed?title=My%20Calendar&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=greerjl%40plu.edu&amp;color=%2329527A&amp;ctz=America%2FLos_Angeles" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 	</p>
 
         </div>
