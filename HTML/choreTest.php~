@@ -9,12 +9,14 @@
 		die('Error: ' . mysqli_error());
 	}
 	else{
-		$chores = array();
- 		$i = 0;
- 		while($row = mysqli_fetch_array($result)){
-  			$chores[$i] = $row['name'];
-   		echo $row['name'];
-   		$i = $i+1;
-  		}	
+		echo "<table>\n";
+			while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+    			echo "\t<tr>\n";
+    			foreach ($line as $col_value) {
+       			echo "\t\t<td>$col_value</td>\n";
+    			}
+    			echo "\t</tr>\n";
+			}
+		echo "</table>\n";	
 	}
 ?>
