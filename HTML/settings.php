@@ -13,7 +13,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 <!-- Top container -->
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
-  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i> &nbsp;Menu</button>
+  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
   <span class="w3-bar-item w3-right">HUM</span>
 </div>
 
@@ -21,7 +21,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
-    <i class="fa fa-user-circle-o" </i>&nbsp; 
+      <i class="fa fa-user-circle-o" style="font-size:48px;"></i> 
     </div>
     <div class="w3-col s8 w3-bar">
       <span>Welcome!</span><br>
@@ -32,16 +32,10 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <h5>Dashboard</h5>
   </div>
   <div class="w3-bar-block">
-    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>&nbsp; Close Menu</a>
- <a href="../index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>&nbsp; Home</a> 
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>&nbsp; Settings</a>
-<a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>&nbsp; Overview</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>&nbsp; Views</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>&nbsp; Traffic</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>&nbsp; Geo</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>&nbsp; Orders</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>&nbsp; News</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>&nbsp; History</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  Home</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i> Settings</a>  
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-sign-out"></i>  Sign Out</a><br><br>
   </div>
 </nav>
 
@@ -62,40 +56,36 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       <div class="w3-container w3-red w3-padding-16">
         <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
         <div class="w3-right">
-          <h3>52</h3>
         </div>
         <div class="w3-clear"></div>
-        <h4>Messages</h4>
+        <h4>Chores</h4>
       </div>
     </div>
     <div class="w3-quarter">
       <div class="w3-container w3-blue w3-padding-16">
-        <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
+        <div class="w3-left"><i class="fa fa-calendar-plus-o w3-xxxlarge"></i></div>
         <div class="w3-right">
-          <h3>99</h3>
         </div>
         <div class="w3-clear"></div>
-        <h4>Views</h4>
+        <h4>Events</h4>
       </div>
     </div>
     <div class="w3-quarter">
       <div class="w3-container w3-teal w3-padding-16">
-        <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
+        <div class="w3-left"><i class="fa fa-check-square-o w3-xxxlarge"></i></div>
         <div class="w3-right">
-          <h3>23</h3>
         </div>
         <div class="w3-clear"></div>
-        <h4>Shares</h4>
+        <h4>Tasks</h4>
       </div>
     </div>
     <div class="w3-quarter">
       <div class="w3-container w3-orange w3-text-white w3-padding-16">
         <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
         <div class="w3-right">
-          <h3>50</h3>
         </div>
         <div class="w3-clear"></div>
-        <h4>Users</h4>
+        <h4>Groups</h4>
       </div>
     </div>
   </div>
@@ -196,7 +186,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <td>1.5%</td>
       </tr>
     </table><br>
-    <button class="w3-button w3-dark-grey">More Countries &nbsp;<i class="fa fa-arrow-right"></i></button>
+    <button class="w3-button w3-dark-grey">More Countries  <i class="fa fa-arrow-right"></i></button>
   </div>
   <hr>
   <div class="w3-container">
@@ -301,4 +291,5 @@ function w3_close() {
 
 </body>
 </html>
+
 

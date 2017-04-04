@@ -43,7 +43,7 @@
 
             <ul class="pure-menu-list">
 
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Settings</a></li>
+                <li class="pure-menu-item"><a href="./settings.php" class="pure-menu-link">Settings</a></li>
 
                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Log Out</a></li>
 
