@@ -66,7 +66,8 @@
                    <table>
                      <tr><td>
                         <?php
-                          $sql = "SELECT username, title, description FROM user_info, chore WHERE user_info.GID = chore.GID AND user_info.UID = chore.UID";
+                        	$user = $_SESSION['login_user'];
+                          $sql = "SELECT username, title, description FROM user_info, chore WHERE username = '$user' AND user_info.UID = chore.UID";
                           $result = mysqli_query($db, $sql);
 
                           $count = mysqli_num_rows($result);
