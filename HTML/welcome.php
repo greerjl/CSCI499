@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<?php session_start(); ?>
+<?php require("./PHP/functions.php"); ?>
 <html lang="en">
 <head>
    <meta charset="utf-8">
@@ -45,7 +47,7 @@
 
                 <li class="pure-menu-item"><a href="./settings.php" class="pure-menu-link">Settings</a></li>
 
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Log Out</a></li>
+                <li class="pure-menu-item"><a href="./logout.php" class="pure-menu-link">Log Out</a></li>
 
             </ul>
         </div>
@@ -66,14 +68,17 @@
                    <table>
                      <tr><td>
                         <?php
-                        	$user = $_SESSION['login_user'];
+                          ini_set("display_errors", true);
+                          error_reporting(E_ALL);
+                        	$user = $_SESSION["login_user"];
+                          echo $user;
                           $sql = "SELECT username, title, description FROM user_info, chore WHERE username = '$user' AND user_info.UID = chore.UID";
                           $result = mysqli_query($db, $sql);
 
                           $count = mysqli_num_rows($result);
 
                           if($count == 0){
-                            die('Error: '.mysqli_error());
+                            die('Error!');
                           }
                           else{
                           	echo "<table>\n";
