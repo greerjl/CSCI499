@@ -1,30 +1,32 @@
 <?php
-	ini_set("display_errors", true);
-	error_reporting(E_ALL);
-	require("./functions.php");
+	//ini_set("display_errors", true);
+	//error_reporting(E_ALL);
+	require_once("functions.php");
 	$hasErrors = false;
 	$flag = 0;
 
+	include "../../../dbconnect.php";
 
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
+
 		//username and password sent from form
 		$myusername = mysqli_real_escape_string($db, $_POST['usnm']);
 		cleanData($myusername);
 		$mypassword = mysqli_real_escape_string($db, $_POST['pswd']);
 		cleanData($mypassword);
 
-		//Password hash functions		
+		//Password hash functions
 		$hash = password_hash($mypassword, PASSWORD_DEFAULT)."\n";
-		
+
 		//**change $mypassword to $hash
 		$sql = "SELECT UID FROM user_info WHERE username = '$myusername' and password = '$mypassword'";
-		$sqlPswd = "SELECT password FROM user_info WHERE username= '$myusername'";		
+		$sqlPswd = "SELECT password FROM user_info WHERE username= '$myusername'";
 		$pwsdResult = mysqli_query($db, $sqlPswd);
 		if (password_verify($sqlPswd, $hash)) {
     		//allow user through
 		} else {
 			//error message: passwords do not match
-		}		
+		}
 		$result = mysqli_query($db, $sql);
 		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 

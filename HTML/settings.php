@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php session_start(); ?>
-<?php require('./PHP/functions.php'); ?>
+<?php require_once('./PHP/functions.php'); ?>
 <html>
 <title>Settings</title>
 <meta charset="UTF-8">
