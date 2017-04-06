@@ -13,8 +13,8 @@
 		//Password hash functions		
 		$hash = password_hash($mypassword, PASSWORD_DEFAULT)."\n";
 		
-		//**change $mypassword to $hash
-		$sql = "SELECT UID FROM user_info WHERE username = '$myusername' and password = '$mypassword'";
+
+		$sql = "SELECT UID FROM user_info WHERE username = '$myusername' and password = '$hash'";
 		$sqlPswd = "SELECT password FROM user_info WHERE username= '$myusername'";		
 		$pwsdResult = mysqli_query($db, $sqlPswd);
 		if (password_verify($sqlPswd, $hash)) {
@@ -31,8 +31,8 @@
 		//if result matched $myusername and $mypassword, table row must be 1 row
 		//echo 'flag before if in processLogin = '.$flag."<br/>";
 		if($count == 1){
-			//**change $mypassword to $hash
-			$_SESSION['login_user'] = $mypassword;
+
+			$_SESSION['login_user'] = $hash;
 	    	$_SESSION['valid'] = true;
 	    	$_SESSION['timeout'] = time() + 300;
 			session_start();
