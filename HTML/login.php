@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php require("./PHP/functions.php"); ?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -423,7 +424,7 @@
 		<?php }//if ?>
 
         <div class="content">
-            <form id="LogIn" class="form-signin" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            <form id="LogIn" class="form-signin" method="POST" action="./PHP/processLoginForm.php">
             <h2 class="form-signin-heading"> Log In </h2>
             <label for="username" class="sr-only"> Email address </label>
             <input type="email" id="username" class="form-control"
@@ -448,12 +449,8 @@
 	if($flag == 1 && !$hasErrors){
 		//echo 'flag inside if = '.$flag;
 		//include './PHP/loginRedirect.php';
-  ?>
-	<meta http-equiv="refresh" content="0; url=./welcome.php" />
-  <?php
-    
 	}//if
-  ?>
+	?>
 
 
       </div><!-- /.content -->

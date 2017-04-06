@@ -1,4 +1,7 @@
 <?php
+	ini_set("display_errors", true);
+	error_reporting(E_ALL);
+	require("./functions.php");
 	$hasErrors = false;
 	$flag = 0;
 
@@ -24,20 +27,20 @@
 		}		
 		$result = mysqli_query($db, $sql);
 		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-		$active = $row['active'];
 
 		$count = mysqli_num_rows($result);
 
 		//if result matched $myusername and $mypassword, table row must be 1 row
 		//echo 'flag before if in processLogin = '.$flag."<br/>";
 		if($count == 1){
-			//**change $mypassword to $hash
-			$_SESSION['login_user'] = $mypassword;
-	    	$_SESSION['valid'] = true;
-	    	$_SESSION['timeout'] = time() + 300;
-			session_start();
+					session_start();
+					$_SESSION["login_user"] = $myusername;
+	    		$_SESSION["valid"] = true;
+	    		$_SESSION["timeout"] = time() + 300;
 
-			$flag = 1;
+
+					$flag = 1;
+					redirect("../welcome.php");
 			//echo 'flag after if in processLogin = '.$flag."<br/>";
 
 		}else{

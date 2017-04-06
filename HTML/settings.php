@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<?php session_start(); ?>
+<?php require('./PHP/functions.php'); ?>
 <html>
 <title>Settings</title>
 <meta charset="UTF-8">
@@ -21,7 +23,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
-      <i class="fa fa-user-circle-o" style="font-size:48px;"></i> 
+      <i class="fa fa-user-circle-o" style="font-size:48px;"></i>
     </div>
     <div class="w3-col s8 w3-bar">
       <span>Welcome!</span><br>
@@ -34,8 +36,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
     <a href="../index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-home fa-fw"></i>  Home</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i> Settings</a>  
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-sign-out"></i>  Sign Out</a><br><br>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i> Settings</a>
+    <a href="./logout.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-sign-out"></i>  Sign Out</a><br><br>
   </div>
 </nav>
 
@@ -104,7 +106,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <div class="w3-row">
       <div class="w3-col m2 text-center">
         <img class="w3-circle" src="http://sunfieldfarm.org/wp-content/uploads/2014/02/profile-placeholder.png" style="width:96px;height:96px">
-        <a target="_blank" href=""> Upload </a> 
+        <a target="_blank" href=""> Upload </a>
       </div>
     </div>
   </div>
