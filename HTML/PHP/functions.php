@@ -46,6 +46,8 @@
 
         // destroy session
         session_destroy();
+        //$_SESSION["login_user"] = "";
+        //$_SESSION["valid"] = false;
     }
 
     /**

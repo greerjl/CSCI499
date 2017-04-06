@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php session_start(); ?>
-<?php require_once("./PHP/functions.php"); ?>
+<?php require_once("./PHP/functions.php");
+if($_SESSION["valid"]==true){?>
 <html lang="en">
 <head>
    <meta charset="utf-8">
@@ -109,3 +110,4 @@
 
 </body>
 </html>
+<?php }//if ?>
