@@ -48,6 +48,7 @@
 		}else{
 			$flag = 0;
 			$hasErrors = true;
+			redirect("../login.php");
 		}//ifelse
 	}//POST if
 
