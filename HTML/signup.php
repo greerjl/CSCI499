@@ -90,7 +90,6 @@
 				<br/>
 				<br/>
 
-
 			<p><input class="submit" type="submit" value="Sign Up"></p>
 			</fieldset>
 
@@ -98,7 +97,7 @@
 		</form>
 		<?php }//if
 			if($_SERVER['REQUEST_METHOD']=="POST" && !$hasErrors){
-          			$sql = "INSERT INTO user_info (username, password, hash, email) VALUES ('$email','$pswd', 555, '$email')";
+          			$sql = "INSERT INTO user_info (username, password, email) VALUES ('$email','$hash', '$email')";
           			$result = mysqli_query($db, $sql);
 				if($result){
 					$url = htmlspecialchars('successDebug.php');

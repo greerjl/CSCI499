@@ -22,6 +22,9 @@
 		$rpswd = cleanData($_POST['rpswd']);
 			$rpswdErr = validate2($rpswd, $pswd);
 			if(!empty($rpswdErr)) $hasErrors = true;
+			
+		//hashing function ** need to make sure this is being saved to DB			
+		//$hash = password_hash($pswd, PASSWORD_DEFAULT)."\n";
 
 		/*GROUP CREDENTIALS*/
 		$groupnameJ = cleanData($_POST['groupnameJ']);
