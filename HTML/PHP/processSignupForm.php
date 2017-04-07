@@ -2,7 +2,7 @@
 	//include '../../../dbconnect.php';
 
 	$email = $pswd = $rpswd = $groupnameJ = $accesscode = $groupnameC = $mems = "";
-	$sql = "";
+	$sql = ""; $hash = ""; 
 	$emailErr = $pswdErr = $rpswdErr = $dbErr = $groupnameCErr = $dbgnameJErr = $dbgnameCErr = $dbaccesscodeErr = $memsErr = "";
 	$hasErrors = false;
 
