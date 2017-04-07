@@ -87,7 +87,7 @@
 		</form>
 		<?php }//if
 			if($_SERVER['REQUEST_METHOD']=="POST" && !$hasErrors){
-								echo "email = ".$email."; password hash = ".$hash."; email = ".$email."; \n";
+								echo "username = ".$email."; password hash = ".$hash."; email = ".$email."; \n";
           			$sql = "INSERT INTO user_info (username, password, email) VALUES ('$email','$hash', '$email')";
           			$result = mysqli_query($db, $sql);
           			echo "result =".$result."\n";
