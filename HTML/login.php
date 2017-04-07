@@ -393,12 +393,6 @@
      <div id="navbar" class="collapse navbar-collapse">
        <ul class="nav navbar-nav">
          <li class="active"><a href="../index.html">Home</a></li>
-         <li><a href="#chores">Chores</a></li>
-         <li><a href="#tasks">Tasks</a></li>
-         <li><a href="#events">Events</a></li>
-         <li><a href="#schedule">Schedule</a></li>
-         <li><a href="#settings">Settings</a></li>
-         <li><a href="#logout">Log Out</a></li>
        </ul>
      </div><!--/.nav-collapse -->
    </div><!--./container -->

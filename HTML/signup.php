@@ -44,17 +44,7 @@
             	<a class="pure-menu-heading" href="../index.html">HUM</a>
 
             	<ul class="pure-menu-list">
-		 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Chores</a></li>
-
-                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Tasks</a></li>
-
-                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Events</a></li>
-
-                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Schedule</a></li>
-
-                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Settings</a></li>
-
-                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Log Out</a></li>
+                 <li class="pure-menu-item"><a href="./login.php" class="pure-menu-link">Log In</a></li>
             	</ul>
         	</div>
     	</div>

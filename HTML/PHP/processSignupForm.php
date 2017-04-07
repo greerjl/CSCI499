@@ -1,10 +1,10 @@
 <?php
-	//include '../../../dbconnect.php';
+	include '../../../dbconnect.php';
 	ini_set("display_errors", true);
 	error_reporting(E_ALL);
 
 	$email = $pswd = $rpswd = $groupnameJ = $accesscode = $groupnameC = $mems = "";
-	$sql = ""; $hash = ""; 
+	$sql = ""; $hash = "";
 	$emailErr = $pswdErr = $rpswdErr = $dbErr = $groupnameCErr = $dbgnameJErr = $dbgnameCErr = $dbaccesscodeErr = $memsErr = "";
 	$hasErrors = false;
 
