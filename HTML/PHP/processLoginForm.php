@@ -5,7 +5,7 @@
 	$hasErrors = false;
 	$flag = 0;
 
-	include "../../../dbconnect.php";
+	include "/home/capstone/Desktop/DocRoot/dbconnect.php";
 
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -28,16 +28,14 @@
 		$count = mysqli_num_rows($result);
 
 		//if statement to allow login and start session if account exists and password is correct
-		if (password_verify($pwsdResult[0], $hash) && $count == 1) {
+		if (password_verify($pwsdResult, $hash) && $count == 1) {
     			session_start();
 					$_SESSION["login_user"] = $myusername;
 	    			$_SESSION["valid"] = true;
 	    			$_SESSION["timeout"] = time() + 300;
 
-					$flag = 1;
 					redirect("../welcome.php");
 		} else {
-			$flag = 0;
 			$hasErrors = true;
 			redirect("../login.php");
 		}//ifelse

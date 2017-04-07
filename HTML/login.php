@@ -438,13 +438,7 @@
 
       Don't have an account? <a href="./signup.php"> Sign up</a>
 	</form>
-  <?php }
-	//echo 'flag = '.$flag;
-	if($flag == 1 && !$hasErrors){
-		//echo 'flag inside if = '.$flag;
-		//include './PHP/loginRedirect.php';
-	}//if
-	?>
+  <?php }	?>
 
 
       </div><!-- /.content -->
