@@ -22,15 +22,7 @@
 		$sql = "SELECT UID FROM user_info WHERE username = '$myusername' and password = '$hash'";
 		$sqlPswd = "SELECT password FROM user_info WHERE username= '$myusername'";		
 		$pwsdResult = mysqli_query($db, $sqlPswd);
-<<<<<<<
 
-=======
-		if (password_verify($sqlPswd, $hash)) {
-    		//allow user through
-		} else {
-			//error message: passwords do not match
-		}
->>>>>>>
 		$result = mysqli_query($db, $sql);
 		//** line not necessary $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 		$count = mysqli_num_rows($result);
