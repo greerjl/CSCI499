@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php require("./PHP/functions.php"); ?>
+<?php require_once("./PHP/functions.php"); ?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -413,8 +413,8 @@
 <?php echo $flag?>
 
 
-  <?php include '../../dbconnect.php'; ?>
-	<?php include './PHP/processLoginForm.php'; ?>
+  <?php require_once('../../dbconnect.php'); ?>
+	<?php require_once('./PHP/processLoginForm.php'); ?>
 
         <?php if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
 		if($hasErrors){ ?>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php session_start(); ?>
-<?php require("./PHP/functions.php"); ?>
+<?php require_once("./PHP/functions.php");
+if($_SESSION["valid"]==true){?>
 <html lang="en">
 <head>
    <meta charset="utf-8">
@@ -71,8 +72,8 @@
                           ini_set("display_errors", true);
                           error_reporting(E_ALL);
                         	$user = $_SESSION["login_user"];
-                          echo $user;
-                          $sql = "SELECT username, title, description FROM user_info, chore WHERE username = '$user' AND user_info.UID = chore.UID";
+                          //echo $user;
+                          $sql = "SELECT description FROM user_info, chore WHERE username = '$user' AND user_info.UID = chore.UID";
                           $result = mysqli_query($db, $sql);
 
                           $count = mysqli_num_rows($result);
@@ -109,3 +110,4 @@
 
 </body>
 </html>
+<?php }//if ?>
