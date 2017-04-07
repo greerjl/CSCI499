@@ -17,16 +17,16 @@
 
 		//Password hash functions
 		$hash = password_hash($mypassword, PASSWORD_DEFAULT)."\n";
-		
+
 		//Database queries
 		$sql = "SELECT UID FROM user_info WHERE username = '$myusername' and password = '$hash'";
-		$sqlPswd = "SELECT password FROM user_info WHERE username= '$myusername'";		
+		$sqlPswd = "SELECT password FROM user_info WHERE username= '$myusername'";
 		$pwsdResult = mysqli_query($db, $sqlPswd);
 
 		$result = mysqli_query($db, $sql);
 		//** line not necessary $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 		$count = mysqli_num_rows($result);
-		
+
 		//if statement to allow login and start session if account exists and password is correct
 		if (password_verify($sqlPswd, $hash) && $count == 1) {
     			session_start();
@@ -48,5 +48,5 @@
 		$data = stripslashes($data);
 		$data = htmlspecialchars($data);
 		return $data;
-	}
+	}//cleanData
 ?>

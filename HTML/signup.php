@@ -66,7 +66,7 @@
 			<h1> HUM Sign Up Page </header>
 			<h6> All fields with an * are required </h6>
 		  </div>
-		<?php if($_SERVER['REQUEST_METHOD']=="GET" || $hasErrors){ ?>
+	<?php if($_SERVER['REQUEST_METHOD']=="GET" || $hasErrors){ ?>
 		<form id="SignUp" class="pure-form pure-form-aligned" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
 			<fieldset>
 				<legend> Sign Up </legend>
@@ -97,6 +97,7 @@
 		</form>
 		<?php }//if
 			if($_SERVER['REQUEST_METHOD']=="POST" && !$hasErrors){
+								echo "email = ".$email."; password hash = ".$hash."; email = ".$email."; \n";
           			$sql = "INSERT INTO user_info (username, password, email) VALUES ('$email','$hash', '$email')";
           			$result = mysqli_query($db, $sql);
 				if($result){

@@ -1,5 +1,7 @@
 <?php
 	//include '../../../dbconnect.php';
+	ini_set("display_errors", true);
+	error_reporting(E_ALL);
 
 	$email = $pswd = $rpswd = $groupnameJ = $accesscode = $groupnameC = $mems = "";
 	$sql = "";
@@ -22,8 +24,8 @@
 		$rpswd = cleanData($_POST['rpswd']);
 			$rpswdErr = validate2($rpswd, $pswd);
 			if(!empty($rpswdErr)) $hasErrors = true;
-			
-		//hashing function ** need to make sure this is being saved to DB			
+
+		//hashing function ** need to make sure this is being saved to DB
 		$hash = password_hash($pswd, PASSWORD_DEFAULT)."\n";
 
 		/*GROUP CREDENTIALS*/
