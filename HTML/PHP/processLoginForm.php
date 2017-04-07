@@ -28,7 +28,7 @@
 		$count = mysqli_num_rows($result);
 
 		//if statement to allow login and start session if account exists and password is correct
-		if (password_verify($sqlPswd, $hash) && $count == 1) {
+		if (password_verify($pwsdResult[0], $hash) && $count == 1) {
     			session_start();
 					$_SESSION["login_user"] = $myusername;
 	    			$_SESSION["valid"] = true;
