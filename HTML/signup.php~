@@ -90,6 +90,7 @@
 								echo "email = ".$email."; password hash = ".$hash."; email = ".$email."; \n";
           			$sql = "INSERT INTO user_info (username, password, email) VALUES ('$email','$hash', '$email')";
           			$result = mysqli_query($db, $sql);
+          			echo "result =".$result."\n";
 				if($result){
 					$url = htmlspecialchars('successDebug.php');
 					include './PHP/emailVerify.php';

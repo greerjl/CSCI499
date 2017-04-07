@@ -86,6 +86,7 @@
 
 		</form>
 		<?php }//if
+			global $db;
 			if($_SERVER['REQUEST_METHOD']=="POST" && !$hasErrors){
 								echo "email = ".$email."; password hash = ".$hash."; email = ".$email."; \n";
           			$sql = "INSERT INTO user_info (username, password, email) VALUES ('$email','$hash', '$email')";
