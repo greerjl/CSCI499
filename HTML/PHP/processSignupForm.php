@@ -19,15 +19,17 @@
 
 		$pswd = cleanData($_POST['pswd']);
 			$pswdErr = validate($pswd, 'password');
-			if(!empty($pswdErr)) $hasErrors = true;
+			if(!empty($pswdErr)){ $hasErrors = true;}
+			else{
+					//hashing function ** need to make sure this is being saved to DB
+					$hash = password_hash($pswd, PASSWORD_DEFAULT)."\n";
+			}//else
 
 		$rpswd = cleanData($_POST['rpswd']);
 			$rpswdErr = validate2($rpswd, $pswd);
-			if(!empty($rpswdErr)){ $hasErrors = true;}
-			else{//hashing function ** need to make sure this is being saved to DB
-					$hash = password_hash($pswd, PASSWORD_DEFAULT)."\n";}
+			if(!empty($rpswdErr)) $hasErrors = true;
 
-		
+
 
 		/*GROUP CREDENTIALS*/
 		$groupnameJ = cleanData($_POST['groupnameJ']);
