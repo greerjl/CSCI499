@@ -17,35 +17,34 @@
 
 		//Password hash functions
 		$hash = password_hash($mypassword, PASSWORD_DEFAULT)."\n";
-
-		//**change $mypassword to $hash
-		$sql = "SELECT UID FROM user_info WHERE username = '$myusername' and password = '$mypassword'";
-		$sqlPswd = "SELECT password FROM user_info WHERE username= '$myusername'";
+		
+		//Database queries
+		$sql = "SELECT UID FROM user_info WHERE username = '$myusername' and password = '$hash'";
+		$sqlPswd = "SELECT password FROM user_info WHERE username= '$myusername'";		
 		$pwsdResult = mysqli_query($db, $sqlPswd);
+<<<<<<<
+
+=======
 		if (password_verify($sqlPswd, $hash)) {
     		//allow user through
 		} else {
 			//error message: passwords do not match
 		}
+>>>>>>>
 		$result = mysqli_query($db, $sql);
-		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-
+		//** line not necessary $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 		$count = mysqli_num_rows($result);
-
-		//if result matched $myusername and $mypassword, table row must be 1 row
-		//echo 'flag before if in processLogin = '.$flag."<br/>";
-		if($count == 1){
-					session_start();
+		
+		//if statement to allow login and start session if account exists and password is correct
+		if (password_verify($sqlPswd, $hash) && $count == 1) {
+    			session_start();
 					$_SESSION["login_user"] = $myusername;
-	    		$_SESSION["valid"] = true;
-	    		$_SESSION["timeout"] = time() + 300;
-
+	    			$_SESSION["valid"] = true;
+	    			$_SESSION["timeout"] = time() + 300;
 
 					$flag = 1;
 					redirect("../welcome.php");
-			//echo 'flag after if in processLogin = '.$flag."<br/>";
-
-		}else{
+		} else {
 			$flag = 0;
 			$hasErrors = true;
 			redirect("../login.php");
@@ -57,5 +56,5 @@
 		$data = stripslashes($data);
 		$data = htmlspecialchars($data);
 		return $data;
-	}//cleanData
+	}
 ?>
