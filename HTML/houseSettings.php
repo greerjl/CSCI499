@@ -83,10 +83,11 @@
         <div class="container">
 	         <div class="row">
              <div class="col-md-4">
+
 		             <div class="form_main">
                    <h4 class="heading"><strong>Add Rooms</strong> <span></span></h4>
                    <div class="form">
-                     <form action="" method="POST" id="contactFrm" name="contactFrm">
+                     <form action="" method="POST" id="roomForm" name="roomForm">
                        <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
                        <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
                        <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
@@ -98,31 +99,26 @@
                      </form>
                   </div>
                 </div>
-            </div>
-	        </div>
-        </div>
 
-        <div class="container">
-	         <div class="row">
-             <div class="col-md-4">
-		             <div class="form_main_next_to">
-                   <h4 class="heading"><strong>Add Rooms</strong> <span></span></h4>
-                   <div class="form">
-                     <form action="" method="POST" id="contactFrm" name="contactFrm">
-                       <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
-                       <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
-                       <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
-                       <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
-                       <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
-                       <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
+		            <div class="form_main">
+                  <h4 class="heading"><strong>Invite Members</strong> <span></span></h4>
+                  <div class="form">
+                    <form action="" method="POST" id="inviteForm" name="inviteForm">
+                      <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
+                      <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
+                      <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
+                      <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
+                      <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
+                      <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
 
-                       <input type="submit" value="submit" name="submit" class="txt2">
-                     </form>
+                      <input type="submit" value="submit" name="submit" class="txt2">
+                    </form>
                   </div>
-                </div>
-            </div>
-	        </div>
-        </div>
+               </div>
+
+            </div><!-- col-md-4 -->
+	        </div><!-- row -->
+        </div><!-- container -->
 
         <hr>
 
