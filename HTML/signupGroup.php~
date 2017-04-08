@@ -31,20 +31,15 @@
 	</script>
 
 	<script language="text/javascript">
-		//get button reference
-		var myBtn = document.getElementById('myBtn');
+		function add(type){
+			var element = document.createElement("input");
 
-		//add click function
-		myBtn.addEventListener('click', function(event) {
-  		addField();
-		});
+			element.setAttribute("type", email);
+			element.setAttribute("name", groupmembers);
 
-		//it's more efficient to get the form reference outside of the function, rather than getting it each time
-		var form = document.getElementById('SignUp');
+			var addmember = document.getElementById("addMemberButton");
 
-		function addField() {
-  			var input = document.createElement('input');
-  			form.appendChild(input);
+			addmember.appendChild(element);
 		}
 	</script>
 
@@ -113,7 +108,6 @@
 				<br/>
 				<span id="addMemberButton">&nbsp;</span>
 				<br/>
-				<button type="button" id="myBtn">ADD</button>
 				<input class="addmem" type="button" id="addMember" name="mems" value="Add Member" onclick="add(document.forms[0].groupmembers.value)" />
 				<br/>
 				<br/>
