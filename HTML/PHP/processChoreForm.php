@@ -31,7 +31,7 @@
 		return $data;
 	}//cleanData
 
-	function validate($data, $field) {//, $gid
+	function validate($data, $field) {
 		switch($field) {
 			case 'cTitle':{
 				$data = strtolower($data);

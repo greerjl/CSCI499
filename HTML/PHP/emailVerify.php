@@ -1,8 +1,8 @@
 <?php
 	$hash = md5( rand(0,1000) ); // Generate random 32 character hash and assign it to a local variable.
 
-	$to      = $email; // Send email to our user
-	$subject = 'Signup | Verification'; // Give the email a subject 
+	$to      = 'lavergcd@plu.edu'; // Send email to our user
+	$subject = 'Signup Verification'; // Give the email a subject 
 	$message = '
  
 	Thanks for signing up!
@@ -14,7 +14,7 @@
 	------------------------
  
 	Please click this link to activate your account:
-	http://152.117.180.234/signupConfirm.html?email='.$email.'&hash='.$hash.'
+	http://152.117.180.234/welcome.html?email='.$email.'&hash='.$hash.'
  
 	'; // Message that includes link
                      
