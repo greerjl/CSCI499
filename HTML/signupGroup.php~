@@ -32,10 +32,10 @@
 
 	<script language="text/javascript">
 		//get button reference
-		var myBtn = document.getElementById('myBtn');
+		var addMember = document.getElementById('addMember');
 
 		//add click function
-		myBtn.addEventListener('click', function(event) {
+		addMember.addEventListener('click', function(event) {
   		addField();
 		});
 
@@ -114,7 +114,9 @@
 				<span id="addMemberButton">&nbsp;</span>
 				<br/>
 				<button type="button" id="myBtn">ADD</button>
-				<input class="addmem" style="display: block" type="button" id="addMember" name="mems" value="Add Member" onclick="add(document.forms[0].groupmembers.value)" />
+				<button type="button" id="addMember">Add Member</button>
+				<input class="addmem" style="display: block" type="button" id="addMember" name="mems" value="Add Member"  />
+				<!--onclick="add(document.forms[0].groupmembers.value)"-->
 				<br/>
 				<br/>
 

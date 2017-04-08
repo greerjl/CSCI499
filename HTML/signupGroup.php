@@ -114,7 +114,8 @@
 				<span id="addMemberButton">&nbsp;</span>
 				<br/>
 				<button type="button" id="myBtn">ADD</button>
-				<input class="addmem" style="display: block" type="button" id="addMember" name="mems" value="Add Member"  />
+				<button type="button" id="addMember">Add Member</button>
+				<!--<input class="addmem" style="display: block" type="button" id="addMember" name="mems" value="Add Member"  />-->
 				<!--onclick="add(document.forms[0].groupmembers.value)"-->
 				<br/>
 				<br/>
