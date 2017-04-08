@@ -19,8 +19,9 @@
 
 		$pswd = cleanData($_POST['pswd']);
 			$pswdErr = validate($pswd, 'password');
-			if(!empty($pswdErr)){ $hasErrors = true;}
+			if(!empty($pswdErr)){$hasErrors = true;}
 			else{
+					echo "before pass is hashed";
 					//hashing function ** need to make sure this is being saved to DB
 					$hash = password_hash($pswd, PASSWORD_DEFAULT)."\n";
 			}//else
