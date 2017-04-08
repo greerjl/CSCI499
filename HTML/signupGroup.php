@@ -44,7 +44,7 @@
 
 		function addField() {
   			var input = document.createElement('input');
-  			form.appendChild(input);
+  			form.insertBefore(input, addMember);
 		}
 	</script>
 
