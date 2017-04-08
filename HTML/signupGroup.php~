@@ -31,15 +31,20 @@
 	</script>
 
 	<script language="text/javascript">
-		function add(type){
-			var element = document.createElement("input");
+		//get button reference
+		var myBtn = document.getElementById('myBtn');
 
-			element.setAttribute("type", email);
-			element.setAttribute("name", groupmembers);
+		//add click function
+		myBtn.addEventListener('click', function(event) {
+  		addField();
+		});
 
-			var addmember = document.getElementById("addMemberButton");
+		//it's more efficient to get the form reference outside of the function, rather than getting it each time
+		var form = document.getElementById('SignUp');
 
-			addmember.appendChild(element);
+		function addField() {
+  			var input = document.createElement('input');
+  			form.appendChild(input);
 		}
 	</script>
 
@@ -108,7 +113,8 @@
 				<br/>
 				<span id="addMemberButton">&nbsp;</span>
 				<br/>
-				<input class="addmem" type="button" id="addMember" name="mems" value="Add Member" onclick="add(document.forms[0].groupmembers.value)" />
+				<button type="button" id="myBtn">ADD</button>
+				<input class="addmem" style="display: block" type="button" id="addMember" name="mems" value="Add Member" onclick="add(document.forms[0].groupmembers.value)" />
 				<br/>
 				<br/>
 
