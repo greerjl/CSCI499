@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php session_start(); ?>
 <?php require_once("./PHP/functions.php");
-if($_SESSION["valid"]==true){?>
+//if($_SESSION["valid"]==true){?>
 <html lang="en">
 <head>
    <meta charset="utf-8">
@@ -46,7 +46,7 @@ if($_SESSION["valid"]==true){?>
 
             <ul class="pure-menu-list">
 
-                <li class="pure-menu-item"><a href="./settings.php" class="pure-menu-link">Settings</a></li>
+                <li class="pure-menu-item"><a href="./houseSettings.php" class="pure-menu-link">Settings</a></li>
 
                 <li class="pure-menu-item"><a href="./logout.php" class="pure-menu-link">Log Out</a></li>
 
@@ -110,4 +110,4 @@ if($_SESSION["valid"]==true){?>
 
 </body>
 </html>
-<?php }//if ?>
+<?php // }//if ?>
