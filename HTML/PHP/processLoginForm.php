@@ -7,6 +7,7 @@
 
 	include "/home/capstone/Desktop/DocRoot/dbconnect.php";
 
+
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		//username and password sent from form
@@ -19,6 +20,7 @@
 		$sqlPswd = "SELECT password FROM user_info WHERE username= '$myusername'";//hashed password
 		$pswdResult = mysqli_query($db, $sqlPswd);
 
+		echo "unhashed password = ".$mypassword." and hashed password = ".$pswdResult;
 		//if statement to allow login and start session if account exists and password is correct
 		if (password_verify($mypassword, $pswdResult)) {
 			echo "after pw verify in processLogin";
