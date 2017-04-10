@@ -83,35 +83,35 @@
         <div class="container">
 	         <div class="row">
              <div class="col-md-4">
-
+                <?php require_once('../../dbconnect.php')
+                      require_once('/PHP/createRoom.php')?>
 		             <div class="form_main">
                    <h4 class="heading"><strong>Add Rooms</strong> <span></span></h4>
                    <div class="form">
                      <form action="" method="POST" id="roomForm" name="roomForm">
-                       <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
-                       <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
-                       <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
-                       <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
-                       <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
-                       <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
+                       <input type="text" required="" placeholder="Add Room" value="" name="room1" class="txt">
+                       <input type="text" required="" placeholder="Add Room" value="" name="room2" class="txt">
+                       <input type="text" required="" placeholder="Add Room" value="" name="room3" class="txt">
+                       <input type="text" required="" placeholder="Add Room" value="" name="room4" class="txt">
 
                        <input type="submit" value="submit" name="submit" class="txt2">
                      </form>
                   </div>
                 </div>
                 </div>
-		
+
 					<div class="col-md-4">
 		            <div class="form_main">
                   <h4 class="heading"><strong>Invite Members</strong> <span></span></h4>
                   <div class="form">
                     <form action="" method="POST" id="inviteForm" name="inviteForm">
-                      <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
-                      <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
-                      <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
-                      <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
-                      <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
-                      <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
+                      <input type="text" required="" placeholder="Add Member" value="" name="room" class="txt">
+                      <input type="text" required="" placeholder="Add Member" value="" name="room" class="txt">
+                      <input type="text" required="" placeholder="Add Member" value="" name="room" class="txt">
+                      <input type="text" required="" placeholder="Add Member" value="" name="room" class="txt">
+                      <input type="text" required="" placeholder="Add Member" value="" name="room" class="txt">
+                      <input type="text" required="" placeholder="Add Member" value="" name="room" class="txt">
+                      <input type="text" required="" placeholder="Add Member" value="" name="room" class="txt">
 
                       <input type="submit" value="submit" name="submit" class="txt2">
                     </form>
@@ -123,6 +123,10 @@
         </div><!-- container -->
 
         <hr>
+                  <h4 class="heading"><strong>Ready to Move Out?<strong> <span></span></h4>
+		  <form action="" method="POST" id="leaveGroupForm" name="leaveGroupForm">
+                      <input type="submit" value="Leave Group" name="submit" class="txt2">
+		  </form><!-- action = "./PHP/leaveGroup.php" or something like that -->
 
         <hr>
 

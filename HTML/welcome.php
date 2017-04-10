@@ -46,7 +46,7 @@
 
             <ul class="pure-menu-list">
 
-                <li class="pure-menu-item"><a href="./houseSettings.php" class="pure-menu-link">Settings</a></li>
+                <li class="pure-menu-item"><a href="./houseSettings.php" class="pure-menu-link">My Dashboard</a></li>
 
                 <li class="pure-menu-item"><a href="./logout.php" class="pure-menu-link">Log Out</a></li>
 
