@@ -15,14 +15,15 @@
 		cleanData($myusername);
 		$mypassword = mysqli_real_escape_string($db, $_POST['pswd']);
 		cleanData($mypassword);
+		$hash = password_hash($mypassword, PASSWORD_BCRYPT)."\n";
 
 		//Database queries
-		$sqlPswd = "SELECT password FROM user_info WHERE username= '$myusername'";//hashed password
+		$sqlPswd = "SELECT password FROM user_info WHERE username= '$myusername'";//grab stored hashed password
 		$pswdResult = mysqli_query($db, $sqlPswd);
 
 		echo "unhashed password = ".$mypassword." and hashed password = ".$pswdResult;
 		//if statement to allow login and start session if account exists and password is correct
-		if (password_verify($mypassword, $pswdResult)) {
+		if (password_verify($hash, $pswdResult)) {
 			echo "after pw verify in processLogin";
 			$sql = "SELECT UID FROM user_info WHERE username = '$myusername'";
 			$result = mysqli_query($db, $sql);
