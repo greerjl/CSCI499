@@ -1,7 +1,7 @@
 form_main {
-  display: inline;
+  display: inline-block;
   float: left;
-  width: 45%;
+  width: 40%;
 }
 
 /*
