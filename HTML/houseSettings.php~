@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Capstone" >
+    <meta name="author" content="">
 
     <title>Profile Settings</title>
 
@@ -99,9 +99,7 @@
                      </form>
                   </div>
                 </div>
-                </div>
-		
-					<div class="col-md-4">
+
 		            <div class="form_main">
                   <h4 class="heading"><strong>Invite Members</strong> <span></span></h4>
                   <div class="form">
