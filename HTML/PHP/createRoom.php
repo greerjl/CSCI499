@@ -14,18 +14,21 @@
 		cleanData($rName4);
 
 		$gid = 101;
-		$roomArr = {$rName1, $rName2,$rName3,$rName4};
-		foreach($roomArr as &$room){
-			$sql = "INSERT INTO room (name, description, size, GID) VALUES ('$room','$gid')";
-			$result = mysqli_query($db, $sql);
+		$roomArr = array($rName1, $rName2,$rName3,$rName4);
 
-			if(!$result){
-				die('Error: ' . mysqli_error());
+		foreach($roomArr as &$room){
+			if(!empty($room)){
+					$sql = "INSERT INTO room (name, GID) VALUES ('$room','$gid')";
+					$result = mysqli_query($db, $sql);
+
+					if(!$result){
+						die('Error: ' . mysqli_error());
+					}//if
+					else{
+						echo "Room successfully created!";
+					}//else
 			}//if
-			else{
-				echo "Room successfully created!";
-			}//else
-		}
+		}//foreach
 		unset($room);
 
 	}//if
