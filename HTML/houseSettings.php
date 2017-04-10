@@ -83,8 +83,9 @@
         <div class="container">
 	         <div class="row">
              <div class="col-md-4">
-                <?php require_once('../../dbconnect.php')
-                      require_once('/PHP/createRoom.php')?>
+                <?php require_once('../../dbconnect.php')?>
+                <?php require_once('/PHP/createRoom.php')?>
+                
 		             <div class="form_main">
                    <h4 class="heading"><strong>Add Rooms</strong> <span></span></h4>
                    <div class="form">
