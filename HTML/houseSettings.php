@@ -31,6 +31,8 @@
 
 <body>
 
+    <?php include '../../dbconnect.php'; ?>
+    <?php include './PHP/createRoom.php'; ?>
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -83,13 +85,10 @@
         <div class="container">
 	         <div class="row">
              <div class="col-md-4">
-                <?php require_once('../../dbconnect.php')?>
-                <?php require_once('/PHP/createRoom.php')?>
-                
-		             <div class="form_main">
+                <div class="form_main">
                    <h4 class="heading"><strong>Add Rooms</strong> <span></span></h4>
                    <div class="form">
-                     <form action="" method="POST" id="roomForm" name="roomForm">
+                     <form action="./PHP/createRoom.php" method="POST" id="roomForm" name="roomForm">
                        <input type="text" required="" placeholder="Add Room" value="" name="room1" class="txt">
                        <input type="text" required="" placeholder="Add Room" value="" name="room2" class="txt">
                        <input type="text" required="" placeholder="Add Room" value="" name="room3" class="txt">
@@ -99,7 +98,7 @@
                      </form>
                   </div>
                 </div>
-                </div>
+            </div>
 
 					<div class="col-md-4">
 		            <div class="form_main">

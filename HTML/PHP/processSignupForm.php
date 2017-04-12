@@ -24,6 +24,7 @@
 					echo "before pass is hashed";
 					//hashing function ** need to make sure this is being saved to DB
 					$hash = password_hash($pswd, PASSWORD_BCRYPT)."\n";
+					echo "hash = ".$hash;
 			}//else
 
 		$rpswd = cleanData($_POST['rpswd']);
@@ -32,7 +33,7 @@
 
 
 
-		/*GROUP CREDENTIALS*/
+		/*GROUP CREDENTIALS
 		$groupnameJ = cleanData($_POST['groupnameJ']);
 			$dbgnameJErr = dbCheck($groupnameJ, 'groupname');
 			if(!empty($dbgnameErr)) $hasErrors = true;
@@ -49,7 +50,7 @@
 
 		$mems = cleanData($_POST['mems']);
 			$memsErr = validate($mems, 'memsemail');
-			if(!empty($memsErr)) $hasErrors = true;
+			if(!empty($memsErr)) $hasErrors = true;*/
 
 	}//if
 

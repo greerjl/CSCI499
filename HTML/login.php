@@ -407,15 +407,14 @@
 <?php echo $flag?>
 
 
-  <?php require_once('../../dbconnect.php'); ?>
 	<?php require_once('./PHP/processLoginForm.php'); ?>
 
         <?php if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
-		if($hasErrors){ ?>
-			<div class="alert alert-danger">
-				<strong>Error!</strong> User credentials are incorrect. Enter correct username and password.
-			</div>
-		<?php }//if ?>
+        		if($hasErrors){ ?>
+        			<div class="alert alert-danger">
+        				<strong>Error!</strong> User credentials are incorrect. Enter correct username and password.
+        			</div>
+        		<?php }//if ?>
 
         <div class="content">
             <form id="LogIn" class="form-signin" method="POST" action="./PHP/processLoginForm.php">
