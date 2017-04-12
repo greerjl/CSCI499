@@ -90,53 +90,18 @@
         <div class="container">
 	         <div class="row">
              <div class="col-md-4">
-<<<<<<< HEAD
-                <?php require_once('../../dbconnect.php')?>
-                <?php require_once('/PHP/createRoom.php')?>
-                <script type="text/javascript">
-					$(document).ready(function(){
-    					var counter = 2;
-   	 					$("#addButton").click(function () {
-						if(counter>10){
-            				alert("Only 10 textboxes allow");
-            			return false;
-						}
+                <?php require_once('../../dbconnect.php'); ?>
+                <?php require_once('./PHP/createRoom.php'); ?>
 
-						var newTextBoxDiv = $(document.createElement('div'))
-	     				.attr("id", 'TextBoxDiv' + counter);
-						newTextBoxDiv.after().html('<label>Textbox #'+ counter + ' : </label>' +
-	      				'<input type="text" name="textbox' + counter +
-	      				'" id="textbox' + counter + '" value="" >');
-
-						newTextBoxDiv.appendTo("#TextBoxesGroup");
-						counter++;
-     				});
-     				$("#getButtonValue").click(function () {
-						var msg = '';
-						for(i=1; i<counter; i++){
-   	  						msg += "\n Textbox #" + i + " : " + $('#textbox' + i).val();
-						}
-    	 				alert(msg);
-     				});
-  				});
-				</script>
-                
-		             <div class="form_main">
-=======
                 <div class="form_main">
->>>>>>> 18abd91a46a3f993b353e4c2ed8451871cd2a016
                    <h4 class="heading"><strong>Add Rooms</strong> <span></span></h4>
                    <div class="form">
                      <form action="./PHP/createRoom.php" method="POST" id="roomForm" name="roomForm">
-                       <input type="text" required="" placeholder="Add Room" value="" name="room1" class="txt">
+                       <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
+                       <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
+                       <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
+                       <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
 
-<<<<<<< HEAD
-					   <input type="button" id="addButton" value="Add Room" /> <br>
-                       
-=======
-					   <input type="button" id="btAdd" value="Add Room" class="bt" /> <br>
-
->>>>>>> 18abd91a46a3f993b353e4c2ed8451871cd2a016
                        <input type="submit" value="Submit" name="submit" class="txt2">
                      </form>
                   </div>
@@ -149,15 +114,9 @@
                   <div class="form">
                     <form action="" method="POST" id="inviteForm" name="inviteForm">
                       <input type="text" required="" placeholder="Add Member" value="" name="room" class="txt">
-<<<<<<< HEAD
-                     
-					  <input type="button" id="addButton" value="Add Member" class="bt" /> <br>
-                     
-=======
+                      <input type="text" required="" placeholder="Add Member" value="" name="room" class="txt">
+                      <input type="text" required="" placeholder="Add Member" value="" name="room" class="txt">
 
-					  <input type="button" id="btAdd" value="Add Member" class="bt" /> <br>
-
->>>>>>> 18abd91a46a3f993b353e4c2ed8451871cd2a016
                       <input type="submit" value="Submit" name="submit" class="txt2">
                     </form>
                   </div>

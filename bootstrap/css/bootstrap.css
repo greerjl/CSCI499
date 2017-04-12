@@ -229,11 +229,11 @@ th {
   img {
     max-width: 100% !important;
   }
- 
+
   h2 {
     color:#ff0;
   }
- 
+
   p,
   h2,
   h3 {
@@ -4216,18 +4216,21 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
   .navbar-fixed-top .navbar-collapse,
   .navbar-static-top .navbar-collapse,
-  .navbar-fixed-bottom .navbar-collapse {
+  .navbar-fixed-bottom .navbar-collapse,
+  .navbar-fixed-top2 .navbar-collapse{
     padding-right: 0;
     padding-left: 0;
   }
 }
 .navbar-fixed-top .navbar-collapse,
-.navbar-fixed-bottom .navbar-collapse {
+.navbar-fixed-bottom .navbar-collapse,
+.navbar-fixed-top2 .navbar-collapse {
   max-height: 340px;
 }
 @media (max-device-width: 480px) and (orientation: landscape) {
   .navbar-fixed-top .navbar-collapse,
-  .navbar-fixed-bottom .navbar-collapse {
+  .navbar-fixed-bottom .navbar-collapse,
+  .navbar-fixed-top2 .navbar-collapse {
     max-height: 200px;
   }
 }
@@ -4265,12 +4268,21 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 @media (min-width: 768px) {
   .navbar-fixed-top,
-  .navbar-fixed-bottom {
+  .navbar-fixed-bottom,
+  .navbar-fixed-top2{
     border-radius: 0;
   }
 }
 .navbar-fixed-top {
   top: 0;
+  border-width: 0 0 1px;
+}
+.navbar-fixed-top2 {
+  /*top: 0;*/
+  border-width: 0 0 1px;
+}
+.navbar-fixed-top2 {
+  position: relative;
   border-width: 0 0 1px;
 }
 .navbar-fixed-bottom {
