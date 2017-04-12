@@ -15,7 +15,7 @@
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <!--<link href="../bootstrap/css/4-col-portfolio.css" rel="stylesheet">-->
+    <link href="../bootstrap/css/4-col-portfolio.css" rel="stylesheet">
 
     <!-- room form css -->
     <link href="../CSS/roomForm.css" rel="stylesheet">
