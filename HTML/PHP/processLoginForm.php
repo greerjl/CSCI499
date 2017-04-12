@@ -24,10 +24,10 @@ echo "bitch."."\n";
 		$pswdResult = mysqli_query($db, $sqlPswd);
 
 		echo "myusername = ".$myusername."\n";
-		echo "hashed pword = ".$pswdResult[0]."\n";
+		//echo "hashed pword = ".$pswdResult[0]."\n";
 
 		//if statement to allow login and start session if account exists and password is correct
-		if (password_verify($mypassword, $pswResult[0])) {
+		if (password_verify($mypassword, $pswdResult)) {
 			echo "after pw verify in processLogin";
 			$sql = "SELECT UID FROM user_info WHERE username = '$myusername'";
 			$result = mysqli_query($db, $sql);
