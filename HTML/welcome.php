@@ -10,6 +10,8 @@
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 	<link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/> <!-- normalize -->
 	<link rel="stylesheet" type="text/css" href="../CSS/welcome.css"/> <!-- css -->
+  <!-- Custom CSS -->
+  <link href="../bootstrap/css/4-col-portfolio.css" rel="stylesheet">
 
     <!--[if lte IE 8]>
         <link rel="stylesheet" href="/combo/1.18.13?/css/layouts/side-menu-old-ie.css">
@@ -60,7 +62,40 @@
             <h2>An application housing all your home management needs. </h2>
         </div>
 
-
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="./welcome.php">Profile</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="./houseSettings.php">House</a>
+                        </li>
+                        <li>
+                            <a href="./choreSettings.php">Chores</a>
+                        </li>
+                        <li>
+                            <a href="./taskSettings.php">Tasks</a>
+                        </li>
+                        <li>
+                            <a href="./eventSettings.php">Events</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
 
         <div class="content">
             <h2 class="content-subhead">Your Chore: </h2>

@@ -15,11 +15,11 @@
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../bootstrap/css/4-col-portfolio.css" rel="stylesheet">
+    <!--<link href="../bootstrap/css/4-col-portfolio.css" rel="stylesheet">-->
 
     <!-- room form css -->
     <link href="../CSS/roomForm.css" rel="stylesheet">
-    
+
     <!-- scripts for dynamic buttons -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
@@ -35,6 +35,8 @@
 
 <body>
 
+    <?php include '../../dbconnect.php'; ?>
+    <?php include './PHP/createRoom.php'; ?>
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -87,6 +89,7 @@
         <div class="container">
 	         <div class="row">
              <div class="col-md-4">
+<<<<<<< HEAD
                 <?php require_once('../../dbconnect.php')?>
                 <?php require_once('/PHP/createRoom.php')?>
                 <script type="text/javascript">
@@ -118,18 +121,26 @@
 				</script>
                 
 		             <div class="form_main">
+=======
+                <div class="form_main">
+>>>>>>> 18abd91a46a3f993b353e4c2ed8451871cd2a016
                    <h4 class="heading"><strong>Add Rooms</strong> <span></span></h4>
                    <div class="form">
-                     <form action="" method="POST" id="roomForm" name="roomForm">
+                     <form action="./PHP/createRoom.php" method="POST" id="roomForm" name="roomForm">
                        <input type="text" required="" placeholder="Add Room" value="" name="room1" class="txt">
 
+<<<<<<< HEAD
 					   <input type="button" id="addButton" value="Add Room" /> <br>
                        
+=======
+					   <input type="button" id="btAdd" value="Add Room" class="bt" /> <br>
+
+>>>>>>> 18abd91a46a3f993b353e4c2ed8451871cd2a016
                        <input type="submit" value="Submit" name="submit" class="txt2">
                      </form>
                   </div>
                 </div>
-                </div>
+            </div>
 
 					<div class="col-md-4">
 		            <div class="form_main">
@@ -137,9 +148,15 @@
                   <div class="form">
                     <form action="" method="POST" id="inviteForm" name="inviteForm">
                       <input type="text" required="" placeholder="Add Member" value="" name="room" class="txt">
+<<<<<<< HEAD
                      
 					  <input type="button" id="addButton" value="Add Member" class="bt" /> <br>
                      
+=======
+
+					  <input type="button" id="btAdd" value="Add Member" class="bt" /> <br>
+
+>>>>>>> 18abd91a46a3f993b353e4c2ed8451871cd2a016
                       <input type="submit" value="Submit" name="submit" class="txt2">
                     </form>
                   </div>

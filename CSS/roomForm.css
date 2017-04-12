@@ -1,16 +1,8 @@
 form_main {
   display: inline-block;
   float: left;
-  width: 40%;
+  width: 50%;
 }
-
-/*
-form_main_next_to {
-  display: inline-block;
-  margin: 15px;
-  padding: 5px;
-}
-*/
 
 .form_main h4 {
     font-family: roboto;

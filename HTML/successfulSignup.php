@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="../CSS/pure-min.css"/>
 		<link rel="stylesheet" type="text/css" href="../CSS/normalize.css">
 		<link rel="stylesheet" type="text/css" href="../CSS/signup.css"/>
-		<title>HUM - signup</title>
+		<title>HUM-Successful Signup</title>
 
 		<!--[if lte IE 8]>
 		<link rel="stylesheet" href="/combo/1.18.13?/css/layouts/side-menu-old-ie.css">
@@ -54,17 +54,7 @@
             <a class="pure-menu-heading" href="../index.html">HUM</a>
 
             <ul class="pure-menu-list">
-	 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Chores</a></li>
-
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Tasks</a></li>
-
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Events</a></li>
-
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Schedule</a></li>
-
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Settings</a></li>
-
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Log Out</a></li>
+                <li class="pure-menu-item"><a href="./login.php" class="pure-menu-link">Log In</a></li>
             </ul>
         </div>
     </div>
@@ -74,7 +64,7 @@
 		<h1>Success!</h1>
 		<br/>
 		<h4>
-		Congratulations! You have successfully registered. You should receive an account activation email shortly. Click on the link in the email to activate your account. Then, start customizing your housing manager. 
+		Congratulations! You have successfully registered. You should receive an account activation email shortly. Click on the link in the email to activate your account. Then, start customizing your housing manager.
 		</h4>
 		<br/>
 	</p>

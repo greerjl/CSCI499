@@ -7,23 +7,27 @@
 
 	include "/home/capstone/Desktop/DocRoot/dbconnect.php";
 
-
+echo "bitch."."\n";
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		//username and password sent from form
 		$myusername = mysqli_real_escape_string($db, $_POST['usnm']);
+		echo $myusername."\n";
 		cleanData($myusername);
 		$mypassword = mysqli_real_escape_string($db, $_POST['pswd']);
+		echo $mypassword."\n";
 		cleanData($mypassword);
-		$hash = password_hash($mypassword, PASSWORD_BCRYPT)."\n";
 
 		//Database queries
 		$sqlPswd = "SELECT password FROM user_info WHERE username= '$myusername'";//grab stored hashed password
+		echo "sqlPswd = ".$sqlPswd."\n";
 		$pswdResult = mysqli_query($db, $sqlPswd);
 
-		echo "unhashed password = ".$mypassword." and hashed password = ".$pswdResult;
+		echo "myusername = ".$myusername."\n";
+		$obj = mysqli_fetch_object($pswdResult);
+
 		//if statement to allow login and start session if account exists and password is correct
-		if (password_verify($hash, $pswdResult)) {
+		if (password_verify($mypassword, $obj)) {
 			echo "after pw verify in processLogin";
 			$sql = "SELECT UID FROM user_info WHERE username = '$myusername'";
 			$result = mysqli_query($db, $sql);

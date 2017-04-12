@@ -92,7 +92,7 @@
           			$result = mysqli_query($db, $sql);
           			echo "result =".$result."\n";
 				if($result){
-					$url = htmlspecialchars('successDebug.php');
+					$url = htmlspecialchars('successfulSignup.php');
 					include './PHP/emailVerify.php';
 					header("Location: $url", true, 303);
 					exit();

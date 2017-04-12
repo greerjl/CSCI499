@@ -1,35 +1,38 @@
 <?php
-	require_once('../../../dbconnect.php');
+	include '../../../dbconnect.php';
+	ini_set("display_errors", true);
+	error_reporting(E_ALL);
 
 	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
 
 		//room attributes sent from creation page
-		$rName1 = mysqli_real_escape_string($db, $_POST['roomName']);
+		$rName1 = mysqli_real_escape_string($db, $_POST['room1']);
 		cleanData($rName1);
-		$rName2 = mysqli_real_escape_string($db, $_POST['roomName']);
+		echo "rName1 = ".$rName1;
+		/*$rName2 = mysqli_real_escape_string($db, $_POST['room2']);
 		cleanData($rName2);
-		$rName3 = mysqli_real_escape_string($db, $_POST['roomName']);
+		$rName3 = mysqli_real_escape_string($db, $_POST['room3']);
 		cleanData($rName3);
-		$rName4 = mysqli_real_escape_string($db, $_POST['roomName']);
-		cleanData($rName4);
+		$rName4 = mysqli_real_escape_string($db, $_POST['room4']);
+		cleanData($rName4);*/
 
 		$gid = 101;
-		$roomArr = array($rName1, $rName2,$rName3,$rName4);
-
-		foreach($roomArr as &$room){
-			if(!empty($room)){
-					$sql = "INSERT INTO room (name, GID) VALUES ('$room','$gid')";
+		//$roomArr = array($rName1, $rName2,$rName3,$rName4);
+		global $db;
+		//foreach($roomArr as &$room){
+			//if(!empty($room)){
+					$sql = "INSERT INTO room (name, GID) VALUES ('Porch', 101)";
 					$result = mysqli_query($db, $sql);
-
+					echo "Result =".$result;
 					if(!$result){
-						die('Error: ' . mysqli_error());
+						die('Error: ' . mysqli_error($db). ' Error: '. mysqli_errno($db));
 					}//if
 					else{
 						echo "Room successfully created!";
 					}//else
-			}//if
-		}//foreach
-		unset($room);
+			//}//if
+		//}//foreach
+		//unset($room);
 
 	}//if
 
