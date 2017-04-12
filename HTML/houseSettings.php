@@ -19,6 +19,10 @@
 
     <!-- room form css -->
     <link href="../CSS/roomForm.css" rel="stylesheet">
+    
+    <!-- scripts for dynamic buttons -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -90,11 +94,10 @@
                    <div class="form">
                      <form action="./PHP/createRoom.php" method="POST" id="roomForm" name="roomForm">
                        <input type="text" required="" placeholder="Add Room" value="" name="room1" class="txt">
-                       <input type="text" required="" placeholder="Add Room" value="" name="room2" class="txt">
-                       <input type="text" required="" placeholder="Add Room" value="" name="room3" class="txt">
-                       <input type="text" required="" placeholder="Add Room" value="" name="room4" class="txt">
 
-                       <input type="submit" value="submit" name="submit" class="txt2">
+					   <input type="button" id="btAdd" value="Add Room" class="bt" /> <br>
+                       
+                       <input type="submit" value="Submit" name="submit" class="txt2">
                      </form>
                   </div>
                 </div>
@@ -106,14 +109,10 @@
                   <div class="form">
                     <form action="" method="POST" id="inviteForm" name="inviteForm">
                       <input type="text" required="" placeholder="Add Member" value="" name="room" class="txt">
-                      <input type="text" required="" placeholder="Add Member" value="" name="room" class="txt">
-                      <input type="text" required="" placeholder="Add Member" value="" name="room" class="txt">
-                      <input type="text" required="" placeholder="Add Member" value="" name="room" class="txt">
-                      <input type="text" required="" placeholder="Add Member" value="" name="room" class="txt">
-                      <input type="text" required="" placeholder="Add Member" value="" name="room" class="txt">
-                      <input type="text" required="" placeholder="Add Member" value="" name="room" class="txt">
-
-                      <input type="submit" value="submit" name="submit" class="txt2">
+                     
+					  <input type="button" id="btAdd" value="Add Member" class="bt" /> <br>
+                     
+                      <input type="submit" value="Submit" name="submit" class="txt2">
                     </form>
                   </div>
                </div>
