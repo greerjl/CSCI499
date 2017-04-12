@@ -24,9 +24,10 @@ echo "bitch."."\n";
 		$pswdResult = mysqli_query($db, $sqlPswd);
 
 		echo "myusername = ".$myusername."\n";
+		$obj = mysqli_fetch_object($pswdResult);
 
 		//if statement to allow login and start session if account exists and password is correct
-		if (password_verify($mypassword, $pswdResult)) {
+		if (password_verify($mypassword, $obj)) {
 			echo "after pw verify in processLogin";
 			$sql = "SELECT UID FROM user_info WHERE username = '$myusername'";
 			$result = mysqli_query($db, $sql);
