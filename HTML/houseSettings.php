@@ -36,6 +36,7 @@
               $(#idtxt).clone().attr('id', 'idtxt', + $(this).index()).insertAfter('#idtxt');
           })
       })
+    </script>
 </head>
 
 <body>
