@@ -28,7 +28,14 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <script type="text/javascript">
+      $(function()
+      {
+          $('#idbtn').click(function()
+          {
+              $(#idtxt).clone().attr('id', 'idtxt', + $(this).index()).insertAfter('#idtxt');
+          })
+      })
 </head>
 
 <body>
@@ -99,6 +106,8 @@
                        <input type="text" required="" placeholder="Add Room" value="" name="room3" class="txt">
                        <input type="text" required="" placeholder="Add Room" value="" name="room4" class="txt">
 
+                       <input type="button" id="idbtn" value="Add Room" />
+                       <input type="text"   id="idtxt"  />
                        <input type="submit" value="Submit" name="submit" class="txt2">
                      </form>
                   </div>
