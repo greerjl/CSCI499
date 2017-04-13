@@ -109,6 +109,7 @@
 
                        <input type="button" id="idbtn" value="Add Room" />
                        <input type="text"   id="idtxt"  />
+                      <br><br>
                        <input type="submit" value="Submit" name="submit" class="txt2">
                      </form>
                   </div>
