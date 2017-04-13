@@ -94,10 +94,10 @@
                    <h4 class="heading"><strong>Add Rooms</strong> <span></span></h4>
                    <div class="form">
                      <form action="./PHP/createRoom.php" method="POST" id="roomForm" name="roomForm">
-                       <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
-                       <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
-                       <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
-                       <input type="text" required="" placeholder="Add Room" value="" name="room" class="txt">
+                       <input type="text" required="" placeholder="Add Room" value="" name="room1" class="txt">
+                       <input type="text" required="" placeholder="Add Room" value="" name="room2" class="txt">
+                       <input type="text" required="" placeholder="Add Room" value="" name="room3" class="txt">
+                       <input type="text" required="" placeholder="Add Room" value="" name="room4" class="txt">
 
                        <input type="submit" value="Submit" name="submit" class="txt2">
                      </form>
