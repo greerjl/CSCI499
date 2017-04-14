@@ -4,15 +4,16 @@
 //if($_SESSION["valid"]==true){?>
 <html lang="en">
 <head>
-   <meta charset="utf-8">
+  <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Home Utilities Manager &ndash; </title>
+  <title>Home Utilities Manager &ndash; </title>
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 	<link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/> <!-- normalize -->
 	<link rel="stylesheet" type="text/css" href="../CSS/welcome.css"/> <!-- css -->
   <!-- Custom CSS -->
   <link href="../bootstrap/css/4-col-portfolio.css" rel="stylesheet">
-
+  <!-- Bootstrap Core CSS -->
+  <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!--[if lte IE 8]>
         <link rel="stylesheet" href="/combo/1.18.13?/css/layouts/side-menu-old-ie.css">
     <![endif]-->
@@ -140,7 +141,15 @@
         </div>
     </div>
 </div>
-
+<footer>
+    <div class="row">
+        <div class="col-lg-12 footer l-box is-center">
+            <p>Copyright &copy; 2016-2017 PLU Capstone. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
+<a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
+        </div>
+    </div>
+    <!-- /.row -->
+</footer>
 <script src="http://cs.plu.edu/~greerjl/CSCI499/ui.js"></script>
 
 </body>

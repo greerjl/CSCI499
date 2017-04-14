@@ -92,7 +92,7 @@
                        <input type="text" required="" placeholder="Name of Event" value="" name="eventName" class="txt">
                        <input type="time" required="" placeholder="Time of Event" value="" name="eventTime" class="txt">
 		                   <input type="date" required="" value="" name="eventDate" class="date">
-		       
+		                     <hr>
                        <input type="submit" value="submit" name="submit" class="txt2">
                      </form>
                   </div>
@@ -106,9 +106,9 @@
                      <form action="" method="POST" id="eventForm" name="eventForm">
                        <input type="text" required="" placeholder="Name of Launderer" value="" name="eventName" class="txt">
                        <input type="time" required="" placeholder="Time of Laundry" value="" name="eventTime" class="txt">
-		       <input type="date" required="" value="" name="eventDate" class="date">
-		       <hr>
-		       <input type="submit" value="submit" name="submit" class="txt2">
+		                   <input type="date" required="" value="" name="eventDate" class="date">
+		                   <hr>
+		                  <input type="submit" value="submit" name="submit" class="txt2">
 		    </form>
 		  </div>
 		</div>
