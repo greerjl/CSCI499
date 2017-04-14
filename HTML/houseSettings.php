@@ -104,12 +104,9 @@
                    <div class="form">
                      <form action="./PHP/createRoom.php" method="POST" id="roomForm" name="roomForm">
                        <input type="text" id="idtxt" required="" placeholder="Add Room" value="" name="room1" class="txt">
-                       <!--<input type="text" required="" placeholder="Add Room" value="" name="room2" class="txt">
-                       <input type="text" required="" placeholder="Add Room" value="" name="room3" class="txt">
-                       <input type="text" required="" placeholder="Add Room" value="" name="room4" class="txt">
-                      -->
+
                        <input type="button" id="idbtn" value="Add Room" />
-                      <br><br>
+                       <br><br>
                        <input type="submit" value="Submit" name="submit" class="txt2">
                      </form>
                   </div>
@@ -121,10 +118,8 @@
                   <h4 class="heading"><strong>Invite Members</strong> <span></span></h4>
                   <div class="form">
                     <form action="" method="POST" id="inviteForm" name="inviteForm">
-                      <input type="text" required="" placeholder="Add Member" value="" name="room" class="txt">
-                      <input type="text" required="" placeholder="Add Member" value="" name="room" class="txt">
-                      <input type="text" required="" placeholder="Add Member" value="" name="room" class="txt">
-
+                      <input type="text" id="idtxt" required="" placeholder="Add Member" value="" name="room" class="txt">
+                      <br><br>
                       <input type="submit" value="Submit" name="submit" class="txt2">
                     </form>
                   </div>
@@ -146,7 +141,8 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12 footer l-box is-center">
-                    <p>Copyright &copy; 2016-2017 PLU Capstone. Authors: Jayme Greer, Gage Gibson, Caleb LaVergne</p>
+                    <p>Copyright &copy; 2016-2017 PLU Capstone. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
+        <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
                 </div>
             </div>
             <!-- /.row -->
