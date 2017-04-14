@@ -80,6 +80,9 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li>
+                            <a href="../index.html"> HUM </a>
+                        </li>
+                        <li>
                             <a href="./houseSettings.php">House</a>
                         </li>
                         <li>
@@ -90,6 +93,12 @@
                         </li>
                         <li>
                             <a href="./eventSettings.php">Events</a>
+                        </li>
+                        <li>
+                            <a href="#"> My Settings </a>
+                        </li>
+                        <li>
+                            <a href="./logout.php"> Logout </a> 
                         </li>
                     </ul>
                 </div>
