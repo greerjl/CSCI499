@@ -1,5 +1,6 @@
 <?php
-	//include '../../../dbconnect.php';
+ini_set("display_errors", true);
+error_reporting(E_ALL);
 	$eTitle = $eDesc = $roomName = $username = $sql = "";
 	$titleErr = $descErr = $uidErr = $roomErr = "";
 	$hasErrors = false;

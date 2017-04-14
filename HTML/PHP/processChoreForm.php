@@ -1,5 +1,6 @@
 <?php
-	include '../../../dbconnect.php';
+ini_set("display_errors", true);
+error_reporting(E_ALL);
 	$cTitle = $username = $sql = "";
 	$titleErr = $uidErr = "";
 	$hasErrors = false;
