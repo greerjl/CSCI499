@@ -29,17 +29,21 @@
 		//if statement to allow login and start session if account exists and password is correct
 		if (password_verify($mypassword, $pswdResult)) {
 			//echo "after pw verify in processLogin";
-			$sql = "SELECT UID FROM user_info WHERE username = '$myusername'";
+			$sql = "SELECT UID, GID FROM user_info WHERE username = '$myusername'";
 			$result = mysqli_query($db, $sql);
-			//** line not necessary $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 			$count = mysqli_num_rows($result);
 			if($count == 1){
-    			session_start();
-					$_SESSION["login_user"] = $myusername;
-	    			$_SESSION["valid"] = true;
-	    			$_SESSION["timeout"] = time() + 300;
+				/*this block splits up the result from sql into uid and gid*/
+				$obj = mysqli_fetch_object($result);
+					$myusername = $obj->UID;
+					$GID = $obj->GID;
+    		session_start();
+				$_SESSION["login_user"] = $myusername;
+				$_SESSION["valid"] = true;
+				$_SESSION["gid"] = $GID;
+	    	$_SESSION["timeout"] = time() + 300;
 
-					redirect("../welcome.php");
+				redirect("../welcome.php");
 			}//if
 		} else {
 			$hasErrors = true;

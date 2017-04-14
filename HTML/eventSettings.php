@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Capstone" >
+    <?php include '../../dbconnect.php'; ?>
 
     <title>Profile Settings</title>
 
@@ -110,7 +111,7 @@
                   </div>
                 </div>
 					</div>
-	
+
 					<div class="col-md-4">
 		             <div class="form_main">
                    <h4 class="heading"><strong>Request Laundry Machines</strong> <span></span></h4>
