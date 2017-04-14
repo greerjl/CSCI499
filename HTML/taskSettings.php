@@ -26,7 +26,16 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script type="text/javascript">
+      $(function()
+      {
+          $('#idbtn').click(function()
+          {
+              $('#idtxt').clone().attr('id', 'idtxt' + $(this).index()).insertAfter('#idtxt');
+          })
+      })
+    </script>
 </head>
 
 <body>
@@ -88,8 +97,9 @@
                    <h4 class="heading"><strong>Add a Task</strong> <span></span></h4>
                    <div class="form">
                      <form action="" method="POST" id="taskForm" name="taskForm">
-                       <input type="text" required="" placeholder="Add a Task" value="" name="task" class="txt">
-
+                       <input type="text" id="idtxt" required="" placeholder="Add a Task" value="" name="task" class="txt">
+                       <input type="button" id="idbtn" value="Add Task" />
+                       <br><br>
                        <input type="submit" value="submit" name="submit" class="txt2">
                      </form>
                   </div>
@@ -106,7 +116,8 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12 footer l-box is-center">
-                    <p>Copyright &copy; 2016-2017 PLU Capstone. Authors: Jayme Greer, Gage Gibson, Caleb LaVergne</p>
+                    <p>Copyright &copy; 2016-2017 PLU Capstone. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
+        <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
                 </div>
             </div>
             <!-- /.row -->

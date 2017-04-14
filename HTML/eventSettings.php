@@ -90,27 +90,14 @@
                      <form action="" method="POST" id="eventForm" name="eventForm">
                        <input type="text" required="" placeholder="Name of Event" value="" name="eventName" class="txt">
                        <input type="time" required="" placeholder="Time of Event" value="" name="eventTime" class="txt">
-		       <input type="date" required="" value="" name="eventDate" class="date">
-		       <hr>
-                       <input type="text" required="" placeholder="Name of Event" value="" name="eventName" class="txt">
-                       <input type="time" required="" placeholder="Time of Event" value="" name="eventTime" class="txt">
-		       <input type="date" required="" value="" name="eventDate" class="date">
-		       <hr>
-                       <input type="text" required="" placeholder="Name of Event" value="" name="eventName" class="txt">
-                       <input type="time" required="" placeholder="Time of Event" value="" name="eventTime" class="txt">
-		       <input type="date" required="" value="" name="eventDate" class="date">
-		       <hr>
-                       <input type="text" required="" placeholder="Name of Event" value="" name="eventName" class="txt">
-                       <input type="time" required="" placeholder="Time of Event" value="" name="eventTime" class="txt">
-		       <input type="date" required="" value="" name="eventDate" class="date">
-		       <hr>
-
+		                   <input type="date" required="" value="" name="eventDate" class="date">
+		       
                        <input type="submit" value="submit" name="submit" class="txt2">
                      </form>
                   </div>
                 </div>
 					</div>
-	
+
 					<div class="col-md-4">
 		             <div class="form_main">
                    <h4 class="heading"><strong>Request Laundry Machines</strong> <span></span></h4>
@@ -135,7 +122,8 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12 footer l-box is-center">
-                    <p>Copyright &copy; 2016-2017 PLU Capstone. Authors: Jayme Greer, Gage Gibson, Caleb LaVergne</p>
+                    <p>Copyright &copy; 2016-2017 PLU Capstone. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
+        <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
                 </div>
             </div>
             <!-- /.row -->

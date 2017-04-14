@@ -97,11 +97,8 @@
                    <h4 class="heading"><strong>Add/Assign Chores</strong> <span></span></h4>
                    <div class="form">
                      <form action="" method="POST" id="choreForm" name="choreForm">
-                       <input type="text" id="idtxt" required="" placeholder="Add Chore" value="" name="chore" class="txt">
-                       <input type="text" id="idtxt" required="" placeholder="Who is doing this chore?" value="" name="choreMem" class="txt">
-
-                       <input type="button" id="idbtn" value="Add Room" />
-                       <br><br>
+                       <input type="text" required="" placeholder="Add Chore" value="" name="chore" class="txt">
+                       <input type="text" required="" placeholder="Who is doing this chore?" value="" name="choreMem" class="txt">
 
                        <input type="submit" value="submit" name="submit" class="txt2">
                      </form>
@@ -115,7 +112,7 @@
                   <div class="form">
                     <form action="" method="POST" id="removeChoreForm" name="removeChoreForm">
                       <input type="text" id="idtxt" required="" placeholder="Chore to be Removed" value="" name="remChore" class="txt">
-                      <input type="button" id="idbtn" value="Add Room" />
+                      <input type="button" id="idbtn" value="Add Chore to Remove" />
                       <br><br>
                       <input type="submit" value="submit" name="submit" class="txt2">
                     </form>
