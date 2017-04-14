@@ -37,26 +37,7 @@
 </head>
 <body>
 	<div id="layout">
-    <!-- Menu toggle -->
-    <a href="#menu" id="menuLink" class="menu-link">
-        <!-- Hamburger icon -->
-        <span></span>
-    </a>
-
-    <div id="menu">
-        <div class="pure-menu">
-            <a class="pure-menu-heading" href="../index.html">HUM</a>
-
-            <ul class="pure-menu-list">
-
-                <li class="pure-menu-item"><a href="./houseSettings.php" class="pure-menu-link">My Dashboard</a></li>
-
-                <li class="pure-menu-item"><a href="./logout.php" class="pure-menu-link">Log Out</a></li>
-
-            </ul>
-        </div>
-    </div>
-
+    
     <div id="main">
         <div class="header">
             <h1>Home Utilities Manager</h1>
@@ -74,14 +55,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="./welcome.php">Profile</a>
+                    <a class="navbar-brand" href="./welcome.php">Home</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li>
-                            <a href="../index.html"> HUM </a>
-                        </li>
+
                         <li>
                             <a href="./houseSettings.php">House</a>
                         </li>
@@ -98,7 +77,7 @@
                             <a href="#"> My Settings </a>
                         </li>
                         <li>
-                            <a href="./logout.php"> Logout </a> 
+                            <a href="./logout.php"> Logout </a>
                         </li>
                     </ul>
                 </div>
