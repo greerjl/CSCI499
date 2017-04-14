@@ -1,5 +1,6 @@
 <?php
-	//include '../../../dbconnect.php';
+ini_set("display_errors", true);
+error_reporting(E_ALL);
 	$eTitle = $eDesc = $roomName = $username = $sql = "";
 	$titleErr = $descErr = $uidErr = $roomErr = "";
 	$hasErrors = false;
@@ -91,4 +92,28 @@
 			}//case roomName
 		}
 	}
-?>
+	
+	function send(){
+			if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
+				$sql = "SELECT RID FROM room WHERE name = '$roomName' AND GID = '$gid'";
+				$result = mysqli_query($db, $sql);
+	
+				$count = mysqli_num_rows($result);
+				if($count != 1){
+					die('Error: ' . mysqli_error());
+				}
+				else{
+					$rid = mysqli_fetch_row($result);
+					$sql = "INSERT INTO event (RID, name, description, GID) VALUES ('$rid','$eTitle',$gid)";
+					$result = mysqli_query($db, $sql);
+	
+					if(!$result){
+						die('Error: ' . mysqli_error());
+					}
+					else{
+						echo "Event successfully created!";
+					}
+				}
+		}	
+	}
+?>	

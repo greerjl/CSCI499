@@ -1,22 +1,24 @@
 <?php
-	//include '../../../dbconnect.php';
-	$cTitle = $cDesc = $username = $sql = "";
-	$titleErr = $descErr = $uidErr = "";
+ini_set("display_errors", true);
+error_reporting(E_ALL);
+	$cTitle = $username = $sql = "";
+	$titleErr = $uidErr = "";
 	$hasErrors = false;
 
 	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
-		$cTitle = cleanData($_POST['title']);
-			$titleErr = validate($cTitle, 'cTitle');
+		$cTitle = cleanData($_POST['chore']);
+			$titleErr = validate($cTitle, 'chore');
 			if(!empty($titleErr)){
 				$hasErrors = true;
 			}//if
-		$cDesc = cleadData($_POST['description']);
-			$descErr = validate($cDesc, 'cDesc');
-			if(!empty($descErr)){
-				$hasErrors = true;
-			}//if
-		$username = cleanData($_POST['username']);
-			$uidErr = validate($username, 'username');
+			else{
+				/*for testing*/
+				$giD = 101;
+				echo "sending data";
+				sendData($cTitle, $username, $giD);
+			}
+		$username = cleanData($_POST['choreMem']);
+			$uidErr = validate($username, 'choreMem');
 			if(!empty($uidErr)){
 				$hasErrors = true;
 			}//if
@@ -33,7 +35,7 @@
 
 	function validate($data, $field) {
 		switch($field) {
-			case 'cTitle':{
+			case 'chore':{
 				$data = strtolower($data);
 				$data = ucfirst($data);
 				$sql = "SELECT * FROM chore WHERE title = '$data'"/* AND GID = '$gid'"*/;
@@ -47,18 +49,7 @@
 					return "";
 				}
 			}//case cTitle
-			case 'cDesc':{
-				if(strlen($data) > 140){
-					return "Description is too long.";
-				}
-				elseif(strlen($data) == 0){
-					return "Must have some description of the chore.";
-				}
-				else{
-					return "";
-				}
-			}//case cDesc
-			case 'username':{
+			case 'choreMem':{
 				$data = strtolower($data);
 				$sql = "SELECT UID FROM user_info WHERE username = '$data'"/* AND GID = '$gid'"*/;
 				$result = mysqli_query($db, $sql) /*or die("could not connect to DB")*/;
@@ -71,6 +62,30 @@
 					return "";
 				}
 			}//case username
+		}
+	}
+
+	function sendData($name, $owner, $group){
+		if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
+				$sql = "SELECT UID FROM user_info WHERE username = '$owner'";
+				$result = mysqli_query($db, $sql);
+
+				$count = mysqli_num_rows($result);
+				if($count != 1){
+					die('Error1: '.mysqli_error($db));
+				}
+				else{
+					$uid = mysqli_fetch_row($result);
+					$sql = "INSERT INTO chore (title, GID, UID) VALUES ('$name', $group, $uid)";
+					$result = mysqli_query($db, $sql);
+
+					if(!$result){
+						die('Error2: '.mysqli_error($db));
+					}
+					else{
+						echo "Chore successfully created and assigned!";
+					}
+				}
 		}
 	}
 ?>

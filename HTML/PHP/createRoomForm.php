@@ -16,7 +16,7 @@
 		cleanData($rName4);
 
 		$gid = 103;
-		$roomArr = array($rName1, $rName2,$rName3,$rName4);
+		$roomArr = array($rName1, $rName2, $rName3, $rName4);
 		foreach($roomArr as &$room){
 			if(!empty($room)){
 					$sql = "INSERT INTO room (name, GID) VALUES ('$room', $gid)";
