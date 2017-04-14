@@ -13,22 +13,24 @@
 		//username and password sent from form
 		$myusername = mysqli_real_escape_string($db, $_POST['usnm']);
 		//echo $myusername."\n";
-		cleanData($myusername);
+		$myusername = cleanData($myusername);
 		$mypassword = mysqli_real_escape_string($db, $_POST['pswd']);
 		//echo $mypassword."\n";
-		cleanData($mypassword);
+		$mypassword = cleanData($mypassword);
 
 		//Database queries
 		$sqlPswd = "SELECT password FROM user_info WHERE username= '$myusername'";//grab stored hashed password
-		//echo "sqlPswd = ".$sqlPswd."\n";
-		$pswdResult = mysqli_query($db, $sqlPswd);
 
-		//echo "myusername = ".$myusername."\n";
-		//echo "hashed pword = ".$pswdResult[0]."\n";
+		/*get the hashed password from the db in form of a string*/
+		$pswdResult = mysqli_query($db, $sqlPswd);
+			$temp = mysqli_fetch_object($pswdResult);
+			$dbpassword = $temp->password;
+
+		/*DEBUG BLOCK*/
+		$booltest = password_verify($mypassword, $dbpassword);
 
 		//if statement to allow login and start session if account exists and password is correct
-		if (password_verify($mypassword, $pswdResult)) {
-			//echo "after pw verify in processLogin";
+		if($booltest){
 			$sql = "SELECT UID, GID FROM user_info WHERE username = '$myusername'";
 			$result = mysqli_query($db, $sql);
 			$count = mysqli_num_rows($result);
@@ -37,17 +39,22 @@
 				$obj = mysqli_fetch_object($result);
 					$myusername = $obj->UID;
 					$GID = $obj->GID;
+				/*end block*/
     		session_start();
 				$_SESSION["login_user"] = $myusername;
 				$_SESSION["valid"] = true;
 				$_SESSION["gid"] = $GID;
 	    	$_SESSION["timeout"] = time() + 300;
-
-				redirect("../welcome.php");
+				//echo "validated";
+				//redirect("../welcome.php");
 			}//if
 		} else {
 			$hasErrors = true;
-			redirect("../login.php");
+			echo "shit.\n";
+			echo $mypassword."\n";
+			echo $booltest;	//NOT PRINTING???
+			echo $dbpassword."\n";
+			//redirect("../login.php");
 		}//ifelse
 	}//POST if
 

@@ -14,7 +14,6 @@ error_reporting(E_ALL);
 			else{
 				/*for testing*/
 				$giD = 101;
-				echo "sending data";
 				sendData($cTitle, $username, $giD);
 			}
 		$username = cleanData($_POST['choreMem']);

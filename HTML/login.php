@@ -419,6 +419,7 @@
         <div class="content">
             <form id="LogIn" class="form-signin" method="POST" action="./PHP/processLoginForm.php">
             <h2 class="form-signin-heading"> Log In </h2>
+            
             <label for="username" class="sr-only"> Email address </label>
             <input type="email" id="username" class="form-control"
             name="usnm" placeholder="Email address" autofocus required>
