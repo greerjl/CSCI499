@@ -119,7 +119,6 @@
 
 	}//validate2
 
-/*EVEN IF NEW EMAIL (MAYBE GNAME) IS ENTERED, ERROR RETURNED SAYING ALREADY EXISTS*/
 	function dbCheck($data, $field){
 		switch($field){
 			case 'email': {
@@ -127,10 +126,16 @@
 
 				$result = mysqli_query($db, $sql);
 				$count = mysqli_num_rows($result);
-				if($count != 0){
+				if($count == 0){
 					return "This email has already been registered.";
 				}//if
+				elseif($count == 1){
 					return "";
+				}
+				else{
+					die('Error: '.mysqli_error($db));
+				}
+				return "";
 			}//case email
 
 			/*case 'username': {
