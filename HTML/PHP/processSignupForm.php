@@ -1,5 +1,5 @@
 <?php
-	include '../../../dbconnect.php';
+	require_once('../../../dbconnect.php');
 	ini_set("display_errors", true);
 	error_reporting(E_ALL);
 
@@ -131,10 +131,10 @@
 				}//if
 				elseif($count == 1){
 					return "";
-				}
+				}//elseif
 				else{
 					die('Error: '.mysqli_error($db));
-				}
+				}//else
 				return "";
 			}//case email
 
