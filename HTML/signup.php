@@ -59,11 +59,6 @@
 	<?php include './PHP/processSignupForm.php'; ?>
 
 	<?php if($_SERVER['REQUEST_METHOD']=="GET" || $hasErrors){
-		if($hasErrors){ ?>
-			<div class="alert alert-danger">
-				<strong>Error!</strong> Unable to sign up user.
-			</div>
-		<?php }//if ?>
 				 <div class="content">
 						 <form id="SignUp" class="form-signin" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 						 <h2 class="form-signin-heading"> Sign Up </h2>
@@ -84,8 +79,9 @@
 
 						 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 
-						 <!--Need to join/create a group? Click <a href="./signupGroup.php">here</a>.-->
+						 Need to join/create a group? Click <a href="./signupGroup.php">here</a>
 	 </form>
+	 <?php  }	?>
 
 			 </div><!-- /.content -->
 		 </div><!--/.starter template -->
