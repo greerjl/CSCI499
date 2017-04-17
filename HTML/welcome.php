@@ -99,11 +99,12 @@
                           echo $user;
                           $sql = "SELECT title FROM user_info, chore WHERE UID = '$user' AND user_info.UID = chore.UID";
                           $result = mysqli_query($db, $sql);
-
+								  
+								  echo "num rows: ".mysqli_num_rows($result);
                           $count = mysqli_num_rows($result);
 
                           if($count == 0){
-                            die('Error!');
+                            die('Error! '.mysqli_error($db));
                           }
                           else{
                           	echo "<table>\n";
