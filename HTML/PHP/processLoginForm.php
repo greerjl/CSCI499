@@ -49,7 +49,7 @@
 			}//if
 		} else {
 			$hasErrors = true;
-			echo
+			echo "HAS ERRORS";
 			//redirect("../login.php");
 		}//ifelse
 	}//POST if
