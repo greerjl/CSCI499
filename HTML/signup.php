@@ -104,6 +104,12 @@
 				}//if
 			}//if
 		?>
+		<footer class="footer">
+		 <div class="container">
+			 <p class="text muted">Capstone Production: September 2016 - May 2017. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
+				 <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
+			</div><!--/.container-->
+		</footer>
 		</div>
 
 		<script src="./ui.js"></script>
