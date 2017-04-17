@@ -45,9 +45,10 @@
         }
 
         // destroy session
+        session_unset();
         session_destroy();
-        //$_SESSION["login_user"] = "";
-        //$_SESSION["valid"] = false;
+        $_SESSION["login_user"] = "";
+        $_SESSION["valid"] = false;
     }
 
     /**
