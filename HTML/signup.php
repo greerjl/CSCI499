@@ -38,71 +38,81 @@
 	</script>
 
 	</head>
-	<body data-gr-c-s-loaded="true">
- 	 <nav class="navbar navbar-inverse navbar-fixed-top">
- 	 	<div class="container">
- 	  	<div class="navbar-header">
- 	    	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
- 	      	<span class="sr-only">Toggle navigation</span>
- 	      	<span class="icon-bar"></span>
- 	      	<span class="icon-bar"></span>
- 	      	<span class="icon-bar"></span>
- 	      </button>
- 	      <a class="navbar-brand" href="../index.html"> Home Utilities Manager </a>
- 	    </div>
- 	    <div id="navbar" class="collapse navbar-collapse">
- 	    	<ul class="nav navbar-nav">
- 	      	<li class="active"><a href="../index.html">Home</a></li>
- 	      </ul>
- 	    </div><!--/.nav-collapse -->
- 	 	</div><!--./container -->
- 	 </nav>
- 	 <div class="container">
 
- 	 <div class="starter-template">
- 	 	<div class="page-header">
- 	  	<h1>Home Utilities Manager</h1>
- 	    <h3> An application housing all your home management needs.</h2>
- 	  </div><!-- /.page-header-->
+	<body data-gr-c-s-loaded="true">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="../index.html"> Home Utilities Manager </a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="../index.html">Home</a></li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div><!--./container -->
+	</nav>
+			 <div class="container">
+
+			 <div class="starter-template">
+				 <div class="page-header">
+						 <h1>Home Utilities Manager</h1>
+						 <h3> An application housing all your home management needs.</h2>
+				 </div><!-- /.page-header-->
+
 	<?php include '../../dbconnect.php'; ?>
 	<?php include './PHP/processSignupForm.php'; ?>
 
-		<div class="content">
-		  <div class="header">
+	<?php if($_SERVER['REQUEST_METHOD']=="GET" || $hasErrors){
+		if($hasErrors){ ?>
+			<div class="alert alert-danger">
+				<strong>Error!</strong> Unable to sign up user.
+			</div>
+		<?php }//if ?>
+				 <div class="content">
+						 <form id="SignUp" class="form-signin" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+						 <h2 class="form-signin-heading"> Sign Up </h2>
 
-		  </div>
-	<?php if($_SERVER['REQUEST_METHOD']=="GET" || $hasErrors){ ?>
-		<form id="SignUp" class="pure-form pure-form-aligned" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
-			<fieldset>
-				<legend> Sign Up </legend>
+						 <label for="email" class="sr-only"> Email </label>
+						 <input type="email" id="useremail" class="form-control"
+						 name="email" placeholder="Email address" autofocus required>
 
-				<label for="useremail"> Email (will be used as username): <em>*</em> </label>
-				<input type="email" id="useremail" name="email" autofocus required>
-				<span style="color: red"><?php print $emailErr; ?></span>
-				<span style="color: red"><?php print $dbErr; ?></span>
-				<br/>
-				<br/>
-				<label for="pw"> Password (6+ characters including 1+ numbers):
-					<em>*</em> </label>
-				<input type="password" id="pw" name="pswd" pattern="(?=.*\d).{6,}" required>
-				<span style="color: red"><?php print $pswdErr; ?></span>
-				<br/>
-				<br/>
-				<label for="rpw"> Re-Enter Password:
-					<em>*</em> </label>
-				<input type="password" id="rpw" name="rpswd" pattern="(?=.*\d).{6,}" required>
-				<span style="color: red"><?php print $rpswdErr; ?></span>
-				<br/>
-				<br/>
+						 <label for="pw" class="sr-only"> Password </label>
+						 <input type="password" id="password" name="pswd"
+						 pattern="(?=.*\d).{6,}" class="form-control"
+						 placeholder="Password" required>
 
-			<p><input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign Up"></p>
-			</fieldset>
+						 <label for="rpw" class="sr-only"> Re-Enter Password </label>
+						 <input type="password" id="rpw" name="rpswd"
+						 pattern="(?=.*\d).{6,}" class="form-control"
+						 placeholder="Re-Enter Password" required>
 
-		</form>
+
+						 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+						 <!--Need to join/create a group? Click <a href="./signupGroup.php">here</a>.-->
+	 </form>
+
+			 </div><!-- /.content -->
+		 </div><!--/.starter template -->
+	 </div> <!-- /.container -->
+	<footer class="footer">
+	 <div class="container">
+		 <p class="text muted">Capstone Production: September 2016 - May 2017. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
+			 <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
+		</div><!--/.container-->
+	</footer>
+
 		<?php }//if
 			if($_SERVER['REQUEST_METHOD']=="POST" && !$hasErrors){
-								echo "username = ".$email."; password hash = ".$hash."; email = ".$email."; \n";
-          			$sql = "INSERT INTO user_info (username, password, email) VALUES ('$email','$hash', '$email')";
+					echo "username = ".$email."; password hash = ".$hash."; email = ".$email."; \n";
+        	$sql = "INSERT INTO user_info (username, password, email) VALUES ('$email','$hash', '$email')";
           			$result = mysqli_query($db, $sql);
           			echo "result =".$result."\n";
 				if($result){
@@ -113,8 +123,8 @@
 				}//if
 			}//if
 		?>
-		<!--Need to join/create a group? Click <a href="./signupGroup.php">here</a>.-->
 		</div>
+
 		<script src="./ui.js"></script>
 	</body>
 </html>
