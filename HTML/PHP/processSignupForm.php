@@ -23,7 +23,7 @@
 			else{
 					echo "before pass is hashed";
 					//hashing function ** need to make sure this is being saved to DB
-					$hash = password_hash($pswd, PASSWORD_BCRYPT)."\n";
+					$hash = password_hash($pswd, PASSWORD_BCRYPT);
 					echo "hash = ".$hash;
 			}//else
 
