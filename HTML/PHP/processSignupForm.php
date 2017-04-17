@@ -3,9 +3,9 @@
 	ini_set("display_errors", true);
 	error_reporting(E_ALL);
 
-	$email = $pswd = $rpswd = $groupnameJ = $accesscode = $groupnameC = $mems = "";
+	$email = $pswd = $rpswd = "";
 	$sql = ""; $hash = "";
-	$emailErr = $pswdErr = $rpswdErr = $dbErr = $groupnameCErr = $dbgnameJErr = $dbgnameCErr = $dbaccesscodeErr = $memsErr = "";
+	$emailErr = $pswdErr = $rpswdErr = $dbErr = "";
 	$hasErrors = false;
 
 	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
@@ -21,17 +21,15 @@
 			$pswdErr = validate($pswd, 'password');
 			if(!empty($pswdErr)){$hasErrors = true;}
 			else{
-					echo "before pass is hashed";
+					//echo "before pass is hashed";
 					//hashing function ** need to make sure this is being saved to DB
 					$hash = password_hash($pswd, PASSWORD_BCRYPT);
-					echo "hash = ".$hash;
+					//echo "hash = ".$hash;
 			}//else
 
 		$rpswd = cleanData($_POST['rpswd']);
 			$rpswdErr = validate2($rpswd, $pswd);
 			if(!empty($rpswdErr)) $hasErrors = true;
-
-
 
 		/*GROUP CREDENTIALS
 		$groupnameJ = cleanData($_POST['groupnameJ']);
@@ -85,7 +83,7 @@
 				}//ifelse
 				return "";
 			}//case pswd
-
+/*
 			case 'groupnameC': {
 				if(!empty($data)){
 					if(!preg_match('^.{6,30}$', $data)){
@@ -103,7 +101,7 @@
 				}//if
 				return "";
 			}//case memsemail
-
+*/
 			default: break;
 
 		}//switch statement
@@ -112,7 +110,7 @@
 	//data = rpswd, data2 = pswd
 	function validate2($data, $data2){
 			if(empty($data)){
-				return "Please reenter password.";
+				return "Please re-enter password.";
 			}else{
 				if(strcmp($data, $data2) !== 0){
 					return "Passwords must match.";
@@ -145,7 +143,7 @@
 					return "This username has already been registered."
 				}//if
 			}//case username
-			*/
+
 
 			case 'groupnameC': {
 				$sql = "SELECT * FROM group_info WHERE group_name = '$groupnameC'";
@@ -174,7 +172,7 @@
 				return "";
 
 			}//case groupnameJ
-
+			*/
 		}//switch
 	}//function dbCheck
 

@@ -5,9 +5,8 @@
 	$hasErrors = false;
 	$flag = 0;
 
-	include "/home/capstone/Desktop/DocRoot/dbconnect.php";
+	include "/../../../dbconnect.php";
 
-//echo "bitch."."\n";
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		//username and password sent from form
@@ -23,22 +22,22 @@
 
 		/*get the hashed password from the db in form of a string*/
 		$pswdResult = mysqli_query($db, $sqlPswd);
-			$temp = mysqli_fetch_object($pswdResult);
-			$dbpassword = $temp->password;
+		//$temp = mysqli_fetch_object($pswdResult);
+		//$dbpassword = $temp->password;
 
 		/*DEBUG BLOCK*/
-		$booltest = password_verify($mypassword, $dbpassword);
+		//$booltest = password_verify($mypassword, $dbpassword);
 
 		//if statement to allow login and start session if account exists and password is correct
-		if($booltest){
+		if(password_verify($mypassword, $pswdResult)){
 			$sql = "SELECT UID, GID FROM user_info WHERE username = '$myusername'";
 			$result = mysqli_query($db, $sql);
 			$count = mysqli_num_rows($result);
 			if($count == 1){
 				/*this block splits up the result from sql into uid and gid*/
 				$obj = mysqli_fetch_object($result);
-					$myusername = $obj->UID;
-					$GID = $obj->GID;
+				$myusername = $obj->UID;
+				$GID = $obj->GID;
 				/*end block*/
     		session_start();
 				$_SESSION["login_user"] = $myusername;
@@ -50,11 +49,10 @@
 			}//if
 		} else {
 			$hasErrors = true;
-			//echo "shit.\n";
-			//echo $mypassword."\n";
-			//echo $booltest;	//NOT PRINTING???
-			//echo $dbpassword."\n";
-			redirect("../login.php");
+			echo $mypassword."\n";
+			echo $booltest;	//NOT PRINTING???
+			echo $dbpassword."\n";
+			//redirect("../login.php");
 		}//ifelse
 	}//POST if
 
