@@ -5,7 +5,7 @@
 	$hasErrors = false;
 	$flag = 0;
 
-	include "/../../../dbconnect.php";
+	include '../../../dbconnect.php';
 
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
 
