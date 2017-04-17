@@ -96,9 +96,9 @@
 						 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 
 						 <!--Need to join/create a group? Click <a href="./signupGroup.php">here</a>.-->
-					 </div><!-- /.content -->
 	 </form>
 
+			 </div><!-- /.content -->
 		 </div><!--/.starter template -->
 	 </div> <!-- /.container -->
 	<footer class="footer">
