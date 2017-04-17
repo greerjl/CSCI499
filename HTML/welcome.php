@@ -10,6 +10,8 @@
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 	<link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/> <!-- normalize -->
 	<link rel="stylesheet" type="text/css" href="../CSS/welcome.css"/> <!-- css -->
+  <link rel="icon" href="../images/logo.png">
+
   <!-- Custom CSS -->
   <link href="../bootstrap/css/4-col-portfolio.css" rel="stylesheet">
   <!-- Bootstrap Core CSS -->

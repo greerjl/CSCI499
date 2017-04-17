@@ -8,6 +8,8 @@
 		<link rel="stylesheet" href="../CSS/pure-min.css"/>
 		<link rel="stylesheet" type="text/css" href="../CSS/normalize.css">
 		<link rel="stylesheet" type="text/css" href="../CSS/signup.css"/>
+		<link rel="icon" href="../images/logo.png">
+
 		<title>HUM-signup</title>
 
 		<!--[if lte IE 8]>
