@@ -96,11 +96,9 @@
                           ini_set("display_errors", true);
                           error_reporting(E_ALL);
                         	$user = $_SESSION["login_user"];
-                          echo $user;
                           $sql = "SELECT title FROM user_info, chore WHERE user_info.UID = '$user' AND user_info.UID = chore.UID";
                           $result = mysqli_query($db, $sql);
-								  
-								  echo "num rows: ".mysqli_num_rows($result);
+
                           $count = mysqli_num_rows($result);
 
                           if($count == 0){
