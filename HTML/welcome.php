@@ -97,7 +97,7 @@
                           error_reporting(E_ALL);
                         	$user = $_SESSION["login_user"];
                           //echo $user;
-                          $sql = "SELECT description FROM user_info, chore WHERE username = '$user' AND user_info.UID = chore.UID";
+                          $sql = "SELECT title FROM user_info, chore WHERE username = '$user' AND user_info.UID = chore.UID";
                           $result = mysqli_query($db, $sql);
 
                           $count = mysqli_num_rows($result);

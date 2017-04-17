@@ -103,7 +103,7 @@
                           $count = mysqli_num_rows($result);
 
                           if($count == 0){
-                           die('Error: '.mysqli_error($db);
+                           die('Error: '.mysqli_error($db));
                           }
                           else{
                           	echo "<table>\n";
