@@ -46,15 +46,15 @@
 				$_SESSION["gid"] = $GID;
 	    	$_SESSION["timeout"] = time() + 300;
 				//echo "validated";
-				//redirect("../welcome.php");
+				redirect("../welcome.php");
 			}//if
 		} else {
 			$hasErrors = true;
-			echo "shit.\n";
-			echo $mypassword."\n";
-			echo $booltest;	//NOT PRINTING???
-			echo $dbpassword."\n";
-			//redirect("../login.php");
+			//echo "shit.\n";
+			//echo $mypassword."\n";
+			//echo $booltest;	//NOT PRINTING???
+			//echo $dbpassword."\n";
+			redirect("../login.php");
 		}//ifelse
 	}//POST if
 
