@@ -87,12 +87,11 @@
 						 <input type="password" id="pw" name="pswd"
 						 pattern="(?=.*\d).{6,}" class="form-control"
 						 placeholder="Password" required>
-						 <br>
+						 
 						 <label for="rpw" class="sr-only"> Re-Enter Password </label>
 						 <input type="password" id="rpw" name="rpswd"
 						 pattern="(?=.*\d).{6,}" class="form-control"
 						 placeholder="Re-Enter Password" required>
-
 
 						 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 
