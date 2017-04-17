@@ -49,9 +49,7 @@
 			}//if
 		} else {
 			$hasErrors = true;
-			echo $mypassword."\n";
-			echo $booltest;	//NOT PRINTING???
-			echo $dbpassword."\n";
+			echo
 			//redirect("../login.php");
 		}//ifelse
 	}//POST if
