@@ -43,12 +43,6 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
 				<a class="navbar-brand" href="../index.html"> Home Utilities Manager </a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
@@ -101,12 +95,6 @@
 			 </div><!-- /.content -->
 		 </div><!--/.starter template -->
 	 </div> <!-- /.container -->
-	<footer class="footer">
-	 <div class="container">
-		 <p class="text muted">Capstone Production: September 2016 - May 2017. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
-			 <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
-		</div><!--/.container-->
-	</footer>
 
 		<?php }//if
 			if($_SERVER['REQUEST_METHOD']=="POST" && !$hasErrors){
@@ -122,7 +110,12 @@
 				}//if
 			}//if
 		?>
-		</div>
+		<footer class="footer">
+		 <div class="container">
+			 <p class="text muted">Capstone Production: September 2016 - May 2017. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
+				 <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
+			</div><!--/.container-->
+		</footer>
 
 		<script src="./ui.js"></script>
 	</body>
