@@ -22,14 +22,14 @@
 
 		/*get the hashed password from the db in form of a string*/
 		$pswdResult = mysqli_query($db, $sqlPswd);
-		//$temp = mysqli_fetch_object($pswdResult);
-		//$dbpassword = $temp->password;
+		$temp = mysqli_fetch_object($pswdResult);
+		$dbpassword = $temp->password;
 
 		/*DEBUG BLOCK*/
 		//$booltest = password_verify($mypassword, $dbpassword);
 
 		//if statement to allow login and start session if account exists and password is correct
-		if(password_verify($mypassword, $pswdResult)){
+		if(password_verify($mypassword,$dbpassword )){
 			$sql = "SELECT UID, GID FROM user_info WHERE username = '$myusername'";
 			$result = mysqli_query($db, $sql);
 			$count = mysqli_num_rows($result);
