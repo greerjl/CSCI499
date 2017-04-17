@@ -11,6 +11,11 @@
 		<link rel="icon" href="../images/logo.png">
 
 		<title>Signup</title>
+		<!-- bootstrap -->
+		<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link href="../bootstrap/css/starter-template.css" rel="stylesheet">
+		<link href="../bootstrap/css/sticky-footer-navbar.css" rel="stylesheet">
+		<link href="../bootstrap/css/signin.css" rel="stylesheet">
 
 		<!--[if lte IE 8]>
 		<link rel="stylesheet" href="/combo/1.18.13?/css/layouts/side-menu-old-ie.css">
@@ -33,56 +38,64 @@
 	</script>
 
 	</head>
-	<body>
-	<div id="layout">
-    	<!-- Menu toggle -->
-    		<a href="#menu" id="menuLink" class="menu-link">
-        	<!-- Hamburger icon -->
-        		<span></span>
-    		</a>
+	<body data-gr-c-s-loaded="true">
+ 	 <nav class="navbar navbar-inverse navbar-fixed-top">
+ 	 	<div class="container">
+ 	  	<div class="navbar-header">
+ 	    	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+ 	      	<span class="sr-only">Toggle navigation</span>
+ 	      	<span class="icon-bar"></span>
+ 	      	<span class="icon-bar"></span>
+ 	      	<span class="icon-bar"></span>
+ 	      </button>
+ 	      <a class="navbar-brand" href="../index.html"> Home Utilities Manager </a>
+ 	    </div>
+ 	    <div id="navbar" class="collapse navbar-collapse">
+ 	    	<ul class="nav navbar-nav">
+ 	      	<li class="active"><a href="../index.html">Home</a></li>
+ 	      </ul>
+ 	    </div><!--/.nav-collapse -->
+ 	 	</div><!--./container -->
+ 	 </nav>
+ 	 <div class="container">
 
-    	<div id="menu">
-        	<div class="pure-menu">
-            	<a class="pure-menu-heading" href="../index.html">HUM</a>
-
-            	<ul class="pure-menu-list">
-                 <li class="pure-menu-item"><a href="./login.php" class="pure-menu-link">Log In</a></li>
-            	</ul>
-        	</div>
-    	</div>
+ 	 <div class="starter-template">
+ 	 	<div class="page-header">
+ 	  	<h1>Home Utilities Manager</h1>
+ 	    <h3> An application housing all your home management needs.</h2>
+ 	  </div><!-- /.page-header-->
 	<?php include '../../dbconnect.php'; ?>
 	<?php include './PHP/processSignupForm.php'; ?>
 
 		<div class="content">
 		  <div class="header">
-			<h1> HUM Sign Up Page </header>
-			<h6> All fields with an * are required </h6>
+
 		  </div>
 	<?php if($_SERVER['REQUEST_METHOD']=="GET" || $hasErrors){ ?>
 		<form id="SignUp" class="pure-form pure-form-aligned" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
 			<fieldset>
 				<legend> Sign Up </legend>
 
-				<label for="useremail"> Email (will be used as username): <em>*</em> </label>
+				<label class="sr-only" for="useremail"> Email (will be used as username): <em>*</em> </label>
 				<input type="email" id="useremail" name="email" autofocus required>
 				<span style="color: red"><?php print $emailErr; ?></span>
 				<span style="color: red"><?php print $dbErr; ?></span>
 				<br/>
 				<br/>
-				<label for="pw"> Password (6+ characters including 1+ numbers):
+				<label class="sr-only" for="pw"> Password (6+ characters including 1+ numbers):
 					<em>*</em> </label>
 				<input type="password" id="pw" name="pswd" pattern="(?=.*\d).{6,}" required>
 				<span style="color: red"><?php print $pswdErr; ?></span>
 				<br/>
 				<br/>
-				<label for="rpw"> Re-Enter Password:
+				<label class="sr-only" for="rpw"> Re-Enter Password:
 					<em>*</em> </label>
 				<input type="password" id="rpw" name="rpswd" pattern="(?=.*\d).{6,}" required>
 				<span style="color: red"><?php print $rpswdErr; ?></span>
 				<br/>
 				<br/>
 
-			<p><input class="submit" type="submit" value="Sign Up"></p>
+			<p><input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign Up"></p>
 			</fieldset>
 
 
