@@ -1,6 +1,7 @@
 <?php
-	ini_set("display_errors", true);
-	error_reporting(E_ALL);
+	/*DEBUG statements (next two lines), uncomment for bug info*/
+	//ini_set("display_errors", true);
+	//error_reporting(E_ALL);
 	require_once("functions.php");
 	$hasErrors = false;
 	$flag = 0;
