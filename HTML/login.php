@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="../CSS/login.css"/>
     <link rel="icon" href="../images/logo.png">
 
-    <title>HUM-login</title>
+    <title>Login</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">

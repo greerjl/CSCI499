@@ -10,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="../CSS/signup.css"/>
 		<link rel="icon" href="../images/logo.png">
 
-		<title>HUM-signup</title>
+		<title>Signup</title>
 
 		<!--[if lte IE 8]>
 		<link rel="stylesheet" href="/combo/1.18.13?/css/layouts/side-menu-old-ie.css">
