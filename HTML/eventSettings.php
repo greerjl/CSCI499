@@ -14,13 +14,14 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom CSS -->
     <link href="../bootstrap/css/4-col-portfolio.css" rel="stylesheet">
-
     <!-- room form css -->
     <link href="../CSS/roomForm.css" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/> <!-- normalize -->
+    <link rel="stylesheet" type="text/css" href="../CSS/psuedoWelcome.css"/> <!-- css -->
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -31,6 +32,13 @@
 </head>
 
 <body>
+<div id="layout">
+  <div id="main">
+
+    <div class="header">
+        <h1>Home Utilities Manager</h1>
+        <h2>An application housing all your home management needs. </h2>
+    </div>
 
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
