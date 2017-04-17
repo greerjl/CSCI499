@@ -76,19 +76,19 @@
 			<fieldset>
 				<legend> Sign Up </legend>
 
-				<label class="sr-only" for="useremail"> Email (will be used as username): <em>*</em> </label>
+				<label for="useremail"> Email (will be used as username): <em>*</em> </label>
 				<input type="email" id="useremail" name="email" autofocus required>
 				<span style="color: red"><?php print $emailErr; ?></span>
 				<span style="color: red"><?php print $dbErr; ?></span>
 				<br/>
 				<br/>
-				<label class="sr-only" for="pw"> Password (6+ characters including 1+ numbers):
+				<label for="pw"> Password (6+ characters including 1+ numbers):
 					<em>*</em> </label>
 				<input type="password" id="pw" name="pswd" pattern="(?=.*\d).{6,}" required>
 				<span style="color: red"><?php print $pswdErr; ?></span>
 				<br/>
 				<br/>
-				<label class="sr-only" for="rpw"> Re-Enter Password:
+				<label for="rpw"> Re-Enter Password:
 					<em>*</em> </label>
 				<input type="password" id="rpw" name="rpswd" pattern="(?=.*\d).{6,}" required>
 				<span style="color: red"><?php print $rpswdErr; ?></span>
@@ -97,7 +97,6 @@
 
 			<p><input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign Up"></p>
 			</fieldset>
-
 
 		</form>
 		<?php }//if
@@ -114,7 +113,7 @@
 				}//if
 			}//if
 		?>
-		Need to join/create a group? Click <a href="./signupGroup.php">here</a>.
+		<!--Need to join/create a group? Click <a href="./signupGroup.php">here</a>.-->
 		</div>
 		<script src="./ui.js"></script>
 	</body>
