@@ -77,13 +77,13 @@
 						 <input type="email" id="useremail" class="form-control"
 						 name="email" placeholder="Email address" autofocus required>
 						 <br>
-						 <label for="pw" class="sr-only"> Password </label>
-						 <input type="password" id="pw" name="pswd"
+						 <label for="pswd" class="sr-only"> Password </label>
+						 <input type="password" id="pswd" name="pswd"
 						 pattern="(?=.*\d).{6,}" class="form-control"
 						 placeholder="Password" required>
 
-						 <label for="rpw" class="sr-only"> Re-Enter Password </label>
-						 <input type="password" id="rpw" name="rpswd"
+						 <label for="rpswd" class="sr-only"> Re-Enter Password </label>
+						 <input type="password" id="rpswd" name="rpswd"
 						 pattern="(?=.*\d).{6,}" class="form-control"
 						 placeholder="Re-Enter Password" required>
 
