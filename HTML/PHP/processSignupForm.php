@@ -21,7 +21,6 @@
 			$pswdErr = validate($pswd, 'password');
 			if(!empty($pswdErr)){$hasErrors = true;}
 			else{
-					//echo "before pass is hashed";
 					//hashing function ** need to make sure this is being saved to DB
 					$hash = password_hash($pswd, PASSWORD_BCRYPT);
 					//echo "hash = ".$hash;
@@ -124,7 +123,7 @@
 	function dbCheck($data, $field){
 		switch($field){
 			case 'email': {
-				$sql = "SELECT * FROM user_info WHERE email = '$data'";
+				$sql = "SELECT * FROM user_info WHERE email = $data";
 
 				$result = mysqli_query($db, $sql);
 				$count = mysqli_num_rows($result);
