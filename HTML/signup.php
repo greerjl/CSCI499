@@ -59,6 +59,11 @@
 	<?php include './PHP/processSignupForm.php'; ?>
 
 	<?php if($_SERVER['REQUEST_METHOD']=="GET" || $hasErrors){
+		if($hasErrors){ ?>
+			<div class="alert alert-danger">
+				<strong>Error!</strong> User unable to sign up.
+			</div>
+		<?php }//if ?>
 				 <div class="content">
 						 <form id="SignUp" class="form-signin" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 						 <h2 class="form-signin-heading"> Sign Up </h2>
