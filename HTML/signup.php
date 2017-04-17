@@ -87,7 +87,7 @@
 						 <input type="password" id="pw" name="pswd"
 						 pattern="(?=.*\d).{6,}" class="form-control"
 						 placeholder="Password" required>
-						 
+
 						 <label for="rpw" class="sr-only"> Re-Enter Password </label>
 						 <input type="password" id="rpw" name="rpswd"
 						 pattern="(?=.*\d).{6,}" class="form-control"
@@ -96,9 +96,9 @@
 						 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 
 						 <!--Need to join/create a group? Click <a href="./signupGroup.php">here</a>.-->
+					 </div><!-- /.content -->
 	 </form>
 
-			 </div><!-- /.content -->
 		 </div><!--/.starter template -->
 	 </div> <!-- /.container -->
 	<footer class="footer">
@@ -115,9 +115,14 @@
           			$result = mysqli_query($db, $sql);
           			echo "result =".$result."\n";
 				if($result){
-					$url = htmlspecialchars('successfulSignup.php');
-					include './PHP/emailVerify.php';
-					header("Location: $url", true, 303);
+					//$url = htmlspecialchars('successfulSignup.php');
+					//include './PHP/emailVerify.php';
+					//header("Location: $url", true, 303);
+					<div class="alert alert-success">
+  					<strong>Success!</strong> Congratulations! You have successfully registered.
+						You should receive an account activation email shortly. Click on the link in the email to activate your account.
+						Then, login and start customizing your housing manager.
+					</div>
 					exit();
 				}//if
 			}//if

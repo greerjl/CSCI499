@@ -96,7 +96,6 @@
 	</form>
   <?php }	?>
 
-
       </div><!-- /.content -->
     </div><!--/.starter template -->
   </div> <!-- /.container -->
