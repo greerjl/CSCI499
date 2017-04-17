@@ -82,9 +82,9 @@
 						 <label for="email" class="sr-only"> Email </label>
 						 <input type="email" id="useremail" class="form-control"
 						 name="email" placeholder="Email address" autofocus required>
-
+						 <br>
 						 <label for="pw" class="sr-only"> Password </label>
-						 <input type="password" id="password" name="pswd"
+						 <input type="password" id="pw" name="pswd"
 						 pattern="(?=.*\d).{6,}" class="form-control"
 						 placeholder="Password" required>
 
