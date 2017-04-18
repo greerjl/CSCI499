@@ -82,7 +82,7 @@ error_reporting(E_ALL);
 						die('Error2: '.mysqli_error($db));
 					}
 					else{
-						echo "Chore successfully created and assigned!";
+						echo "Chore(s) successfully created and assigned!";
 					}
 				}
 		}
