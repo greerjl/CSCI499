@@ -82,46 +82,42 @@
 <!-- CHORES -->
             <h2 class="content-subhead">Your Chore: </h2>
             <p>
-              <?php
-                ini_set("display_errors", true);
-                error_reporting(E_ALL);
-                $user = $_SESSION["login_user"];
-                $sql = "SELECT title FROM user_info, chore WHERE user_info.UID = '$user' AND user_info.UID = chore.UID";
-                $result = mysqli_query($db, $sql);
+              <table>
+                <tr>
+                  <?php
+                    ini_set("display_errors", true);
+                    error_reporting(E_ALL);
+                    $user = $_SESSION["login_user"];
+                    $sql = "SELECT title FROM user_info, chore WHERE user_info.UID = '$user' AND user_info.UID = chore.UID";
+                    $result = mysqli_query($db, $sql);
 
-                $count = mysqli_num_rows($result);
-                //php end tag here
+                    $count = mysqli_num_rows($result);
+                    //php end tag here
 
-                if($count == 0){
-                  $emptyMessage = "You currently have no chores.";
-                }
-                else{
-                  while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                  echo "\t<tr>\n";
-                  foreach ($line as $col_value) {
-                    echo "\t\t<td>$col_value</td>\n";
-                  }//foreach
-                  echo "\t</tr>\n";
-                 }//while
-                 echo "</table>\n";
-                }//else
-              ?>
-                   <table>
-                     <tr><td>
-
-                    </td></tr>
-                  </table>
+                    if($count == 0){
+                      $emptyMessage = "You currently have no chores.";
+                      echo $emptyMessage;
+                    }
+                    else{
+                      while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                          foreach ($line as $col_value) {
+                              echo "\t\t<td>$col_value,   </td>";
+                          }//foreach
+                      }//while
+                     echo "</tr></table>\n";
+                    }//else
+                  ?>
+            </table>
             </p>
 <!-- TASKS -->
             <h2 class="content-subhead">Current Tasks: </h2>
             <p>
                    <table>
-                     <tr><td>
                         <?php
                           ini_set("display_errors", true);
                           error_reporting(E_ALL);
                         	$user = $_SESSION["login_user"];
-                          $sql = "SELECT title FROM user_info, task WHERE user_info.UID = '$user' AND user_info.UID = task.UID";
+                          $sql = "SELECT name FROM user_info, task WHERE user_info.UID = '$user' AND user_info.UID = task.UID";
                           $result = mysqli_query($db, $sql);
 
                           $count = mysqli_num_rows($result);
@@ -130,7 +126,6 @@
                             die('Error! '.mysqli_error($db));
                           }
                           else{
-                          	echo "<table>\n";
                           	while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                            	echo "\t<tr>\n";
                            	foreach ($line as $col_value) {
