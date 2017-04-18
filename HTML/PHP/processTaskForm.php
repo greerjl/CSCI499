@@ -70,6 +70,20 @@ error_reporting(E_ALL);	$tTitle = $tDesc = $username = $sql = "";
 					return "";
 				}
 			}//case username
-		}
-	}
+		}//switch
+	}//function validate
+
+	function sendData($task, $group){
+		if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
+					$sql = "INSERT INTO task (name, GID) VALUES ('$task','$gid')";
+					$result = mysqli_query($db, $sql);
+
+					if(!$result){
+						die('Error: ' . mysqli_error());
+					}
+					else{
+						echo "Task successfully created and assigned!";
+					}//ifelse
+		}//if
+	}//function sendData
 ?>
