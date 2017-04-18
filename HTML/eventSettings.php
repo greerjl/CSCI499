@@ -13,7 +13,7 @@
     <title>Profile Settings</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
     <!-- room form css -->
     <link href="../CSS/roomForm.css" rel="stylesheet">
 

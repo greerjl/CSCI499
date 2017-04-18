@@ -12,10 +12,8 @@
 	<link rel="stylesheet" type="text/css" href="../CSS/welcome.css"/> <!-- css -->
   <link rel="icon" href="../images/logo.png">
 
-  <!-- Custom CSS -->
-  <link href="../bootstrap/css/4-col-portfolio.css" rel="stylesheet">
   <!-- Bootstrap Core CSS -->
-  <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
     <!--[if lte IE 8]>
         <link rel="stylesheet" href="/combo/1.18.13?/css/layouts/side-menu-old-ie.css">
     <![endif]-->
@@ -50,7 +48,7 @@
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -62,7 +60,6 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-
                         <li>
                             <a href="./houseSettings.php">House</a>
                         </li>

@@ -10,8 +10,19 @@
     <meta name="author" content="Capstone" >
     <?php include '../../dbconnect.php'; ?>
     <title>Profile Settings</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="../bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript">
+      $(function()
+      {
+          $('#idbtn').click(function()
+          {
+              $('#idtxt').clone().attr('id', 'idtxt' + $(this).index()).insertAfter('#idtxt');
+          })
+      })
+    </script>
     <!-- Bootstrap Core CSS -->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
     <!-- room form css -->
     <link href="../CSS/roomForm.css" rel="stylesheet">
 
@@ -26,21 +37,11 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
-    <script type="text/javascript">
-      $(function()
-      {
-          $('#idbtn').click(function()
-          {
-              $('#idtxt').clone().attr('id', 'idtxt' + $(this).index()).insertAfter('#idtxt');
-          })
-      })
-    </script>
 </head>
 
 <body>
     <?php include '../../dbconnect.php'; ?>
-    <?php include './PHP/createRoom.php'; ?>
+    <?php include './PHP/createRoomForm.php'; ?>
 <div id="layout">
   <div id="main">
 
@@ -50,11 +51,11 @@
       </div>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top2" role="navigation">
+    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top2" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
