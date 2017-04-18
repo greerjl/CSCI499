@@ -9,9 +9,19 @@
     <meta name="description" content="">
     <meta name="author" content="Capstone" >
     <?php include '../../dbconnect.php'; ?>
-    <title>Profile Settings</title>
+    <title>My Dashboard</title>
+
+
+    <!-- scripts for dynamic buttons -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
-    <script src="../bootstrap/js/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script type="text/javascript">
       $(function()
       {
@@ -22,26 +32,16 @@
       })
     </script>
     <!-- Bootstrap Core CSS -->
-    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- room form css -->
     <link href="../CSS/roomForm.css" rel="stylesheet">
-
     <link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/> <!-- normalize -->
     <link rel="stylesheet" type="text/css" href="../CSS/psuedoWelcome.css"/> <!-- css -->
-
-    <!-- scripts for dynamic buttons -->
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body>
     <?php include '../../dbconnect.php'; ?>
-    <?php include './PHP/createRoomForm.php'; ?>
+    <?php include './PHP/createRoom.php'; ?>
 <div id="layout">
   <div id="main">
 
@@ -51,13 +51,11 @@
       </div>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top2" role="navigation">
-        <div class="container">
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -65,27 +63,15 @@
                 <a class="navbar-brand" href="./welcome.php">Dashboard</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-
-                    <li>
-                        <a href="./houseSettings.php">House</a>
-                    </li>
-                    <li>
-                        <a href="./choreSettings.php">Chores</a>
-                    </li>
-                    <li>
-                        <a href="./taskSettings.php">Tasks</a>
-                    </li>
-                    <li>
-                        <a href="./eventSettings.php">Events</a>
-                    </li>
-                    <li>
-                        <a href="#"> My Settings </a>
-                    </li>
-                    <li>
-                        <a href="./logout.php"> Logout </a>
-                    </li>
+                    <li class="active"><a href="./houseSettings.php">House</a></li>
+                    <li class="active"><a href="./choreSettings.php">Chores</a></li>
+                    <li class="active"><a href="./taskSettings.php">Tasks</a></li>
+                    <li class="active"><a href="./eventSettings.php">Events</a></li>
+                    <li class="active"><a href="#"> My Settings </a></li>
+                    <li><a href="./logout.php"> <span class="glyphicon glyphicon-log-out">
+                    </span>Logout</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
