@@ -60,24 +60,15 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li>
-                            <a href="./houseSettings.php">House</a>
-                        </li>
-                        <li>
-                            <a href="./choreSettings.php">Chores</a>
-                        </li>
-                        <li>
-                            <a href="./taskSettings.php">Tasks</a>
-                        </li>
-                        <li>
-                            <a href="./eventSettings.php">Events</a>
-                        </li>
-                        <li>
-                            <a href="#"> My Settings </a>
-                        </li>
-                        <li>
-                            <a href="./logout.php"> Logout </a>
-                        </li>
+                      <ul class="nav navbar-nav">
+                          <li><a href="./houseSettings.php">House</a></li>
+                          <li><a href="./choreSettings.php">Chores</a></li>
+                          <li><a href="./taskSettings.php">Tasks</a></li>
+                          <li><a href="./eventSettings.php">Events</a></li>
+                          <li><a href="#"> My Settings </a></li>
+                          <li><a href="./logout.php"> <span class="glyphicon glyphicon-log-out">
+                              </span>Logout </a></li>
+                      </ul>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
