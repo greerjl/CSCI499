@@ -77,16 +77,51 @@
         </nav>
 
         <div class="content">
+            <?php include '../../dbconnect.php';?>
+
+<!-- CHORES -->
             <h2 class="content-subhead">Your Chore: </h2>
             <p>
-					         <?php include '../../dbconnect.php';?>
+              <?php
+                ini_set("display_errors", true);
+                error_reporting(E_ALL);
+                $user = $_SESSION["login_user"];
+                $sql = "SELECT title FROM user_info, chore WHERE user_info.UID = '$user' AND user_info.UID = chore.UID";
+                $result = mysqli_query($db, $sql);
+
+                $count = mysqli_num_rows($result);
+                //php end tag here
+
+                if($count == 0){
+                  $emptyMessage = "You currently have no chores.";
+                }
+                else{
+                  while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                  echo "\t<tr>\n";
+                  foreach ($line as $col_value) {
+                    echo "\t\t<td>$col_value</td>\n";
+                  }//foreach
+                  echo "\t</tr>\n";
+                 }//while
+                 echo "</table>\n";
+                }//else
+              ?>
+                   <table>
+                     <tr><td>
+
+                    </td></tr>
+                  </table>
+            </p>
+<!-- TASKS -->
+            <h2 class="content-subhead">Current Tasks: </h2>
+            <p>
                    <table>
                      <tr><td>
                         <?php
                           ini_set("display_errors", true);
                           error_reporting(E_ALL);
                         	$user = $_SESSION["login_user"];
-                          $sql = "SELECT title FROM user_info, chore WHERE user_info.UID = '$user' AND user_info.UID = chore.UID";
+                          $sql = "SELECT title FROM user_info, task WHERE user_info.UID = '$user' AND user_info.UID = task.UID";
                           $result = mysqli_query($db, $sql);
 
                           $count = mysqli_num_rows($result);
@@ -110,12 +145,14 @@
                   </table>
             </p>
 
-            <h2 class="content-subhead">Your schedule: </h2>
+<!-- EVENTS/SCHEDULE -->
+            <h2 class="content-subhead">House schedule: </h2>
             <p>
-	<iframe src="https://calendar.google.com/calendar/embed?title=My%20Calendar&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=greerjl%40plu.edu&amp;color=%2329527A&amp;ctz=America%2FLos_Angeles" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-	</p>
+	          <iframe src="https://calendar.google.com/calendar/embed?title=My%20Calendar&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=greerjl%40plu.edu&amp;color=%2329527A&amp;ctz=America%2FLos_Angeles"
+                  style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+	          </p>
 
-        </div>
+        </div><!-- content -->
     </div>
 </div>
 <footer>

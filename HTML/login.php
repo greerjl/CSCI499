@@ -10,6 +10,7 @@
     <meta name="author" content="">
     <link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/>
     <link rel="stylesheet" type="text/css" href="../CSS/login.css"/>
+    <link rel="stylesheet" type="text/css" href="../CSS/psuedoWelcome.css"/>
     <link rel="icon" href="../images/logo.png">
 
     <title>Login</title>
@@ -41,20 +42,15 @@
      <div class="navbar-header">
        <a class="navbar-brand" href="../index.html"> Home Utilities Manager </a>
      </div>
-     <div id="navbar" class="collapse navbar-collapse">
-       <ul class="nav navbar-nav">
-         <li class="active"><a href="../index.html">Home</a></li>
-       </ul>
-     </div><!--/.nav-collapse -->
    </div><!--./container -->
  </nav>
       <div class="container">
 
       <div class="starter-template">
-        <div class="page-header">
-            <h1>Home Utilities Manager</h1>
-            <h3> An application housing all your home management needs.</h2>
-        </div><!-- /.page-header-->
+        <div class="header">
+          <h1>Home Utilities Manager</h1>
+          <h2>An application housing all your home management needs. </h2>
+        </div><!-- header -->
 <?php echo $flag?>
 
 	<?php require_once('./PHP/processLoginForm.php'); ?>
@@ -86,7 +82,7 @@
             </div> <!--End checkbox -->
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 
-      Don't have an account? <a href="./signup.php"> Sign up</a>
+            Don't have an account? <a href="./signup.php"> Sign up </a>
 	</form>
   <?php }	?>
 

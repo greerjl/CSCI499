@@ -8,7 +8,8 @@
 		<link rel="stylesheet" href="../CSS/pure-min.css"/>
 		<link rel="stylesheet" type="text/css" href="../CSS/normalize.css">
 		<link rel="stylesheet" type="text/css" href="../CSS/signup.css"/>
-		<link rel="icon" href="../images/logo.png">
+		<link rel="icon" href="../images/logo.png"/>
+		<link rel="stylesheet" type="text/css" href="../CSS/psuedoWelcome.css"/>
 
 		<title>Signup</title>
 		<!-- bootstrap -->
@@ -45,20 +46,15 @@
 			<div class="navbar-header">
 				<a class="navbar-brand" href="../index.html"> Home Utilities Manager </a>
 			</div>
-			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="../index.html">Home</a></li>
-				</ul>
-			</div><!--/.nav-collapse -->
 		</div><!--./container -->
 	</nav>
-			 <div class="container">
 
+			 <div class="container">
 			 <div class="starter-template">
-				 <div class="page-header">
-						 <h1>Home Utilities Manager</h1>
-						 <h3> An application housing all your home management needs.</h2>
-				 </div><!-- /.page-header-->
+				 <div class="header">
+	 	        <h1>Home Utilities Manager</h1>
+	 	        <h2>An application housing all your home management needs. </h2>
+	 	     </div><!-- header -->
 
 	<?php include '../../dbconnect.php'; ?>
 	<?php include './PHP/processSignupForm.php'; ?>
@@ -75,19 +71,20 @@
 
 						 <label for="email" class="sr-only"> Email </label>
 						 <input type="email" id="useremail" class="form-control"
-						 name="email" placeholder="Email address" autofocus required>
-						 <br>
+						 		name="email" placeholder="Email address" autofocus required/>
+
 						 <label for="pswd" class="sr-only"> Password </label>
 						 <input type="password" id="pswd" name="pswd"
-						 pattern="(?=.*\d).{6,}" class="form-control"
-						 placeholder="Password" required>
+						 		pattern="(?=.*\d).{6,}" class="form-control"
+						 		placeholder="Password" required/>
 
 						 <label for="rpswd" class="sr-only"> Re-Enter Password </label>
 						 <input type="password" id="rpswd" name="rpswd"
-						 pattern="(?=.*\d).{6,}" class="form-control"
-						 placeholder="Re-Enter Password" required>
+						 		pattern="(?=.*\d).{6,}" class="form-control"
+						 		placeholder="Re-Enter Password" required/>
 
 						 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+						 Already have an account? <a href="./login.php"> Log in </a>
 
 						 <!--Need to join/create a group? Click <a href="./signupGroup.php">here</a>.-->
 	 </form>

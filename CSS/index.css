@@ -13,6 +13,11 @@ body {
     font-size: 13px;
 }
 
+button.login-button {
+  background: #1f8dd6;
+  border: 0px;
+}
+
 h1,
 h2,
 h3,

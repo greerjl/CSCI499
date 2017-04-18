@@ -1,18 +1,13 @@
 <?php
 ini_set("display_errors", true);
-error_reporting(E_ALL);	$tTitle = $tDesc = $username = $sql = "";
-	$titleErr = $descErr = $uidErr = "";
+error_reporting(E_ALL);	$tTitle = $username = $sql = "";
+	$titleErr = $uidErr = "";
 	$hasErrors = false;
 
 	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
 		$tTitle = cleanData($_POST['title']);
 			$titleErr = validate($tTitle, 'tTitle');
 			if(!empty($titleErr)){
-				$hasErrors = true;
-			}//if
-		$tDesc = cleadData($_POST['description']);
-			$descErr = validate($tDesc, 'tDesc');
-			if(!empty($descErr)){
 				$hasErrors = true;
 			}//if
 		$username = cleanData($_POST['username']);
@@ -46,17 +41,6 @@ error_reporting(E_ALL);	$tTitle = $tDesc = $username = $sql = "";
 					return "";
 				}
 			}//case eTitle
-			case 'tDesc':{
-				if(strlen($data) > 140){
-					return "Description is too long.";
-				}
-				elseif(strlen($data) == 0){
-					return "Must have some description of the chore.";
-				}
-				else{
-					return "";
-				}
-			}//case eDesc
 			case 'username':{
 				$data = strtolower($data);
 				$sql = "SELECT UID FROM user_info WHERE username = '$data'"/* AND GID = '$gid'"*/;
