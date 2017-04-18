@@ -6,7 +6,6 @@
 	$email = $pswd = $rpswd = "";
 	$sql = ""; $hash = "";
 	$emailErr = $pswdErr = $rpswdErr = $dbErr = "";
-	$db = $GLOBALS['db'];
 	$hasErrors = false;
 
 	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
@@ -14,9 +13,9 @@
 		/*USER CREDENTIALS*/
 		$email = cleanData($_POST['email']);
 			$emailErr = validate($email, 'email');
-			if(!empty($emailErr)){ $hasErrors = true;}//if
+			if(!empty($emailErr)) $hasErrors = true;
 			$dbErr = dbCheck($email, 'email');
-			if(!empty($dbErr)){ $hasErrors = true;}//if
+			if(!empty($dbErr)) $hasErrors = true;
 
 		$pswd = cleanData($_POST['pswd']);
 			$pswdErr = validate($pswd, 'password');
@@ -24,6 +23,7 @@
 			else{
 					//hashing function ** need to make sure this is being saved to DB
 					$hash = password_hash($pswd, PASSWORD_BCRYPT);
+					//echo "hash = ".$hash;
 			}//else
 
 		$rpswd = cleanData($_POST['rpswd']);
@@ -122,20 +122,17 @@
 	function dbCheck($data, $field){
 		switch($field){
 			case 'email': {
-				$sql = "SELECT email FROM user_info WHERE email = '$data'";	
-				
-				$result = mysqli_query($db, $sql);
+				$sql = "SELECT email FROM user_info WHERE email = $data";
+
+				$result = mysqli_query($GLOBALS['db'], $sql);
 				$count = mysqli_num_rows($result);
-				
-				if($count == 1){
+
+				if($count != 0){
 					return "This email has already been registered.";
 				}//if
-				elseif($count == 0){
-					return "";
-				}//elseif
 				else{
-					die('Error: '.mysqli_error($db));
-				}//else
+					return "";
+				}//ifelse
 				return "";
 			}//case email
 
