@@ -89,8 +89,7 @@
                     <small>Add rooms, invite members, or move out.</small>
                 </h1>
             </div>
-        </div>
-        <!-- /.row -->
+        </div><!-- /.row -->
 
         <div class="container">
 	         <div class="row">
@@ -129,9 +128,9 @@
         </div><!-- container -->
 
         <hr>
-                  <h4 class="heading"><strong>Ready to Move Out?<strong> <span></span></h4>
-		  <form action="" method="POST" id="leaveGroupForm" name="leaveGroupForm">
-                      <input type="submit" value="Leave Group" name="submit" class="txt2">
+        <h4 class="heading"><strong>Ready to Move Out?<strong> <span></span></h4>
+		    <form action="" method="POST" id="leaveGroupForm" name="leaveGroupForm">
+        <input type="submit" value="Leave Group" name="submit" class="txt2">
 		  </form><!-- action = "./PHP/leaveGroup.php" or something like that -->
 
         <hr>
