@@ -14,8 +14,8 @@
 		$email = cleanData($_POST['email']);
 			$emailErr = validate($email, 'email');
 			if(!empty($emailErr)) $hasErrors = true;
-			//$dbErr = dbCheck($email, 'email');
-			//if(!empty($dbErr)) $hasErrors = true;
+			$dbErr = dbCheck($email, 'email');
+			if(!empty($dbErr)) $hasErrors = true;
 
 		$pswd = cleanData($_POST['pswd']);
 			$pswdErr = validate($pswd, 'password');
@@ -122,7 +122,7 @@
 	function dbCheck($data, $field){
 		switch($field){
 			case 'email': {
-				$sql = "SELECT * FROM user_info WHERE email = $data";	
+				$sql = "SELECT email FROM user_info WHERE email = $data";	
 				
 				$result = mysqli_query($GLOBALS['db'], $sql);
 				$count = mysqli_num_rows($result);

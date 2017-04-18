@@ -14,8 +14,8 @@
 		$email = cleanData($_POST['email']);
 			$emailErr = validate($email, 'email');
 			if(!empty($emailErr)) $hasErrors = true;
-			$dbErr = dbCheck($email, 'email');
-			if(!empty($dbErr)) $hasErrors = true;
+			//$dbErr = dbCheck($email, 'email');
+			//if(!empty($dbErr)) $hasErrors = true;
 
 		$pswd = cleanData($_POST['pswd']);
 			$pswdErr = validate($pswd, 'password');
@@ -126,6 +126,7 @@
 				
 				$result = mysqli_query($GLOBALS['db'], $sql);
 				$count = mysqli_num_rows($result);
+				
 				if($count == 0){
 					return "This email has already been registered.";
 				}//if
