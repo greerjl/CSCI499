@@ -50,41 +50,6 @@
         <h2>An application housing all your home management needs. </h2>
       </div>
 
-
-      <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">WebSiteName</a>
-          </div>
-          <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Page 1-1</a></li>
-                  <li><a href="#">Page 1-2</a></li>
-                  <li><a href="#">Page 1-3</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Page 2</a></li>
-              <li><a href="#">Page 3</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
-
-
     <!-- Navigation -->
     <nav class="navbar navbar-inverse" role="navigation">
         <div class="container-fluid">
@@ -100,11 +65,11 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="./houseSettings.php">House</a></li>
-                    <li class="active"><a href="./choreSettings.php">Chores</a></li>
-                    <li class="active"><a href="./taskSettings.php">Tasks</a></li>
-                    <li class="active"><a href="./eventSettings.php">Events</a></li>
-                    <li class="active"><a href="#"> My Settings </a></li>
+                    <li><a href="./houseSettings.php">House</a></li>
+                    <li><a href="./choreSettings.php">Chores</a></li>
+                    <li><a href="./taskSettings.php">Tasks</a></li>
+                    <li><a href="./eventSettings.php">Events</a></li>
+                    <li><a href="#"> My Settings </a></li>
                     <li><a href="./logout.php"> <span class="glyphicon glyphicon-log-out">
                     </span>Logout</a></li>
                 </ul>
