@@ -127,7 +127,7 @@
 				$result = mysqli_query($GLOBALS['db'], $sql);
 				$count = mysqli_num_rows($result);
 
-				if($count != 0){
+				if(!$result || mysqli_num_rows($result) != 0){
 					return "This email has already been registered.";
 				}//if
 				else{
