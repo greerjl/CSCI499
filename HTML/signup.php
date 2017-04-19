@@ -103,7 +103,7 @@
 					$sql = "INSERT INTO user_info (username, password, email, accesskey) VALUES ('$username','$hash', '$email', '$accesscode')";
           			$result = mysqli_query($db, $sql);
 								if($result){
-					include './PHP/phpmailer.php';
+					//include './PHP/phpmailer.php';
 		?>
 					<div class="alert alert-success">
 						<strong>Congratulations!</strong> You have successfully registered.
