@@ -101,7 +101,7 @@
 			if($_SERVER['REQUEST_METHOD']=="POST" && !$hasErrors){
 					//echo "username = ".$username."; password hash = ".$hash."; email = ".$email."; \n";
 					$accesscode = uniqid();
-					printf("uniqid(): %s\r\n", $accesscode;
+					printf("uniqid(): %s\r\n", $accesscode);
 					$sql = "INSERT INTO user_info (username, password, email, accesskey) VALUES ('$username','$hash', '$email', $accesscode)";
           			$result = mysqli_query($db, $sql);
 								if($result){
