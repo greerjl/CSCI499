@@ -62,7 +62,7 @@
 	<?php if($_SERVER['REQUEST_METHOD']=="GET" || $hasErrors){
 		if($hasErrors){ ?>
 			<div class="alert alert-danger">
-				<strong>Error!</strong> Unable to sign up user.
+				<strong>Error!</strong> User email already exists.
 			</div>
 		<?php }//if ?>
 				 <div class="content">
