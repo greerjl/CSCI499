@@ -40,7 +40,7 @@
 
     <div id="main">
         <div class="header">
-            <h1>Home Utilities Manager</h1>
+            <h1>House Utilities Manager</h1>
             <h2>An application housing all your home management needs. </h2>
         </div>
 
