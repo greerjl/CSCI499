@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<?php session_start(); ?>
-<?php require_once("./PHP/functions.php");
-//if($_SESSION["valid"]==true){?>
+<?php session_start();
+include '../../dbconnect.php';
+require_once("./PHP/functions.php");
+if($_SESSION["valid"]==true){?>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -77,7 +78,6 @@
         </nav>
 
         <div class="content">
-            <?php include '../../dbconnect.php';?>
 
 <!-- CHORES -->
             <h2 class="content-subhead">Your Chore: </h2>
@@ -163,4 +163,7 @@
 
 </body>
 </html>
-<?php // }//if ?>
+<?php }//if
+else{
+  redirect("./login.php");
+}?>

@@ -56,14 +56,14 @@
 	<?php require_once('./PHP/processLoginForm.php'); ?>
 
         <?php if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
-        		if($hasErrors){ ?>
+        		if($_SESSION["loginErr"] == true){ ?>
         			<div class="alert alert-danger">
         				<strong>Error!</strong> User credentials are incorrect. Enter correct username and password.
         			</div>
         		<?php }//if ?>
 
         <div class="content">
-            <form id="LogIn" class="form-signin" method="POST" action="./PHP/processLoginForm.php">
+          <form id="LogIn" class="form-signin" method="POST" action="./PHP/processLoginForm.php">
             <h2 class="form-signin-heading"> Log In </h2>
 
             <label for="username" class="sr-only"> Email address </label>
@@ -75,15 +75,16 @@
             pattern="(?=.*\d).{6,}" class="form-control"
             placeholder="Password" required>
 
-            <div class="checkbox">
+            <!-- <div class="checkbox">
               <label>
                 <input type="checkbox" value="remember-me"> Remember me
               </label>
-            </div> <!--End checkbox -->
+            </div> -->
+
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 
             Don't have an account? <a href="./signup.php"> Sign up </a>
-	</form>
+	        </form>
   <?php }	?>
 
       </div><!-- /.content -->

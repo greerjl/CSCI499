@@ -47,13 +47,12 @@
 				$_SESSION["valid"] = true;
 				$_SESSION["gid"] = $GID;
 	    	$_SESSION["timeout"] = time() + 300;
-				//echo "validated";
 				redirect("../welcome.php");
 			}//if
 		} else {
-			$hasErrors = true;
-			echo "HAS ERRORS";
-			//redirect("../login.php");
+			$_SESSION["loginErr"] = true;
+			echo $_SESSION["loginErr"];
+			redirect("../login.php");
 		}//ifelse
 	}//POST if
 
