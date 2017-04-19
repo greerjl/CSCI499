@@ -1,6 +1,6 @@
 <?php
 require '../PHPMailer/PHPMailerAutoload.php';
-include './processSignupForm.php';
+include 'processSignupForm.php';
 $mail = new PHPMailer;
 $mail->setFrom('HouseUtilitiesManager@gmail.com', 'HUM');
 
