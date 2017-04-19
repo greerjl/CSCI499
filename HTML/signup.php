@@ -99,16 +99,11 @@
 
 		<?php }//if
 			if($_SERVER['REQUEST_METHOD']=="POST" && !$hasErrors){
-					//echo "username = ".$username."; password hash = ".$hash."; email = ".$email."; \n";
 					$accesscode = uniqid();
-					printf("uniqid(): %s\r\n", $accesscode);
 					$sql = "INSERT INTO user_info (username, password, email, accesskey) VALUES ('$username','$hash', '$email', '$accesscode')";
           			$result = mysqli_query($db, $sql);
 								if($result){
-					//$url = htmlspecialchars('successfulSignup.php');
-					//include './PHP/phpmailer.php';
-					//header("Location: $url", true, 303);
-					echo "ummm hello";
+					include './PHP/phpmailer.php';
 		?>
 					<div class="alert alert-success">
 						<strong>Congratulations!</strong> You have successfully registered.
