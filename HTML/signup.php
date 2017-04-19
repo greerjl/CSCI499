@@ -106,19 +106,17 @@
           			$result = mysqli_query($db, $sql);
 								if($result){
 					//$url = htmlspecialchars('successfulSignup.php');
-					//include './PHP/emailVerify.php';
+					include './PHP/phpmailer.php';
 					//header("Location: $url", true, 303);
-					echo "aloha";
+					echo "ummm hello";
 		?>
 					<div class="alert alert-success">
 						<strong>Congratulations!</strong> You have successfully registered.
 						You should receive an account activation email shortly. Click on the link in the email to activate your account.
 					</div>
-					alert("my debug text");
 		<?php
 								}//if
 			}//if
-			echo "are we here yet?";
 		?>
 		<footer class="footer">
 		 <div class="container">
