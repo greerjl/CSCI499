@@ -106,7 +106,7 @@
           			$result = mysqli_query($db, $sql);
 								if($result){
 					//$url = htmlspecialchars('successfulSignup.php');
-					include './PHP/phpmailer.php';
+					//include './PHP/phpmailer.php';
 					//header("Location: $url", true, 303);
 					echo "ummm hello";
 		?>
