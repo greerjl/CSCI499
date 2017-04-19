@@ -1,5 +1,5 @@
 <?php
-require './../../PHPMailer/PHPMailerAutoload.php';
+require '../PHPMailer/PHPMailerAutoload.php';
 include './processSignupForm.php';
 $mail = new PHPMailer;
 $mail->setFrom('HouseUtilitiesManager@gmail.com', 'HUM');
