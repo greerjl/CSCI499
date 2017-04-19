@@ -99,19 +99,20 @@
 
 		<?php }//if
 			if($_SERVER['REQUEST_METHOD']=="POST" && !$hasErrors){
-					echo "username = ".$username."; password hash = ".$hash."; email = ".$email."; \n";
-        	$sql = "INSERT INTO user_info (username, password, email) VALUES ('$username','$hash', '$email')";
+					//echo "username = ".$username."; password hash = ".$hash."; email = ".$email."; \n";
+					$accesscode = uniqid();
+					printf("uniqid(): %s\r\n", $accesscode;
+					$sql = "INSERT INTO user_info (username, password, email, accesskey) VALUES ('$username','$hash', '$email', $accesscode)";
           			$result = mysqli_query($db, $sql);
 								if($result){
 					//$url = htmlspecialchars('successfulSignup.php');
 					//include './PHP/emailVerify.php';
 					//header("Location: $url", true, 303);
 		?>
-									<div class="alert alert-success">
-										<strong>Success!</strong> Congratulations! You have successfully registered.
-											You should receive an account activation email shortly. Click on the link in the email to activate your account.
-											Then, login an start customizing your housing manager.
-									</div>
+					<div class="alert alert-success">
+						<strong>Congratulations!</strong> You have successfully registered.
+						You should receive an account activation email shortly. Click on the link in the email to activate your account.
+					</div>
 		<?php
 								}//if
 			}//if

@@ -40,6 +40,8 @@
 				$myusername = $obj->UID;
 				$GID = $obj->GID;
 				/*end block*/
+
+				/* NEED TO SET SESSION ID FIRST USE PHPs session_id()*/
     		session_start();
 				$_SESSION["login_user"] = $myusername;
 				$_SESSION["valid"] = true;
