@@ -3,7 +3,7 @@
 	ini_set("display_errors", true);
 	error_reporting(E_ALL);
 
-	$email = $pswd = $rpswd = "";
+	$email = $pswd = $rpswd = $username = "";
 	$sql = ""; $hash = "";
 	$emailErr = $pswdErr = $rpswdErr = $dbErr = "";
 	$hasErrors = false;
@@ -17,13 +17,13 @@
 			$dbErr = dbCheck($email, 'email');
 			if(!empty($dbErr)) $hasErrors = true;
 
+		$username = cleanData($_POST['username']);
+
 		$pswd = cleanData($_POST['pswd']);
 			$pswdErr = validate($pswd, 'password');
 			if(!empty($pswdErr)){$hasErrors = true;}
 			else{
-					//hashing function ** need to make sure this is being saved to DB
 					$hash = password_hash($pswd, PASSWORD_BCRYPT);
-					//echo "hash = ".$hash;
 			}//else
 
 		$rpswd = cleanData($_POST['rpswd']);
@@ -136,17 +136,7 @@
 				return "";
 			}//case email
 
-			/*case 'username': {
-				$sql = "SELECT * FROM user_info WHERE username = '$data'";
-				$result = mysqli_query($db, $sql);
-
-				$count = mysqli_num_rows($result);
-				if($count == 1){
-					return "This username has already been registered."
-				}//if
-			}//case username
-
-
+			/*
 			case 'groupnameC': {
 				$sql = "SELECT * FROM group_info WHERE group_name = '$groupnameC'";
 

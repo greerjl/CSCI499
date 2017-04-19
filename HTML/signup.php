@@ -41,20 +41,20 @@
 	</head>
 
 	<body data-gr-c-s-loaded="true">
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="../index.html"> Home Utilities Manager </a>
-			</div>
-		</div><!--./container -->
-	</nav>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="../index.html"> Home Utilities Manager </a>
+				</div>
+			</div><!--./container -->
+		</nav>
 
-			 <div class="container">
-			 <div class="starter-template">
-				 <div class="header">
-	 	        <h1>Home Utilities Manager</h1>
-	 	        <h2>An application housing all your home management needs. </h2>
-	 	     </div><!-- header -->
+		<div class="container">
+			<div class="starter-template">
+				<div class="header">
+	 	    	<h1>Home Utilities Manager</h1>
+	 	      <h2>An application housing all your home management needs. </h2>
+	 	    </div><!-- header -->
 
 	<?php include '../../dbconnect.php'; ?>
 	<?php include './PHP/processSignupForm.php'; ?>
@@ -72,6 +72,10 @@
 						 <label for="email" class="sr-only"> Email </label>
 						 <input type="email" id="useremail" class="form-control"
 						 		name="email" placeholder="Email address" autofocus required/>
+
+						 <label for="username" class="sr-only"> Username </label>
+						 <input type="username" id="username" class="form-control"
+							  name="username" placeholder="Username" autofocus required/>
 
 						 <label for="pswd" class="sr-only"> Password </label>
 						 <input type="password" id="pswd" name="pswd"
@@ -95,8 +99,8 @@
 
 		<?php }//if
 			if($_SERVER['REQUEST_METHOD']=="POST" && !$hasErrors){
-					echo "username = ".$email."; password hash = ".$hash."; email = ".$email."; \n";
-        	$sql = "INSERT INTO user_info (username, password, email) VALUES ('$email','$hash', '$email')";
+					echo "username = ".$username."; password hash = ".$hash."; email = ".$email."; \n";
+        	$sql = "INSERT INTO user_info (username, password, email) VALUES ('$username','$hash', '$email')";
           			$result = mysqli_query($db, $sql);
           			echo "result =".$result."\n";
 				if($result){
