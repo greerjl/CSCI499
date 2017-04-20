@@ -30,20 +30,20 @@
 		//$booltest = password_verify($mypassword, $dbpassword);
 
 		//if statement to allow login and start session if account exists and password is correct
-		if(password_verify($mypassword,$dbpassword )){
+		if(password_verify($mypassword,$dbpassword)){
 			$sql = "SELECT UID, GID FROM user_info WHERE username = '$myusername'";
 			$result = mysqli_query($db, $sql);
 			$count = mysqli_num_rows($result);
 			if($count == 1){
 				/*this block splits up the result from sql into uid and gid*/
 				$obj = mysqli_fetch_object($result);
-				$myusername = $obj->UID;
+				$myuid = $obj->UID;
 				$GID = $obj->GID;
 				/*end block*/
 
 				/* NEED TO SET SESSION ID FIRST USE PHPs session_id()*/
     		session_start();
-				$_SESSION["login_user"] = $myusername;
+				$_SESSION["login_user"] = $myuid; //session variable is the user's UID
 				$_SESSION["valid"] = true;
 				$_SESSION["gid"] = $GID;
 	    	$_SESSION["timeout"] = time() + 300;

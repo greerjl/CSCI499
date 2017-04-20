@@ -75,8 +75,6 @@
 
 						 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
 						 Already have an account? <a href="./login.php"> Log in </a>
-
-						 Need to join/create a group? Click <a href="./signupGroup.php">here</a>.
 	 </form>
 
 			 </div><!-- /.content -->
