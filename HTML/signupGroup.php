@@ -69,19 +69,18 @@
 						 <form id="SignUp" class="form-signin" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 						 <h2 class="form-signin-heading"> Sign Up </h2>
 
-						 <input type="email" id="useremail" class="form-control"
-						 		name="email" placeholder="Group Name to Join" autofocus required/>
+						 <input type="text" id="gnameJ" class="form-control"
+						 		name="groupnameJ" placeholder="Group Name to Join" autofocus/>
 
-						 <label for="username" class="sr-only"> Username </label>
-						 <input type="username" id="username" class="form-control"
-							  name="username" placeholder="Username" autofocus required/>
+						 <input type="text" id="acode" class="form-control"
+						 		name="accesscode" placeholder="Accesscode"/>
 
-						 <label for="pswd" class="sr-only"> Password </label>
-						 <input type="password" id="pswd" name="pswd"
-						 		pattern="(?=.*\d).{6,}" class="form-control"
-						 		placeholder="Password" required/>
+						 <input type="text" id="gnameC" class="form-control"
+						 		name="groupnameC" placeholder="Group Name to Create"/>
 
-						 <label for="rpswd" class="sr-only"> Re-Enter Password </label>
+
+						 <input type="email" id="members" class="form-control"
+						 		name="groupmembers" placeholder="">
 						 <input type="password" id="rpswd" name="rpswd"
 						 		pattern="(?=.*\d).{6,}" class="form-control"
 						 		placeholder="Re-Enter Password" required/>

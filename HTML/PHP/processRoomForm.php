@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 
 	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
 		$roomName = cleanData($_POST['room1']); //will need to fix when js increments name for added boxes
-			$roomErr = validate($roomName, 'room');
+			$roomErr = validate($roomName, 'room1');
 			if(!empty($roomErr)){
 				$hasErrors = true;
 			}//if

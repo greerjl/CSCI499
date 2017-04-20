@@ -2,6 +2,10 @@
 <html lang="en">
 <?php include '../../dbconnect.php';
 require_once("./PHP/functions.php");
+include './PHP/processRoomForm.php';
+//include 'processGroupNameFrom.php';
+//include 'processInviteMemForm.php';
+
 session_start();
 if($_SESSION["valid"]==true){?>
 <head>
@@ -10,7 +14,7 @@ if($_SESSION["valid"]==true){?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Capstone" >
+    <meta name="author" content="Server" >
 
     <title>My Dashboard</title>
 
@@ -43,8 +47,7 @@ if($_SESSION["valid"]==true){?>
 </head>
 
 <body>
-    <?php include '../../dbconnect.php'; ?>
-    <?php include './PHP/createRoom.php'; ?>
+
 <div id="layout">
   <div id="main">
 
@@ -72,7 +75,7 @@ if($_SESSION["valid"]==true){?>
                     <li><a href="./choreSettings.php">Chores</a></li>
                     <li><a href="./taskSettings.php">Tasks</a></li>
                     <li><a href="./eventSettings.php">Events</a></li>
-                    <li><a href="#"> My Settings </a></li>
+                    <li><a href="./userSettings.php"> My Settings </a></li>
                     <li><a href="./logout.php"> <span class="glyphicon glyphicon-log-out">
                     </span>Logout</a></li>
                 </ul>
@@ -96,14 +99,45 @@ if($_SESSION["valid"]==true){?>
 
         <div class="container">
 	         <div class="row">
+
              <div class="col-md-4">
-                <?php require_once('../../dbconnect.php'); ?>
-                <?php require_once('./PHP/createRoom.php'); ?>
+              <div class="form_main">
+                 <h4 class="heading"><strong>Create Group Name</strong> <span></span></h4>
+                 <div class="form">
+                   <form action="" method="POST" id="groupNameForm" name="groupNameForm">
+                     <input type="text" id="idtxt" required="" name="room" class="txt"
+                          <?php
+                            $userID = $_SESSION["login_user"];
+                            $sql = "SELECT GID FROM sys.user_info WHERE UID = '$userID'";
+                            $result = mysqli_query($db, $sql);
+                            $obj = mysqli_fetch_object($result);
+                            $userGID = $obj->GID;
+                            if($userGID == '0'){
+                          ?>
+                          placeholder="Enter New Group Name"/>
+                          <?php }//if
+                            else {
+                              $userGroupID = $_SESSION["gid"];
+                              $sql2 = "SELECT group_name FROM sys.group_info, sys.user_info WHERE group_info.GID = '$userGroupID'";
+                              $result2 = mysqli_query($db, $sql2);
+                              $obj = mysqli_fetch_object($result2);
+                              $gname = $obj->group_name;
+                          ?>
+                              value="<?php echo $gname ?>"/>
+                          <?php  }//else ?>
+                     <br><br>
+                     <input type="submit" value="Submit" name="submit" class="txt2">
+                   </form>
+                 </div>
+              </div>
+            </div>
+
+             <div class="col-md-4">
 
                 <div class="form_main">
                    <h4 class="heading"><strong>Add Rooms</strong> <span></span></h4>
                    <div class="form">
-                     <form action="./PHP/createRoom.php" method="POST" id="roomForm" name="roomForm">
+                     <form action="./PHP/processRoomForm.php" method="POST" id="roomForm" name="roomForm">
                        <input type="text" id="idtxt" required="" placeholder="Add Room" value="" name="room1" class="txt">
 
                        <input type="button" id="idbtn" value="Add Room" />
@@ -112,10 +146,15 @@ if($_SESSION["valid"]==true){?>
                      </form>
                   </div>
                 </div>
-            </div>
+              </div>
 
-					<div class="col-md-4">
+					    <div class="col-md-4">
 		            <div class="form_main">
+                  <?php
+                    //sql statement that selects gid for logged in user
+                    //if gid != 0 then display this form
+                    //otherwise display bootstrap banner saying "must create group before inviting members"
+                  ?>
                   <h4 class="heading"><strong>Invite Members</strong> <span></span></h4>
                   <div class="form">
                     <form action="" method="POST" id="inviteForm" name="inviteForm">
