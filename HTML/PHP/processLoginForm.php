@@ -11,15 +11,15 @@
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		//username and password sent from form
-		$myusername = mysqli_real_escape_string($db, $_POST['usnm']);
+		$myemail = mysqli_real_escape_string($db, $_POST['useremail']);
 		//echo $myusername."\n";
-		$myusername = cleanData($myusername);
+		$myemail = cleanData($myemail);
 		$mypassword = mysqli_real_escape_string($db, $_POST['pswd']);
 		//echo $mypassword."\n";
 		$mypassword = cleanData($mypassword);
 
 		//Database queries
-		$sqlPswd = "SELECT password, Verified FROM user_info WHERE username= '$myusername'";//grab stored hashed password
+		$sqlPswd = "SELECT password, Verified FROM user_info WHERE email= '$myemail'";//grab stored hashed password
 
 		/*get the hashed password from the db in form of a string*/
 		$sqlResult = mysqli_query($db, $sqlPswd);
@@ -32,7 +32,7 @@
 
 		//if statement to allow login and start session if account exists and password is correct
 		if(password_verify($mypassword, $dbpassword) && $dbVerified=='true'){
-			$sql = "SELECT UID, GID FROM user_info WHERE email = '$myusername'";
+			$sql = "SELECT UID, GID FROM user_info WHERE email = '$myemail'";
 			$result = mysqli_query($db, $sql);
 			$count = mysqli_num_rows($result);
 

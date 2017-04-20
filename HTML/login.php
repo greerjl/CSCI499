@@ -67,7 +67,7 @@
             <h2 class="form-signin-heading"> Log In </h2>
 
             <input type="email" id="email" class="form-control"
-            name="usnm" placeholder="Email address" autofocus required>
+            name="useremail" placeholder="Email address" autofocus required>
 
             <input type="password" id="password" name="pswd"
             pattern="(?=.*\d).{6,}" class="form-control"
