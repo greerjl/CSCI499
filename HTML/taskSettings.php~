@@ -10,7 +10,7 @@ if($_SESSION["valid"]==true){?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Server" >
+    <meta name="author" content="">
 
 
     <title>Profile Settings</title>
@@ -72,7 +72,7 @@ if($_SESSION["valid"]==true){?>
                       <li><a href="./choreSettings.php">Chores</a></li>
                       <li><a href="./taskSettings.php">Tasks</a></li>
                       <li><a href="./eventSettings.php">Events</a></li>
-                      <li><a href="./userSettings.php"> My Settings </a></li>
+                      <li><a href="#"> My Settings </a></li>
                       <li><a href="./logout.php"> <span class="glyphicon glyphicon-log-out">
                           </span>Logout </a></li>
                   </ul>
@@ -89,63 +89,31 @@ if($_SESSION["valid"]==true){?>
         <!-- Page Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">User Settings
-                    <small>Change Password, User Alias</small>
+                <h1 class="page-header">Task Settings
+                    <small>Add tasks that need to be done.</small>
                 </h1>
             </div>
         </div>
         <!-- /.row -->
-        
-      <?php if($_SERVER['REQUEST_METHOD']=="GET" || $hasErrors){
-		if($hasErrors){ ?>
-			<div class="alert alert-danger">
-				<strong>Error! <?php echo $hasErrors; ?> </strong> 
-			</div>
-		<?php }//if 
-		if($passFlag == 1){ ?>
-			<div class="alert alert-success">
-				<strong>Password change successful!</strong> 
-			</div>
-		<?php $passFlag = 0; }//if 
-		if($aliasFlag == 1) { ?>
-			<div class="alert alert-success">
-				<strong>Username change successful!</strong> 
-			</div>
-		<?php $aliasFlag = 0; } ?>
-		
+
         <div class="container">
 	         <div class="row">
              <div class="col-md-4">
 
 		             <div class="form_main">
-                   <h4 class="heading"><strong>Change Password</strong> <span></span></h4>
+                   <h4 class="heading"><strong>Add a Task</strong> <span></span></h4>
                    <div class="form">
-                     <form action="" method="POST" id="passwordForm" name="passwordForm">
-                       <input type="text" required="" placeholder="Current Password" value="" name="currentpass" class="txt">
-                       <input type="text" required="" placeholder="New Password" value="" name="newpass" class="txt">
-                       <input type="text" required="" placeholder="Repeat New Password" value="" name="rnewpass" class="txt">
-
+                     <form action="" method="POST" id="taskForm" name="taskForm">
+                       <input type="text" id="idtxt" required="" placeholder="Add a Task" value="" name="task" class="txt">
+                       <input type="button" id="idbtn" value="Add Task" />
+                       <br><br>
                        <input type="submit" value="submit" name="submit" class="txt2">
                      </form>
                   </div>
                 </div>
-                </div>
-                
-                <div class="col-md-4">
-		            <div class="form_main">
-                  <h4 class="heading"><strong>Change User Alias</strong> <span></span></h4>
-                  <div class="form">
-                    <form action="" method="POST" id="changeAliasForm" name="changeAliasForm">
-                      <input type="text" id="idtxt" required="" placeholder="New Alias" value="" name="newalias" class="txt">
-                      <input type="button" id="idbtn" value="Change User Alias" />
-                      <br><br>
-                      <input type="submit" value="submit" name="submit" class="txt2">
-                    </form>
-                  </div>
-               </div>
+
 
             </div><!-- col-md-4 -->
-
 	        </div><!-- row -->
         </div><!-- container -->
 
@@ -171,12 +139,11 @@ if($_SESSION["valid"]==true){?>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
   </div><!--main-->
-</body><!--layout-->
+</div><!--layout-->
+</body>
 
 </html>
-<?php 
-	}//if (success/error banners)
-}//if
+<?php }//if
 else{
   redirect("./login.php");
-}//else?>
+}?>
