@@ -8,7 +8,15 @@
 		<link rel="stylesheet" href="../CSS/pure-min.css"/>
 		<link rel="stylesheet" type="text/css" href="../CSS/normalize.css">
 		<link rel="stylesheet" type="text/css" href="../CSS/signup.css"/>
-		<title>HUM-signup</title>
+		<link rel="icon" href="../images/logo.png"/>
+		<link rel="stylesheet" type="text/css" href="../CSS/psuedoWelcome.css"/>
+
+		<title>Signup</title>
+		<!-- bootstrap -->
+		<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link href="../bootstrap/css/starter-template.css" rel="stylesheet">
+		<link href="../bootstrap/css/sticky-footer-navbar.css" rel="stylesheet">
+		<link href="../bootstrap/css/signin.css" rel="stylesheet">
 
 		<!--[if lte IE 8]>
 		<link rel="stylesheet" href="/combo/1.18.13?/css/layouts/side-menu-old-ie.css">
@@ -30,114 +38,87 @@
 	ga('send', 'pageview');
 	</script>
 
-	<script language="text/javascript">
-		//get button reference
-		var addMember = document.getElementById('addMember');
-
-		//add click function
-		addMember.addEventListener('click', function(event) {
-  		addField();
-		});
-
-		//it's more efficient to get the form reference outside of the function, rather than getting it each time
-		var form = document.getElementById('SignUp');
-
-		function addField() {
-  			var input = document.createElement('input');
-  			form.insertBefore(input, addMember);
-		}
-	</script>
-
 	</head>
 
+	<body data-gr-c-s-loaded="true">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="../index.html"> Home Utilities Manager </a>
+				</div>
+			</div><!--./container -->
+		</nav>
 
-	<body>
-	<div id="layout">
-    	<!-- Menu toggle -->
-    		<a href="#menu" id="menuLink" class="menu-link">
-        	<!-- Hamburger icon -->
-        		<span></span>
-    		</a>
+		<div class="container">
+			<div class="starter-template">
+				<div class="header">
+	 	    	<h1>Home Utilities Manager</h1>
+	 	      <h2>An application housing all your home management needs. </h2>
+	 	    </div><!-- header -->
 
-    	<div id="menu">
-        	<div class="pure-menu">
-            	<a class="pure-menu-heading" href="../index.html">HUM</a>
-
-            	<ul class="pure-menu-list">
-		 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Chores</a></li>
-
-                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Tasks</a></li>
-
-                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Events</a></li>
-
-                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Schedule</a></li>
-
-                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Settings</a></li>
-
-                 <li class="pure-menu-item"><a href="#" class="pure-menu-link">Log Out</a></li>
-            	</ul>
-        	</div>
-    	</div>
 	<?php include '../../dbconnect.php'; ?>
 	<?php include './PHP/processSignupForm.php'; ?>
 
-		<div class="content">
-		  <div class="header">
-			<h1> HUM Sign Up Page </header>
-			<h6> All fields with an * are required </h6>
-		  </div>
-		<?php if($_SERVER['REQUEST_METHOD']=="GET" || $hasErrors){ ?>
-		<form id="SignUp" class="pure-form pure-form-aligned" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
-			<fieldset>
-				<legend> Group information</legend>
-				<label for="gnameJ">Groupname to join:</label>
-				<input type="text" id="gnameJ" name="groupnameJ">
-				<span style="color: red"><?php print $groupnameJErr; ?></span>
-<br/>
-<br/>
-				<label for="acode">Access Code:</label>
-				<input type="text" id="acode" name="accesscode">
-				<span style="color: red"><?php print $accesscodeErr; ?></span>
-<br/>
-				<label>OR</label>
-<br/>
-<br/>
-				<label for="gnameC">Groupname to create:</label>
-				<input type="text" id="gnameC" name="groupnameC">
-				<span style="color: red"><?php print $groupnameCErr; ?></span>
-<br/>
-<br/>
-				<label for="members">Enter group members' emails:</label>
-				<input class="mems" type="email" id="members" name="groupmembers">
-				<span style="color: red"><?php print $memsErr; ?></span>
-				<br/>
-				<span id="addMemberButton">&nbsp;</span>
-				<br/>
-				<button type="button" id="myBtn">ADD</button>
-				<button type="button" id="addMember">Add Member</button>
-				<!--<input class="addmem" style="display: block" type="button" id="addMember" name="mems" value="Add Member"  />-->
-				<!--onclick="add(document.forms[0].groupmembers.value)"-->
-				<br/>
-				<br/>
+	<?php if($_SERVER['REQUEST_METHOD']=="GET" || $hasErrors){
+		if($hasErrors){ ?>
+			<div class="alert alert-danger">
+				<strong>Error!</strong> User email already exists.
+			</div>
+		<?php }//if ?>
+				 <div class="content">
+						 <form id="SignUp" class="form-signin" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+						 <h2 class="form-signin-heading"> Sign Up </h2>
 
-			<p><input class="submit" type="submit" value="Sign Up"></p>
-			</fieldset>
+						 <input type="email" id="useremail" class="form-control"
+						 		name="email" placeholder="Group Name to Join" autofocus required/>
 
+						 <label for="username" class="sr-only"> Username </label>
+						 <input type="username" id="username" class="form-control"
+							  name="username" placeholder="Username" autofocus required/>
 
-		</form>
+						 <label for="pswd" class="sr-only"> Password </label>
+						 <input type="password" id="pswd" name="pswd"
+						 		pattern="(?=.*\d).{6,}" class="form-control"
+						 		placeholder="Password" required/>
+
+						 <label for="rpswd" class="sr-only"> Re-Enter Password </label>
+						 <input type="password" id="rpswd" name="rpswd"
+						 		pattern="(?=.*\d).{6,}" class="form-control"
+						 		placeholder="Re-Enter Password" required/>
+
+						 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+						 Already have an account? <a href="./login.php"> Log in </a>
+
+						 Need to join/create a group? Click <a href="./signupGroup.php">here</a>.
+	 </form>
+
+			 </div><!-- /.content -->
+		 </div><!--/.starter template -->
+	 </div> <!-- /.container -->
+
 		<?php }//if
 			if($_SERVER['REQUEST_METHOD']=="POST" && !$hasErrors){
-          			$sql = "INSERT INTO user_info (username, password, hash, email) VALUES ('$email','$pswd', 555, '$email')";
+					$accesscode = uniqid();
+					$sql = "INSERT INTO user_info (username, password, email, accesskey) VALUES ('$username','$hash', '$email', '$accesscode')";
           			$result = mysqli_query($db, $sql);
-				if($result){
-					$url = htmlspecialchars('successDebug.php');
-					include './PHP/emailVerify.php';
-					header("Location: $url", true, 303);
-					exit();
-				}//if
+								if($result){
+									include './PHP/phpmailer.php';
+		?>
+					<div class="alert alert-success">
+						<strong>Congratulations!</strong> You have successfully registered.
+						You should receive an account activation email shortly. Click on the link in the email to activate your account.
+					</div>
+		<?php
+								}//if
 			}//if
 		?>
-		</div>
+		<footer class="footer">
+		 <div class="container">
+			 <p class="text muted">Capstone Production: September 2016 - May 2017. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
+				 <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
+			</div><!--/.container-->
+		</footer>
+
 		<script src="./ui.js"></script>
 	</body>
 </html>

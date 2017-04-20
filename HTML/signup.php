@@ -58,15 +58,12 @@
 						 <form id="SignUp" class="form-signin" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 						 <h2 class="form-signin-heading"> Sign Up </h2>
 
-						 <label for="email" class="sr-only"> Email </label>
 						 <input type="email" id="useremail" class="form-control"
 						 		name="email" placeholder="Email address" autofocus required/>
 
-						 <label for="username" class="sr-only"> Username </label>
 						 <input type="username" id="username" class="form-control"
 							  name="username" placeholder="Username" autofocus required/>
 
-						 <label for="pswd" class="sr-only"> Password </label>
 						 <input type="password" id="pswd" name="pswd"
 						 		pattern="(?=.*\d).{6,}" class="form-control"
 						 		placeholder="Password" required/>
@@ -79,7 +76,7 @@
 						 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
 						 Already have an account? <a href="./login.php"> Log in </a>
 
-						 <!--Need to join/create a group? Click <a href="./signupGroup.php">here</a>.-->
+						 Need to join/create a group? Click <a href="./signupGroup.php">here</a>.
 	 </form>
 
 			 </div><!-- /.content -->
@@ -92,7 +89,7 @@
 					$sql = "INSERT INTO user_info (username, password, email, accesskey) VALUES ('$username','$hash', '$email', '$accesscode')";
           			$result = mysqli_query($db, $sql);
 								if($result){
-					//include './PHP/phpmailer.php';
+									include './PHP/phpmailer.php';
 		?>
 					<div class="alert alert-success">
 						<strong>Congratulations!</strong> You have successfully registered.

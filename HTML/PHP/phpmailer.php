@@ -1,5 +1,5 @@
 <?php
-require '../../../PHPMailer/PHPMailerAutoload.php';
+require("/var/www/html/CSCI499/PHPMailer/PHPMailerAutoload.php");
 include './processSignupForm.php';
 $mail = new PHPMailer;
 $mail->setFrom('HouseUtilitiesManager@gmail.com', 'HUM');
@@ -23,9 +23,7 @@ $mail->Body = '
         <h2>An application for all your house management needs. </h2>
     </div><!-- header -->
     <div class="content">
-    <h4>Hi </h4>
-    <?php echo $username; ?>
-    <h4> , </h4>
+    <h4>Hi <?php echo $username; ?>, </h4>
     <p> Thanks for signing up for House Utilities Manager. We are very
         excited to have you on board.
     </p>
@@ -35,7 +33,7 @@ $mail->Body = '
       <button class="btn btn-lg btn-primary btn-block" type="submit">
           Confirm your account</button>
     </form>
-    <p> Thanks, <br> the HUM Team </p>
+    <p> Thanks, <br> The HUM Team </p>
   </body>
 </html>
 ';
