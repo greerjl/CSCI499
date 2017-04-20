@@ -66,7 +66,7 @@ if($_SESSION["valid"]==true){?>
                           <li><a href="./choreSettings.php">Chores</a></li>
                           <li><a href="./taskSettings.php">Tasks</a></li>
                           <li><a href="./eventSettings.php">Events</a></li>
-                          <li><a href="#"> My Settings </a></li>
+                          <li><a href="./userSettings.php"> My Settings </a></li>
                           <li><a href="./logout.php"> <span class="glyphicon glyphicon-log-out">
                               </span>Logout </a></li>
                       </ul>

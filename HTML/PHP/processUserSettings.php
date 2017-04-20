@@ -71,7 +71,7 @@
 				if(strcmp($data, $data2) !== 0){
 					return "Passwords must match.";
 				}//if
-			}//ifelse
+			}//else
 			if(!empty($data)){
 				if(!preg_match('/^(?=.*\d)(?=.*[a-zA-Z])(?!.*[\W_\x7B-\xFF]).{6,15}$/', $data)){
 					return "Invalid password.";

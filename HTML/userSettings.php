@@ -10,7 +10,7 @@ if($_SESSION["valid"]==true){?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Server" >
+    <meta name="author" content="Capstone" >
 
 
     <title>Profile Settings</title>
@@ -29,7 +29,7 @@ if($_SESSION["valid"]==true){?>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <!--<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
     <script type="text/javascript">
       $(function()
       {
@@ -38,7 +38,7 @@ if($_SESSION["valid"]==true){?>
               $('#idtxt').clone().attr('id', 'idtxt' + $(this).index()).insertAfter('#idtxt');
           })
       })
-    </script>
+    </script>-->
 </head>
 
 <body>
@@ -97,7 +97,7 @@ if($_SESSION["valid"]==true){?>
         <!-- /.row -->
         
       <?php if($_SERVER['REQUEST_METHOD']=="GET" || $hasErrors){
-		if($hasErrors){ ?>
+		if(!empty($hasErrors)){ ?>
 			<div class="alert alert-danger">
 				<strong>Error! <?php echo $hasErrors; ?> </strong> 
 			</div>
@@ -120,7 +120,7 @@ if($_SESSION["valid"]==true){?>
 		             <div class="form_main">
                    <h4 class="heading"><strong>Change Password</strong> <span></span></h4>
                    <div class="form">
-                     <form action="" method="POST" id="passwordForm" name="passwordForm">
+                     <form action="./PHP/processUserSettings.php" method="POST" id="passwordForm" name="passwordForm">
                        <input type="text" required="" placeholder="Current Password" value="" name="currentpass" class="txt">
                        <input type="text" required="" placeholder="New Password" value="" name="newpass" class="txt">
                        <input type="text" required="" placeholder="Repeat New Password" value="" name="rnewpass" class="txt">
@@ -135,9 +135,9 @@ if($_SESSION["valid"]==true){?>
 		            <div class="form_main">
                   <h4 class="heading"><strong>Change User Alias</strong> <span></span></h4>
                   <div class="form">
-                    <form action="" method="POST" id="changeAliasForm" name="changeAliasForm">
+                    <form action="./PHP/processUserSettings.php" method="POST" id="changeAliasForm" name="changeAliasForm">
                       <input type="text" id="idtxt" required="" placeholder="New Alias" value="" name="newalias" class="txt">
-                      <input type="button" id="idbtn" value="Change User Alias" />
+                      <!--<input type="button" id="idbtn" value="Change User Alias" />-->
                       <br><br>
                       <input type="submit" value="submit" name="submit" class="txt2">
                     </form>
