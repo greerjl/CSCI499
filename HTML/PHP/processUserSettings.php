@@ -8,10 +8,10 @@
 	$aliasFlag = 0;
 
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
-		
+
 		$currentPass = mysqli_real_escape_string($db, $_POST['currentpass']);
 		if(!empty($currentPass)){
-			
+
 			$uid = $_SESSION["login_user"];
 			//grab stored hashed password
 			$sqlPswd = "SELECT password FROM user_info WHERE user_info.UID = '$uid'";
@@ -20,53 +20,54 @@
 			$pswdResult = mysqli_query($db, $sqlPswd);
 			$temp = mysqli_fetch_object($pswdResult);
 			$dbpassword = $temp->password;
-			
+
 			if(password_verify($currentPass,$dbpassword)){
 				$newPass = mysqli_real_escape_string($db, $_POST['newpass']);
-				$newPass = cleanData($newPass); 
+				$newPass = cleanData($newPass);
 				$rNewPass = mysqli_real_escape_string($db, $_POST['rnewpass']);
 				$rNewPass = cleanData($rNewPass);
-				
+
 				$hasErrors = passVerify($newPass,$rNewPass);
-				
-				if(empty($hasErrors)){				
+
+				if(empty($hasErrors)){
 					$sql = "UPDATE user_info SET password = '$newPass' WHERE user_info.UID = '$uid'";
 					$result = mysqli_query($db, $sql);
 					if($result){
-						$passFlag = 1;					
-					}
-				}
-			} 
-			else{
-				$hasErrors = "That is not your current password, please try again.";			
+						$passFlag = 1;
+					}//if result is not false
+				}//if hasErrors is empty
 			}
-			
-		} 
+			else{
+				$hasErrors = "That is not your current password, please try again.";
+			}//if else password_verify
+
+		}//if current password field is not empty
 
 		$newAlias = mysqli_real_escape_string($db, $_POST['newalias']);
-		if(!empty($newAlias)){ 
+		if(!empty($newAlias)){
 			$newAlias = cleanData($newAlias);
 			$sql = "UPDATE user_info SET username = '$newAlias' WHERE user_info.UID = '$uid'";
 			$result = mysqli_query($db, $sql);
 			if($result){
-				$aliasFlag = 1;					
+				$aliasFlag = 1;
 			}
 			else{
-				$hasErrors = "An error occurred, username has not been changed";			
-			}
-		}
-	}
-	
+				$hasErrors = "An error occurred, username has not been changed";
+			}//if else
+		}//if new username is not empty
+
+	}//request method post if()
+
 	function cleanData($data){
 		$data = trim($data);
 		$data = stripslashes($data);
 		$data = htmlspecialchars($data);
 		return $data;
 	}//cleanData
-	
+
 	function passVerify($data, $data2){
 			if(empty($data)){
-				return "Please re-enter password.";
+				return "Please enter password.";
 			}else{
 				if(strcmp($data, $data2) !== 0){
 					return "Passwords must match.";
