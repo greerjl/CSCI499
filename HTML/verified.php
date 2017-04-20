@@ -91,7 +91,7 @@
           //debug
           echo $match;
           if($match == 1){
-            mysqli_query($db, "UPDATE user_info SET Verified='true' WHERE email='".$userEmail."' AND accesskey='".$userAccessKey."'") or die(mysql_error());
+            mysqli_query($db, "UPDATE user_info SET Verified='1' WHERE email='".$userEmail."' AND accesskey='".$userAccessKey."'") or die(mysql_error());
           ?>
             <div class="alert alert-success">
               <strong>Success!</strong> Your account has been activated, you can now login.
@@ -103,7 +103,7 @@
               <strong>Error!</strong> User has already been activated or this is an invalid url.
             </div>
           <?php }
-
+        }//request method if
           ?>
       </div><!-- /.content -->
     </div><!--/.starter template -->
