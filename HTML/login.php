@@ -67,11 +67,11 @@
             <h2 class="form-signin-heading"> Log In </h2>
 
             <input type="email" id="email" class="form-control"
-            name="useremail" placeholder="Email address" autofocus required>
+            name="useremail" placeholder="Email address" autofocus required/>
 
             <input type="password" id="password" name="pswd"
             pattern="(?=.*\d).{6,}" class="form-control"
-            placeholder="Password" required>
+            placeholder="Password" required/>
 
             <!-- <div class="checkbox">
               <label>
@@ -84,7 +84,7 @@
             Don't have an account? <a href="./signup.php"> Sign up </a>
             Verified <a href="./verified.php">here</a>.
 	        </form>
-
+          <?php }//request method if ?>
       </div><!-- /.content -->
     </div><!--/.starter template -->
   </div> <!-- /.container -->
