@@ -33,7 +33,7 @@
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="../index.html"> Home Utilities Manager </a>
+					<a class="navbar-brand" href="../index.html"> House Utilities Manager </a>
 				</div>
 			</div><!--./container -->
 		</nav>
@@ -41,8 +41,8 @@
 		<div class="container">
 			<div class="starter-template">
 				<div class="header">
-	 	    	<h1>Home Utilities Manager</h1>
-	 	      <h2>An application housing all your home management needs. </h2>
+	 	    	<h1>House Utilities Manager</h1>
+	 	      <h2>An application for all your home management needs. </h2>
 	 	    </div><!-- header -->
 
 	<?php include '../../dbconnect.php'; ?>
@@ -85,8 +85,8 @@
 
 		<?php }//if
 			if($_SERVER['REQUEST_METHOD']=="POST" && !$hasErrors){
-					$accesscode = uniqid();
-					$sql = "INSERT INTO user_info (username, password, email, accesskey) VALUES ('$username','$hash', '$email', '$accesscode')";
+					$accesskey = uniqid();
+					$sql = "INSERT INTO user_info (username, password, email, accesskey) VALUES ('$username','$hash', '$email', '$accesskey')";
           			$result = mysqli_query($db, $sql);
 								if($result){
 									include './PHP/phpmailer.php';

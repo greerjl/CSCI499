@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="../CSS/psuedoWelcome.css"/>
     <link rel="icon" href="../images/logo.png">
 
-    <title>Login</title>
+    <title>Verified</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -41,8 +41,24 @@
    <div class="container">
      <div class="navbar-header">
        <a class="navbar-brand" href="../index.html"> House Utilities Manager </a>
-     </div>
-   </div><!--./container -->
+       <div class="navbar-header">
+           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+           </button>
+       <!-- Collect the nav links, forms, and other content for toggling -->
+       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+           <ul class="nav navbar-nav">
+             <ul class="nav navbar-nav">
+                 <li><a href="./login.php">Login</a></li>
+            </ul> </ul>
+      </div>
+    </div>
+  </div>
+</div><!--./container -->
  </nav>
       <div class="container">
 
@@ -63,30 +79,32 @@
       <?php }//if ?>
 
         <div class="content">
-          <form id="LogIn" class="form-signin" method="POST" action="./PHP/processLoginForm.php">
-            <h2 class="form-signin-heading"> Log In </h2>
+          <?php
+          include './PHP/phpmailer.php';
+          $search = mysqli_query($db, "SELECT email, accesskey FROM user_info WHERE email='".$email."' AND accesskey='".$accesskey."'") or die(mysql_error());
+          $temp = mysqli_fetch_object($search);
+          $userEmail = $temp -> email;
+          $userAccessKey = $temp -> accesskey;
+          $match = mysqli_num_rows($search);
 
-            <label for="username" class="sr-only"> Email address </label>
-            <input type="email" id="username" class="form-control"
-            name="usnm" placeholder="Email address" autofocus required>
 
-            <label for="password" class="sr-only"> Password </label>
-            <input type="password" id="password" name="pswd"
-            pattern="(?=.*\d).{6,}" class="form-control"
-            placeholder="Password" required>
+          //debug
+          echo $match;
+          if($match == 1){
+            mysqli_query($db, "UPDATE user_info SET Verified='true' WHERE email='".$userEmail."' AND accesskey='".$userAccessKey."'") or die(mysql_error());
+          ?>
+            <div class="alert alert-success">
+              <strong>Success!</strong> Your account has been activated, you can now login.
+            </div>
+          <?php
+          }
+          else{ ?>
+            <div class="alert alert-danger">
+              <strong>Error!</strong> User has already been activated or this is an invalid url.
+            </div>
+          <?php }
 
-            <!-- <div class="checkbox">
-              <label>
-                <input type="checkbox" value="remember-me"> Remember me
-              </label>
-            </div> -->
-
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-
-            Don't have an account? <a href="./signup.php"> Sign up </a>
-            Verified <a href="./verified.php">here</a>.
-	        </form>
-
+          ?>
       </div><!-- /.content -->
     </div><!--/.starter template -->
   </div> <!-- /.container -->

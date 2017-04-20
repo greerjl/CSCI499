@@ -19,31 +19,33 @@
 		$mypassword = cleanData($mypassword);
 
 		//Database queries
-		$sqlPswd = "SELECT password FROM user_info WHERE username= '$myusername'";//grab stored hashed password
+		$sqlPswd = "SELECT password, Verified FROM user_info WHERE username= '$myusername'";//grab stored hashed password
 
 		/*get the hashed password from the db in form of a string*/
-		$pswdResult = mysqli_query($db, $sqlPswd);
-		$temp = mysqli_fetch_object($pswdResult);
+		$sqlResult = mysqli_query($db, $sqlPswd);
+		$temp = mysqli_fetch_object($sqlResult);
 		$dbpassword = $temp->password;
+		$dbVerified = $temp->Verified;
 
 		/*DEBUG BLOCK*/
 		//$booltest = password_verify($mypassword, $dbpassword);
 
 		//if statement to allow login and start session if account exists and password is correct
-		if(password_verify($mypassword,$dbpassword )){
+		if(password_verify($mypassword, $dbpassword) && $dbVerified=='true'){
 			$sql = "SELECT UID, GID FROM user_info WHERE username = '$myusername'";
 			$result = mysqli_query($db, $sql);
 			$count = mysqli_num_rows($result);
+
 			if($count == 1){
 				/*this block splits up the result from sql into uid and gid*/
 				$obj = mysqli_fetch_object($result);
-				$myusername = $obj->UID;
+				$myuid = $obj->UID;
 				$GID = $obj->GID;
 				/*end block*/
 
 				/* NEED TO SET SESSION ID FIRST USE PHPs session_id()*/
     		session_start();
-				$_SESSION["login_user"] = $myusername;
+				$_SESSION["login_user"] = $myuid;
 				$_SESSION["valid"] = true;
 				$_SESSION["gid"] = $GID;
 	    	$_SESSION["timeout"] = time() + 300;

@@ -1,6 +1,7 @@
 <?php
 require("/var/www/html/CSCI499/PHPMailer/PHPMailerAutoload.php");
 include './processSignupForm.php';
+include '../signup.php';
 $mail = new PHPMailer;
 $mail->setFrom('HouseUtilitiesManager@gmail.com', 'HUM');
 
@@ -8,7 +9,7 @@ $mail->addAddress($email, $username);
 $mail->Subject  = 'Welcome to HUM!';
 $mail->isHTML(true);
 $mail->Body = '
-<html>
+
   <head>
     <title>Welcome</title>
     <!-- Bootstrap core CSS -->
@@ -23,19 +24,19 @@ $mail->Body = '
         <h2>An application for all your house management needs. </h2>
     </div><!-- header -->
     <div class="content">
-    <h4>Hi <?php echo $username; ?>, </h4>
+    <h4>Hi '.$username.', </h4>
     <p> Thanks for signing up for House Utilities Manager. We are very
         excited to have you on board.
     </p>
     <p> To get started using HUM, please confirm your account below: </p>
     <br>
-    <form action="http://www.houseutil.com/HTML/login.php">
+    <form action="http://www.houseutil.com/HTML/verified.php?email='.$email.'&hash='.$accesskey'">
       <button class="btn btn-lg btn-primary btn-block" type="submit">
           Confirm your account</button>
     </form>
     <p> Thanks, <br> The HUM Team </p>
   </body>
-</html>
+
 ';
 $mail->AltBody = "Hi <?php echo $username; ?>, Thanks for signing up for House Utilities Manager. We are very
     excited to have you on board! To get started using HUM, please confirm your account below:";
