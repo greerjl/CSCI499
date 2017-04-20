@@ -32,7 +32,7 @@
 
 		//if statement to allow login and start session if account exists and password is correct
 		if(password_verify($mypassword, $dbpassword) && $dbVerified=='true'){
-			$sql = "SELECT UID, GID FROM user_info WHERE username = '$myusername'";
+			$sql = "SELECT UID, GID FROM user_info WHERE email = '$myusername'";
 			$result = mysqli_query($db, $sql);
 			$count = mysqli_num_rows($result);
 
