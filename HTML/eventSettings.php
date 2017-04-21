@@ -111,13 +111,12 @@ if($_SESSION["valid"]==true){?>
                                  $rooms[$i] = $row['name'];
                                  //echo $row['name'];
                         ?>
-                                 <option><?php echo $rooms[$i]; ?></option>
+                                 <option value="<?php echo $rooms[$i]; ?>"><?php echo $rooms[$i]; ?></option>
                         <?php
                                  $i = $i+1;
                                }//while
                            }//if else
                         ?>
-
                        </select>
 		                     <hr>
                        <input type="submit" value="submit" name="submit" class="txt2">
