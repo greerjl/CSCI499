@@ -29,16 +29,10 @@
 				$rNewPass = cleanData($rNewPass);
 
 				$hasErrors = passVerify($newPass,$rNewPass);
-<<<<<<< Updated upstream
-
-				if(empty($hasErrors)){
-					$sql = "UPDATE user_info SET password = '$newPass' WHERE user_info.UID = '$uid'";
-=======
 				
 				if(empty($hasErrors)){
 					$hash = password_hash($newPass, PASSWORD_BCRYPT);				
 					$sql = "UPDATE user_info SET password = '$hash' WHERE user_info.UID = '$uid'";
->>>>>>> Stashed changes
 					$result = mysqli_query($db, $sql);
 					if($result){
 						$passFlag = 1;

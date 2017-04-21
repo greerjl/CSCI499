@@ -1,7 +1,7 @@
 <?php
 	session_start();
-	ini_set("display_errors", true);
-	error_reporting(E_ALL);
+	//ini_set("display_errors", true);
+	//error_reporting(E_ALL);
 	include '../../../dbconnect.php';
 	require_once("functions.php");
 	$hasErrors = false;
