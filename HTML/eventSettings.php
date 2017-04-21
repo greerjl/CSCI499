@@ -93,9 +93,32 @@ if($_SESSION["valid"]==true){?>
                    <h4 class="heading"><strong>Add an Event</strong> <span></span></h4>
                    <div class="form">
                      <form action="" method="POST" id="eventForm" name="eventForm">
-                       <input type="text" required="" placeholder="Name of Event" value="" name="eventName" class="txt">
-                       <input type="time" required="" placeholder="Time of Event" value="" name="eventTime" class="txt">
-		                   <input type="date" required="" value="" name="eventDate" class="date">
+                       <input type="text" required="" placeholder="Name of Event" value="" name="eventName" class="txt"/>
+                       <input type="time" required="" placeholder="Time of Event" value="" name="eventTime" class="txt"/>
+		                   <input type="date" required="" value="" name="eventDate" class="date"/>
+                       <select name="rooms" class="rooms">
+                         <?php
+                           $sql="SELECT name FROM room WHERE GID = '$gid'";
+                           $result = mysqli_query($db, $sql);
+                           $count = mysqli_num_rows($result);
+                           if($count == 0){
+                               die('Error: ' . mysqli_error());
+                           }
+                           else{
+                               $rooms = array();
+                               $i = 0;
+                               while($row = mysqli_fetch_array($result)){
+                                 $rooms[$i] = $row['name'];
+                                 //echo $row['name'];
+                        ?>
+                                 <option><?php echo $rooms[$i]; ?></option>
+                        <?php
+                                 $i = $i+1;
+                               }//while
+                           }//if else
+                        ?>
+
+                       </select>
 		                     <hr>
                        <input type="submit" value="submit" name="submit" class="txt2">
                      </form>
