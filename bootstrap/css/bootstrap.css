@@ -120,6 +120,9 @@ textarea {
   font: inherit;
   color: inherit;
 }
+select.form-control {
+  margin-top: 10px;
+}
 button {
   overflow: visible;
 }

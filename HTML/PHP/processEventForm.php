@@ -1,8 +1,8 @@
 <?php
 ini_set("display_errors", true);
 error_reporting(E_ALL);
-	$eTitle = $eDesc = $username = $sql = "";
-	$titleErr = $descErr = $uidErr = "";
+	$eTitle = $eDesc = $username = $roomName = $sql = "";
+	$titleErr = $descErr = $roomNameErr = $uidErr = "";
 	$hasErrors = false;
 
 	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
@@ -19,6 +19,12 @@ error_reporting(E_ALL);
 		$username = cleanData($_POST['username']);
 			$uidErr = validate($username, 'username');
 			if(!empty($uidErr)){
+				$hasErrors = true;
+			}//if
+
+		$roomName = $_POST['roomSelect'];
+			$roomNameErr = validate($roomName, 'roomName');
+			if(!empty($roomNameErr)){
 				$hasErrors = true;
 			}//if
 
@@ -72,6 +78,13 @@ error_reporting(E_ALL);
 					return "";
 				}
 			}//case username
+
+			case 'roomName':{
+				if($data == ""){
+					return "Must select a room for your event.";
+				}//if
+				return "";
+			}//case roomName
 
 		}//switch
 	}//function validate

@@ -3,6 +3,8 @@
 <?php include '../../dbconnect.php';
 require_once("./PHP/functions.php");
 session_start();
+ini_set("display_errors", true);
+error_reporting(E_ALL);
 if($_SESSION["valid"]==true){?>
 <head>
 
@@ -95,29 +97,31 @@ if($_SESSION["valid"]==true){?>
                      <form action="" method="POST" id="eventForm" name="eventForm">
                        <input type="text" required="" placeholder="Name of Event" value="" name="eventName" class="txt"/>
                        <input type="time" required="" placeholder="Time of Event" value="" name="eventTime" class="txt"/>
-		                   <input type="date" required="" value="" name="eventDate" class="date"/>
-                       <select name="rooms" class="rooms">
+		                   <input type="date" required="" value="" name="eventDate" class="date"/><br/>
                          <?php
-                           $sql="SELECT name FROM room WHERE GID = '$gid'";
+                           $groupId = $_SESSION["gid"];
+                           $sql = "SELECT name, RID FROM room WHERE GID = '$groupId'";
+                           $getRms = "";
                            $result = mysqli_query($db, $sql);
-                           $count = mysqli_num_rows($result);
-                           if($count == 0){
-                               die('Error: ' . mysqli_error());
-                           }
-                           else{
-                               $rooms = array();
-                               $i = 0;
-                               while($row = mysqli_fetch_array($result)){
-                                 $rooms[$i] = $row['name'];
-                                 //echo $row['name'];
-                        ?>
-                                 <option value="<?php echo $rooms[$i]; ?>"><?php echo $rooms[$i]; ?></option>
-                        <?php
-                                 $i = $i+1;
-                               }//while
-                           }//if else
-                        ?>
-                       </select>
+
+
+                           /*
+                            if(mysqli_num_rows($result)){
+                              while($rms = mysqli_fetch_array($result)){
+                                $room = $rms -> name;
+                                $getRms.='<option value="'.$room.'">'.$room.'</option>';
+                              }//while
+                            }//if
+                            echo $getRms;
+                            */
+                         ?>
+                      <select name="roomSelect" class="form-control">
+                        <option value="">--Please Select a Room--</option>
+                        <?php while($room = mysqli_fetch_object($result)): ?>
+                          <option value="<?php echo $room->RID; ?>"><?php echo $room->name; ?></option>
+                        <?php endwhile; ?>
+                      </select>
+
 		                     <hr>
                        <input type="submit" value="submit" name="submit" class="txt2">
                      </form>
