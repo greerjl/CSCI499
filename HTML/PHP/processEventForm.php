@@ -1,8 +1,8 @@
 <?php
 ini_set("display_errors", true);
 error_reporting(E_ALL);
-	$eTitle = $eDesc = $roomName = $username = $sql = "";
-	$titleErr = $descErr = $uidErr = $roomErr = "";
+	$eTitle = $eDesc = $username = $sql = "";
+	$titleErr = $descErr = $uidErr = "";
 	$hasErrors = false;
 
 	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
@@ -21,11 +21,7 @@ error_reporting(E_ALL);
 			if(!empty($uidErr)){
 				$hasErrors = true;
 			}//if
-		$roomName = cleanData($_POST['roomName']);
-			$roomErr = validate($roomName, 'roomName');
-			if(!empty($roomErr)){
-				$hasErrors = true;
-			}//if
+
 	}//if
 
 	//FUNCTIONS
@@ -36,7 +32,7 @@ error_reporting(E_ALL);
 		return $data;
 	}//cleanData
 
-	function validate($data, $field) {//, $gid
+	function validate($data, $field) {
 		switch($field) {
 			case 'eTitle':{
 				$data = strtolower($data);
@@ -76,22 +72,9 @@ error_reporting(E_ALL);
 					return "";
 				}
 			}//case username
-			case 'roomName':{
-				$data = strtolower($data);
-				$data = ucfirst($data);
-				$sql = "SELECT RID FROM room WHERE name = '$data'"/* AND GID = '$gid'"*/;
-				$result = mysqli_query($db, $sql) /*or die("could not connect to DB")*/;
 
-				$count = mysqli_num_rows($result);
-				if($count == 0){
-					return "House does not have such a room or incorrect room name";
-				}
-				else{
-					return "";
-				}
-			}//case roomName
-		}
-	}
+		}//switch
+	}//function validate
 
 	function sendData(){
 		if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
@@ -116,5 +99,5 @@ error_reporting(E_ALL);
 					}//inner ifelse
 				}//outer ifelse
 		}//if
-	}//if 
+	}//if
 ?>
