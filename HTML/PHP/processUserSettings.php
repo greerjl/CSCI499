@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	ini_set("display_errors", true);
 	error_reporting(E_ALL);
 	include '../../../dbconnect.php';
@@ -28,9 +29,10 @@
 				$rNewPass = cleanData($rNewPass);
 
 				$hasErrors = passVerify($newPass,$rNewPass);
-
+				
 				if(empty($hasErrors)){
-					$sql = "UPDATE user_info SET password = '$newPass' WHERE user_info.UID = '$uid'";
+					$hash = password_hash($newPass, PASSWORD_BCRYPT);				
+					$sql = "UPDATE user_info SET password = '$hash' WHERE user_info.UID = '$uid'";
 					$result = mysqli_query($db, $sql);
 					if($result){
 						$passFlag = 1;
