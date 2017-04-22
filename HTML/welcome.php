@@ -2,6 +2,8 @@
 <?php session_start();
 include '../../dbconnect.php';
 require_once("./PHP/functions.php");
+ini_set("display_errors", true);
+error_reporting(E_ALL);
 if($_SESSION["valid"]==true){?>
 <html lang="en">
 <head>
@@ -77,15 +79,31 @@ if($_SESSION["valid"]==true){?>
 
         <div class="content">
 
-            
+<!--House info-->
+            <h2 class="content-subhead2">House: </h2>
+            <h4 class="content-subhead2">Members: </h4>
+              <?php
+                $groupId = $_SESSION["gid"];
+                $sql = "SELECT username FROM user_info WHERE GID = '$groupId'";
+                $result = mysqli_query($db, $sql);
+                while($username = mysqli_fetch_row($result)):
+                    echo $username[0]."<br/>";
+                endwhile;
+              ?>
+            <h4 class="content-subhead2">Rooms: </h4>
+              <?php
+                $sql = "SELECT name FROM room WHERE GID = '$groupId'";
+                $result = mysqli_query($db, $sql);
+                while($roomNames = mysqli_fetch_row($result)):
+                    echo $roomNames[0]."<br/>";
+                endwhile;
+              ?>
 
 <!-- CHORES -->
             <h2 class="content-subhead">Your Chore: </h2>
             <p>
               <table>
                   <?php
-                    ini_set("display_errors", true);
-                    error_reporting(E_ALL);
                     $user = $_SESSION["login_user"];
                     $sql = "SELECT title FROM user_info, chore WHERE user_info.UID = '$user' AND user_info.UID = chore.UID";
                     $result = mysqli_query($db, $sql);
