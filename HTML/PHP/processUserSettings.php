@@ -47,10 +47,12 @@
 		}//if current password field is not empty
 
 		$newAlias = mysqli_real_escape_string($db, $_POST['newalias']);
+		echo $newAlias." ";
 		if(!empty($newAlias)){
 			$newAlias = cleanData($newAlias);
 			$sql = "UPDATE user_info SET username = '$newAlias' WHERE user_info.UID = '$uid'";
-			$result = mysqli_query($db, $sql) or die("Error: ".mysqli_error($db));
+			$result = mysqli_query($db, $sql); //or die("Error: ".mysqli_error($db));
+			echo $result." ";
 			if($result){
 				$aliasFlag = 1;
 				redirect("../userSettings.php");
