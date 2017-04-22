@@ -53,7 +53,7 @@
 			$result = mysqli_query($db, $sql) or die("Error: ".mysqli_error($db));
 			if($result){
 				$aliasFlag = 1;
-				redirect("../userSettings.php"):
+				redirect("../userSettings.php");
 			}
 			else{
 				$hasErrors = "An error occurred, username has not been changed";
