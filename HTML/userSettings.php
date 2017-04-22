@@ -135,7 +135,7 @@ if($_SESSION["valid"]==true){?>
 		            <div class="form_main">
                   <h4 class="heading"><strong>Change Username</strong> <span></span></h4>
                   <div class="form">
-                    <form action="./PHP/processUserSettings.php" method="POST" id="changeAliasForm" name="changeAliasForm">
+                    <form action="./PHP/processChangeUname.php" method="POST" id="changeAliasForm" name="changeAliasForm">
                       <input type="text" id="idtxt" required="" placeholder="New Alias" value="" name="newalias" class="txt">
                       <br><br>
                       <input type="submit" value="submit" name="submit" class="txt2">

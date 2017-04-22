@@ -90,37 +90,37 @@ if($_SESSION["valid"]==true){?>
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">User Settings
-                    <small>Change Password, User Alias</small>
+                    <small>Change Password, Username</small>
                 </h1>
             </div>
         </div>
         <!-- /.row -->
-        
+
       <?php if($_SERVER['REQUEST_METHOD']=="GET" || $hasErrors){
 		if(!empty($hasErrors)){ ?>
 			<div class="alert alert-danger">
-				<strong>Error! <?php echo $hasErrors; ?> </strong> 
+				<strong>Error! <?php echo $hasErrors; ?> </strong>
 			</div>
-		<?php }//if 
+		<?php }//if
 		if($passFlag == 1){ ?>
 			<div class="alert alert-success">
-				<strong>Password change successful!</strong> 
+				<strong>Password change successful!</strong>
 			</div>
-		<?php $passFlag = 0; }//if 
+		<?php $passFlag = 0; }//if
 		if($aliasFlag == 1) { ?>
 			<div class="alert alert-success">
-				<strong>Username change successful!</strong> 
+				<strong>Username change successful!</strong>
 			</div>
 		<?php $aliasFlag = 0; } ?>
-		
+
         <div class="container">
 	         <div class="row">
-             <div class="col-md-4">
 
+             <div class="col-md-4">
 		             <div class="form_main">
                    <h4 class="heading"><strong>Change Password</strong> <span></span></h4>
                    <div class="form">
-                     <form action="" method="POST" id="passwordForm" name="passwordForm">
+                     <form action="./PHP/processUserSettings.php" method="POST" id="passwordForm" name="passwordForm">
                        <input type="text" required="" placeholder="Current Password" value="" name="currentpass" class="txt">
                        <input type="text" required="" placeholder="New Password" value="" name="newpass" class="txt">
                        <input type="text" required="" placeholder="Repeat New Password" value="" name="rnewpass" class="txt">
@@ -129,22 +129,30 @@ if($_SESSION["valid"]==true){?>
                      </form>
                   </div>
                 </div>
-                </div>
-                
-                <div class="col-md-4">
+              </div>
+
+              <div class="col-md-4">
 		            <div class="form_main">
-                  <h4 class="heading"><strong>Change User Alias</strong> <span></span></h4>
+                  <h4 class="heading"><strong>Change Username</strong> <span></span></h4>
                   <div class="form">
-                    <form action="" method="POST" id="changeAliasForm" name="changeAliasForm">
+                    <form action="./PHP/processUserSettings.php" method="POST" id="changeAliasForm" name="changeAliasForm">
                       <input type="text" id="idtxt" required="" placeholder="New Alias" value="" name="newalias" class="txt">
-                      <!--<input type="button" id="idbtn" value="Change User Alias" />-->
                       <br><br>
                       <input type="submit" value="submit" name="submit" class="txt2">
                     </form>
                   </div>
                </div>
 
-            </div><!-- col-md-4 -->
+               <div class="col-md-4">
+  		             <div class="form_main">
+                       <h4 class="heading"><strong>Ready to Move Out?<strong> <span></span></h4>
+                       <div class="form">
+                         <form action="" method="POST" id="leaveGroupForm" name="leaveGroupForm">
+                           <input type="submit" value="Leave Group" name="submit" class="txt2"/>
+                         </form><!-- action = "./PHP/leaveGroup.php" or something like that -->
+                     </div><!--form-->
+                    </div><!--form_main-->
+               </div><!-- col-md-4 -->
 
 	        </div><!-- row -->
         </div><!-- container -->
@@ -174,7 +182,7 @@ if($_SESSION["valid"]==true){?>
 </body><!--layout-->
 
 </html>
-<?php 
+<?php
 	}//if (success/error banners)
 }//if
 else{

@@ -52,6 +52,7 @@
 			$newAlias = cleanData($newAlias);
 			$sql = "UPDATE user_info SET username = '$newAlias' WHERE user_info.UID = '$uid'";
 			$result = mysqli_query($db, $sql); //or die("Error: ".mysqli_error($db));
+			echo $result." ";
 			if($result){
 				$aliasFlag = 1;
 				redirect("../userSettings.php");
