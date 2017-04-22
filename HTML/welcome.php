@@ -71,19 +71,18 @@ if($_SESSION["valid"]==true){?>
                               </span>Logout </a></li>
                       </ul>
                     </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-            <!-- /.container -->
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container -->
         </nav>
 
         <div class="content">
+
+            
 
 <!-- CHORES -->
             <h2 class="content-subhead">Your Chore: </h2>
             <p>
               <table>
-                <tr>
                   <?php
                     ini_set("display_errors", true);
                     error_reporting(E_ALL);
@@ -95,16 +94,15 @@ if($_SESSION["valid"]==true){?>
                     //php end tag here
 
                     if($count == 0){
-                      $emptyMessage = "You currently have no chores.";
+                      $emptyMessage = "<tr><td>You currently have no chores.</td></tr>";
                       echo $emptyMessage;
                     }
                     else{
                       while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                           foreach ($line as $col_value) {
-                              echo "\t\t<td>$col_value,   </td>";
+                              echo "\t\t<tr><td>$col_value</td></tr>";
                           }//foreach
                       }//while
-                     echo "</tr></table>\n";
                     }//else
                   ?>
             </table>
@@ -113,30 +111,28 @@ if($_SESSION["valid"]==true){?>
             <h2 class="content-subhead">Current Tasks: </h2>
             <p>
                    <table>
-                        <?php
-                          ini_set("display_errors", true);
-                          error_reporting(E_ALL);
-                        	$user = $_SESSION["login_user"];
-                          $sql = "SELECT name FROM user_info, task WHERE user_info.UID = '$user' AND user_info.UID = task.UID";
-                          $result = mysqli_query($db, $sql);
+                       <?php
+                         ini_set("display_errors", true);
+                         error_reporting(E_ALL);
+                         $group = $_SESSION["gid"];
+                         $sql = "SELECT name FROM task WHERE task.GID = '$group'";
+                         $result = mysqli_query($db, $sql);
 
-                          $count = mysqli_num_rows($result);
+                         $count = mysqli_num_rows($result);
+                         //php end tag here
 
-                          if($count == 0){
-                            die('Error! '.mysqli_error($db));
-                          }
-                          else{
-                          	while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                           	echo "\t<tr>\n";
-                           	foreach ($line as $col_value) {
-                           		echo "\t\t<td>$col_value</td>\n";
-                        		}//foreach
-                        		echo "\t</tr>\n";
+                         if($count == 0){
+                           $emptyMessage = "Your House currently has no tasks.";
+                           echo $emptyMessage;
+                         }
+                         else{
+                           while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                               foreach ($line as $col_value) {
+                                   echo "\t\t<tr><td>$col_value</td></tr>";
+                               }//foreach
                            }//while
-                           echo "</table>\n";
-                          }//else
-                        ?>
-                    </td></tr>
+                         }//else
+                       ?>
                   </table>
             </p>
 

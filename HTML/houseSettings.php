@@ -126,7 +126,9 @@ if($_SESSION["valid"]==true){?>
                               value="<?php echo $gname ?>"/>
                           <?php  }//else ?>
                      <br><br>
-                     <input type="submit" value="Submit" name="submit" class="txt2">
+                     <input type="submit" <?php if(!empty($gname)){?>
+                       value="Change" <?php } else { ?>
+                       value="Submit"<?php }//else ?> name="submit" class="txt2"/>
                    </form>
                  </div>
               </div>
