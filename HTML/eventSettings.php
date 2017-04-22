@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include '../../dbconnect.php';
+<?php require("../../dbconnect.php");
 require_once("./PHP/functions.php");
 session_start();
 ini_set("display_errors", true);
@@ -101,7 +101,6 @@ if($_SESSION["valid"]==true){?>
                          <?php
                            $groupId = $_SESSION["gid"];
                            $sql = "SELECT name, RID FROM room WHERE GID = '$groupId'";
-                           $getRms = "";
                            $result = mysqli_query($db, $sql);
 
 
@@ -113,12 +112,21 @@ if($_SESSION["valid"]==true){?>
                               }//while
                             }//if
                             echo $getRms;
+                            $room[] = mysqli_fetch_row($result);
+                            echo $room[0];
+                            echo $room[1];
+                            $room[] = mysqli_fetch_row($result);
+                            echo $room[0];
+                            echo $room[1];
                             */
+
+
+
                          ?>
                       <select name="roomSelect" class="form-control">
                         <option value="">--Please Select a Room--</option>
-                        <?php while($room = mysqli_fetch_object($result)): ?>
-                          <option value="<?php echo $room->RID; ?>"><?php echo $room->name; ?></option>
+                        <?php while($room = mysqli_fetch_row($result)):?>
+                                <option value="<?php echo $room[1]; ?>"><?php echo $room[0]; ?></option>
                         <?php endwhile; ?>
                       </select>
 
