@@ -4,9 +4,8 @@
 	error_reporting(E_ALL);
 	include '../../../dbconnect.php';
 	require_once("functions.php");
-	$hasErrors = false;
+	$hasErrors = "";
 	$passFlag = 0;
-	$aliasFlag = 0;
 
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -45,22 +44,6 @@
 			}//if else password_verify
 
 		}//if current password field is not empty
-
-		$newAlias = mysqli_real_escape_string($db, $_POST['newalias']);
-		echo $newAlias." ";
-		if(!empty($newAlias)){
-			$newAlias = cleanData($newAlias);
-			$sql = "UPDATE user_info SET username = '$newAlias' WHERE user_info.UID = '$uid'";
-			$result = mysqli_query($db, $sql); //or die("Error: ".mysqli_error($db));
-			echo $result." ";
-			if($result){
-				$aliasFlag = 1;
-				redirect("../userSettings.php");
-			}
-			else{
-				$hasErrors = "An error occurred, username has not been changed";
-			}//if else
-		}//if new username is not empty
 
 	}//request method post if()
 

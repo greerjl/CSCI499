@@ -10,7 +10,7 @@ if($_SESSION["valid"]==true){?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Capstone" >
+    <meta name="author" content="Server" >
 
 
     <title>Profile Settings</title>
@@ -96,22 +96,23 @@ if($_SESSION["valid"]==true){?>
         </div>
         <!-- /.row -->
 
-      <?php if($_SERVER['REQUEST_METHOD']=="GET" || $hasErrors){
-		if(!empty($hasErrors)){ ?>
-			<div class="alert alert-danger">
-				<strong>Error! <?php echo $hasErrors; ?> </strong>
-			</div>
-		<?php }//if
-		if($passFlag == 1){ ?>
-			<div class="alert alert-success">
-				<strong>Password change successful!</strong>
-			</div>
-		<?php $passFlag = 0; }//if
-		if($aliasFlag == 1) { ?>
-			<div class="alert alert-success">
-				<strong>Username change successful!</strong>
-			</div>
-		<?php $aliasFlag = 0; } ?>
+      <?php if($_SERVER['REQUEST_METHOD']=="GET" || !empty($hasErrors) || $passFlag > 0 || $aliasFlag > 0){
+					if(!empty($hasErrors)){ ?>
+						<div class="alert alert-danger">
+							<strong>Error! <?php echo $hasErrors; ?> </strong>
+						</div>
+					<?php }//if (error thrown)
+					if($passFlag == 1){ ?>
+						<div class="alert alert-success">
+							<strong>Password change successful!</strong>
+						</div>
+					<?php }//if (password change)
+					if($aliasFlag == 1) { ?>
+						<div class="alert alert-success">
+							<strong>Username change successful!</strong>
+						</div>
+					<?php }//if (name change)
+				}//if POST (success/error banners?>
 
         <div class="container">
 	         <div class="row">
@@ -136,7 +137,7 @@ if($_SESSION["valid"]==true){?>
                   <h4 class="heading"><strong>Change Username</strong> <span></span></h4>
                   <div class="form">
                     <form action="./PHP/processChangeUname.php" method="POST" id="changeAliasForm" name="changeAliasForm">
-                      <input type="text" id="idtxt" required="" placeholder="New Alias" value="" name="newalias" class="txt">
+                      <input type="text" id="idtxt" required="" placeholder="New Alias" value="" name="newAlias" class="txt">
                       <br><br>
                       <input type="submit" value="submit" name="submit" class="txt2">
                     </form>
@@ -183,7 +184,6 @@ if($_SESSION["valid"]==true){?>
 
 </html>
 <?php
-	}//if (success/error banners)
 }//if
 else{
   redirect("./login.php");

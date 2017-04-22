@@ -4,9 +4,8 @@
 	error_reporting(E_ALL);
 	include '../../../dbconnect.php';
 	require_once("functions.php");
-	$hasErrors = false;
+	$hasErrors = "";
 	$passFlag = 0;
-	$aliasFlag = 0;
 
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -39,9 +38,13 @@
 						redirect("../userSettings.php");
 					}//if result is not false
 				}//if hasErrors is empty
+				else {
+					redirect("../userSettings.php");				
+				}
 			}
 			else{
 				$hasErrors = "That is not your current password, please try again.";
+				redirect("../userSettings.php");
 			}//if else password_verify
 
 		}//if current password field is not empty

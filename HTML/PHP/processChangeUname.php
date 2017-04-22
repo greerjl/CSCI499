@@ -4,15 +4,15 @@
 	error_reporting(E_ALL);
 	include '../../../dbconnect.php';
 	require_once("functions.php");
-	$hasErrors = false;
-	$passFlag = 0;
+	$hasErrors = "";
 	$aliasFlag = 0;
 
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
 	
-		$newAlias = mysqli_real_escape_string($db, $_POST['newalias']);
+		$newAlias = mysqli_real_escape_string($db, $_POST['newAlias']);
 		if(!empty($newAlias)){
 			$newAlias = cleanData($newAlias);
+			$uid = $_SESSION["login_user"];
 			$sql = "UPDATE user_info SET username = '$newAlias' WHERE user_info.UID = '$uid'";
 			$result = mysqli_query($db, $sql);
 			if($result){
