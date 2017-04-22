@@ -1,7 +1,7 @@
 <?php
 	session_start();
-	//ini_set("display_errors", true);
-	//error_reporting(E_ALL);
+	ini_set("display_errors", true);
+	error_reporting(E_ALL);
 	include '../../../dbconnect.php';
 	require_once("functions.php");
 	$hasErrors = false;
@@ -18,7 +18,7 @@
 			$sqlPswd = "SELECT password FROM user_info WHERE user_info.UID = '$uid'";
 
 			//get the hashed password from the db in form of a string
-			$pswdResult = mysqli_query($db, $sqlPswd);
+			$pswdResult = mysqli_query($db, $sqlPswd) or die("Error: ".mysqli_error($db));
 			$temp = mysqli_fetch_object($pswdResult);
 			$dbpassword = $temp->password;
 
@@ -33,9 +33,10 @@
 				if(empty($hasErrors)){
 					$hash = password_hash($newPass, PASSWORD_BCRYPT);				
 					$sql = "UPDATE user_info SET password = '$hash' WHERE user_info.UID = '$uid'";
-					$result = mysqli_query($db, $sql);
+					$result = mysqli_query($db, $sql) or die("Error: ".mysqli_error($db));
 					if($result){
 						$passFlag = 1;
+						redirect("../userSettings.php");
 					}//if result is not false
 				}//if hasErrors is empty
 			}
@@ -49,9 +50,10 @@
 		if(!empty($newAlias)){
 			$newAlias = cleanData($newAlias);
 			$sql = "UPDATE user_info SET username = '$newAlias' WHERE user_info.UID = '$uid'";
-			$result = mysqli_query($db, $sql);
+			$result = mysqli_query($db, $sql) or die("Error: ".mysqli_error($db));
 			if($result){
 				$aliasFlag = 1;
+				redirect("../userSettings.php"):
 			}
 			else{
 				$hasErrors = "An error occurred, username has not been changed";
