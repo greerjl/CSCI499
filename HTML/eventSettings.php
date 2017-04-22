@@ -102,33 +102,13 @@ if($_SESSION["valid"]==true){?>
                            $groupId = $_SESSION["gid"];
                            $sql = "SELECT name, RID FROM room WHERE GID = '$groupId'";
                            $result = mysqli_query($db, $sql);
-
-
-                           /*
-                            if(mysqli_num_rows($result)){
-                              while($rms = mysqli_fetch_array($result)){
-                                $room = $rms -> name;
-                                $getRms.='<option value="'.$room.'">'.$room.'</option>';
-                              }//while
-                            }//if
-                            echo $getRms;
-                            $room[] = mysqli_fetch_row($result);
-                            echo $room[0];
-                            echo $room[1];
-                            $room[] = mysqli_fetch_row($result);
-                            echo $room[0];
-                            echo $room[1];
-                            */
-
-
-
                          ?>
-                      <select name="roomSelect" class="form-control">
-                        <option value="">--Please Select a Room--</option>
-                        <?php while($room = mysqli_fetch_row($result)):?>
-                                <option value="<?php echo $room[1]; ?>"><?php echo $room[0]; ?></option>
-                        <?php endwhile; ?>
-                      </select>
+                       <select name="roomSelect" class="form-control">
+                          <option value="">--Please Select a Room--</option>
+                          <?php while($room = mysqli_fetch_row($result)):?>
+                                  <option value="<?php echo $room[1]; ?>"><?php echo $room[0]; ?></option>
+                          <?php endwhile; ?>
+                       </select>
 
 		                     <hr>
                        <input type="submit" value="submit" name="submit" class="txt2">

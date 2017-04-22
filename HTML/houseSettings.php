@@ -133,7 +133,6 @@ if($_SESSION["valid"]==true){?>
             </div>
 
              <div class="col-md-4">
-
                 <div class="form_main">
                    <h4 class="heading"><strong>Add Rooms</strong> <span></span></h4>
                    <div class="form">
@@ -168,12 +167,6 @@ if($_SESSION["valid"]==true){?>
             </div><!-- col-md-4 -->
 	        </div><!-- row -->
         </div><!-- container -->
-
-        <hr>
-        <h4 class="heading"><strong>Ready to Move Out?<strong> <span></span></h4>
-		    <form action="" method="POST" id="leaveGroupForm" name="leaveGroupForm">
-        <input type="submit" value="Leave Group" name="submit" class="txt2">
-		  </form><!-- action = "./PHP/leaveGroup.php" or something like that -->
 
         <hr>
 

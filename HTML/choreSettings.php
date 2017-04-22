@@ -98,20 +98,29 @@ if($_SESSION["valid"]==true){?>
 
         <div class="container">
 	         <div class="row">
-             <div class="col-md-4">
 
+             <div class="col-md-4">
 		             <div class="form_main">
                    <h4 class="heading"><strong>Add/Assign Chores</strong> <span></span></h4>
                    <div class="form">
-                     <form action="" method="POST" id="choreForm" name="choreForm">
+                     <form action="./PHP/processChoreForm.php" method="POST" id="choreForm" name="choreForm">
                        <input type="text" required="" placeholder="Add Chore" value="" name="chore" class="txt">
-                       <input type="text" required="" placeholder="Who is doing this chore?" value="" name="choreMem" class="txt">
-
+                       <?php
+                         $groupId = $_SESSION["gid"];
+                         $sql = "SELECT username, UID FROM user_info WHERE GID = '$groupId'";
+                         $result = mysqli_query($db, $sql);
+                       ?>
+                       <select name="choreOwner" class="form-control">
+                        <option value="">--Who is Doing this Chore?--</option>
+                        <?php while($room = mysqli_fetch_row($result)):?>
+                                <option value="<?php echo $room[1]; ?>"><?php echo $room[0]; ?></option>
+                        <?php endwhile; ?>
+                       </select>
                        <input type="submit" value="submit" name="submit" class="txt2">
                      </form>
                   </div>
                 </div>
-                </div>
+            </div>
 
 				<div class="col-md-4">
 		            <div class="form_main">

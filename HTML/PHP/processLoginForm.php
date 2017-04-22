@@ -53,7 +53,6 @@
 			}//if
 		} else {
 			$_SESSION["loginErr"] = true;
-			echo $_SESSION["loginErr"];
 			redirect("../login.php");
 		}//ifelse
 	}//POST if

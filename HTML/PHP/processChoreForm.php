@@ -1,26 +1,27 @@
 <?php
 ini_set("display_errors", true);
 error_reporting(E_ALL);
+	session_start();
+	require_once("functions.php");
+	include '../../../dbconnect.php';
 	$cTitle = $username = $sql = "";
 	$titleErr = $uidErr = "";
 	$hasErrors = false;
 
-	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
-		$cTitle = cleanData($_POST['chore']);
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+			$cTitle = cleanData($_POST['chore']);
 			$titleErr = validate($cTitle, 'chore');
-			if(!empty($titleErr)){
+			$username = $_POST['choreOwner'];
+			$uidErr = validate($username, 'choreOwner');
+			if(!empty($titleErr) && !empty($uidErr)){
 				$hasErrors = true;
 			}//if
 			else{
 				/*for testing*/
-				$giD = 101;
+				$giD = $_SESSION["gid"];
 				sendData($cTitle, $username, $giD);
-			}
-		$username = cleanData($_POST['choreMem']);
-			$uidErr = validate($username, 'choreMem');
-			if(!empty($uidErr)){
-				$hasErrors = true;
-			}//if
+				redirect("../choreSettings.php");
+			}//ifelse
 
 	}//if
 
@@ -38,7 +39,7 @@ error_reporting(E_ALL);
 				$data = strtolower($data);
 				$data = ucfirst($data);
 				$sql = "SELECT * FROM chore WHERE title = '$data'"/* AND GID = '$gid'"*/;
-				$result = mysqli_query($db, $sql) /*or die("could not connect to DB")*/;
+				$result = mysqli_query($GLOBALS['db'], $sql) /*or die("could not connect to DB")*/;
 
 				$count = mysqli_num_rows($result);
 				if($count != 0){
@@ -47,44 +48,28 @@ error_reporting(E_ALL);
 				else {
 					return "";
 				}
+				return "";
 			}//case cTitle
-			case 'choreMem':{
-				$data = strtolower($data);
-				$sql = "SELECT UID FROM user_info WHERE username = '$data'"/* AND GID = '$gid'"*/;
-				$result = mysqli_query($db, $sql) /*or die("could not connect to DB")*/;
 
-				$count = mysqli_num_rows($result);
-				if($count == 0){
-					return "User is not in your group or incorrect username";
+			case 'choreOwner':{
+				if(empty($data)){
+					return "Must select someone to do the chore.";
 				}
-				else{
-					return "";
-				}
-			}//case username
+				return "";
+			}//case choreOwner
 		}
 	}
 
 	function sendData($name, $owner, $group){
-		if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
-				$sql = "SELECT UID FROM user_info WHERE username = '$owner'";
-				$result = mysqli_query($db, $sql);
-
-				$count = mysqli_num_rows($result);
-				if($count != 1){
-					die('Error1: '.mysqli_error($db));
-				}
-				else{
-					$uid = mysqli_fetch_row($result);
-					$sql = "INSERT INTO chore (title, GID, UID) VALUES ('$name', $group, $uid)";
-					$result = mysqli_query($db, $sql);
+					$sql = "INSERT INTO chore (title, GID, UID) VALUES ('$name', $group, $owner)";
+					$result = mysqli_query($GLOBALS['db'], $sql);
 
 					if(!$result){
-						die('Error2: '.mysqli_error($db));
+						die('Error: '.mysqli_error($db));
 					}
 					else{
 						echo "Chore(s) successfully created and assigned!";
-					}
-				}
-		}
-	}
+					}//ifelse
+
+	}//function sendData
 ?>
