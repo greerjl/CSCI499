@@ -81,7 +81,7 @@ if($_SESSION["valid"]==true){?>
 
 
 <!--House info-->
-        <div class="houseinfo">
+        <div class="houseinfo col-md-4">
             <h2 class="content-subhead2">House: </h2>
             <h4 class="content-subhead2">Members: </h4>
               <div class="phptext">
@@ -106,7 +106,7 @@ if($_SESSION["valid"]==true){?>
             </div><!--phptext-->
         </div><!--houseinfo-->
 
-        <div class="content">
+        <div class="content col-md-4">
 <!-- CHORES -->
             <h2 class="content-subhead">Your Chore: </h2>
             <p>

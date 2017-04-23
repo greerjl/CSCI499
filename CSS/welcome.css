@@ -87,22 +87,29 @@ The content `<div>` is where all your content goes.
 }
 
 div.houseinfo {
-  postition: relative;
-  left: 0px;
   margin: 0px auto;
-  padding: 0 2em;
   width: 10%;
-  x-width: 800px;
   margin-bottom: 50px;
-  line-height: 1.6em;
+  /*line-height: 1.6em;*/
 }
+
+.col-md-4{
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@media (min-width: 992px) {
+  .col-md-4{
+    float: left;
+    width: 33.33333333%;
+  }
 
 div.phpinfo {
   text-align: left;
   font-size: 10px;
-  /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
-  font-family: fantasy;
-
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.42857143;
 }
 
