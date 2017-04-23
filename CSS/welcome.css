@@ -85,7 +85,8 @@ The content `<div>` is where all your content goes.
 }
 
 div.houseinfo {
-  float: left;
+  postition: relative;
+  left: 0px;
   margin: 0px;
   padding: 5px;
   width: 10%;
@@ -94,9 +95,10 @@ div.houseinfo {
 div.phpinfo {
   text-align: left;
   font-size: 10px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  line-height: 1.42857143;
+  /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  font-family: fantasy;
   
+  line-height: 1.42857143;
 }
 
 /*
