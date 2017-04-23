@@ -79,7 +79,6 @@ if($_SESSION["valid"]==true){?>
             </div><!-- /.container -->
         </nav>
 
-        <div class="content">
 
 <!--House info-->
         <div class="houseinfo">
@@ -107,6 +106,7 @@ if($_SESSION["valid"]==true){?>
             </div><!--phptext-->
         </div><!--houseinfo-->
 
+        <div class="content">
 <!-- CHORES -->
             <h2 class="content-subhead">Your Chore: </h2>
             <p>
@@ -170,8 +170,9 @@ if($_SESSION["valid"]==true){?>
 	          </p>
 
         </div><!-- content -->
-    </div>
-</div>
+    </div><!--main-->
+</div><!--layout-->
+
 <footer>
     <div class="row">
         <div class="col-lg-12 footer l-box is-center">
