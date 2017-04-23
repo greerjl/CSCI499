@@ -97,7 +97,7 @@ div.phpinfo {
   font-size: 10px;
   /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
   font-family: fantasy;
-  
+
   line-height: 1.42857143;
 }
 
@@ -243,7 +243,7 @@ Hides the menu at `48em`, but modify this based on your app's needs.
     }
 
     #layout {
-        padding-left: 150px; /* left col width "#menu" */
+        padding-left: 0px; /* left col width "#menu" */
         left: 0;
     }
     #menu {

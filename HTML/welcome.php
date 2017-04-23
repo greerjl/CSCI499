@@ -39,6 +39,7 @@ if($_SESSION["valid"]==true){?>
 	</script>
 
 </head>
+
 <body>
 	<div id="layout">
 
