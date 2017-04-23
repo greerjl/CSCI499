@@ -81,17 +81,21 @@ if($_SESSION["valid"]==true){?>
         <div class="content">
 
 <!--House info-->
+        <div class="houseinfo">
             <h2 class="content-subhead2">House: </h2>
             <h4 class="content-subhead2">Members: </h4>
-              <?php
-                $groupId = $_SESSION["gid"];
-                $sql = "SELECT username FROM user_info WHERE GID = '$groupId'";
-                $result = mysqli_query($db, $sql);
-                while($username = mysqli_fetch_row($result)):
-                    echo $username[0]."<br/>";
-                endwhile;
-              ?>
+              <div class="phptext">
+                <?php
+                  $groupId = $_SESSION["gid"];
+                  $sql = "SELECT username FROM user_info WHERE GID = '$groupId'";
+                  $result = mysqli_query($db, $sql);
+                  while($username = mysqli_fetch_row($result)):
+                      echo $username[0]."<br/>";
+                  endwhile;
+                ?>
+              </div><!--phptext-->
             <h4 class="content-subhead2">Rooms: </h4>
+            <div class="phptext">
               <?php
                 $sql = "SELECT name FROM room WHERE GID = '$groupId'";
                 $result = mysqli_query($db, $sql);
@@ -99,6 +103,8 @@ if($_SESSION["valid"]==true){?>
                     echo $roomNames[0]."<br/>";
                 endwhile;
               ?>
+            </div><!--phptext-->
+        </div><!--houseinfo-->
 
 <!-- CHORES -->
             <h2 class="content-subhead">Your Chore: </h2>
