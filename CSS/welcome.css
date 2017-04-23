@@ -39,6 +39,8 @@ This is the parent `<div>` that contains the menu and the content area.
 The content `<div>` is where all your content goes.
 */
 .content {
+    position: relative;
+    top: 0 auto;
     margin: 0 auto;
     padding: 0 2em;
     max-width: 800px;
@@ -87,9 +89,12 @@ The content `<div>` is where all your content goes.
 div.houseinfo {
   postition: relative;
   left: 0px;
-  margin: 0px;
-  padding: 5px;
+  margin: 0px auto;
+  padding: 0 2em;
   width: 10%;
+  x-width: 800px;
+  margin-bottom: 50px;
+  line-height: 1.6em;
 }
 
 div.phpinfo {
