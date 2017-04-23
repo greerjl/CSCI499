@@ -5,7 +5,7 @@ include './processSignupForm.php';
 include '../signup.php';
 $mail = new PHPMailer;
 //Enable SMTP debugging
-$mail->SMTPDebug = 2;
+$mail->SMTPDebug = 0;
 $mail->Debugoutput = 'html';
 //Set PHPMailer to use SMTP
 $mail->isSMTP();
