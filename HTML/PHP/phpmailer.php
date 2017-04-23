@@ -22,7 +22,7 @@ $mail->SMTPSecure = 'tls';
 $mail->Port = 587;
 
 $mail->From = "HouseUtilitiesManager@gmail.com";
-$mail->FromNameHUM "HUM";
+$mail->FromName = "HUM";
 
 $mail->addAddress($email, $username);
 $mail->Subject  = 'Welcome to HUM!';
