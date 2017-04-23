@@ -1,18 +1,33 @@
 <?php
-require("/var/www/html/CSCI499/PHPMailer/PHPMailerAutoload.php");
+date_default_timezone_set('America/Los_Angeles');
+require '/var/www/html/CSCI499/PHPMailer/PHPMailerAutoload.php';
 include './processSignupForm.php';
 include '../signup.php';
 $mail = new PHPMailer;
-$mail->setFrom('HouseUtilitiesManager@gmail.com', 'HUM');
+//Enable SMTP debugging
+$mail->SMTPDebug = 2;
+$mail->Debugoutput = 'html';
+//Set PHPMailer to use SMTP
+$mail->isSMTP();
+//Set SMTP host name
+$mail->Host = "smtp.gmail.com";
+//Set this to true if SMTP host requires authentication to send email
+$mail->SMTPAuth = true;
+//Provide username and password
+$mail->Username="HouseUtilitiesManager@gmail.com";
+$mail->Password="getserved69";
+//Requires TLS encryption
+$mail->SMTPSecure = 'tls';
+//Set TCP port to connect to
+$mail->Port = 587;
+
+$mail->From = "HouseUtilitiesManager@gmail.com";
+$mail->FromNameHUM "HUM";
 
 $mail->addAddress($email, $username);
 $mail->Subject  = 'Welcome to HUM!';
-$mail->isHTML(true);
-$mail->Body = '<html<head><link rel="stylesheet" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\"></head>';
-$mail->Body = ' <body><div class="header"><h1>House Utilities Manager</h1><h2>An application for all your house management needs. </h2></div>';
-$mail->Body = ' <div class="content"><h4>Hello, </h4><p> Thanks for signing up for House Utilities Manager. We are very excited to have you on board.</p>';
-$mail->Body = ' <p> To get started using HUM, please confirm your account below: </p><br><form action="http://www.houseutil.com/HTML/verified.php?email='.$email.'&hash='.$accesskey'"><button class="btn btn-lg btn-primary btn-block" type="submit">Confirm your account</button></form>';
-$mail->Body = ' <p> Thanks, <br> The HUM Team </p></body>';
+
+$mail->msgHTML(file_get_contents('content.html'), dirname(../));
 
 $mail->AltBody = "Hi <?php echo $username; ?>, Thanks for signing up for House Utilities Manager. We are very
     excited to have you on board! To get started using HUM, please confirm your account below:";
