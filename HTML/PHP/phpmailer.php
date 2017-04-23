@@ -5,7 +5,7 @@ include './processSignupForm.php';
 include '../signup.php';
 $mail = new PHPMailer;
 //Enable SMTP debugging
-$mail->SMTPDebug = 0;
+$mail->SMTPDebug = 2;
 $mail->Debugoutput = 'html';
 //Set PHPMailer to use SMTP
 $mail->isSMTP();
@@ -31,4 +31,11 @@ $mail->msgHTML(file_get_contents('content.html'), dirname(__FILE__));
 
 $mail->AltBody = "Hi <?php echo $username; ?>, Thanks for signing up for House Utilities Manager. We are very
     excited to have you on board! To get started using HUM, please confirm your account below:";
+
+if(!$mail->send()) {
+  echo 'Message was not sent.';
+  echo 'Mailer error: ' . $mail->ErrorInfo;
+} else {
+  //echo 'Message has been sent.';
+}
 ?>
