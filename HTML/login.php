@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<?php require_once("./PHP/functions.php");
-session_start(); ?>
+<?php session_start();
+require_once("./PHP/functions.php");
+ ?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
