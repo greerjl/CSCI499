@@ -9,16 +9,16 @@ error_reporting(E_ALL);
 	$hasErrors = false;
 
 	if($_SERVER['REQUEST_METHOD']=='POST'){
+			$giD = $_SESSION["gid"];
 			$cTitle = cleanData($_POST['chore']);
 			$titleErr = validate($cTitle, 'chore');
 			$username = $_POST['choreOwner'];
 			$uidErr = validate($username, 'choreOwner');
-			if(!empty($titleErr) && !empty($uidErr)){
+			if(!empty($titleErr) || !empty($uidErr)){
 				$hasErrors = true;
 			}//if
 			else{
 				/*for testing*/
-				$giD = $_SESSION["gid"];
 				sendData($cTitle, $username, $giD);
 				redirect("../choreSettings.php");
 			}//ifelse
@@ -38,8 +38,8 @@ error_reporting(E_ALL);
 			case 'chore':{
 				$data = strtolower($data);
 				$data = ucfirst($data);
-				$sql = "SELECT * FROM chore WHERE title = '$data'"/* AND GID = '$gid'"*/;
-				$result = mysqli_query($GLOBALS['db'], $sql) /*or die("could not connect to DB")*/;
+				$sql = "SELECT * FROM chore WHERE title = '$data' AND GID = '$giD'";
+				$result = mysqli_query($GLOBALS['db'], $sql);
 
 				$count = mysqli_num_rows($result);
 				if($count != 0){

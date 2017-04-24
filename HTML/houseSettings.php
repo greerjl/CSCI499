@@ -104,7 +104,7 @@ if($_SESSION["valid"]==true){?>
               <div class="form_main">
                  <h4 class="heading"><strong>Create Group Name</strong> <span></span></h4>
                  <div class="form">
-                   <form action="" method="POST" id="groupNameForm" name="groupNameForm">
+                   <form action="./PHP/processGroupNameForm.php" method="POST" id="groupNameForm" name="groupNameForm">
                      <input type="text" id="idtxt" required="" name="room" class="txt"
                           <?php
                             $userID = $_SESSION["login_user"];

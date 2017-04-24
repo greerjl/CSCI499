@@ -1,25 +1,27 @@
 <?php
-	//include '../../../dbconnect.php';
-	$cTitle = $cDesc = $username = $sql = "";
-	$titleErr = $descErr = $uidErr = "";
+ini_set("display_errors", true);
+error_reporting(E_ALL);
+	session_start();
+	require_once("functions.php");
+	include '../../../dbconnect.php';
+	$cTitle = $username = $sql = "";
+	$titleErr = $uidErr = "";
 	$hasErrors = false;
 
-	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
-		$cTitle = cleanData($_POST['title']);
-			$titleErr = validate($cTitle, 'cTitle');
-			if(!empty($titleErr)){
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+			$giD = $_SESSION["gid"];
+			$cTitle = cleanData($_POST['chore']);
+			$titleErr = validate($cTitle, 'chore');
+			$username = $_POST['choreOwner'];
+			$uidErr = validate($username, 'choreOwner');
+			if(!empty($titleErr) && !empty($uidErr)){
 				$hasErrors = true;
 			}//if
-		$cDesc = cleadData($_POST['description']);
-			$descErr = validate($cDesc, 'cDesc');
-			if(!empty($descErr)){
-				$hasErrors = true;
-			}//if
-		$username = cleanData($_POST['username']);
-			$uidErr = validate($username, 'username');
-			if(!empty($uidErr)){
-				$hasErrors = true;
-			}//if
+			else{
+				/*for testing*/
+				sendData($cTitle, $username, $giD);
+				redirect("../choreSettings.php");
+			}//ifelse
 
 	}//if
 
@@ -31,13 +33,13 @@
 		return $data;
 	}//cleanData
 
-	function validate($data, $field) {//, $gid
+	function validate($data, $field) {
 		switch($field) {
-			case 'cTitle':{
+			case 'chore':{
 				$data = strtolower($data);
 				$data = ucfirst($data);
-				$sql = "SELECT * FROM chore WHERE title = '$data'"/* AND GID = '$gid'"*/;
-				$result = mysqli_query($db, $sql) /*or die("could not connect to DB")*/;
+				$sql = "SELECT * FROM chore WHERE title = '$data' AND GID = '$giD'";
+				$result = mysqli_query($GLOBALS['db'], $sql);
 
 				$count = mysqli_num_rows($result);
 				if($count != 0){
@@ -46,31 +48,28 @@
 				else {
 					return "";
 				}
+				return "";
 			}//case cTitle
-			case 'cDesc':{
-				if(strlen($data) > 140){
-					return "Description is too long.";
-				}
-				elseif(strlen($data) == 0){
-					return "Must have some description of the chore.";
-				}
-				else{
-					return "";
-				}
-			}//case cDesc
-			case 'username':{
-				$data = strtolower($data);
-				$sql = "SELECT UID FROM user_info WHERE username = '$data'"/* AND GID = '$gid'"*/;
-				$result = mysqli_query($db, $sql) /*or die("could not connect to DB")*/;
 
-				$count = mysqli_num_rows($result);
-				if($count == 0){
-					return "User is not in your group or incorrect username";
+			case 'choreOwner':{
+				if(empty($data)){
+					return "Must select someone to do the chore.";
 				}
-				else{
-					return "";
-				}
-			}//case username
+				return "";
+			}//case choreOwner
 		}
 	}
+
+	function sendData($name, $owner, $group){
+					$sql = "INSERT INTO chore (title, GID, UID) VALUES ('$name', $group, $owner)";
+					$result = mysqli_query($GLOBALS['db'], $sql);
+
+					if(!$result){
+						die('Error: '.mysqli_error($db));
+					}
+					else{
+						echo "Chore(s) successfully created and assigned!";
+					}//ifelse
+
+	}//function sendData
 ?>

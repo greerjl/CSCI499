@@ -32,8 +32,8 @@ error_reporting(E_ALL);
 			case 'room1':{
 				$data = strtolower($data);
 				$data = ucfirst($data);
-				$sql = "SELECT * FROM room WHERE title = '$data'"/* AND GID = '$gid'"*/;
-				$result = mysqli_query($db, $sql) /*or die("could not connect to DB")*/;
+				$sql = "SELECT * FROM room WHERE title = '$data' AND GID = '$gid'";
+				$result = mysqli_query($db, $sql);
 
 				$count = mysqli_num_rows($result);
 				if($count != 0){
