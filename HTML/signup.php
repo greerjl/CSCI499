@@ -87,7 +87,13 @@
 					$sql = "INSERT INTO user_info (username, password, email, accesskey) VALUES ('$username','$hash', '$email', '$accesskey')";
           			$result = mysqli_query($db, $sql);
 								if($result){
-									include './PHP/phpmailer.php';	
+									include './PHP/phpmailer.php';
+									?>
+									<div class="alert alert-success">
+								    <strong>Congratulations!</strong> You have successfully registered.
+								    You should receive an account activation email shortly. Click on the link in the email to activate your account.
+								  </div>
+									<?php
 								}//if
 			}//if
 		?>
