@@ -1,4 +1,6 @@
 <?php
+session_start();
+include '../../../dbconnect.php';
 ini_set("display_errors", true);
 error_reporting(E_ALL);	
 	$tTitle = $sql = $time = "";
@@ -7,14 +9,14 @@ error_reporting(E_ALL);
 	$gid = $_SESSION["gid"];
 
 	if($_SERVER['REQUEST_METHOD']=='POST'){
-		$tTitle = cleanData($_POST['title']);
+		$tTitle = cleanData($_POST['task']);
 			$titleErr = validate($tTitle, 'tTitle');
 			if(!empty($titleErr)){
 				$hasErrors = true;
 			}//if
 		$time = $_POST['taskDate'];
 		if(!$hasErrors){
-			sendData($tTitle, $username, $time);
+			sendData($tTitle, $gid, $time);
 			//redirect("../taskSettings.php");			
 		}
 		else{
