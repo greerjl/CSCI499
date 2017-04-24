@@ -28,7 +28,7 @@ $mail->FromName = "HUM";
 $mail->addAddress($email, $username);
 $mail->Subject  = 'Welcome to HUM!';
 
-$mail->msgHTML(file_get_contents('contents.html'), dirname(__FILE__));
+$mail->msgHTML(file_get_contents('contents.html'));
 
 $mail->AltBody = "Hi <?php echo $username; ?>, Thanks for signing up for House Utilities Manager. We are very
     excited to have you on board! To get started using HUM, please confirm your account below:";
