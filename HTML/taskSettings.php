@@ -10,7 +10,7 @@ if($_SESSION["valid"]==true){?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Server" >
+    <meta name="author" content="Capstone" >
 
 
     <title>Profile Settings</title>
@@ -103,9 +103,11 @@ if($_SESSION["valid"]==true){?>
 		             <div class="form_main">
                    <h4 class="heading"><strong>Add a Task</strong> <span></span></h4>
                    <div class="form">
-                     <form action="" method="POST" id="taskForm" name="taskForm">
+                     <form action="./PHP/processTaskForm.php" method="POST" id="taskForm" name="taskForm">
                        <input type="text" id="idtxt" required="" placeholder="Add a Task" value="" name="task" class="txt">
                        <input type="button" id="idbtn" value="Add Task" />
+                       <input type="date" required="" value="" name="taskDate" class="date">
+		                 <hr>
                        <br><br>
                        <input type="submit" value="submit" name="submit" class="txt2">
                      </form>
