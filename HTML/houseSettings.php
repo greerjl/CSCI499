@@ -41,9 +41,10 @@ if($_SESSION["valid"]==true){?>
     <!-- Bootstrap Core CSS -->
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- room form css -->
-    <link href="../CSS/roomForm.css" rel="stylesheet">
+    <link href="../CSS/roomForm.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/> <!-- normalize -->
     <link rel="stylesheet" type="text/css" href="../CSS/psuedoWelcome.css"/> <!-- css -->
+    <link rel="icon" href="../images/logo.png">
 </head>
 
 <body>
@@ -57,11 +58,13 @@ if($_SESSION["valid"]==true){?>
       </div>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse" role="navigation">
-        <div class="container-fluid">
+    <nav class="navbar navbar-inverse navbar-fixed-top2" role="navigation">
+        <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -69,20 +72,20 @@ if($_SESSION["valid"]==true){?>
                 <a class="navbar-brand" href="./welcome.php">Dashboard</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="myNavbar">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="./houseSettings.php">House</a></li>
-                    <li><a href="./choreSettings.php">Chores</a></li>
-                    <li><a href="./taskSettings.php">Tasks</a></li>
-                    <li><a href="./eventSettings.php">Events</a></li>
-                    <li><a href="./userSettings.php"> My Settings </a></li>
-                    <li><a href="./logout.php"> <span class="glyphicon glyphicon-log-out">
-                    </span>Logout</a></li>
+                  <ul class="nav navbar-nav">
+                      <li><a href="./houseSettings.php">House</a></li>
+                      <li><a href="./choreSettings.php">Chores</a></li>
+                      <li><a href="./taskSettings.php">Tasks</a></li>
+                      <li><a href="./eventSettings.php">Events</a></li>
+                      <li><a href="./userSettings.php"> My Settings </a></li>
+                      <li><a href="./logout.php"> <span class="glyphicon glyphicon-log-out">
+                          </span>Logout </a></li>
+                  </ul>
                 </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
     </nav>
 
     <!-- Page Content -->

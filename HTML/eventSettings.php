@@ -24,6 +24,7 @@ if($_SESSION["valid"]==true){?>
 
     <link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/> <!-- normalize -->
     <link rel="stylesheet" type="text/css" href="../CSS/psuedoWelcome.css"/> <!-- css -->
+    <link rel="icon" href="../images/logo.png">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

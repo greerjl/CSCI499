@@ -43,10 +43,17 @@ This is the parent `<div>` that contains the menu and the content area.
             padding: 0;
             margin-top: 0;
         }
+        .header h4 {
+           font-weight: 300;
+           color: #888888;
+           padding: 0;
+           margin-top: 0;
+           font-size: 1.5em;
+       }
 
 @media (min-width: 48em) {
   #layout {
-      padding-left: 150px; /* left col width "#menu" */
+      padding-left: 0px; /* left col width "#menu" */
       left: 0;
   }
   #layout.active .menu-link {

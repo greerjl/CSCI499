@@ -42,13 +42,14 @@ if($_SESSION["valid"]==true){?>
 
 <body>
 	<div id="layout">
-
     <div id="main">
+      
         <div class="header">
             <h1>House Utilities Manager</h1>
             <h2>An application housing all your home management needs. </h2>
         </div>
 
+        <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top2" role="navigation">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -108,7 +109,7 @@ if($_SESSION["valid"]==true){?>
 
         <div class="content col-md-4">
 <!-- CHORES -->
-            <h2 class="content-subhead">Your Chore: </h2>
+            <h2 class="content-subhead">Your Chore(s): </h2>
             <p>
               <table>
                   <?php
@@ -134,7 +135,7 @@ if($_SESSION["valid"]==true){?>
             </table>
             </p>
 <!-- TASKS -->
-            <h2 class="content-subhead">Current Tasks: </h2>
+            <h2 class="content-subhead">Current Task(s): </h2>
             <p>
                    <table>
                        <?php
