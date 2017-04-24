@@ -85,7 +85,7 @@
 			if($_SERVER['REQUEST_METHOD']=="POST" && !$hasErrors){
 					$accesskey = uniqid();
 					$sql = "INSERT INTO user_info (username, password, email, accesskey) VALUES ('$username','$hash', '$email', '$accesskey')";
-          $result = mysqli_query($db, $sql);
+          			$result = mysqli_query($GLOBALS['db'], $sql);
 								if($result){
 									include './PHP/phpmailer.php';
 									?>
