@@ -49,6 +49,7 @@
 				$_SESSION["valid"] = true;
 				$_SESSION["gid"] = $GID;
 	    	$_SESSION["timeout"] = time() + 300;
+				$_SESSION["loginErr"] = false;
 				redirect("../welcome.php");
 			}//if
 		} else {
