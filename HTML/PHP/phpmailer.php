@@ -1,6 +1,6 @@
 <?php
 date_default_timezone_set('America/Los_Angeles');
-require '/var/www/html/CSCI499/PHPMailer/PHPMailerAutoload.php';
+require '../../PHPMailer/PHPMailerAutoload.php';
 include './processSignupForm.php';
 include '../signup.php';
 
