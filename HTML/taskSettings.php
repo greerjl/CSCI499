@@ -104,9 +104,9 @@ if($_SESSION["valid"]==true){?>
                    <div class="form">
                      <form action="./PHP/processTaskForm.php" method="POST" id="taskForm" name="taskForm">
                        <input type="text" id="idtxt" required="" placeholder="Add a Task" value="" name="task" class="txt">
-                       <input type="button" id="idbtn" value="Add Task" />
+                       <input type="time" required="" placeholder="Time of Laundry" value="" name="eventTime" class="txt">
                        <input type="date" required="" value="" name="taskDate" class="date">
-		                 <hr>
+                       <input type="button" id="idbtn" value="Add Task" />
                        <br><br>
                        <input type="submit" value="submit" name="submit" class="txt2">
                      </form>
