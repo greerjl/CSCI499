@@ -28,15 +28,24 @@ $mail->FromName = "HUM";
 $mail->addAddress($email, $username);
 $mail->Subject  = 'Welcome to HUM!';
 
-$mail->msgHTML(file_get_contents('contents.html'));
+$mail->msgHTML(file_get_contents('content.html'));
 
 $mail->AltBody = "Hi <?php echo $username; ?>, Thanks for signing up for House Utilities Manager. We are very
     excited to have you on board! To get started using HUM, please confirm your account below:";
 
 if(!$mail->send()) {
-  echo 'Message was not sent.';
+  ?>
+  <div class="alert alert-danger">
+    <strong>Error!</strong> Mail was not sent
+  </div>
+  <?php
   echo 'Mailer error: ' . $mail->ErrorInfo;
 } else {
-  echo 'Message has been sent.';
+ ?>
+  <div class="alert alert-success">
+    <strong>Congratulations!</strong> You have successfully registered.
+    You should receive an account activation email shortly. Click on the link in the email to activate your account.
+  </div>
+  <?php
 }
 ?>
