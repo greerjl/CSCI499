@@ -127,7 +127,7 @@ if($_SESSION["valid"]==true){?>
                     else{
                       while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                           foreach ($line as $col_value) {
-                              echo "\t\t<tr><td><strong>$col_value</strong></td><td>---</td>
+                              echo "\t\t<tr><td><strong>$col_value</strong></td>
                               <td><form action=\"./PHP/choreCompleted.php\"><input type=\"submit\" value=\"Completed\"/></form></td></tr>";
                           }//foreach
                       }//while
