@@ -139,8 +139,6 @@ if($_SESSION["valid"]==true){?>
             <p>
                    <table>
                        <?php
-                         ini_set("display_errors", true);
-                         error_reporting(E_ALL);
                          $group = $_SESSION["gid"];
                          $sql = "SELECT name, time FROM task WHERE task.GID = '$group'";
                          $result = mysqli_query($db, $sql);
@@ -168,8 +166,6 @@ if($_SESSION["valid"]==true){?>
             <h2 class="content-subhead">House schedule: </h2>
             <p>
               <?php
-                ini_set("display_errors", true);
-                error_reporting(E_ALL);
                 $group = $_SESSION["gid"];
                 $sql = "SELECT title, description FROM event WHERE task.GID = '$group'";
                 $result = mysqli_query($db, $sql);
