@@ -44,7 +44,7 @@ error_reporting(E_ALL);
 	}//function validate
 
 	function sendData($name, $gid){
-			$sql = "UPDATE group_info SET name = '$name' WHERE GID = '$gid'";
+			$sql = "UPDATE group_info SET group_name = '$name' WHERE GID = '$gid'";
 			$result = mysqli_query($GLOBALS['db'], $sql);
 
 			if(!$result){

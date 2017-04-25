@@ -16,11 +16,11 @@ error_reporting(E_ALL);
 			}//if
 		if(!$hasErrors){
 			sendData($gName, $_SESSION["gid"]);
-			//redirect("../houseSettings.php");
+			redirect("../houseSettings.php");
 		}
 		else{
 			echo $titleErr." ";
-			//redirect("../houseSettings.php");
+			redirect("../houseSettings.php");
 		}
 	}//if
 
@@ -51,7 +51,7 @@ error_reporting(E_ALL);
 				die('Error: ' . mysqli_error($GLOBALS['db']));
 			}
 			else{
-				echo "Group name changed!";
+				//echo "Group name changed!";
 			}//ifelse
 	}//function sendData
 ?>
