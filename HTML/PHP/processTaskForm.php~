@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../../../dbconnect.php';
+require('fucntions.php');
 ini_set("display_errors", true);
 error_reporting(E_ALL);
 	$tTitle = $sql = $time = "";
@@ -19,7 +20,7 @@ error_reporting(E_ALL);
 			redirect("../taskSettings.php");
 		}
 		else{
-			echo $titleErr." ";
+			//echo $titleErr." ";
 			redirect("../taskSettings.php");
 		}
 	}//if
@@ -56,7 +57,7 @@ error_reporting(E_ALL);
 				die('Error: ' . mysqli_error($GLOBALS['db']));
 			}
 			else{
-				echo "Task successfully created and assigned!";
+				//echo "Task successfully created and assigned!";
 			}//ifelse
 	}//function sendData
 ?>

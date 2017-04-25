@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../../../dbconnect.php';
+require_once("functions.php");
 ini_set("display_errors", true);
 error_reporting(E_ALL);
 	$tTitle = $sql = $time = "";
