@@ -1,10 +1,10 @@
-<!DOCTYPE html>
 <?php session_start();
 include '../../dbconnect.php';
 require_once("./PHP/functions.php");
 ini_set("display_errors", true);
 error_reporting(E_ALL);
 if($_SESSION["valid"]==true){?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -43,7 +43,7 @@ if($_SESSION["valid"]==true){?>
 <body>
 	<div id="layout">
     <div id="main">
-      
+
         <div class="header">
             <h1>House Utilities Manager</h1>
             <h2>An application housing all your home management needs. </h2>

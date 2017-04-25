@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php require("../../dbconnect.php");
+<?php session_start();
+require("../../dbconnect.php");
 require_once("./PHP/functions.php");
-session_start();
 ini_set("display_errors", true);
 error_reporting(E_ALL);
 if($_SESSION["valid"]==true){?>
