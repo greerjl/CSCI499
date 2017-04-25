@@ -291,9 +291,3 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 strong {
 
 }
-
-/*this block is for the sticky footer*/
-#footer{
-  height: 60px;
-  background-color: #f5f5f5;
-}

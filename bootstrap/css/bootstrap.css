@@ -1498,7 +1498,7 @@ blockquote ul:last-child,
 blockquote ol:last-child {
   margin-bottom: 0;
 }
-blockquote footer,
+blockquote,
 blockquote small,
 blockquote .small {
   display: block;

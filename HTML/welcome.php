@@ -197,8 +197,8 @@ if($_SESSION["valid"]==true){?>
     </div><!--main-->
 </div><!--layout-->
 
-<footer class="footer">
-    <div class="container">
+<footer class="navbar-fixed-bottom">
+    <div class="row">
         <div class="col-lg-12 footer l-box is-center">
             <p class="text muted">Copyright &copy; 2016-2017 PLU Capstone. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
 <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
