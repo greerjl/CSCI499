@@ -127,7 +127,7 @@ if($_SESSION["valid"]==true){?>
                     else{
                       while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                           foreach ($line as $col_value) {
-                              echo "\t\t<tr><td><strong>$col_value</strong></td><td>   </td>
+                              echo "\t\t<tr><td><strong>$col_value</strong></td><td>---</td>
                               <td><form action=\"./PHP/choreCompleted.php\"><input type=\"submit\" value=\"Completed\"/></form></td></tr>";
                           }//foreach
                       }//while
@@ -156,7 +156,7 @@ if($_SESSION["valid"]==true){?>
                            while ($line = mysqli_fetch_assoc($result)) {
                                 $name = $line['name'];
                                 $time = $line['time'];
-                                echo "\t\t<tr><td><strong>$name</strong></td><td>  </td><td> by $time</td><td>   </td>
+                                echo "\t\t<tr><td><strong>$name</strong></td><td>---</td><td> by $time</td><td>---</td>
                                 <td><form action=\"./PHP/taskCompleted.php\"><input type=\"submit\" value=\"Completed\"/></form></td></tr>";
                            }//while
                          }//else
