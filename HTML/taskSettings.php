@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include '../../dbconnect.php';
+<?php session_start();
+include '../../dbconnect.php';
 require_once("./PHP/functions.php");
-session_start();
 if($_SESSION["valid"]==true){?>
 <head>
 
