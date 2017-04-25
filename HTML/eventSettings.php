@@ -139,7 +139,7 @@ if($_SESSION["valid"]==true){?>
         <hr>
 
         <!-- Footer -->
-        <footer>
+        <footer class="navbar-fixed-bottom">
             <div class="row">
                 <div class="col-lg-12 footer l-box is-center">
                     <p>Copyright &copy; 2016-2017 PLU Capstone. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
