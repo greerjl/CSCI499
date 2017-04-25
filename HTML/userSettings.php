@@ -124,7 +124,7 @@ if($_SESSION["valid"]==true){?>
                        <input type="text" required="" placeholder="New Password" value="" name="newpass" class="txt">
                        <input type="text" required="" placeholder="Repeat New Password" value="" name="rnewpass" class="txt">
 
-                       <input type="submit" value="submit" name="submit" class="txt2">
+                       <input type="submit" value="Submit" name="submit" class="txt2">
                      </form>
                   </div>
                 </div>
@@ -137,7 +137,7 @@ if($_SESSION["valid"]==true){?>
                     <form action="./PHP/processChangeUname.php" method="POST" id="changeAliasForm" name="changeAliasForm">
                       <input type="text" id="idtxt" required="" placeholder="New Alias" value="" name="newAlias" class="txt">
                       <br><br>
-                      <input type="submit" value="submit" name="submit" class="txt2">
+                      <input type="submit" value="Submit" name="submit" class="txt2">
                     </form>
                   </div>
                </div>
