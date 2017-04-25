@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<?php include '../../dbconnect.php';
+<?php session_start();
+include '../../dbconnect.php';
 require_once("./PHP/functions.php");
 include './PHP/processRoomForm.php';
 //include 'processGroupNameFrom.php';
 //include 'processInviteMemForm.php';
 
-session_start();
 if($_SESSION["valid"]==true){?>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 
     <meta charset="utf-8">
