@@ -69,9 +69,9 @@
         </div><!-- header -->
 <?php echo $flag?>
 
-	<?php require_once('./PHP/processLoginForm.php'); ?>
+	    <?php require_once('./PHP/processLoginForm.php'); ?>
 
-        <?php if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
+      <?php if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
         		if($_SESSION["loginErr"] == true){ ?>
         			<div class="alert alert-danger">
         				<strong>Error!</strong> User credentials are incorrect. Enter correct username and password.

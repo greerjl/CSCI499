@@ -80,7 +80,6 @@ if($_SESSION["valid"]==true){?>
             </div><!-- /.container -->
         </nav>
 
-
 <!--House info-->
         <div class="houseinfo col-md-4">
             <h2 class="content-subhead2">House: </h2>
@@ -128,7 +127,8 @@ if($_SESSION["valid"]==true){?>
                       while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                           foreach ($line as $col_value) {
                               echo "\t\t<tr><td><strong>$col_value</strong></td>
-                              <td><form action=\"./PHP/choreCompleted.php\"><input type=\"submit\" value=\"Completed\"/></form></td></tr>";
+                              <td><form action=\"./PHP/choreCompleted.php\"><input style=\"border-radius: 6px;\" type=\"submit\"
+                                value=\"Completed\"/></form></td></tr>";
                           }//foreach
                       }//while
                     }//else
@@ -157,7 +157,8 @@ if($_SESSION["valid"]==true){?>
                                 $name = $line['name'];
                                 $time = $line['time'];
                                 echo "\t\t<tr><td><strong>$name</strong></td><td>---</td><td> by $time</td><td>---</td>
-                                <td><form action=\"./PHP/taskCompleted.php\"><input type=\"submit\" value=\"Completed\"/></form></td></tr>";
+                                <td><form action=\"./PHP/taskCompleted.php\"><input style=\"border-radius: 6px;\" type=\"submit\"
+                                  value=\"Completed\"/></form></td></tr>";
                            }//while
                          }//else
                        ?>
