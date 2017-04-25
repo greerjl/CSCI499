@@ -155,14 +155,9 @@ if($_SESSION["valid"]==true){?>
                          else{
                            //$post = array();
                            while ($line = mysqli_fetch_assoc($result)) {
-                               //$post[] = $line;
-                               //foreach ($post as $row) {
-
-                                 //foreach ($row as $col_value){
-                                   $name = $line['name'];
-                                   $time = $line['time'];
-                                   echo "\t\t<tr><td><strong>$name</strong></td><td>    by $time</td></tr>";
-                                 //}//inner foreach
+                                $name = $line['name'];
+                                $time = $line['time'];
+                                echo "\t\t<tr><td><strong>$name</strong></td><td>    by $time</td></tr>";
                            }//while
                          }//else
                        ?>
@@ -171,6 +166,32 @@ if($_SESSION["valid"]==true){?>
 
 <!-- EVENTS/SCHEDULE -->
             <h2 class="content-subhead">House schedule: </h2>
+            <p>
+              <?php
+                ini_set("display_errors", true);
+                error_reporting(E_ALL);
+                $group = $_SESSION["gid"];
+                $sql = "SELECT title, description FROM event WHERE task.GID = '$group'";
+                $result = mysqli_query($db, $sql);
+
+                $count = mysqli_num_rows($result);
+                //php end tag here
+
+                if($count == 0){
+                  $emptyMessage = "Your House currently has no upcoming events.";
+                  echo $emptyMessage;
+                }
+                else{
+                  $i = 1;
+                  while ($line = mysqli_fetch_assoc($result)) {
+                      $name = $line['title'];
+                      $desc = $line['description'];
+                      echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> by $desc</td></tr>";
+                      $i = $i+1;
+                  }//while
+                }//else
+              ?>
+            </p>
             <p>
 	          <iframe src="https://calendar.google.com/calendar/embed?title=My%20Calendar&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=greerjl%40plu.edu&amp;color=%2329527A&amp;ctz=America%2FLos_Angeles"
                   style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
