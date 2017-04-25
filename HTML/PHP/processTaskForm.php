@@ -19,7 +19,7 @@ error_reporting(E_ALL);
 			redirect("../taskSettings.php");
 		}
 		else{
-			echo $titleErr." ";
+			//echo $titleErr." ";
 			redirect("../taskSettings.php");
 		}
 	}//if
@@ -56,7 +56,7 @@ error_reporting(E_ALL);
 				die('Error: ' . mysqli_error($GLOBALS['db']));
 			}
 			else{
-				echo "Task successfully created and assigned!";
+				//echo "Task successfully created and assigned!";
 			}//ifelse
 	}//function sendData
 ?>
