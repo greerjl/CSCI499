@@ -156,7 +156,8 @@ if($_SESSION["valid"]==true){?>
                            while ($line = mysqli_fetch_assoc($result)) {
                                 $name = $line['name'];
                                 $time = $line['time'];
-                                echo "\t\t<tr><td><strong>$name</strong></td><td>    by $time</td></tr>";
+                                echo "\t\t<tr><td><strong>$name</strong></td><td>    by $time</td>
+                                <td><form action=\"./PHP/choreCompleted.php\"><input type=\"submit\" value=\"Completed\"/></form></td></tr>";
                            }//while
                          }//else
                        ?>
