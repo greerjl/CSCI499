@@ -35,7 +35,8 @@ error_reporting(E_ALL);
 	function validate($data, $field) {
 			$data = strtolower($data);
 			$data = ucfirst($data);
-			$sql = "SELECT * FROM task WHERE name = '$data' AND GID = '$_SESSION["gid"]'";
+			$gid = $_SESSION["gid"];
+			$sql = "SELECT * FROM task WHERE name = '$data' AND GID = '$gid'";
 			$result = mysqli_query($GLOBALS['db'], $sql);
 
 			$count = mysqli_num_rows($result);

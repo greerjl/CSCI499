@@ -6,7 +6,6 @@ error_reporting(E_ALL);
 	$tTitle = $sql = $time = "";
 	$titleErr = "";
 	$hasErrors = false;
-	$gid = $_SESSION["gid"];
 
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 		$tTitle = cleanData($_POST['task']);
@@ -16,7 +15,7 @@ error_reporting(E_ALL);
 			}//if
 		$time = $_POST['taskDate'];
 		if(!$hasErrors){
-			sendData($tTitle, $gid, $time);
+			sendData($tTitle, $_SESSION["gid"], $time);
 			//redirect("../taskSettings.php");			
 		}
 		else{
@@ -36,8 +35,8 @@ error_reporting(E_ALL);
 	function validate($data, $field) {
 			$data = strtolower($data);
 			$data = ucfirst($data);
-			$sql = "SELECT * FROM task WHERE name = '$data' AND GID = '$gid'";
-			$result = mysqli_query($db, $sql);
+			$sql = "SELECT * FROM task WHERE name = '$data' AND GID = '$_SESSION["gid"]'";
+			$result = mysqli_query($GLOBALS['db'], $sql);
 
 			$count = mysqli_num_rows($result);
 			if($count != 0){
@@ -50,10 +49,10 @@ error_reporting(E_ALL);
 
 	function sendData($task, $gid, $time){
 			$sql = "INSERT INTO task (name, GID, time) VALUES ('$task','$gid', '$time' )";
-			$result = mysqli_query($db, $sql);
+			$result = mysqli_query($GLOBALS['db'], $sql);
 
 			if(!$result){
-				die('Error: ' . mysqli_error($db));
+				die('Error: ' . mysqli_error($GLOBALS['db']));
 			}
 			else{
 				echo "Task successfully created and assigned!";
