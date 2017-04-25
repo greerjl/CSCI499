@@ -200,7 +200,7 @@ if($_SESSION["valid"]==true){?>
 <footer>
     <div class="row">
         <div class="col-lg-12 footer l-box is-center">
-            <p>Copyright &copy; 2016-2017 PLU Capstone. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
+            <p class="text muted">Copyright &copy; 2016-2017 PLU Capstone. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
 <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
         </div>
     </div>
