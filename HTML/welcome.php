@@ -157,7 +157,7 @@ if($_SESSION["valid"]==true){?>
                                 $name = $line['name'];
                                 $time = $line['time'];
                                 echo "\t\t<tr><td><strong>$name</strong></td><td>    by $time</td>
-                                <td><form action=\"./PHP/choreCompleted.php\"><input type=\"submit\" value=\"Completed\"/></form></td></tr>";
+                                <td><form action=\"./PHP/taskCompleted.php\"><input type=\"submit\" value=\"Completed\"/></form></td></tr>";
                            }//while
                          }//else
                        ?>
