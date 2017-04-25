@@ -127,7 +127,7 @@ if($_SESSION["valid"]==true){?>
                     else{
                       while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                           foreach ($line as $col_value) {
-                              echo "\t\t<tr><td>$col_value</td></tr>";
+                              echo "\t\t<tr><td><strong>$col_value</strong></td></tr>";
                           }//foreach
                       }//while
                     }//else
@@ -142,7 +142,7 @@ if($_SESSION["valid"]==true){?>
                          ini_set("display_errors", true);
                          error_reporting(E_ALL);
                          $group = $_SESSION["gid"];
-                         $sql = "SELECT name FROM task WHERE task.GID = '$group'";
+                         $sql = "SELECT name, time FROM task WHERE task.GID = '$group'";
                          $result = mysqli_query($db, $sql);
 
                          $count = mysqli_num_rows($result);
@@ -153,10 +153,16 @@ if($_SESSION["valid"]==true){?>
                            echo $emptyMessage;
                          }
                          else{
-                           while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                               foreach ($line as $col_value) {
-                                   echo "\t\t<tr><td>$col_value</td></tr>";
-                               }//foreach
+                           //$post = array();
+                           while ($line = mysqli_fetch_assoc($result)) {
+                               //$post[] = $line;
+                               //foreach ($post as $row) {
+
+                                 //foreach ($row as $col_value){
+                                   $name = $line['name'];
+                                   $time = $line['time'];
+                                   echo "\t\t<tr><td><strong>$name</strong></td><td>    by $time</td></tr>";
+                                 //}//inner foreach
                            }//while
                          }//else
                        ?>
