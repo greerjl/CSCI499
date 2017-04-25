@@ -14,7 +14,7 @@ if($_SESSION["valid"]==true){?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Server" >
+    <meta name="author" content="Capstone" >
 
     <title>My Dashboard</title>
 
@@ -108,7 +108,7 @@ if($_SESSION["valid"]==true){?>
                  <h4 class="heading"><strong>Create Group Name</strong> <span></span></h4>
                  <div class="form">
                    <form action="./PHP/processGroupNameForm.php" method="POST" id="groupNameForm" name="groupNameForm">
-                     <input type="text" id="idtxt" required="" name="room" class="txt"
+                     <input type="text" id="idtxt" required="" name="groupName" class="txt"
                           <?php
                             $userID = $_SESSION["login_user"];
                             $sql = "SELECT GID FROM sys.user_info WHERE UID = '$userID'";
