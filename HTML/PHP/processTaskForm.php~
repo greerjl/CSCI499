@@ -16,7 +16,7 @@ error_reporting(E_ALL);
 			}//if
 		$time = $_POST['taskDate'];
 		if(!$hasErrors){
-			sendData($tTitle, $username, $time);
+			sendData($tTitle, $gid, $time);
 			//redirect("../taskSettings.php");			
 		}
 		else{
