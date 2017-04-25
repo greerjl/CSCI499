@@ -2,7 +2,7 @@
 session_start();
 include '../../../dbconnect.php';
 ini_set("display_errors", true);
-error_reporting(E_ALL);	
+error_reporting(E_ALL);
 	$tTitle = $sql = $time = "";
 	$titleErr = "";
 	$hasErrors = false;
@@ -16,11 +16,11 @@ error_reporting(E_ALL);
 		$time = $_POST['taskDate'];
 		if(!$hasErrors){
 			sendData($tTitle, $_SESSION["gid"], $time);
-			//redirect("../taskSettings.php");			
+			//redirect("../taskSettings.php");
 		}
 		else{
 			echo $titleErr." ";
-			//redirect("../taskSettings.php");			
+			//redirect("../taskSettings.php");
 		}
 	}//if
 
