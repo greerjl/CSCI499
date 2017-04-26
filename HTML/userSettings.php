@@ -120,11 +120,11 @@ if($_SESSION["valid"]==true){?>
                    <h4 class="heading"><strong>Change Password</strong> <span></span></h4>
                    <div class="form">
                      <form action="./PHP/processUserSettings.php" method="POST" id="passwordForm" name="passwordForm">
-                       <input type="text" required="" placeholder="Current Password" value="" name="currentpass" class="txt">
-                       <input type="text" required="" placeholder="New Password" value="" name="newpass" class="txt">
-                       <input type="text" required="" placeholder="Repeat New Password" value="" name="rnewpass" class="txt">
+                       <input type="text" required="" placeholder="Current Password" value="" name="currentpass" class="txt"/>
+                       <input type="text" required="" placeholder="New Password" value="" name="newpass" class="txt"/>
+                       <input type="text" required="" placeholder="Repeat New Password" value="" name="rnewpass" class="txt"/>
 
-                       <input type="submit" value="Submit" name="submit" class="txt2">
+                       <input type="submit" value="Submit" name="submit" class="txt2"/>
                      </form>
                   </div>
                 </div>
@@ -135,9 +135,9 @@ if($_SESSION["valid"]==true){?>
                   <h4 class="heading"><strong>Change Username</strong> <span></span></h4>
                   <div class="form">
                     <form action="./PHP/processChangeUname.php" method="POST" id="changeAliasForm" name="changeAliasForm">
-                      <input type="text" id="idtxt" required="" placeholder="New Alias" value="" name="newAlias" class="txt">
+                      <input type="text" id="idtxt" required="" placeholder="New Username" value="" name="newAlias" class="txt"/>
                       <br><br>
-                      <input type="submit" value="Submit" name="submit" class="txt2">
+                      <input type="submit" value="Submit" name="submit" class="txt2"/>
                     </form>
                   </div>
                </div>

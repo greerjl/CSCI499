@@ -82,7 +82,7 @@ if($_SESSION["valid"]==true){?>
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Event Settings
-                    <small>Add events by giving the name, date and time, and location of the event.</small>
+                    <small>Add events by giving the name, date, time, and location of the event.</small>
                 </h1>
             </div>
         </div>

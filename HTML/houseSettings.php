@@ -95,7 +95,7 @@ if($_SESSION["valid"]==true){?>
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">House Settings
-                    <small>Add rooms, invite members, or move out.</small>
+                    <small>Create a group and edit group name, add rooms, and invite members to join.</small>
                 </h1>
             </div>
         </div><!-- /.row -->
@@ -144,7 +144,7 @@ if($_SESSION["valid"]==true){?>
                      <form action="./PHP/processRoomForm.php" method="POST" id="roomForm" name="roomForm">
                        <input type="text" id="idtxt" required="" placeholder="Add Room" value="" name="room1" class="txt">
 
-                       <input type="button" id="idbtn" value="Add Room" />
+                       <!--input type="button" id="idbtn" value="Add Room" /-->
                        <br><br>
                        <input type="submit" value="Submit" name="submit" class="txt2">
                      </form>

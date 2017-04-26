@@ -127,7 +127,7 @@ if($_SESSION["valid"]==true){?>
                   <div class="form">
                     <form action="./PHP/processChoreRemoveForm.php" method="POST" id="removeChoreForm" name="removeChoreForm">
                       <input type="text" id="idtxt" required="" placeholder="Chore to be Removed" value="" name="remChore" class="txt">
-                      <input type="button" id="idbtn" value="Add Chore to Remove" />
+                      <!--input type="button" id="idbtn" value="Add Chore to Remove" /-->
                       <br><br>
                       <input type="submit" value="submit" name="submit" class="txt2">
                     </form>

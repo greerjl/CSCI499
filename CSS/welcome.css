@@ -91,6 +91,7 @@ The content `<div>` is where all your content goes.
 div.houseinfo {
   margin: 20px 0 16px 40px;
   width: 10%;
+  min-width: 150px;
   margin-bottom: 50px;
   /*line-height: 1.6em;*/
 }
