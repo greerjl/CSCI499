@@ -105,7 +105,7 @@ if($_SESSION["valid"]==true){?>
 
              <div class="col-md-4">
               <div class="form_main">
-                 <h4 class="heading"><strong>Create Group Name</strong> <span></span></h4>
+                 <h4 class="heading"><strong>Edit Group Name</strong> <span></span></h4>
                  <div class="form">
                    <form action="./PHP/processGroupNameForm.php" method="POST" id="groupNameForm" name="groupNameForm">
                      <input type="text" id="idtxt" required="" name="groupName" class="txt"
@@ -152,6 +152,10 @@ if($_SESSION["valid"]==true){?>
                 </div>
               </div>
 
+            </div><!-- row -->
+
+            <div class="row">
+
 					    <div class="col-md-4">
 		            <div class="form_main">
                   <?php
@@ -176,7 +180,7 @@ if($_SESSION["valid"]==true){?>
         <hr>
 
         <!-- Footer -->
-        <footer>
+        <footer class="navbar-fixed-bottom">
             <div class="row">
                 <div class="col-lg-12 footer l-box is-center">
                     <p>Copyright &copy; 2016-2017 PLU Capstone. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,

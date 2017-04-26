@@ -14,6 +14,7 @@ This is the parent `<div>` that contains the menu and the content area.
 */
 #layout {
     position: relative;
+    display: grid;
     padding-left: 0;
 }
     #layout.active #menu {

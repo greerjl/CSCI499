@@ -10,18 +10,17 @@ error_reporting(E_ALL);
 
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 		$gName = cleanData($_POST['groupName']);
-			$nameErr = validate($gName);
-			if(!empty($nameErr)){
-				$hasErrors = true;
-			}//if
-		if(!$hasErrors){
-			sendData($gName, $_SESSION["gid"]);
-			redirect("../houseSettings.php");
-		}
-		else{
-			echo $titleErr." ";
-			redirect("../houseSettings.php");
-		}
+
+			if($_SESSION["gid"]==0){
+				//create random accesscode for group here
+				//$acode = ;
+				$sql2 = "INSERT INTO group_info (group_name) VALUES ('$gName');";
+				mysqli_query($db, $sql2);
+				redirect("../houseSettings.php");
+			}else{
+				sendData($gName, $_SESSION["gid"]);
+				redirect("../houseSettings.php");
+			}//ifelse
 	}//if
 
 	//FUNCTIONS
@@ -31,17 +30,6 @@ error_reporting(E_ALL);
 		$data = htmlspecialchars($data);
 		return $data;
 	}//cleanData
-
-	function validate($data) {
-			$gid = $_SESSION["gid"];
-			if($gid == 0){
-				return "You are not in a group.";
-			}
-			else{
-				return "";
-			}
-			return "Error: check value of $gid.";
-	}//function validate
 
 	function sendData($name, $gid){
 			$sql = "UPDATE group_info SET group_name = '$name' WHERE GID = '$gid'";
