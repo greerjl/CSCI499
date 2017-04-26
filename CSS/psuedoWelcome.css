@@ -74,3 +74,7 @@ This is the parent `<div>` that contains the menu and the content area.
         left: 150px;
     }
 }
+
+div.container {
+  margin-left: 20px;
+}

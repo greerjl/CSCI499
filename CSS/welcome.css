@@ -89,11 +89,15 @@ The content `<div>` is where all your content goes.
 }
 
 div.houseinfo {
-  margin: 20px 0 16px 40px;
+  margin: 20px 0 16px 20px;
   width: 10%;
   min-width: 150px;
   margin-bottom: 50px;
   /*line-height: 1.6em;*/
+}
+
+div.container {
+  margin-left: 20px;
 }
 
 .col-md-4{
@@ -111,6 +115,7 @@ div.houseinfo {
 
 div.phpinfo {
   text-align: left;
+  margin-left: 20px;
   font-size: 10px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.42857143;
