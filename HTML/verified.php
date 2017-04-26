@@ -69,9 +69,9 @@
         </div><!-- header -->
 <?php echo $flag?>
 
-	<?php require_once('./PHP/processLoginForm.php'); ?>
+	    <?php require_once('./PHP/processLoginForm.php'); ?>
 
-        <?php if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
+    <?php if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
         		if($_SESSION["loginErr"] == true){ ?>
         			<div class="alert alert-danger">
         				<strong>Error!</strong> User credentials are incorrect. Enter correct username and password.
@@ -87,9 +87,6 @@
           $userAccessKey = $temp -> accesskey;
           $match = mysqli_num_rows($search);
 
-
-          //debug
-          echo $match;
           if($match == 1){
             mysqli_query($db, "UPDATE user_info SET Verified='1' WHERE email='".$userEmail."' AND accesskey='".$userAccessKey."'") or die(mysql_error());
           ?>
@@ -102,7 +99,7 @@
             <div class="alert alert-danger">
               <strong>Error!</strong> User has already been activated or this is an invalid url.
             </div>
-          <?php }
+          <?php }//ifelse
         }//request method if
           ?>
       </div><!-- /.content -->

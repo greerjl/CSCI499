@@ -25,6 +25,7 @@ This is the parent `<div>` that contains the menu and the content area.
 */
 #layout {
     position: relative;
+    display: grid;
     padding-left: 0;
 }
     #layout.active #menu {
@@ -41,7 +42,7 @@ The content `<div>` is where all your content goes.
 .content {
     position: relative;
     top: 0 auto;
-    margin: 0 auto;
+    margin: 10px 0 16px 40px;
     padding: 0 2em;
     max-width: 800px;
     margin-bottom: 50px;
@@ -82,12 +83,13 @@ The content `<div>` is where all your content goes.
 
 .content-subhead2 {
     margin: 40px 0 16px 0;
+    width: 200px;
     font-weight: 200;
     color: #888888;
 }
 
 div.houseinfo {
-  margin: 0px auto;
+  margin: 20px 0 16px 40px;
   width: 10%;
   margin-bottom: 50px;
   /*line-height: 1.6em;*/
@@ -284,4 +286,9 @@ Hides the menu at `48em`, but modify this based on your app's needs.
         position: relative;
         left: 150px;
     }
+}
+
+/*this is for further customization of php printed text (specifically for welcome.php)*/
+strong {
+
 }

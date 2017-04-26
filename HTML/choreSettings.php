@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include '../../dbconnect.php';
+<?php session_start();
+include '../../dbconnect.php';
 require_once("./PHP/functions.php");
-session_start();
 if($_SESSION["valid"]==true){?>
 <head>
 
@@ -22,6 +22,7 @@ if($_SESSION["valid"]==true){?>
 
     <link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/> <!-- normalize -->
     <link rel="stylesheet" type="text/css" href="../CSS/psuedoWelcome.css"/> <!-- css -->
+    <link rel="icon" href="../images/logo.png">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -55,7 +56,7 @@ if($_SESSION["valid"]==true){?>
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -77,10 +78,8 @@ if($_SESSION["valid"]==true){?>
                           </span>Logout </a></li>
                   </ul>
                 </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
     </nav>
 
     <!-- Page Content -->
@@ -142,7 +141,7 @@ if($_SESSION["valid"]==true){?>
         <hr>
 
         <!-- Footer -->
-        <footer>
+        <footer class="navbar-fixed-bottom">
             <div class="row">
                 <div class="col-lg-12 footer l-box is-center">
                     <p>Copyright &copy; 2016-2017 PLU Capstone. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,

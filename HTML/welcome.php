@@ -1,10 +1,10 @@
-<!DOCTYPE html>
 <?php session_start();
 include '../../dbconnect.php';
 require_once("./PHP/functions.php");
 ini_set("display_errors", true);
 error_reporting(E_ALL);
 if($_SESSION["valid"]==true){?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -42,13 +42,14 @@ if($_SESSION["valid"]==true){?>
 
 <body>
 	<div id="layout">
-
     <div id="main">
+
         <div class="header">
             <h1>House Utilities Manager</h1>
             <h2>An application housing all your home management needs. </h2>
         </div>
 
+        <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top2" role="navigation">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -79,7 +80,6 @@ if($_SESSION["valid"]==true){?>
             </div><!-- /.container -->
         </nav>
 
-
 <!--House info-->
         <div class="houseinfo col-md-4">
             <h2 class="content-subhead2">House: </h2>
@@ -108,7 +108,7 @@ if($_SESSION["valid"]==true){?>
 
         <div class="content col-md-4">
 <!-- CHORES -->
-            <h2 class="content-subhead">Your Chore: </h2>
+            <h2 class="content-subhead">Your Chore(s): </h2>
             <p>
               <table>
                   <?php
@@ -126,7 +126,9 @@ if($_SESSION["valid"]==true){?>
                     else{
                       while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                           foreach ($line as $col_value) {
-                              echo "\t\t<tr><td>$col_value</td></tr>";
+                              echo "\t\t<tr><td><strong>$col_value</strong></td>
+                              <td><form action=\"./PHP/choreCompleted.php\"><input style=\"border-radius: 6px;\" type=\"submit\"
+                                value=\"Completed\"/></form></td></tr>";
                           }//foreach
                       }//while
                     }//else
@@ -134,14 +136,12 @@ if($_SESSION["valid"]==true){?>
             </table>
             </p>
 <!-- TASKS -->
-            <h2 class="content-subhead">Current Tasks: </h2>
+            <h2 class="content-subhead">Current Task(s): </h2>
             <p>
                    <table>
                        <?php
-                         ini_set("display_errors", true);
-                         error_reporting(E_ALL);
                          $group = $_SESSION["gid"];
-                         $sql = "SELECT name FROM task WHERE task.GID = '$group'";
+                         $sql = "SELECT name, time FROM task WHERE task.GID = '$group'";
                          $result = mysqli_query($db, $sql);
 
                          $count = mysqli_num_rows($result);
@@ -152,10 +152,13 @@ if($_SESSION["valid"]==true){?>
                            echo $emptyMessage;
                          }
                          else{
-                           while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                               foreach ($line as $col_value) {
-                                   echo "\t\t<tr><td>$col_value</td></tr>";
-                               }//foreach
+                           //$post = array();
+                           while ($line = mysqli_fetch_assoc($result)) {
+                                $name = $line['name'];
+                                $time = $line['time'];
+                                echo "\t\t<tr><td><strong>$name</strong></td><td>---</td><td> by $time</td><td>---</td>
+                                <td><form action=\"./PHP/taskCompleted.php\"><input style=\"border-radius: 6px;\" type=\"submit\"
+                                  value=\"Completed\"/></form></td></tr>";
                            }//while
                          }//else
                        ?>
@@ -165,6 +168,30 @@ if($_SESSION["valid"]==true){?>
 <!-- EVENTS/SCHEDULE -->
             <h2 class="content-subhead">House schedule: </h2>
             <p>
+              <?php
+                $group = $_SESSION["gid"];
+                $sql = "SELECT title, description FROM event WHERE task.GID = '$group'";
+                $result = mysqli_query($db, $sql);
+
+                $count = mysqli_num_rows($result);
+                //php end tag here
+
+                if($count == 0){
+                  $emptyMessage = "Your House currently has no upcoming events.";
+                  echo $emptyMessage;
+                }
+                else{
+                  $i = 1;
+                  while ($line = mysqli_fetch_assoc($result)) {
+                      $name = $line['title'];
+                      $desc = $line['description'];
+                      echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> by $desc</td></tr>";
+                      $i = $i+1;
+                  }//while
+                }//else
+              ?>
+            </p>
+            <p>
 	          <iframe src="https://calendar.google.com/calendar/embed?title=My%20Calendar&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=greerjl%40plu.edu&amp;color=%2329527A&amp;ctz=America%2FLos_Angeles"
                   style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 	          </p>
@@ -173,10 +200,10 @@ if($_SESSION["valid"]==true){?>
     </div><!--main-->
 </div><!--layout-->
 
-<footer>
+<footer class="navbar-fixed-bottom">
     <div class="row">
         <div class="col-lg-12 footer l-box is-center">
-            <p>Copyright &copy; 2016-2017 PLU Capstone. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
+            <p class="text muted">Copyright &copy; 2016-2017 PLU Capstone. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
 <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
         </div>
     </div>
