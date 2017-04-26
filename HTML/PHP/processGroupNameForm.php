@@ -15,7 +15,21 @@ error_reporting(E_ALL);
 				//create random accesscode for group here
 				//$acode = ;
 				$sql2 = "INSERT INTO group_info (group_name) VALUES ('$gName');";
-				mysqli_query($db, $sql2);
+				mysqli_query($db, $sql2) or die("Error: ".mysqli_error($db));
+				$sql2 = "SELECT GID FROM group_info WHERE group_name = '$gName'";//and access_code = acode
+				$result = mysqli_query($db, $sql2) or die("Error: ".mysqli_error($db));
+				$temp = mysqli_fetch_object($result);
+				$userGID = $temp -> GID;
+				$uid = $_SESSION["login_user"];
+				$sql2 = "UPDATE user_info SET GID = '$userGID' WHERE UID = '$uid'";
+				$result = mysqli_query($db, $sql2) or die("Error: ".mysqli_error($db));
+				if($result){
+					$_SESSION["gid"] = $userGID;
+					echo "Success!";			
+				}
+				else{
+					die("Error: ".mysqli_error($db));
+				}
 				redirect("../houseSettings.php");
 			}else{
 				sendData($gName, $_SESSION["gid"]);

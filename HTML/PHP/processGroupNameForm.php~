@@ -10,18 +10,30 @@ error_reporting(E_ALL);
 
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 		$gName = cleanData($_POST['groupName']);
-			$nameErr = validate($gName);
-			if(!empty($nameErr)){
-				$hasErrors = true;
-			}//if
-		if(!$hasErrors){
-			sendData($gName, $_SESSION["gid"]);
-			//redirect("../houseSettings.php");
-		}
-		else{
-			echo $titleErr." ";
-			//redirect("../houseSettings.php");
-		}
+
+			if($_SESSION["gid"]==0){
+				//create random accesscode for group here
+				//$acode = ;
+				$sql2 = "INSERT INTO group_info (group_name) VALUES ('$gName');";
+				mysqli_query($db, $sql2) or die("Error: ".mysqli_error($db));
+				$sql2 = "SELECT GID FROM group_info WHERE group_name = '$gName'";//and access_code = acode
+				$result = mysqli_query($db, $sql2) or die("Error: ".mysqli_error($db));
+				$temp = mysqli_fetch_object($result);
+				$userGID = $temp -> GID;
+				$uid = $_SESSION["login_user"];
+				$sql2 = "UPDATE user_info SET GID = '$userGID' WHERE UID = '$uid'";
+				$result = mysqli_query($db, $sql2) or die("Error: ".mysqli_error($db));
+				if($result){
+					$_SESSION["gid"] = $userGID;			
+				}
+				else{
+					die("Error: ".mysqli_error($db));
+				}
+				redirect("../houseSettings.php");
+			}else{
+				sendData($gName, $_SESSION["gid"]);
+				redirect("../houseSettings.php");
+			}//ifelse
 	}//if
 
 	//FUNCTIONS
@@ -32,17 +44,6 @@ error_reporting(E_ALL);
 		return $data;
 	}//cleanData
 
-	function validate($data) {
-			$gid = $_SESSION["gid"];
-			if($gid == 0){
-				return "You are not in a group.";
-			}
-			else{
-				return "";
-			}
-			return "Error: check value of $gid.";
-	}//function validate
-
 	function sendData($name, $gid){
 			$sql = "UPDATE group_info SET group_name = '$name' WHERE GID = '$gid'";
 			$result = mysqli_query($GLOBALS['db'], $sql);
@@ -51,7 +52,7 @@ error_reporting(E_ALL);
 				die('Error: ' . mysqli_error($GLOBALS['db']));
 			}
 			else{
-				echo "Group name changed!";
+				//echo "Group name changed!";
 			}//ifelse
 	}//function sendData
 ?>
