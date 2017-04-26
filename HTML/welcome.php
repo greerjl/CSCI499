@@ -81,6 +81,17 @@ if($_SESSION["valid"]==true){?>
             </div><!-- /.container -->
         </nav>
 
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">User Settings
+                    <small>Change your password, username, or leave your group</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
 <!--House info-->
         <div class="houseinfo col-md-4">
             <h2 class="content-subhead2">House: </h2>

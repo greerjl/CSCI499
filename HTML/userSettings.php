@@ -88,7 +88,7 @@ if($_SESSION["valid"]==true){?>
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">User Settings
-                    <small>Change Password, Username</small>
+                    <small>Change your password, username, or leave your group</small>
                 </h1>
             </div>
         </div>
