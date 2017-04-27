@@ -54,7 +54,7 @@ form_main {
     width: 100%;
 }
 .txt2[type="submit"] {
-    background: #242424 none repeat scroll 0 0;
+    background: #2d3e50 none repeat scroll 0 0;
     border: 1px solid #4f5c04;
     border-radius: 25px;
     color: #fff;
@@ -66,7 +66,25 @@ form_main {
     text-transform: uppercase;
     width: 40%;
 }
+.txt3[type="submit"] {
+      background: #2d3e50 none repeat scroll 0 0;
+      border: 1px solid #4f5c04;
+      border-radius: 25px;
+      color: #fff;
+      font-size: 12px;
+      font-style: normal;
+      line-height: 20px;
+      margin: 3px 5px 3px 10px;
+      padding: 0;
+      text-transform: uppercase;
+      width: 90px;
+}
 .txt2:hover {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    color: #5793ef;
+    transition: all 0.5s ease 0s;
+}
+.txt3:hover {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     color: #5793ef;
     transition: all 0.5s ease 0s;

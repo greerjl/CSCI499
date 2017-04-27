@@ -39,12 +39,12 @@ if($_SESSION["valid"]==true){?>
       })
     </script>
     <!-- Bootstrap Core CSS -->
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
     <!-- room form css -->
     <link href="../CSS/roomForm.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/> <!-- normalize -->
     <link rel="stylesheet" type="text/css" href="../CSS/psuedoWelcome.css"/> <!-- css -->
-    <link rel="icon" href="../images/logo.png">
+    <link rel="icon" href="../images/logo.png"/>
 </head>
 
 <body>
