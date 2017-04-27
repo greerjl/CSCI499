@@ -46,7 +46,6 @@ if($_SESSION["valid"]==true){?>
 	<div id="layout">
     <div id="main">
 
-      <div class="navbarHeader-fixed-top">
         <div class="header">
             <h1>House Utilities Manager</h1>
             <h2>An application housing all your home management needs. </h2>
@@ -82,7 +81,6 @@ if($_SESSION["valid"]==true){?>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container -->
         </nav>
-      </div><!--navbarHeader-fixed-top-->
 
         <div class="container">
         <!-- Page Heading -->
