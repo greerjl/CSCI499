@@ -16,7 +16,7 @@ if($_SESSION["valid"]==true){?>
   <link href="../CSS/roomForm.css" rel="stylesheet"/>
 	<link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/> <!-- normalize -->
 	<link rel="stylesheet" type="text/css" href="../CSS/welcome.css"/> <!-- css -->
-  <link rel="icon" href="../images/logo.png">
+  <link rel="icon" href="../images/logo.png"/>
 
   <!-- Bootstrap Core CSS -->
   <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
