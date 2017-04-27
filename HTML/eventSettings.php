@@ -123,7 +123,6 @@ if($_SESSION["valid"]==true){?>
                    <h4 class="heading"><strong>Request Laundry Machines</strong> <span></span></h4>
                    <div class="form">
                      <form action="" method="POST" id="eventForm" name="eventForm">
-                       <input type="text" required="" placeholder="Name of Launderer" value="" name="eventName" class="txt">
                        <input type="time" required="" placeholder="Time of Laundry" value="" name="eventTime" class="txt">
 		                   <input type="date" required="" value="" name="eventDate" class="date">
 		                   <hr>

@@ -25,7 +25,7 @@ error_reporting(E_ALL);
 				$result = mysqli_query($db, $sql2) or die("Error: ".mysqli_error($db));
 				if($result){
 					$_SESSION["gid"] = $userGID;
-					echo "Success!";			
+					echo "Success!";
 				}
 				else{
 					die("Error: ".mysqli_error($db));

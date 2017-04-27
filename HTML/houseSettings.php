@@ -102,24 +102,36 @@ if($_SESSION["valid"]==true){?>
 
         <div class="container">
 	         <div class="row">
-
+             <?php
+               $userID = $_SESSION["login_user"];
+               $sql = "SELECT GID FROM sys.user_info WHERE UID = '$userID'";
+               $result = mysqli_query($db, $sql);
+               $obj = mysqli_fetch_object($result);
+               $userGID = $obj->GID;
+               if($userGID == '0'){
+             ?>
+             <div class="col-md-4">
+              <div class="form_main">
+                <h4 class="heading"><strong>Create a Group</strong> <span></span></h4>
+                <div class="form">
+                  <form action="./PHP/processGroupNameForm.php" method="POST" id="groupNameForm" name="groupNameForm">
+                    <input type="text" id="idtxt" required="" name="groupName" class="txt"
+                         placeholder="Create New Group Name"/>
+                    <br><br>
+                    <input type="submit" value="Submit" name="submit" class="txt2"/>
+                  </form>
+                </div><!--form-->
+              </div>
+            </div><!--col-md-4-->
+            <?php }//if
+              else { ?>
              <div class="col-md-4">
               <div class="form_main">
                  <h4 class="heading"><strong>Edit Group Name</strong> <span></span></h4>
                  <div class="form">
                    <form action="./PHP/processGroupNameForm.php" method="POST" id="groupNameForm" name="groupNameForm">
                      <input type="text" id="idtxt" required="" name="groupName" class="txt"
-                          <?php
-                            $userID = $_SESSION["login_user"];
-                            $sql = "SELECT GID FROM sys.user_info WHERE UID = '$userID'";
-                            $result = mysqli_query($db, $sql);
-                            $obj = mysqli_fetch_object($result);
-                            $userGID = $obj->GID;
-                            if($userGID == '0'){
-                          ?>
-                          placeholder="Enter New Group Name"/>
-                          <?php }//if
-                            else {
+                          <?php  else {
                               $userGroupID = $_SESSION["gid"];
                               $sql2 = "SELECT group_name FROM sys.group_info, sys.user_info WHERE group_info.GID = '$userGroupID'";
                               $result2 = mysqli_query($db, $sql2);
@@ -129,9 +141,7 @@ if($_SESSION["valid"]==true){?>
                               value="<?php echo $gname ?>"/>
                           <?php  }//else ?>
                      <br><br>
-                     <input type="submit" <?php if(!empty($gname)){?>
-                       value="Change" <?php } else { ?>
-                       value="Submit"<?php }//else ?> name="submit" class="txt2"/>
+                     <input type="submit" value="Change" name="submit" class="txt2"/>
                    </form>
                  </div>
               </div>
@@ -176,6 +186,7 @@ if($_SESSION["valid"]==true){?>
             </div><!-- col-md-4 -->
 	        </div><!-- row -->
         </div><!-- container -->
+        <?php }//else ?>
 
         <hr>
 
