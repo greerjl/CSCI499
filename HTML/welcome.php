@@ -179,7 +179,7 @@ if($_SESSION["valid"]==true){?>
             </p>
 
 <!-- EVENTS/SCHEDULE -->
-            <h2 class="content-subhead">House schedule: </h2>
+            <h2 class="content-subhead">House Schedule: </h2>
             <p>
               <?php
                 $group = $_SESSION["gid"];
