@@ -85,14 +85,17 @@ if($_SESSION["valid"]==true){?>
         <!-- Page Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">User Settings
-                    <small>Change your password, username, or leave your group</small>
+                <h1 class="page-header">Dashboard
+                    <small>All house information can be viewed here.</small>
                 </h1>
             </div>
         </div><!-- /.row -->
       </div><!--container-->
 
 <!--House info-->
+        <?php
+          $sqlGrpNm = "SELECT ";
+        ?>
         <div class="houseinfo col-md-4">
             <h2 class="content-subhead2">House: </h2>
             <h4 class="content-subhead2">Members: </h4>
