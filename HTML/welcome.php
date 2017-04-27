@@ -13,6 +13,7 @@ if($_SESSION["valid"]==true){?>
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"/>
   <link rel="icon" href="../images/logo.png"/>
+  <link href="../CSS/roomForm.css" rel="stylesheet"/>
 	<link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/> <!-- normalize -->
 	<link rel="stylesheet" type="text/css" href="../CSS/welcome.css"/> <!-- css -->
   <link rel="icon" href="../images/logo.png">
@@ -139,7 +140,7 @@ if($_SESSION["valid"]==true){?>
                       while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                           foreach ($line as $col_value) {
                               echo "\t\t<tr><td><strong>$col_value</strong></td>
-                              <td><form action=\"./PHP/choreCompleted.php\"><input style=\"border-radius: 6px;\" type=\"submit\"
+                              <td><form action=\"./PHP/choreCompleted.php\"><input type=\"submit\" style=\"border-radius: 6px;\" type=\"submit\"
                                 value=\"Completed\"/></form></td></tr>";
                           }//foreach
                       }//while
@@ -169,7 +170,7 @@ if($_SESSION["valid"]==true){?>
                                 $name = $line['name'];
                                 $time = $line['time'];
                                 echo "\t\t<tr><td><strong>$name</strong></td><td>---</td><td> by $time</td><td>---</td>
-                                <td><form action=\"./PHP/taskCompleted.php\"><input style=\"border-radius: 6px;\" type=\"submit\"
+                                <td><form action=\"./PHP/taskCompleted.php\"><input type=\"submit\" style=\"border-radius: 6px;\" type=\"submit\"
                                   value=\"Completed\"/></form></td></tr>";
                            }//while
                          }//else
