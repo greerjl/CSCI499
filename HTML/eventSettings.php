@@ -12,7 +12,7 @@ if($_SESSION["valid"]==true){?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Server" >
+    <meta name="author" content="Capstone" >
 
 
     <title>Profile Settings</title>
@@ -95,7 +95,7 @@ if($_SESSION["valid"]==true){?>
 		             <div class="form_main">
                    <h4 class="heading"><strong>Add an Event</strong> <span></span></h4>
                    <div class="form">
-                     <form action="" method="POST" id="eventForm" name="eventForm">
+                     <form action="./PHP/processEventForm.php" method="POST" id="eventForm" name="eventForm">
                        <input type="text" required="" placeholder="Name of Event" value="" name="eventName" class="txt"/>
                        <input type="time" required="" placeholder="Time of Event" value="" name="eventTime" class="txt"/>
 		                   <input type="date" required="" value="" name="eventDate" class="date"/><br/>
