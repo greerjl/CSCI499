@@ -66,6 +66,19 @@ form_main {
     text-transform: uppercase;
     width: 40%;
 }
+.txt3[type="submit"] {
+      background: #242424 none repeat scroll 0 0;
+      border: 1px solid #4f5c04;
+      border-radius: 25px;
+      color: #fff;
+      font-size: 10px;
+      font-style: normal;
+      line-height: 20px;
+      margin: 5px 0;
+      padding: 0;
+      text-transform: uppercase;
+      width: 20px;
+}
 .txt2:hover {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     color: #5793ef;
