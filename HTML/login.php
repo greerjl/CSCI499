@@ -53,11 +53,33 @@ require_once("./PHP/functions.php");
           <h1>House Utilities Manager</h1>
           <h2>An application for all your home management needs. </h2>
         </div><!-- header -->
+<?php
+  include '../../dbconnect.php';
+  //if directed from email GET attributes
+  $urlEmail = $_GET['email'];
+  $urlHash = $_GET['hash'];
+  $urlVerified = $_GET['verified'];
 
-	<?php require_once('./PHP/processLoginForm.php'); ?>
+  if($urlVerified == '0'){
+    //select UID
+    $sql2 = "SELECT UID FROM user_info WHERE email='$urlEmail' AND accesskey='$urlHash'";
+    $result2 = mysqli_query($db, $sql2);
+    $temp = mysqli_fetch_object($result2);
+    $dbUID = $temp->UID;
+    //update user
+    $sql = "UPDATE user_info SET Verified='1' WHERE UID='$dbUID'";
+    $result = mysqli_query($db, $sql);
+    //Message
+    ?>
+      <div class="alert alert-success">
+        <strong>Success!</strong> Your account has been verified. Please log in.
+      </div>
+  <?php }//if
 
-      <?php echo $_SESSION["login_user"];
-      if($_SESSION["loginErr"] == true){ ?>
+	require_once('./PHP/processLoginForm.php');
+
+        if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
+        		if($_SESSION["loginErr"] == true){ ?>
         			<div class="alert alert-danger">
         				<strong>Error!</strong> User credentials are incorrect. Enter correct username and password.
         			</div>
