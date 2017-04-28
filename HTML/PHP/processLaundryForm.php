@@ -18,14 +18,12 @@ error_reporting(E_ALL);
 					$hasErrors = true;
 					echo $conflictErr;
 					//redirect("../eventSettings.php");
-				}
+				}//if
 				else{
 					sendData($datetime, $uid, $gid);
 					//redirect("../eventSettings.php");
-				}
+				}//else
 						
-			}
-
 	}//if
 
 	function validate($data) {
@@ -35,10 +33,10 @@ error_reporting(E_ALL);
 				$count = mysqli_num_rows($result);
 				if($count != 0){
 					return "There are schedule conflicts within an hour of your reservation. Please select an alternate time.";
-				}
+				}//if
 				else {
 					return "";
-				}
+				}//else
 	}//function validate
 
 	function sendData($eDatetime, $uid, $gid){
@@ -51,5 +49,5 @@ error_reporting(E_ALL);
 				else{
 					echo "Successfully reserved!";
 				}//else
-	}//if
+	}//function
 ?>

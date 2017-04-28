@@ -43,13 +43,13 @@ error_reporting(E_ALL);
 
 	function sendData($eDatetime, $uid, $gid){
 
-				$sql = "INSERT INTO event (time, RID, name, GID) VALUES ('$datetime','$roomID','$eTitle','$gid')";
+				$sql = "INSERT INTO laundry (time, UID, GID) VALUES ('$datetime','$uid','$gid')";
 				$result = mysqli_query($GLOBALS['db'], $sql);
 				if(!$result){
 					die('Error: ' . mysqli_error($GLOBALS['db']));
 				}//if
 				else{
-					echo "Event successfully created!";
+					echo "Successfully reserved!";
 				}//else
-	}//if
+	}//function
 ?>
