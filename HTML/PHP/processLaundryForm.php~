@@ -4,23 +4,15 @@ include '../../../dbconnect.php';
 require_once("functions.php");
 ini_set("display_errors", true);
 error_reporting(E_ALL);
-	$eTitle = $eTime = $eDate = $roomName = $sql = "";
-	$titleErr = "";
-	$hasErrors = false;
+	$eTime = $eDate = $sql = "";
 
 	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
 		$gid = $_SESSION["gid"];
-		$eTitle = cleanData($_POST['eventName']);
-			$titleErr = validate($eTitle, 'eTitle');
-			if(!empty($titleErr)){
-				$hasErrors = true;
-			}//if
-			if(!$hasErrors){
+		$uid = $_SESSION["login_user"];
 				$eTime = $_POST['eventTime'];
 				$eDate = $_POST['eventDate'];
-				$roomID = $_POST['roomSelect'];
-				sendData($eTitle, $eTime, $eDate, $roomID, $gid);
-				redirect("../eventSettings.php");		
+				sendData($eTime, $eDate, $uid, $gid);
+				//redirect("../eventSettings.php");		
 			}
 
 	}//if
@@ -55,5 +47,8 @@ error_reporting(E_ALL);
 				if(!$result){
 					die('Error: ' . mysqli_error($GLOBALS['db']));
 				}//if
-	}//function
+				else{
+					echo "Event successfully created!";
+				}//else
+	}//if
 ?>

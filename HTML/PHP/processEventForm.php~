@@ -16,8 +16,8 @@ error_reporting(E_ALL);
 				$hasErrors = true;
 			}//if
 			if(!$hasErrors){
-				$eTime = cleanData($_POST['eventTime']);
-				$eDate = cleanData($_POST['eventDate']);
+				$eTime = $_POST['eventTime'];
+				$eDate = $_POST['eventDate'];
 				$roomID = $_POST['roomSelect'];
 				sendData($eTitle, $eTime, $eDate, $roomID, $gid);
 				//redirect("../eventSettings.php");		
@@ -53,7 +53,7 @@ error_reporting(E_ALL);
 				$sql = "INSERT INTO event (time, RID, name, GID) VALUES ('$datetime','$roomID','$eTitle','$gid')";
 				$result = mysqli_query($GLOBALS['db'], $sql);
 				if(!$result){
-					die('Error: ' . mysqli_error());
+					die('Error: ' . mysqli_error($GLOBALS['db']));
 				}//if
 				else{
 					echo "Event successfully created!";
