@@ -166,7 +166,7 @@ if($_SESSION["valid"]==true){?>
                 <div class="form_main">
                     <h4 class="heading"><strong>Ready to Move Out?<strong> <span></span></h4>
                     <div class="form">
-                      <form action="" method="POST" id="leaveGroupForm" name="leaveGroupForm">
+                      <form action="./PHP/leaveGroupForm.php" method="POST" id="leaveGroupForm" name="leaveGroupForm">
                         <input type="submit" value="Leave Group" name="submit" class="txt2"/>
                       </form><!-- action = "./PHP/leaveGroup.php" or something like that -->
                   </div><!--form-->

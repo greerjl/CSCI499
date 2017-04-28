@@ -150,7 +150,7 @@ if($_SESSION["valid"]==true){?>
 
         <hr>
         <?php }//else ?>
-        
+
         <!-- Footer -->
         <footer class="navbar-fixed-bottom">
             <div class="row">
