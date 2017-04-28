@@ -10,6 +10,10 @@ error_reporting(E_ALL);
 
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 		$gName = cleanData($_POST['groupName']);
+		$nameErr = validate($gName, 'groupname');
+		if(!empty($nameErr)){
+			$hasErrors = true;
+		}//if
 
 			if($_SESSION["gid"]==0){
 				//create random accesscode for group here
@@ -44,6 +48,25 @@ error_reporting(E_ALL);
 		$data = htmlspecialchars($data);
 		return $data;
 	}//cleanData
+
+	function validate($data, $field){
+		switch($field){
+
+			case 'groupname': {
+				$regex = '/^(*[a-zA-Z0-9][^\'])$/';
+				if(!empty($data)){
+					if(!preg_match($regex, $data)){
+						return "Groupname cannot have single quotes.";
+					}//if pregmatch
+					else {
+						return "Enter a new name if you want to change it.";
+					}
+				}//if empty
+				return "";
+			}//case groupname
+
+		}//switch
+	}//function validate
 
 	function sendData($name, $gid){
 			$sql = "UPDATE group_info SET group_name = '$name' WHERE GID = '$gid'";
