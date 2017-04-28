@@ -83,7 +83,8 @@ require_once("./PHP/functions.php");
         			<div class="alert alert-danger">
         				<strong>Error!</strong> User credentials are incorrect. Enter correct username and password.
         			</div>
-      <?php }//if ?>
+      <?php }//if
+      if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {?>
 
         <div class="content">
           <form id="LogIn" class="form-signin" method="POST" action="./PHP/processLoginForm.php">
