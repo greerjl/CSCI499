@@ -16,12 +16,12 @@ error_reporting(E_ALL);
 				$conflictErr = validate($datetime);
 				if(!empty($conflictErr)){
 					$hasErrors = true;
-					echo $conflictErr;
-					//redirect("../eventSettings.php");
+					//echo $conflictErr;
+					redirect("../eventSettings.php");
 				}//if
 				else{
 					sendData($datetime, $uid, $gid);
-					//redirect("../eventSettings.php");
+					redirect("../eventSettings.php");
 				}//else
 						
 	}//if
@@ -41,13 +41,13 @@ error_reporting(E_ALL);
 
 	function sendData($eDatetime, $uid, $gid){
 
-				$sql = "INSERT INTO laundry (time, UID, GID) VALUES ('$datetime','$uid','$gid')";
+				$sql = "INSERT INTO laundry (time, UID, GID) VALUES ('$eDatetime','$uid','$gid')";
 				$result = mysqli_query($GLOBALS['db'], $sql);
 				if(!$result){
 					die('Error: ' . mysqli_error($GLOBALS['db']));
 				}//if
 				else{
-					echo "Successfully reserved!";
+					//echo "Successfully reserved!";
 				}//else
 	}//function
 ?>
