@@ -93,7 +93,7 @@ div.houseinfo {
   width: 10%;
   min-width: 150px;
   margin-bottom: 50px;
-  /*line-height: 1.6em;*/
+  line-height: 1.42857143;
 }
 
 div.container {

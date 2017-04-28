@@ -93,6 +93,8 @@ if($_SESSION["valid"]==true){?>
         </div><!-- /.row -->
       </div><!--container-->
 
+      <div class="content">
+
 <!--House info-->
         <?php
           $userID = $_SESSION["login_user"];
@@ -102,10 +104,8 @@ if($_SESSION["valid"]==true){?>
           $userGID = $obj->GID;
           if($userGID != '0'){
         ?>
+
         <div class="houseinfo col-md-4">
-          <?php
-            $sqlGrpNm = "SELECT ";
-          ?>
             <h2 class="content-subhead2">House: </h2>
             <h4 class="content-subhead2">Members: </h4>
               <div class="phptext">
@@ -130,7 +130,6 @@ if($_SESSION["valid"]==true){?>
             </div><!--phptext-->
         </div><!--houseinfo-->
 
-        <div class="content">
 <!-- CHORES -->
             <h2 class="content-subhead">Your Chore(s): </h2>
             <p>
@@ -219,14 +218,15 @@ if($_SESSION["valid"]==true){?>
 	          <iframe src="https://calendar.google.com/calendar/embed?title=My%20Calendar&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=greerjl%40plu.edu&amp;color=%2329527A&amp;ctz=America%2FLos_Angeles"
                   style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 	          </p>
-      </div><!--content-->
-      
+
         <?php } elseif($userGID == '0') { ?>
           <div class="header">
             <h2>Please create a group in order to view its information.</h2>
             <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
           </div><!--header-->
         <?php }//elseif ?>
+
+      </div><!--content-->
 
     </div><!--main-->
 </div><!--layout-->

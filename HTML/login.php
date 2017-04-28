@@ -53,16 +53,16 @@ require_once("./PHP/functions.php");
           <h1>House Utilities Manager</h1>
           <h2>An application for all your home management needs. </h2>
         </div><!-- header -->
-<?php echo $flag?>
 
 	<?php require_once('./PHP/processLoginForm.php'); ?>
 
-        <?php if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
-        		if($_SESSION["loginErr"] == true){ ?>
+      <?php echo $_SESSION["login_user"];
+      if($_SESSION["loginErr"] == true){ ?>
         			<div class="alert alert-danger">
         				<strong>Error!</strong> User credentials are incorrect. Enter correct username and password.
         			</div>
-      <?php }//if ?>
+      <?php }//if
+      if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {?>
 
         <div class="content">
           <form id="LogIn" class="form-signin" method="POST" action="./PHP/processLoginForm.php">
