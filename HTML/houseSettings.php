@@ -123,6 +123,7 @@ if($_SESSION["valid"]==true){?>
                 </div><!--form-->
               </div>
             </div><!--col-md-4-->
+          </div><!--row-->
             <?php }//if
               else { ?>
              <div class="col-md-4">
@@ -131,7 +132,7 @@ if($_SESSION["valid"]==true){?>
                  <div class="form">
                    <form action="./PHP/processGroupNameForm.php" method="POST" id="groupNameForm" name="groupNameForm">
                      <input type="text" id="idtxt" required="" name="groupName" class="txt"
-                          <?php  else {
+                          <?php
                               $userGroupID = $_SESSION["gid"];
                               $sql2 = "SELECT group_name FROM sys.group_info, sys.user_info WHERE group_info.GID = '$userGroupID'";
                               $result2 = mysqli_query($db, $sql2);
@@ -139,7 +140,6 @@ if($_SESSION["valid"]==true){?>
                               $gname = $obj->group_name;
                           ?>
                               value="<?php echo $gname ?>"/>
-                          <?php  }//else ?>
                      <br><br>
                      <input type="submit" value="Change" name="submit" class="txt2"/>
                    </form>
@@ -197,12 +197,9 @@ if($_SESSION["valid"]==true){?>
                     <p>Copyright &copy; 2016-2017 PLU Capstone. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
         <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
                 </div>
-            </div>
-            <!-- /.row -->
+            </div><!-- /.row -->
         </footer>
-
-    </div>
-    <!-- /.container -->
+    </div>  <!-- /.container -->
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>

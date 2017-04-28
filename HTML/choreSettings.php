@@ -97,7 +97,20 @@ if($_SESSION["valid"]==true){?>
 
         <div class="container">
 	         <div class="row">
-
+             <?php
+               $userID = $_SESSION["login_user"];
+               $sql = "SELECT GID FROM sys.user_info WHERE UID = '$userID'";
+               $result = mysqli_query($db, $sql);
+               $obj = mysqli_fetch_object($result);
+               $userGID = $obj->GID;
+               if($userGID == '0'){
+             ?>
+             <div class="header">
+               <h2>Please create a group before editing these settings.</h2>
+               <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
+             </div><!--header-->
+             <?php }//if
+                else { ?>
              <div class="col-md-4">
 		             <div class="form_main">
                    <h4 class="heading"><strong>Add/Assign Chores</strong> <span></span></h4>
@@ -139,6 +152,8 @@ if($_SESSION["valid"]==true){?>
         </div><!-- container -->
 
         <hr>
+
+        <?php }//else ?>
 
         <!-- Footer -->
         <footer class="navbar-fixed-bottom">
