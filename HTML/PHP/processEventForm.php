@@ -37,7 +37,7 @@ error_reporting(E_ALL);
 				$data = strtolower($data);
 				$data = ucfirst($data);
 				$sql = "SELECT * FROM event WHERE name = '$data' AND GID = '$gid'";
-				$result = mysqli_query($db, $sql);
+				$result = mysqli_query($GLOBALS['db'], $sql);
 
 				$count = mysqli_num_rows($result);
 				if($count != 0){
@@ -50,10 +50,10 @@ error_reporting(E_ALL);
 
 	function sendData($eTitle, $eTime, $eDate, $roomID, $gid){
 				$datetime = date('Y-m-d H:i:s', strtotime("$eDate $eTime"));
-				$sql = "INSERT INTO event (time, RID, name, GID) VALUES ('$datetime','$rid','$eTitle','$gid')";
-				$result = mysqli_query($db, $sql);
+				$sql = "INSERT INTO event (time, RID, name, GID) VALUES ('$datetime','$roomID','$eTitle','$gid')";
+				$result = mysqli_query($GLOBALS['db'], $sql);
 				if(!$result){
-					die('Error: ' . mysqli_error());
+					die('Error: ' . mysqli_error($GLOBALS['db']));
 				}//if
 				else{
 					echo "Event successfully created!";
