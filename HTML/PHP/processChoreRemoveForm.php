@@ -4,27 +4,20 @@ error_reporting(E_ALL);
 	session_start();
 	require_once("functions.php");
 	include '../../../dbconnect.php';
-	$cTitle = $sql = "";
+ 	$sql = "";
 	$titleErr = "";
 	$hasErrors = false;
 	$message = "";
 
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 			$giD = $_SESSION["gid"];
-			$cTitle = cleanData($_POST['remChore']);
-			$hasErrors = remove($cTitle, $giD);		
+			$cTitle = $_POST['choreList'];
+			$hasErrors = remove($cTitle, $giD);
 			redirect("../choreSettings.php");
 
 	}//if
 
 	//FUNCTIONS
-	function cleanData($data){
-		$data = trim($data);
-		$data = stripslashes($data);
-		$data = htmlspecialchars($data);
-		return $data;
-	}//cleanData
-
 	function remove($data, $giD) {
 				$data = strtolower($data);
 				$data = ucfirst($data);
@@ -40,9 +33,9 @@ error_reporting(E_ALL);
 					}//if result
 					else{
 						$message = "Error occurred: delete did not work.";
-						$hasErrors = true;			
+						$hasErrors = true;
 					}//else
-					
+
 				}//if count
 				else {
 					$message = "Chore does not exist";

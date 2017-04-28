@@ -55,6 +55,7 @@ require_once("./PHP/functions.php");
         </div><!-- header -->
 <?php
   include '../../dbconnect.php';
+
   //if directed from email GET attributes
   $urlEmail = $_GET['email'];
   $urlHash = $_GET['hash'];
@@ -70,11 +71,12 @@ require_once("./PHP/functions.php");
     $sql = "UPDATE user_info SET Verified='1' WHERE UID='$dbUID'";
     $result = mysqli_query($db, $sql);
     //Message
+
     ?>
       <div class="alert alert-success">
         <strong>Success!</strong> Your account has been verified. Please log in.
       </div>
-  <?php }//if
+  <?php  }//if
 
 	require_once('./PHP/processLoginForm.php');
 
@@ -83,8 +85,7 @@ require_once("./PHP/functions.php");
         			<div class="alert alert-danger">
         				<strong>Error!</strong> User credentials are incorrect. Enter correct username and password.
         			</div>
-      <?php }//if
-      if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {?>
+      <?php }//banner if ?>
 
         <div class="content">
           <form id="LogIn" class="form-signin" method="POST" action="./PHP/processLoginForm.php">
