@@ -1,0 +1,59 @@
+<?php
+date_default_timezone_set('America/Los_Angeles');
+require '/var/app/current/DocRoot/CSCI499/PHPMailer/PHPMailerAutoload.php';
+include './processInviteMembers.php';
+
+$mail = new PHPMailer;
+//Enable SMTP debugging
+$mail->SMTPDebug = 0;
+$mail->Debugoutput = 'html';
+//Set PHPMailer to use SMTP
+$mail->isSMTP();
+//Set SMTP host name
+$mail->Host = "smtp.gmail.com";
+//Set this to true if SMTP host requires authentication to send email
+$mail->SMTPAuth = true;
+//Provide username and password
+$mail->Username="HouseUtilitiesManager@gmail.com";
+$mail->Password="getserved69";
+//Requires TLS encryption
+$mail->SMTPSecure = 'tls';
+//Set TCP port to connect to
+$mail->Port = 587;
+
+$mail->From = "HouseUtilitiesManager@gmail.com";
+$mail->FromName = "HUM";
+
+$mail->addAddress($memEmail);
+$mail->Subject  = 'Welcome to HUM!';
+
+//SQL to fetch GID and username of sender
+session_start();
+$uid = $_SESSION["login_user"];
+$sql = "SELECT GID, username FROM user_info WHERE UID='$uid'";
+$result = mysqli_query($db, $sql);
+$obj = mysqli_fetch_object($result);
+$sentUserName = $obj->username;
+$GID = $obj->GID;
+
+//$mail->msgHTML(file_get_contents('content.html'));
+$mail->isHTML(true);
+$mail->Body = '
+    <html><head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8"></head><body style="padding-left: 1cm; padding-right: 1cm;"><div class="header"><h1>House Utilities Manager</h1><h4>An application for all your house management needs. </h4></div>
+    <div class="content" style="padding-left: 1.25cm; padding-right: 1.25cm;"><h4>Hello! </h4><p> You have been invited to a group on House Utilities Manager
+    by '. $sentUserName .'. We are very excited to have you on board.</p> <p> To get started using HUM, please create an account by selecting the link below: </p><br>
+    <a href="http://www.houseutil.com/HTML/signup.php?email='.$memEmail.'&gid='.$GID.'">Sign Up</a> <p> If you already have a verified account then please click this link: <p><br>
+    <a href="http://www.houseutil.com/HTML/login.php?gid='.$GID.'"> Log In </a> <p> Thanks, <br> The HUM Team </br> </p></body></html>';
+
+$mail->AltBody = "Hello! You have been invited to a group on House Utilities Manager by '.$sentUserName. '. We are very
+    excited to have you on board! To get started using HUM, please open this email with an HTML supported view.
+    Thanks, The HUM Team";
+
+    if(!$mail->send()) {
+      //echo 'Message was not sent.';
+      echo 'Mailer error: ' . $mail->ErrorInfo;
+    } else {
+      //echo 'Message has been sent.';
+    }
+?>
