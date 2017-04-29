@@ -1,22 +1,28 @@
 <?php
 ini_set("display_errors", true);
 error_reporting(E_ALL);
-	$roomName = $sql = "";
+	$roomName = $sql = $memEmail = $memInviteErr = "";
 	$roomErr = "";
 	$hasErrors = false;
 
 	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
 		$roomName = cleanData($_POST['room1']); //will need to fix when js increments name for added boxes
-			$roomErr = validate($roomName, 'room1');
+		$roomErr = validate($roomName, 'room1');
 			if(!empty($roomErr)){
 				$hasErrors = true;
 			}//if
-			else{
+			//else{
 				/*for testing*/
-				$giD = $_SESSION["gid"];
-				sendData($roomName, $giD);
-			}//ifelse
-
+				//$giD = $_SESSION["gid"];
+			//	sendData($roomName, $giD);
+			//}//ifelse
+			$memEmail = cleanData($_POST['memInvite']);
+		  $memInviteErr = validate($memEmail, 'memInvite');
+		  if(!empty($memInviteErr)) $hasErrors = true;
+		  if(!empty($memEmail)){
+				include './sendGroupInvite.php';
+		  	redirect("../houseSettings.php");
+			}
 	}//if
 
 	//FUNCTIONS
@@ -42,7 +48,17 @@ error_reporting(E_ALL);
 				else {
 					return "";
 				}//ifelse
-			}//case cTitle
+			}//case room1
+			case 'memInvite': {
+	      if(!empty($data)){
+	        if(!filter_var($data, FILTER_VALIDATE_EMAIL)){
+	          return "Invalid email address.";
+	        }//if
+	      }else{
+	        return "Email address is required.";
+	      }//ifelse
+	      return "";
+	    }//case memInvite
 		}//switch
 	}//function validate
 

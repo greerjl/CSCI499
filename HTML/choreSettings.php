@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include '../../dbconnect.php';
+<?php session_start();
+include '../../dbconnect.php';
 require_once("./PHP/functions.php");
-session_start();
 if($_SESSION["valid"]==true){?>
 <head>
 
@@ -22,6 +22,7 @@ if($_SESSION["valid"]==true){?>
 
     <link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/> <!-- normalize -->
     <link rel="stylesheet" type="text/css" href="../CSS/psuedoWelcome.css"/> <!-- css -->
+    <link rel="icon" href="../images/logo.png">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -55,7 +56,7 @@ if($_SESSION["valid"]==true){?>
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -77,10 +78,8 @@ if($_SESSION["valid"]==true){?>
                           </span>Logout </a></li>
                   </ul>
                 </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
     </nav>
 
     <!-- Page Content -->
@@ -98,7 +97,20 @@ if($_SESSION["valid"]==true){?>
 
         <div class="container">
 	         <div class="row">
-
+             <?php
+               $userID = $_SESSION["login_user"];
+               $sql = "SELECT GID FROM sys.user_info WHERE UID = '$userID'";
+               $result = mysqli_query($db, $sql);
+               $obj = mysqli_fetch_object($result);
+               $userGID = $obj->GID;
+               if($userGID == '0'){
+             ?>
+             <div class="header">
+               <h2>Please create a group before editing these settings.</h2>
+               <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
+             </div><!--header-->
+             <?php }//if
+                else { ?>
              <div class="col-md-4">
 		             <div class="form_main">
                    <h4 class="heading"><strong>Add/Assign Chores</strong> <span></span></h4>
@@ -128,7 +140,7 @@ if($_SESSION["valid"]==true){?>
                   <div class="form">
                     <form action="./PHP/processChoreRemoveForm.php" method="POST" id="removeChoreForm" name="removeChoreForm">
                       <input type="text" id="idtxt" required="" placeholder="Chore to be Removed" value="" name="remChore" class="txt">
-                      <input type="button" id="idbtn" value="Add Chore to Remove" />
+                      <!--input type="button" id="idbtn" value="Add Chore to Remove" /-->
                       <br><br>
                       <input type="submit" value="submit" name="submit" class="txt2">
                     </form>
@@ -141,8 +153,10 @@ if($_SESSION["valid"]==true){?>
 
         <hr>
 
+        <?php }//else ?>
+
         <!-- Footer -->
-        <footer>
+        <footer class="navbar-fixed-bottom">
             <div class="row">
                 <div class="col-lg-12 footer l-box is-center">
                     <p>Copyright &copy; 2016-2017 PLU Capstone. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,

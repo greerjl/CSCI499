@@ -6,7 +6,7 @@
 	$email = $pswd = $rpswd = $username = "";
 	$sql = ""; $hash = "";
 	$emailErr = $pswdErr = $rpswdErr = $dbErr = "";
-	$hasErrors = false;
+	$hasErrorsEmail = $hasErrorsPw = false;
 
 	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
 
@@ -15,13 +15,13 @@
 			$emailErr = validate($email, 'email');
 			if(!empty($emailErr)) $hasErrors = true;
 			$dbErr = dbCheck($email, 'email');
-			if(!empty($dbErr)) $hasErrors = true;
+			if(!empty($dbErr)) $hasErrorsEmail = true;
 
 		$username = cleanData($_POST['username']);
 
 		$pswd = cleanData($_POST['pswd']);
 			$pswdErr = validate($pswd, 'password');
-			if(!empty($pswdErr)){$hasErrors = true;}
+			if(!empty($pswdErr)){$hasErrorsPw = true;}
 			else{
 					$hash = password_hash($pswd, PASSWORD_BCRYPT);
 			}//else

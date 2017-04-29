@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php require("../../dbconnect.php");
+<?php session_start();
+require("../../dbconnect.php");
 require_once("./PHP/functions.php");
-session_start();
 ini_set("display_errors", true);
 error_reporting(E_ALL);
 if($_SESSION["valid"]==true){?>
@@ -12,7 +12,7 @@ if($_SESSION["valid"]==true){?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Server" >
+    <meta name="author" content="Capstone" >
 
 
     <title>Profile Settings</title>
@@ -24,6 +24,7 @@ if($_SESSION["valid"]==true){?>
 
     <link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/> <!-- normalize -->
     <link rel="stylesheet" type="text/css" href="../CSS/psuedoWelcome.css"/> <!-- css -->
+    <link rel="icon" href="../images/logo.png">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -81,7 +82,7 @@ if($_SESSION["valid"]==true){?>
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Event Settings
-                    <small>Add events by giving the name, date and time, and location of the event.</small>
+                    <small>Add events by giving the name, date, time, and location of the event.</small>
                 </h1>
             </div>
         </div>
@@ -89,12 +90,25 @@ if($_SESSION["valid"]==true){?>
 
         <div class="container">
 	         <div class="row">
+             <?php
+               $userID = $_SESSION["login_user"];
+               $sql = "SELECT GID FROM sys.user_info WHERE UID = '$userID'";
+               $result = mysqli_query($db, $sql);
+               $obj = mysqli_fetch_object($result);
+               $userGID = $obj->GID;
+               if($userGID == '0'){
+             ?>
+             <div class="header">
+               <h2>Please create a group before editing these settings.</h2>
+               <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
+             </div><!--header-->
+             <?php }//if
+                else { ?>
              <div class="col-md-4">
-
 		             <div class="form_main">
                    <h4 class="heading"><strong>Add an Event</strong> <span></span></h4>
                    <div class="form">
-                     <form action="" method="POST" id="eventForm" name="eventForm">
+                     <form action="./PHP/processEventForm.php" method="POST" id="eventForm" name="eventForm">
                        <input type="text" required="" placeholder="Name of Event" value="" name="eventName" class="txt"/>
                        <input type="time" required="" placeholder="Time of Event" value="" name="eventTime" class="txt"/>
 		                   <input type="date" required="" value="" name="eventDate" class="date"/><br/>
@@ -121,8 +135,7 @@ if($_SESSION["valid"]==true){?>
 		             <div class="form_main">
                    <h4 class="heading"><strong>Request Laundry Machines</strong> <span></span></h4>
                    <div class="form">
-                     <form action="" method="POST" id="eventForm" name="eventForm">
-                       <input type="text" required="" placeholder="Name of Launderer" value="" name="eventName" class="txt">
+                     <form action="./PHP/processLaundryForm.php" method="POST" id="eventForm" name="eventForm">
                        <input type="time" required="" placeholder="Time of Laundry" value="" name="eventTime" class="txt">
 		                   <input type="date" required="" value="" name="eventDate" class="date">
 		                   <hr>
@@ -136,9 +149,10 @@ if($_SESSION["valid"]==true){?>
         </div><!-- container -->
 
         <hr>
+        <?php }//else ?>
 
         <!-- Footer -->
-        <footer>
+        <footer class="navbar-fixed-bottom">
             <div class="row">
                 <div class="col-lg-12 footer l-box is-center">
                     <p>Copyright &copy; 2016-2017 PLU Capstone. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
