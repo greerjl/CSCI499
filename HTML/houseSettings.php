@@ -16,7 +16,7 @@ if($_SESSION["valid"]==true){?>
     <meta name="description" content="">
     <meta name="author" content="Capstone" >
 
-    <title>My Dashboard</title>
+    <title>House Settings</title>
 
 
     <!-- scripts for dynamic buttons -->
@@ -166,9 +166,9 @@ if($_SESSION["valid"]==true){?>
                   <h4 class="heading"><strong>Invite Members</strong> <span></span></h4>
                   <div class="form">
                     <form action="" method="POST" id="inviteForm" name="inviteForm">
-                      <input type="text" id="idtxt" required="" placeholder="Add Member" value="" name="room" class="txt">
+                      <input type="email" id="idtxt" required="" placeholder="Add Member" value="" name="newMem" class="txt"/>
                       <br><br>
-                      <input type="submit" value="Submit" name="submit" class="txt2">
+                      <input type="submit" value="Submit" name="submit" class="txt2"/>
                     </form>
                   </div>
                </div>

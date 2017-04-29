@@ -15,7 +15,7 @@ require_once("./PHP/functions.php");
     <link rel="stylesheet" type="text/css" href="../CSS/psuedoWelcome.css"/>
     <link rel="icon" href="../images/logo.png">
 
-    <title>Login</title>
+    <title>HUM Login</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">

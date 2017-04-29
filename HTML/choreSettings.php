@@ -13,7 +13,7 @@ if($_SESSION["valid"]==true){?>
     <meta name="author" content="Server" >
 
 
-    <title>Profile Settings</title>
+    <title>Chore Settings</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
