@@ -30,6 +30,8 @@
 		/*DEBUG BLOCK*/
 		//$booltest = password_verify($mypassword, $dbpassword);
 
+		$_SESSION["loginErr"] = false;
+
 		//if statement to allow login and start session if account exists and password is correct
 		if(password_verify($mypassword, $dbpassword) && $dbVerified=='1'){
 			$sql = "SELECT UID, GID FROM user_info WHERE email = '$myemail'";
@@ -49,7 +51,6 @@
 				$_SESSION["valid"] = true;
 				$_SESSION["gid"] = $GID;
 	    	$_SESSION["timeout"] = time() + 300;
-				$_SESSION["loginErr"] = false;
 				redirect("../welcome.php");
 			}//if
 		} else {

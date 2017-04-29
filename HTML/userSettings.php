@@ -88,7 +88,7 @@ if($_SESSION["valid"]==true){?>
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">User Settings
-                    <small>Change Password, Username</small>
+                    <small>Change your password, username, or leave your group.</small>
                 </h1>
             </div>
         </div>
@@ -120,11 +120,11 @@ if($_SESSION["valid"]==true){?>
                    <h4 class="heading"><strong>Change Password</strong> <span></span></h4>
                    <div class="form">
                      <form action="./PHP/processUserSettings.php" method="POST" id="passwordForm" name="passwordForm">
-                       <input type="text" required="" placeholder="Current Password" value="" name="currentpass" class="txt">
-                       <input type="text" required="" placeholder="New Password" value="" name="newpass" class="txt">
-                       <input type="text" required="" placeholder="Repeat New Password" value="" name="rnewpass" class="txt">
+                       <input type="text" required="" placeholder="Current Password" value="" name="currentpass" class="txt"/>
+                       <input type="text" required="" placeholder="New Password" value="" name="newpass" class="txt"/>
+                       <input type="text" required="" placeholder="Repeat New Password" value="" name="rnewpass" class="txt"/>
 
-                       <input type="submit" value="Submit" name="submit" class="txt2">
+                       <input type="submit" value="Submit" name="submit" class="txt2"/>
                      </form>
                   </div>
                 </div>
@@ -135,9 +135,9 @@ if($_SESSION["valid"]==true){?>
                   <h4 class="heading"><strong>Change Username</strong> <span></span></h4>
                   <div class="form">
                     <form action="./PHP/processChangeUname.php" method="POST" id="changeAliasForm" name="changeAliasForm">
-                      <input type="text" id="idtxt" required="" placeholder="New Alias" value="" name="newAlias" class="txt">
+                      <input type="text" id="idtxt" required="" placeholder="New Username" value="" name="newAlias" class="txt"/>
                       <br><br>
-                      <input type="submit" value="Submit" name="submit" class="txt2">
+                      <input type="submit" value="Submit" name="submit" class="txt2"/>
                     </form>
                   </div>
                </div>
@@ -145,13 +145,28 @@ if($_SESSION["valid"]==true){?>
 	        </div><!-- row -->
         </div><!-- container -->
 
+        <br/>
+        <?php
+          $userID = $_SESSION["login_user"];
+          $sql = "SELECT GID FROM sys.user_info WHERE UID = '$userID'";
+          $result = mysqli_query($db, $sql);
+          $obj = mysqli_fetch_object($result);
+          $userGID = $obj->GID;
+          if($userGID == '0'){
+        ?>
+        <div class="header">
+          <h2>Please create a group before you can leave a group.</h2>
+          <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
+        </div><!--header-->
+        <?php }//if
+           else { ?>
         <div class="container">
           <div class="row">
             <div class="col-md-4">
                 <div class="form_main">
                     <h4 class="heading"><strong>Ready to Move Out?<strong> <span></span></h4>
                     <div class="form">
-                      <form action="" method="POST" id="leaveGroupForm" name="leaveGroupForm">
+                      <form action="./PHP/leaveGroupForm.php" method="POST" id="leaveGroupForm" name="leaveGroupForm">
                         <input type="submit" value="Leave Group" name="submit" class="txt2"/>
                       </form><!-- action = "./PHP/leaveGroup.php" or something like that -->
                   </div><!--form-->
@@ -162,6 +177,8 @@ if($_SESSION["valid"]==true){?>
 
         <hr>
 
+        <?php }//else ?>
+
         <!-- Footer -->
         <footer class="navbar-fixed-bottom">
             <div class="row">
@@ -169,20 +186,20 @@ if($_SESSION["valid"]==true){?>
                     <p class="text muted">Copyright &copy; 2016-2017 PLU Capstone. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
         <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
                 </div>
-            </div>
-            <!-- /.row -->
+            </div><!-- /.row -->
         </footer>
 
-    </div>
-    <!-- /.container -->
+    </div><!-- /.container -->
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-  </div><!--main-->
-</body><!--layout-->
+  </div><!--container-->
+</div><!--main-->
+</div><!--layout-->
+</body>
 
 </html>
 <?php

@@ -13,9 +13,10 @@ if($_SESSION["valid"]==true){?>
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"/>
   <link rel="icon" href="../images/logo.png"/>
+  <link href="../CSS/roomForm.css" rel="stylesheet"/>
 	<link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/> <!-- normalize -->
 	<link rel="stylesheet" type="text/css" href="../CSS/welcome.css"/> <!-- css -->
-  <link rel="icon" href="../images/logo.png">
+  <link rel="icon" href="../images/logo.png"/>
 
   <!-- Bootstrap Core CSS -->
   <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -81,7 +82,29 @@ if($_SESSION["valid"]==true){?>
             </div><!-- /.container -->
         </nav>
 
+        <div class="container">
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Dashboard
+                    <small>All house information can be viewed here.</small>
+                </h1>
+            </div>
+        </div><!-- /.row -->
+      </div><!--container-->
+
+      <div class="content">
+
 <!--House info-->
+        <?php
+          $userID = $_SESSION["login_user"];
+          $sql = "SELECT GID FROM sys.user_info WHERE UID = '$userID'";
+          $result = mysqli_query($db, $sql);
+          $obj = mysqli_fetch_object($result);
+          $userGID = $obj->GID;
+          if($userGID != '0'){
+        ?>
+
         <div class="houseinfo col-md-4">
             <h2 class="content-subhead2">House: </h2>
             <h4 class="content-subhead2">Members: </h4>
@@ -107,7 +130,6 @@ if($_SESSION["valid"]==true){?>
             </div><!--phptext-->
         </div><!--houseinfo-->
 
-        <div class="content col-md-4">
 <!-- CHORES -->
             <h2 class="content-subhead">Your Chore(s): </h2>
             <p>
@@ -128,8 +150,8 @@ if($_SESSION["valid"]==true){?>
                       while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                           foreach ($line as $col_value) {
                               echo "\t\t<tr><td><strong>$col_value</strong></td>
-                              <td><form action=\"./PHP/choreCompleted.php\"><input style=\"border-radius: 6px;\" type=\"submit\"
-                                value=\"Completed\"/></form></td></tr>";
+                              <td><form action=\"./PHP/choreCompleted.php\"><input class=\"txt3\" type=\"submit\"
+                                style=\"border-radius: 6px;\" type=\"submit\" value=\"Completed\"/></form></td></tr>";
                           }//foreach
                       }//while
                     }//else
@@ -158,8 +180,8 @@ if($_SESSION["valid"]==true){?>
                                 $name = $line['name'];
                                 $time = $line['time'];
                                 echo "\t\t<tr><td><strong>$name</strong></td><td>---</td><td> by $time</td><td>---</td>
-                                <td><form action=\"./PHP/taskCompleted.php\"><input style=\"border-radius: 6px;\" type=\"submit\"
-                                  value=\"Completed\"/></form></td></tr>";
+                                <td><form action=\"./PHP/taskCompleted.php\"><input class=\"txt3\" type=\"submit\"
+                                  style=\"border-radius: 6px;\" type=\"submit\" value=\"Completed\"/></form></td></tr>";
                            }//while
                          }//else
                        ?>
@@ -167,7 +189,7 @@ if($_SESSION["valid"]==true){?>
             </p>
 
 <!-- EVENTS/SCHEDULE -->
-            <h2 class="content-subhead">House schedule: </h2>
+            <h2 class="content-subhead">House Schedule: </h2>
             <p>
               <?php
                 $group = $_SESSION["gid"];
@@ -197,7 +219,15 @@ if($_SESSION["valid"]==true){?>
                   style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 	          </p>
 
-        </div><!-- content -->
+        <?php } elseif($userGID == '0') { ?>
+          <div class="header">
+            <h2>Please create a group in order to view its information.</h2>
+            <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
+          </div><!--header-->
+        <?php }//elseif ?>
+
+      </div><!--content-->
+
     </div><!--main-->
 </div><!--layout-->
 

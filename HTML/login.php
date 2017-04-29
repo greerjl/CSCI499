@@ -53,16 +53,39 @@ require_once("./PHP/functions.php");
           <h1>House Utilities Manager</h1>
           <h2>An application for all your home management needs. </h2>
         </div><!-- header -->
-<?php echo $flag?>
+<?php
+  include '../../dbconnect.php';
 
-	<?php require_once('./PHP/processLoginForm.php'); ?>
+  //if directed from email GET attributes
+  $urlEmail = $_GET['email'];
+  $urlHash = $_GET['hash'];
+  $urlVerified = $_GET['verified'];
 
-        <?php if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
+  if($urlVerified == '0'){
+    //select UID
+    $sql2 = "SELECT UID FROM user_info WHERE email='$urlEmail' AND accesskey='$urlHash'";
+    $result2 = mysqli_query($db, $sql2);
+    $temp = mysqli_fetch_object($result2);
+    $dbUID = $temp->UID;
+    //update user
+    $sql = "UPDATE user_info SET Verified='1' WHERE UID='$dbUID'";
+    $result = mysqli_query($db, $sql);
+    //Message
+
+    ?>
+      <div class="alert alert-success">
+        <strong>Success!</strong> Your account has been verified. Please log in.
+      </div>
+  <?php  }//if
+
+	require_once('./PHP/processLoginForm.php');
+
+        if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
         		if($_SESSION["loginErr"] == true){ ?>
         			<div class="alert alert-danger">
         				<strong>Error!</strong> User credentials are incorrect. Enter correct username and password.
         			</div>
-      <?php }//if ?>
+      <?php }//banner if ?>
 
         <div class="content">
           <form id="LogIn" class="form-signin" method="POST" action="./PHP/processLoginForm.php">
@@ -84,7 +107,6 @@ require_once("./PHP/functions.php");
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 
             Don't have an account? <a href="./signup.php"> Sign up </a>
-            Verified <a href="./verified.php">here</a>.
 	        </form>
           <?php }//request method if ?>
       </div><!-- /.content -->
