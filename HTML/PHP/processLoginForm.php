@@ -55,7 +55,8 @@
 			}//if
 		} else {
 			$GLOBALS['loginErr'] = true;
-			redirect("../login.php");
+			echo $GLOBALS['loginErr'];
+			//redirect("../login.php");
 		}//ifelse
 	}//POST if
 
