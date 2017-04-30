@@ -9,9 +9,7 @@
 	$emailErr = $dbErr = "";
 	$hasErrors = false;
 
-echo "outside request method = post\n";
 	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
-echo "inside request method = post\n";
 		/*USER CREDENTIALS*/
 		$email = cleanData($_POST['newMem']);
 			$emailErr = validate($email, 'email');
@@ -22,8 +20,6 @@ echo "inside request method = post\n";
 				 $hasErrors = true;
 				 //redirect("../houseSettings.php");
 			}else{
-				echo "2 emailErr = ".$emailErr."\n";
-				echo "2 dbErr = ".$dbErr."\n";
 				include 'sendGroupInvite.php';
 				echo "no errors... maybe in send mail file";
 				//redirect("../houseSettings.php");

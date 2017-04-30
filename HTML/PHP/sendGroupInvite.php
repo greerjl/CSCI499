@@ -1,10 +1,12 @@
 <?php
+session_start();
+
 date_default_timezone_set('America/Los_Angeles');
 ini_set("display_errors", true);
 error_reporting(E_ALL);
 //require '/var/app/current/DocRoot/CSCI499/PHPMailer/PHPMailerAutoload.php';
 require '/var/www/html/CSCI499/PHPMailer/PHPMailerAutoload.php';
-include './processInviteMembers.php';
+include './processInviteForm.php';
 
 $mail = new PHPMailer;
 //Enable SMTP debugging
@@ -31,7 +33,6 @@ $mail->addAddress($memEmail);
 $mail->Subject  = 'Welcome to HUM!';
 
 //SQL to fetch GID and username of sender
-session_start();
 $uid = $_SESSION["login_user"];
 $sql = "SELECT GID, username FROM user_info WHERE UID='$uid'";
 $result = mysqli_query($db, $sql);
