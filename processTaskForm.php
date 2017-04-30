@@ -1,11 +1,11 @@
 <?php
 session_start();
 include '../../../dbconnect.php';
-require('fucntions.php');
+require_once("functions.php");
 ini_set("display_errors", true);
 error_reporting(E_ALL);
-	$tTitle = $sql = $time = "";
-	$titleErr = "";
+	$tTitle = $taskDate = $sql = "";
+	$titleErr = $taskDateErr = "";
 	$hasErrors = false;
 
 	if($_SERVER['REQUEST_METHOD']=='POST'){
@@ -20,7 +20,6 @@ error_reporting(E_ALL);
 			redirect("../taskSettings.php");
 		}
 		else{
-			//echo $titleErr." ";
 			redirect("../taskSettings.php");
 		}
 	}//if
@@ -37,16 +36,27 @@ error_reporting(E_ALL);
 			$data = strtolower($data);
 			$data = ucfirst($data);
 			$gid = $_SESSION["gid"];
-			$sql = "SELECT * FROM task WHERE name = '$data' AND GID = '$gid'";
-			$result = mysqli_query($GLOBALS['db'], $sql);
 
-			$count = mysqli_num_rows($result);
-			if($count != 0){
-				return "Task of the same name already exists";
-			}
-			else {
-				return "";
-			}
+			switch($field){
+
+				case 'tTitle':{
+					$sql = "SELECT * FROM task WHERE name = '$data' AND GID = '$gid'";
+					$result = mysqli_query($GLOBALS['db'], $sql);
+
+					$count = mysqli_num_rows($result);
+					if($count != 0){
+						return "Task of the same name already exists";
+					}
+					else {
+						return "";
+					}
+				}//case tTitle
+			 case 'taskDate':{
+
+			 }//case taskDate
+
+			}//switch
+
 	}//function validate
 
 	function sendData($task, $gid, $time){

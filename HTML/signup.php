@@ -11,7 +11,7 @@
 		<link rel="icon" href="../images/logo.png"/>
 		<link rel="stylesheet" type="text/css" href="../CSS/psuedoWelcome.css"/>
 
-		<title>Signup</title>
+		<title>HUM Signup</title>
 		<!-- bootstrap -->
 		<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
 		<link href="../bootstrap/css/starter-template.css" rel="stylesheet">
@@ -48,18 +48,23 @@
 	<?php include '../../dbconnect.php'; ?>
 	<?php include './PHP/processSignupForm.php'; ?>
 
-	<?php if($_SERVER['REQUEST_METHOD']=="GET" || $hasErrors){
-		if($hasErrors){ ?>
+	<?php if($_SERVER['REQUEST_METHOD']=="GET" || $hasErrorsEmail || $hasErrorsPw){
+		if($hasErrorsEmail){ ?>
 			<div class="alert alert-danger">
 				<strong>Error!</strong> User email already exists.
 			</div>
-		<?php }//if ?>
+		<?php }//if
+		 	if($hasErrorsPw){ ?>
+				<div class="alert alert-danger">
+					<strong>Error!</strong> Password must contain a number and be 6+ characters.
+				</div>
+			<?php }//if ?>
 				 <div class="content">
 						 <form id="SignUp" class="form-signin" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 						 <h2 class="form-signin-heading"> Sign Up </h2>
 
 						 <input type="email" id="useremail" class="form-control"
-						 		name="email" placeholder="Email address" autofocus required/>
+						 		name="email" placeholder="Email Address" autofocus required/>
 
 						 <input type="username" id="username" class="form-control"
 							  name="username" placeholder="Username" autofocus required/>
@@ -85,7 +90,7 @@
 			if($_SERVER['REQUEST_METHOD']=="POST" && !$hasErrors){
 					$accesskey = uniqid();
 					$sql = "INSERT INTO user_info (username, password, email, accesskey) VALUES ('$username','$hash', '$email', '$accesskey')";
-          $result = mysqli_query($db, $sql);
+          			$result = mysqli_query($db, $sql);
 								if($result){
 									include './PHP/sendUserConfirmMail.php';
 									?>

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php session_start();
-include '../../dbconnect.php';
+require("../../dbconnect.php");
 require_once("./PHP/functions.php");
+ini_set("display_errors", true);
+error_reporting(E_ALL);
 if($_SESSION["valid"]==true){?>
 <head>
 
@@ -13,7 +15,7 @@ if($_SESSION["valid"]==true){?>
     <meta name="author" content="Capstone" >
 
 
-    <title>Task Settings</title>
+    <title>Profile Settings</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -30,16 +32,7 @@ if($_SESSION["valid"]==true){?>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
-    <script type="text/javascript">
-      $(function()
-      {
-          $('#idbtn').click(function()
-          {
-              $('#idtxt').clone().attr('id', 'idtxt' + $(this).index()).insertAfter('#idtxt');
-          })
-      })
-    </script>
+
 </head>
 
 <body>
@@ -56,7 +49,7 @@ if($_SESSION["valid"]==true){?>
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -68,18 +61,18 @@ if($_SESSION["valid"]==true){?>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                  <ul class="nav navbar-nav">
-                      <li><a href="./houseSettings.php">House</a></li>
-                      <li><a href="./choreSettings.php">Chores</a></li>
-                      <li><a href="./taskSettings.php">Tasks</a></li>
-                      <li><a href="./eventSettings.php">Events</a></li>
-                      <li><a href="./userSettings.php"> My Settings </a></li>
-                      <li><a href="./logout.php"> <span class="glyphicon glyphicon-log-out">
-                          </span>Logout </a></li>
-                  </ul>
+                    <li><a href="./houseSettings.php">House</a></li>
+                    <li><a href="./choreSettings.php">Chores</a></li>
+                    <li><a href="./taskSettings.php">Tasks</a></li>
+                    <li><a href="./eventSettings.php">Events</a></li>
+                    <li><a href="./userSettings.php"> My Settings </a></li>
+                    <li><a href="./logout.php"> <span class="glyphicon glyphicon-log-out">
+                        </span>Logout </a></li>
                 </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container -->
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
     </nav>
 
     <!-- Page Content -->
@@ -88,8 +81,8 @@ if($_SESSION["valid"]==true){?>
         <!-- Page Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Task Settings
-                    <small>Add tasks that need to be done.</small>
+                <h1 class="page-header">Event Settings
+                    <small>Add events by giving the name, date, time, and location of the event.</small>
                 </h1>
             </div>
         </div>
@@ -97,42 +90,53 @@ if($_SESSION["valid"]==true){?>
 
         <div class="container">
 	         <div class="row">
-             <?php
-               $userID = $_SESSION["login_user"];
-               $sql = "SELECT GID FROM sys.user_info WHERE UID = '$userID'";
-               $result = mysqli_query($db, $sql);
-               $obj = mysqli_fetch_object($result);
-               $userGID = $obj->GID;
-               if($userGID == '0'){
-             ?>
-             <div class="header">
-               <h2>Please create a group before editing these settings.</h2>
-               <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
-             </div><!--header-->
-             <?php }//if
-                else { ?>
              <div class="col-md-4">
+
 		             <div class="form_main">
-                   <h4 class="heading"><strong>Add a Task</strong> <span></span></h4>
+                   <h4 class="heading"><strong>Add an Event</strong> <span></span></h4>
                    <div class="form">
-                     <form action="./PHP/processTaskForm.php" method="POST" id="taskForm" name="taskForm">
-                       <input type="text" id="idtxt" required="" placeholder="Add a Task" value="" name="task" class="txt">
-                       <input type="date" required="" value="" name="taskDate" class="date">
-                       <!--input type="button" id="idbtn" value="Add Task" /-->
-                       <br><br>
+                     <form action="./PHP/processEventForm.php" method="POST" id="eventForm" name="eventForm">
+                       <input type="text" required="" placeholder="Name of Event" value="" name="eventName" class="txt"/>
+                       <input type="time" required="" placeholder="Time of Event" value="" name="eventTime" class="txt"/>
+		                   <input type="date" required="" value="" name="eventDate" class="date"/><br/>
+                         <?php
+                           $groupId = $_SESSION["gid"];
+                           $sql = "SELECT name, RID FROM room WHERE GID = '$groupId'";
+                           $result = mysqli_query($db, $sql);
+                         ?>
+                       <select name="roomSelect" class="form-control">
+                          <option value="">--Please Select a Room--</option>
+                          <?php while($room = mysqli_fetch_row($result)):?>
+                                  <option value="<?php echo $room[1]; ?>"><?php echo $room[0]; ?></option>
+                          <?php endwhile; ?>
+                       </select>
+
+		                     <hr>
                        <input type="submit" value="submit" name="submit" class="txt2">
                      </form>
                   </div>
                 </div>
+					</div>
 
+					<div class="col-md-4">
+		             <div class="form_main">
+                   <h4 class="heading"><strong>Request Laundry Machines</strong> <span></span></h4>
+                   <div class="form">
+                     <form action="./PHP/processLaundryForm.php" method="POST" id="eventForm" name="eventForm">
+                       <input type="time" required="" placeholder="Time of Laundry" value="" name="eventTime" class="txt">
+		                   <input type="date" required="" value="" name="eventDate" class="date">
+		                   <hr>
+		                  <input type="submit" value="submit" name="submit" class="txt2">
+		    </form>
+		  </div>
+		</div>
 
             </div><!-- col-md-4 -->
 	        </div><!-- row -->
         </div><!-- container -->
 
         <hr>
-        <?php }//else ?>
-        
+
         <!-- Footer -->
         <footer class="navbar-fixed-bottom">
             <div class="row">
@@ -152,8 +156,7 @@ if($_SESSION["valid"]==true){?>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-  </div><!--main-->
-</div><!--layout-->
+
 </body>
 
 </html>

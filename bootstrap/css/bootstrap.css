@@ -1498,7 +1498,7 @@ blockquote ul:last-child,
 blockquote ol:last-child {
   margin-bottom: 0;
 }
-blockquote footer,
+blockquote,
 blockquote small,
 blockquote .small {
   display: block;
@@ -4293,8 +4293,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-fixed-bottom {
   bottom: 0;
+  padding: 3px;
+  height: 25px;
   margin-bottom: 0;
+  margin-top: 5px;
   border-width: 1px 0 0;
+  background-color: #111;
+  color: #ffffff;
 }
 .navbar-brand {
   float: left;
