@@ -139,10 +139,6 @@ if($_SESSION["valid"]==true){?>
                   <h4 class="heading"><strong>Remove Chores</strong> <span></span></h4>
                   <div class="form">
                     <form action="./PHP/processChoreRemoveForm.php" method="POST" id="removeChoreForm" name="removeChoreForm">
-<<<<<<< HEAD
-                      <input type="text" id="idtxt" required="" placeholder="Chore to be Removed" value="" name="remChore" class="txt">
-                      <!--input type="button" id="idbtn" value="Add Chore to Remove" /-->
-=======
                       <?php
                         $sql = "SELECT title, CID FROM chore WHERE GID = '$groupId'";
                         $result = mysqli_query($db, $sql);
@@ -150,10 +146,9 @@ if($_SESSION["valid"]==true){?>
                       <select name="choreList" class="form-control">
                        <option value="">--What chore do you want to remove?--</option>
                        <?php while($chore = mysqli_fetch_row($result)):?>
-                               <option value="<?php echo $chore[1]; ?>"><?php echo $room[0]; ?></option>
+                               <option value="<?php echo $chore[1]; ?>"><?php echo $chore[0]; ?></option>
                        <?php endwhile; ?>
                       </select>
->>>>>>> origin/master
                       <br><br>
                       <input type="submit" value="submit" name="submit" class="txt2">
                     </form>
