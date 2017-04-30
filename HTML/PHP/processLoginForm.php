@@ -55,8 +55,8 @@
 			}//if
 		} else {
 			$loginErr = true;
-			echo $loginErr;
-			//redirect("../login.php");
+			//echo $loginErr;
+			redirect("../login.php");
 		}//ifelse
 	}//POST if
 
