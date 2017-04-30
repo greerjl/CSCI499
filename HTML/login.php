@@ -80,6 +80,7 @@ require_once("./PHP/functions.php");
     <?php }//if
 
   include './PHP/processLoginForm.php';
+  global $loginErr;
   if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
     echo "loginErr = ".$loginErr;
     if($loginErr == 1){ ?>
