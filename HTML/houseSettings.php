@@ -175,7 +175,7 @@ if($_SESSION["valid"]==true){?>
                   ?>
                   <h4 class="heading"><strong>Invite Members</strong> <span></span></h4>
                   <div class="form">
-                    <form action="./PHPprocessInviteForm.php" method="POST" id="inviteForm" name="inviteForm">
+                    <form action="./PHP/processInviteForm.php" method="POST" id="inviteForm" name="inviteForm">
                       <input type="text" id="idtxt" required="" placeholder="Add Member" value="" name="newMem" class="txt"/>
                       <br><br>
                       <input type="submit" value="Submit" name="submit" class="txt2"/>
