@@ -113,7 +113,7 @@ require_once("./PHP/functions.php");
       </div><!-- /.content -->
     </div><!--/.starter template -->
   </div> <!-- /.container -->
-  
+
   <!-- Footer -->
   <footer class="navbar-fixed-bottom">
       <div class="row">
