@@ -270,18 +270,18 @@ if($_SESSION["valid"]==true){?>
         		</div>
         </div><!-- content -->
         <?php }//elseif ?>
-        
+
     </div><!--main-->
 </div><!--layout-->
 
-<footer>
+<!-- Footer -->
+<footer class="navbar-fixed-bottom">
     <div class="row">
         <div class="col-lg-12 footer l-box is-center">
             <p>Copyright &copy; 2016-2017 PLU Capstone. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
 <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
         </div>
-    </div>
-    <!-- /.row -->
+    </div><!-- /.row -->
 </footer>
 <script src="http://cs.plu.edu/~greerjl/CSCI499/ui.js"></script>
 
