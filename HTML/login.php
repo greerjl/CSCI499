@@ -79,11 +79,10 @@ require_once("./PHP/functions.php");
       </div>
     <?php }//if
 
-    echo $GLOBALS['loginErr'];
 
-  //require_once('./PHP/processLoginForm.php');
   if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
-    if($GLOBALS['loginErr'] == true){ ?>
+    require_once('./PHP/processLoginForm.php');
+    if($loginErr == true){ ?>
       <div class="alert alert-danger">
         <strong>Error!</strong> User credentials are incorrect. Enter correct username and password.
       </div>
