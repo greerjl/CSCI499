@@ -19,7 +19,8 @@
 				 $hasErrors = true;
 				 redirect("../houseSettings.php");
 			}else{
-				include 'sendGroup'
+				include 'sendGroupInvite.php';
+				redirect("../houseSettings.php");
 			}//ifelse
 	}//if
 

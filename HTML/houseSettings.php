@@ -23,10 +23,10 @@ if($_SESSION["valid"]==true){?>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+    <!--[if lt IE 9]-->
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <!--[endif]-->
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script type="text/javascript">
@@ -175,13 +175,8 @@ if($_SESSION["valid"]==true){?>
                   ?>
                   <h4 class="heading"><strong>Invite Members</strong> <span></span></h4>
                   <div class="form">
-<<<<<<< HEAD
-                    <form action="./PHP/processRoomForm.php" method="POST" id="inviteForm" name="inviteForm">
-                      <input type="text" id="idtxt" required="" placeholder="Add Member" value="" name="memInvite" class="txt">
-=======
-                    <form action="" method="POST" id="inviteForm" name="inviteForm">
+                    <form action="./PHPprocessInviteForm.php" method="POST" id="inviteForm" name="inviteForm">
                       <input type="email" id="idtxt" required="" placeholder="Add Member" value="" name="newMem" class="txt"/>
->>>>>>> origin/master
                       <br><br>
                       <input type="submit" value="Submit" name="submit" class="txt2"/>
                     </form>
