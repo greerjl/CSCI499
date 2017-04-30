@@ -22,6 +22,8 @@ echo "inside request method = post\n";
 				 $hasErrors = true;
 				 //redirect("../houseSettings.php");
 			}else{
+				echo "2 emailErr = ".$emailErr."\n";
+				echo "2 dbErr = ".$dbErr."\n";
 				include 'sendGroupInvite.php';
 				echo "no errors... maybe in send mail file";
 				//redirect("../houseSettings.php");
