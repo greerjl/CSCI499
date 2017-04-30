@@ -13,7 +13,7 @@ if($_SESSION["valid"]==true){?>
     <meta name="author" content="Server" >
 
 
-    <title>Profile Settings</title>
+    <title>Chore Settings</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -140,13 +140,14 @@ if($_SESSION["valid"]==true){?>
                   <div class="form">
                     <form action="./PHP/processChoreRemoveForm.php" method="POST" id="removeChoreForm" name="removeChoreForm">
                       <?php
+                      $groupId = $_SESSION["gid"];
                         $sql = "SELECT title, CID FROM chore WHERE GID = '$groupId'";
                         $result = mysqli_query($db, $sql);
                       ?>
                       <select name="choreList" class="form-control">
                        <option value="">--What chore do you want to remove?--</option>
                        <?php while($chore = mysqli_fetch_row($result)):?>
-                               <option value="<?php echo $chore[1]; ?>"><?php echo $room[0]; ?></option>
+                               <option value="<?php echo $chore[1]; ?>"><?php echo $chore[0]; ?></option>
                        <?php endwhile; ?>
                       </select>
                       <br><br>

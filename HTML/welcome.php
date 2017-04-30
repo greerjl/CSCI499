@@ -1,22 +1,20 @@
+<!DOCTYPE html>
 <?php session_start();
 include '../../dbconnect.php';
 require_once("./PHP/functions.php");
 ini_set("display_errors", true);
 error_reporting(E_ALL);
 if($_SESSION["valid"]==true){?>
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home Utilities Manager &ndash; </title>
-	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"/>
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
   <link rel="icon" href="../images/logo.png"/>
-  <link href="../CSS/roomForm.css" rel="stylesheet"/>
 	<link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/> <!-- normalize -->
 	<link rel="stylesheet" type="text/css" href="../CSS/welcome.css"/> <!-- css -->
-  <link rel="icon" href="../images/logo.png"/>
+  <link rel="icon" href="../images/logo.png">
 
   <!-- Bootstrap Core CSS -->
   <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -29,17 +27,35 @@ if($_SESSION["valid"]==true){?>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
 	 <![endif]-->
 
-	<script>
-(function(i,s,o,g,r,a,m)
-	{i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-	ga('create', 'UA-41480445-1', 'purecss.io');
-	ga('send', 'pageview');
-	</script>
-
+	<style>
+		@media (max-width: 550px) {
+		    .big-container {
+			  display: none;
+		    }
+		}
+		@media (min-width: 550px) {
+		    .small-container {
+			  display: none;
+		    }
+		}
+		/* Responsive iFrame */
+		.responsive-iframe-container {
+		    position: relative;
+		    padding-bottom: 56.25%;
+		    padding-top: 30px;
+		    height: 0;
+		    overflow: hidden;
+		}
+		.responsive-iframe-container iframe,
+		.vresponsive-iframe-container object,
+		.vresponsive-iframe-container embed {
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    height: 100%;
+		}
+	</style>
 </head>
 
 <body>
@@ -51,7 +67,6 @@ if($_SESSION["valid"]==true){?>
             <h2>An application housing all your home management needs. </h2>
         </div>
 
-        <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top2" role="navigation">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -82,29 +97,22 @@ if($_SESSION["valid"]==true){?>
             </div><!-- /.container -->
         </nav>
 
-        <div class="container">
-        <!-- Page Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Dashboard
-                    <small>All house information can be viewed here.</small>
-                </h1>
-            </div>
-        </div><!-- /.row -->
-      </div><!--container-->
-
-      <div class="content">
-
-<!--House info-->
         <?php
           $userID = $_SESSION["login_user"];
           $sql = "SELECT GID FROM sys.user_info WHERE UID = '$userID'";
           $result = mysqli_query($db, $sql);
           $obj = mysqli_fetch_object($result);
           $userGID = $obj->GID;
-          if($userGID != '0'){
+          if($userGID == '0'){
         ?>
+          <div class="header">
+          <h2>Please create a group in order to view its information.</h2>
+          <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
+          </div><!--header-->
+        <?php }//if
+          elseif($userGID!='0'){ ?>
 
+<!--House info-->
         <div class="houseinfo col-md-4">
             <h2 class="content-subhead2">House: </h2>
             <h4 class="content-subhead2">Members: </h4>
@@ -130,8 +138,9 @@ if($_SESSION["valid"]==true){?>
             </div><!--phptext-->
         </div><!--houseinfo-->
 
+        <div class="content col-md-4">
 <!-- CHORES -->
-            <h2 class="content-subhead">Your Chore(s): </h2>
+            <h2 class="content-subhead">Your Chore: </h2>
             <p>
               <table>
                   <?php
@@ -149,22 +158,23 @@ if($_SESSION["valid"]==true){?>
                     else{
                       while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                           foreach ($line as $col_value) {
-                              echo "\t\t<tr><td><strong>$col_value</strong></td>
-                              <td><form action=\"./PHP/choreCompleted.php\"><input class=\"txt3\" type=\"submit\"
-                                style=\"border-radius: 6px;\" type=\"submit\" value=\"Completed\"/></form></td></tr>";
+                              echo "\t\t<tr><td>$col_value</td></tr>";
                           }//foreach
                       }//while
                     }//else
                   ?>
             </table>
             </p>
+
 <!-- TASKS -->
-            <h2 class="content-subhead">Current Task(s): </h2>
+            <h2 class="content-subhead">Current Tasks: </h2>
             <p>
                    <table>
                        <?php
+                         ini_set("display_errors", true);
+                         error_reporting(E_ALL);
                          $group = $_SESSION["gid"];
-                         $sql = "SELECT name, time FROM task WHERE task.GID = '$group'";
+                         $sql = "SELECT name FROM task WHERE task.GID = '$group'";
                          $result = mysqli_query($db, $sql);
 
                          $count = mysqli_num_rows($result);
@@ -175,13 +185,10 @@ if($_SESSION["valid"]==true){?>
                            echo $emptyMessage;
                          }
                          else{
-                           //$post = array();
-                           while ($line = mysqli_fetch_assoc($result)) {
-                                $name = $line['name'];
-                                $time = $line['time'];
-                                echo "\t\t<tr><td><strong>$name</strong></td><td>---</td><td> by $time</td><td>---</td>
-                                <td><form action=\"./PHP/taskCompleted.php\"><input class=\"txt3\" type=\"submit\"
-                                  style=\"border-radius: 6px;\" type=\"submit\" value=\"Completed\"/></form></td></tr>";
+                           while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                               foreach ($line as $col_value) {
+                                   echo "\t\t<tr><td>$col_value</td></tr>";
+                               }//foreach
                            }//while
                          }//else
                        ?>
@@ -189,52 +196,88 @@ if($_SESSION["valid"]==true){?>
             </p>
 
 <!-- EVENTS/SCHEDULE -->
-            <h2 class="content-subhead">House Schedule: </h2>
-            <p>
-              <?php
-                $group = $_SESSION["gid"];
-                $sql = "SELECT title, description FROM event WHERE task.GID = '$group'";
-                $result = mysqli_query($db, $sql);
+            <h2 class="content-subhead">House schedule: </h2>
+             <div class="responsive-iframe-container big-container">
+                <p>
+                  <?php
+                    $group = $_SESSION["gid"];
+                    $sql = "SELECT name, time FROM event WHERE event.GID = '$group'";
+                    $result = mysqli_query($db, $sql);
 
-                $count = mysqli_num_rows($result);
-                //php end tag here
+                    $count = mysqli_num_rows($result);
+                    //php end tag here
 
-                if($count == 0){
-                  $emptyMessage = "Your House currently has no upcoming events.";
-                  echo $emptyMessage;
-                }
-                else{
-                  $i = 1;
-                  while ($line = mysqli_fetch_assoc($result)) {
-                      $name = $line['title'];
-                      $desc = $line['description'];
-                      echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> by $desc</td></tr>";
-                      $i = $i+1;
-                  }//while
-                }//else
-              ?>
-            </p>
-            <p>
-	          <iframe src="https://calendar.google.com/calendar/embed?title=My%20Calendar&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=greerjl%40plu.edu&amp;color=%2329527A&amp;ctz=America%2FLos_Angeles"
-                  style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-	          </p>
+                    if($count == 0){
+                      $emptyMessage = "Your House currently has no upcoming events.";
+                      echo $emptyMessage;
+                    }
+                    else{
+                      $i = 1;
+                      while ($line = mysqli_fetch_assoc($result)) {
+                          $name = $line['name'];
+                          $time = $line['time'];
+                          echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
+                          $i = $i+1;
+                      }//while
+                    }//else
 
-        <?php } elseif($userGID == '0') { ?>
-          <div class="header">
-            <h2>Please create a group in order to view its information.</h2>
-            <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
-          </div><!--header-->
+              			$y = $_GET['y'] ?  $_GET['y'] : date('Y');
+              			$m = $_GET['m'] ?  $_GET['m'] : date('m');
+              			//display 5 next and 5 previous years of selected year
+              			for ($i=$y-5; $i<=$y+5; $i++){
+              			    echo '<a href="index.php?y='.$i.'&m='.$m.'">'.$i.'</a>&nbsp&nbsp;';
+              			}
+              			echo "<br><br>";
+
+              			//months array just like Jan,Feb,Mar,Apr in short format
+              			$m_array = array('1'=>'Jan', '2'=>'Feb', '3'=>'Mar', '4'=>'Apr', '5'=>'May', '6'=>'Jun', '7'=>'Jul', '8'=>'Aug', '9'=>'Sep', '10'=>'Oct', '11'=>'Nov', '12'=>'Dec');
+              			//display months
+              			foreach ($m_array as $key=>$val){
+              			    echo '<a href="index.php?y='.$y.'&m='.$key.'">'.$val.'</a>&nbsp&nbsp;';
+              			}
+              			echo "<br><br>";
+
+              			$d_array = array('1'=>31, '2'=>28, '3'=>31, '4'=>30, '5'=>31, '6'=>30, '7'=>31, '8'=>31, '9'=>30, '10'=>31, '11'=>30, '12'=>31);
+              			$d_m = ($m==2 && $y%4==0)?29:$d_array[$m];
+              			echo '<table><tr><th colspan="7">'.$m_array[$m].'&nbsp'.$y.'</th></tr><tr>';
+              			//days array
+              			$days_array = array('1'=>'Mon', '2'=>'Tue', '3'=>'Wed', '4'=>'Thu', '5'=>'Fri', '6'=>'Sat', '7'=>'Sun');
+              			//display days
+              			foreach ($days_array as $key=>$val){
+              			    echo '<th>'.$val.'</th>';
+              			}
+              			echo "</tr></tr>";
+              			$date = $y.'-'.$m.'-01';
+              			//find start day of the month
+              			$startday = array_search(date('D',strtotime($date)), $days_array);
+              			//daisplay month dates
+              			for($i=0; $i<($d_m+$startday); $i++){
+              			    $day = ($i-$startday+1<=9)?'0'.($i-$startday+1):$i-$startday+1;
+              			    echo ($i<$startday)?'<td></td>':'<td>'.$day.'</td>';
+              			    echo ($i%7==0)?'</tr><tr>':'';
+              			}
+              			//calculate next & prev month
+              			$next_y=(($m+1)>12)?($y+1):$y;
+              			$next_m=(($m+1)>12)?1:($m+1);
+              			$prev_y=(($m-1)<=0)?($y-1):$y;
+              			$prev_m=(($m-1)<=0)?12:($m-1);
+              			//daisplay next prev
+              			echo '<tr><td><a href="index.php?y='.$prev_y.'&m='.$prev_m.'">Prev</a></td><td></td><td></td><td></td><td></td><td></td><td><a href="index.php?y='.$next_y.'&m='.$next_m.'">Next</a></td></tr>';
+              		?>
+        		</div>
+        		 <div class="responsive-iframe-container small-container">
+        			<iframe src="https://calendar.google.com/calendar/embed?title=HUM&amp;mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=greerjl%40plu.edu&amp;color=%23875509&amp;src=jaymelgreer%40gmail.com&amp;color=%23B1440E&amp;ctz=America%2FLos_Angeles" style="border-width:0" width="550" height="600" frameborder="0" scrolling="no"></iframe>
+        		</div>
+        </div><!-- content -->
         <?php }//elseif ?>
-
-      </div><!--content-->
-
+        
     </div><!--main-->
 </div><!--layout-->
 
-<footer class="navbar-fixed-bottom">
+<footer>
     <div class="row">
         <div class="col-lg-12 footer l-box is-center">
-            <p class="text muted">Copyright &copy; 2016-2017 PLU Capstone. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
+            <p>Copyright &copy; 2016-2017 PLU Capstone. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
 <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
         </div>
     </div>

@@ -15,7 +15,7 @@ require_once("./PHP/functions.php");
     <link rel="stylesheet" type="text/css" href="../CSS/psuedoWelcome.css"/>
     <link rel="icon" href="../images/logo.png">
 
-    <title>Login</title>
+    <title>HUM Login</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -54,6 +54,7 @@ require_once("./PHP/functions.php");
           <h2>An application for all your home management needs. </h2>
         </div><!-- header -->
 <?php
+
   include '../../dbconnect.php';
 
   //if directed from email GET attributes
@@ -76,16 +77,15 @@ require_once("./PHP/functions.php");
       <div class="alert alert-success">
         <strong>Success!</strong> Your account has been verified. Please log in.
       </div>
-  <?php  }//if
+    <?php }//if
 
-	require_once('./PHP/processLoginForm.php');
-
-        if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
-        		if($_SESSION["loginErr"] == true){ ?>
-        			<div class="alert alert-danger">
-        				<strong>Error!</strong> User credentials are incorrect. Enter correct username and password.
-        			</div>
-      <?php }//banner if ?>
+  require_once('./PHP/processLoginForm.php');
+  if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
+    if($_SESSION["loginErr"] == true){ ?>
+      <div class="alert alert-danger">
+        <strong>Error!</strong> User credentials are incorrect. Enter correct username and password.
+      </div>
+  <?php }//if?>
 
         <div class="content">
           <form id="LogIn" class="form-signin" method="POST" action="./PHP/processLoginForm.php">

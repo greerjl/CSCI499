@@ -13,7 +13,7 @@ if($_SESSION["valid"]==true){?>
     <meta name="author" content="Capstone" >
 
 
-    <title>Profile Settings</title>
+    <title>Task Settings</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -132,7 +132,7 @@ if($_SESSION["valid"]==true){?>
 
         <hr>
         <?php }//else ?>
-        
+
         <!-- Footer -->
         <footer class="navbar-fixed-bottom">
             <div class="row">
