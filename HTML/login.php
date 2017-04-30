@@ -77,11 +77,16 @@ require_once("./PHP/functions.php");
       <div class="alert alert-success">
         <strong>Success!</strong> Your account has been verified. Please log in.
       </div>
-    <?php }//if
+    <?php }//if ?>
 
+    <div class="alert alert-danger">
+      <strong>Error!</strong> User credentials are incorrect. Enter correct username and password.
+    </div>
+    <?php
 
   if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
     require_once('./PHP/processLoginForm.php');
+    echo $loginErr;
     if($loginErr == true){ ?>
       <div class="alert alert-danger">
         <strong>Error!</strong> User credentials are incorrect. Enter correct username and password.
