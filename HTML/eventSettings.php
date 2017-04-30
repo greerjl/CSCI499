@@ -15,7 +15,7 @@ if($_SESSION["valid"]==true){?>
     <meta name="author" content="Capstone" >
 
 
-    <title>Profile Settings</title>
+    <title>Event Settings</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">

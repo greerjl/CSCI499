@@ -11,7 +11,7 @@
 		<link rel="icon" href="../images/logo.png"/>
 		<link rel="stylesheet" type="text/css" href="../CSS/psuedoWelcome.css"/>
 
-		<title>Signup</title>
+		<title>HUM Signup</title>
 		<!-- bootstrap -->
 		<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
 		<link href="../bootstrap/css/starter-template.css" rel="stylesheet">

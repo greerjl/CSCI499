@@ -16,17 +16,17 @@ if($_SESSION["valid"]==true){?>
     <meta name="description" content="">
     <meta name="author" content="Capstone" >
 
-    <title>My Dashboard</title>
+    <title>House Settings</title>
 
 
     <!-- scripts for dynamic buttons -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+    <!--[if lt IE 9]-->
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <!--[endif]-->
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script type="text/javascript">
@@ -175,10 +175,10 @@ if($_SESSION["valid"]==true){?>
                   ?>
                   <h4 class="heading"><strong>Invite Members</strong> <span></span></h4>
                   <div class="form">
-                    <form action="" method="POST" id="inviteForm" name="inviteForm">
-                      <input type="text" id="idtxt" required="" placeholder="Add Member" value="" name="room" class="txt">
+                    <form action="./PHPprocessInviteForm.php" method="POST" id="inviteForm" name="inviteForm">
+                      <input type="email" id="idtxt" required="" placeholder="Add Member" value="" name="newMem" class="txt"/>
                       <br><br>
-                      <input type="submit" value="Submit" name="submit" class="txt2">
+                      <input type="submit" value="Submit" name="submit" class="txt2"/>
                     </form>
                   </div>
                </div>

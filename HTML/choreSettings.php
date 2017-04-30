@@ -13,7 +13,7 @@ if($_SESSION["valid"]==true){?>
     <meta name="author" content="Server" >
 
 
-    <title>Profile Settings</title>
+    <title>Chore Settings</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -150,6 +150,7 @@ if($_SESSION["valid"]==true){?>
                                <option value="<?php echo $chore[1]; ?>"><?php echo $chore[0]; ?></option>
                        <?php endwhile; ?>
                       </select>
+>>>>>>> origin/master
                       <br><br>
                       <input type="submit" value="submit" name="submit" class="txt2">
                     </form>
