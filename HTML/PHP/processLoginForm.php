@@ -30,7 +30,7 @@
 		/*DEBUG BLOCK*/
 		//$booltest = password_verify($mypassword, $dbpassword);
 
-		$GLOBALS['loginErr'] = false;
+		$loginErr = false;
 
 		//if statement to allow login and start session if account exists and password is correct
 		if(password_verify($mypassword, $dbpassword) && $dbVerified=='1'){
@@ -54,7 +54,7 @@
 				redirect("../welcome.php");
 			}//if
 		} else {
-			$GLOBALS['loginErr'] = true;
+			$loginErr = true;
 			redirect("../login.php");
 		}//ifelse
 	}//POST if
