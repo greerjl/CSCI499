@@ -14,7 +14,7 @@
 		$email = cleanData($_POST['newMem']);
 			//$emailErr = validate($email, 'email');
 			if(!empty($email)){
-				if(!filter_var($data, FILTER_VALIDATE_EMAIL)){
+				if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 				 //echo "emailErr = ".$emailErr."\n";
 				 echo "titties.";
 				 $hasErrors = true;
