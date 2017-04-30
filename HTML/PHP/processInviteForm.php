@@ -11,7 +11,10 @@
 
 	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
 		/*USER CREDENTIALS*/
-		$email = cleanData($_POST['newMem']);
+		$email = $_POST['newMem'];
+		$email = trim($email);
+		$email = stripslashes($email);
+		$email = htmlspecialchars($email);
 			//$emailErr = validate($email, 'email');
 			if(!empty($email)){
 				if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
@@ -30,6 +33,7 @@
 	}//if
 
 	//FUNCTIONS
+/*
 	function cleanData($data){
 		$data = trim($data);
 		$data = stripslashes($data);
@@ -37,7 +41,6 @@
 		return $data;
 	}//cleanData
 
-/*
 	function validate($data, $field){
 		switch($field){
 			case 'email': {
