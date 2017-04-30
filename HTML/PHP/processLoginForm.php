@@ -30,6 +30,7 @@
 		/*DEBUG BLOCK*/
 		//$booltest = password_verify($mypassword, $dbpassword);
 
+		global $loginErr;
 		$loginErr = false;
 
 		//if statement to allow login and start session if account exists and password is correct
