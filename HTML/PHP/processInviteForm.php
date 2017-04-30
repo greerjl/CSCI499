@@ -12,9 +12,11 @@
 	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
 		/*USER CREDENTIALS*/
 		$email = cleanData($_POST['newMem']);
-			$emailErr = validate($email, 'email');
-			if(!empty($emailErr)){
-				 echo "emailErr = ".$emailErr."\n";
+			//$emailErr = validate($email, 'email');
+			if(!empty($email)){
+				if(!filter_var($data, FILTER_VALIDATE_EMAIL)){
+				 //echo "emailErr = ".$emailErr."\n";
+				 echo "titties.";
 				 $hasErrors = true;
 				 //redirect("../houseSettings.php");
 			}else{
@@ -32,6 +34,7 @@
 		return $data;
 	}//cleanData
 
+/*
 	function validate($data, $field){
 		switch($field){
 			case 'email': {
@@ -49,5 +52,6 @@
 
 		}//switch statement
 	}//validate
+*/
 
 ?>
