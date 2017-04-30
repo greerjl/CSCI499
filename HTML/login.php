@@ -54,12 +54,9 @@ require_once("./PHP/functions.php");
           <h2>An application for all your home management needs. </h2>
         </div><!-- header -->
 <?php
-<<<<<<< HEAD
-include '../../dbconnect.php';
-=======
+
   include '../../dbconnect.php';
 
->>>>>>> origin/master
   //if directed from email GET attributes
   $urlEmail = $_GET['email'];
   $urlHash = $_GET['hash'];
@@ -75,16 +72,12 @@ include '../../dbconnect.php';
     $sql = "UPDATE user_info SET Verified='1' WHERE UID='$dbUID'";
     $result = mysqli_query($db, $sql);
     //Message
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
     ?>
       <div class="alert alert-success">
         <strong>Success!</strong> Your account has been verified. Please log in.
       </div>
-<<<<<<< HEAD
-  <?php }//if
+    <?php }//if
 
   require_once('./PHP/processLoginForm.php');
   if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
@@ -92,19 +85,7 @@ include '../../dbconnect.php';
       <div class="alert alert-danger">
         <strong>Error!</strong> User credentials are incorrect. Enter correct username and password.
       </div>
-  <?php }//if ?>
-=======
-  <?php  }//if
-
-	require_once('./PHP/processLoginForm.php');
-
-        if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
-        		if($_SESSION["loginErr"] == true){ ?>
-        			<div class="alert alert-danger">
-        				<strong>Error!</strong> User credentials are incorrect. Enter correct username and password.
-        			</div>
-      <?php }//banner if ?>
->>>>>>> origin/master
+  <?php }//if?>
 
         <div class="content">
           <form id="LogIn" class="form-signin" method="POST" action="./PHP/processLoginForm.php">
