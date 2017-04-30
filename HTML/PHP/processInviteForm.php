@@ -7,7 +7,7 @@
 	$email = "";
 	$sql = "";
 	$emailErr = "";
-	$hasErrors = false;
+	$hasEmailErrors = $emptyEmailError = false;
 
 	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
 		/*USER CREDENTIALS*/
@@ -19,16 +19,14 @@
 			if(!empty($email)){
 				if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 				 //echo "emailErr = ".$emailErr."\n";
-				 echo "titties.";
-				 $hasErrors = true;
-				 //redirect("../houseSettings.php");
+				 $hasEmailErrors = true;
+				 redirect("../houseSettings.php");
 				}else{
 					include 'sendGroupInvite.php';
-					echo "no errors... maybe in send mail file";
-					//redirect("../houseSettings.php");
+					redirect("../houseSettings.php");
 				}//inner ifelse
 			}else{
-				echo "must enter email.";
+				$emptyEmailError = true;
 			}//outer ifelse
 	}//if
 
