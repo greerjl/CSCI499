@@ -1,0 +1,42 @@
+<h2 class="content-subhead">House Schedule: </h2>
+<p>
+  <?php
+    $group = $_SESSION["gid"];
+    $sql = "SELECT name, time FROM event WHERE event.GID = '$group'";
+    $result = mysqli_query($db, $sql);
+
+    $count = mysqli_num_rows($result);
+    //php end tag here
+
+    if($count == 0){
+      $emptyMessage = "Your House currently has no upcoming events.";
+      echo $emptyMessage;
+    }
+    else{
+      $i = 1;
+      while ($line = mysqli_fetch_assoc($result)) {
+          $name = $line['name'];
+          $time = $line['time'];
+          echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
+          $i = $i+1;
+      }//while
+    }//else
+  ?>
+</p>
+<p>
+  <div class="responsive-iframe-container big-container">
+      <iframe src="https://calendar.google.com/calendar/embed?title=HUM&amp;mode=WEEK&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=greerjl%40plu.edu&amp;color=%23875509&amp;src=jaymelgreer%40gmail.com&amp;color=%23B1440E&amp;ctz=America%2FLos_Angeles" style="border-width:0" width="550" height="600" frameborder="0" scrolling="no"></iframe>
+  </div>
+  <div class="responsive-iframe-container small-container">
+      <iframe src="https://calendar.google.com/calendar/embed?title=HUM&amp;mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=greerjl%40plu.edu&amp;color=%23875509&amp;src=jaymelgreer%40gmail.com&amp;color=%23B1440E&amp;ctz=America%2FLos_Angeles" style="border-width:0" width="550" height="600" frameborder="0" scrolling="no"></iframe>
+  </div>
+</p>
+
+<?php } elseif($userGID == '0') { ?>
+<div class="header">
+<h2>Please create a group in order to view its information.</h2>
+<h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
+</div><!--header-->
+<?php }//elseif ?>
+
+</div><!--content-->
