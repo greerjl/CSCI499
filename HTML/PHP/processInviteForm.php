@@ -19,11 +19,14 @@
 				 echo "titties.";
 				 $hasErrors = true;
 				 //redirect("../houseSettings.php");
+				}else{
+					include 'sendGroupInvite.php';
+					echo "no errors... maybe in send mail file";
+					//redirect("../houseSettings.php");
+				}//inner ifelse
 			}else{
-				include 'sendGroupInvite.php';
-				echo "no errors... maybe in send mail file";
-				//redirect("../houseSettings.php");
-			}//ifelse
+				echo "must enter email.";
+			}//outer ifelse
 	}//if
 
 	//FUNCTIONS
