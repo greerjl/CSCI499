@@ -6,17 +6,15 @@
 
 	$email = "";
 	$sql = "";
-	$emailErr = $dbErr = "";
+	$emailErr = "";
 	$hasErrors = false;
 
 	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
 		/*USER CREDENTIALS*/
 		$email = cleanData($_POST['newMem']);
 			$emailErr = validate($email, 'email');
-			$dbErr = dbCheck($email, 'email');
-			if(!empty($emailErr) && !empty($dbErr)){
+			if(!empty($emailErr)){
 				 echo "emailErr = ".$emailErr."\n";
-				 echo "dbErr = ".$dbErr."\n";
 				 $hasErrors = true;
 				 //redirect("../houseSettings.php");
 			}else{
@@ -51,25 +49,5 @@
 
 		}//switch statement
 	}//validate
-
-	function dbCheck($data, $field){
-		switch($field){
-			case 'email': {
-				$sql = "SELECT email FROM user_info WHERE email = '$data'";
-
-				$result = mysqli_query($GLOBALS['db'], $sql);
-				$count = mysqli_num_rows($result);
-
-				if(!$result || mysqli_num_rows($result) != 0){
-					return "This email has already been registered.";
-				}//if
-				else{
-					return "";
-				}//ifelse
-				return "";
-			}//case email
-
-		}//switch
-	}//function dbCheck
 
 ?>
