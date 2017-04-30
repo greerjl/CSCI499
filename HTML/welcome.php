@@ -28,7 +28,7 @@ if($_SESSION["valid"]==true){?>
 	 <!--[if lt IE 9]>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
 	 <![endif]-->
-	
+
 	<style>
 		@media (max-width: 550px) {
 		    .big-container {
@@ -48,8 +48,8 @@ if($_SESSION["valid"]==true){?>
 		    height: 0;
 		    overflow: hidden;
 		}
-		.responsive-iframe-container iframe,   
-		.vresponsive-iframe-container object,  
+		.responsive-iframe-container iframe,
+		.vresponsive-iframe-container object,
 		.vresponsive-iframe-container embed {
 		    position: absolute;
 		    top: 0;
@@ -207,21 +207,11 @@ if($_SESSION["valid"]==true){?>
             </p>
 
 <!-- EVENTS/SCHEDULE -->
-<<<<<<< HEAD
-            <h2 class="content-subhead">House schedule: </h2>
-             <div class="responsive-iframe-container big-container">
-			<iframe src="https://calendar.google.com/calendar/embed?title=HUM&amp;mode=WEEK&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=greerjl%40plu.edu&amp;color=%23875509&amp;src=jaymelgreer%40gmail.com&amp;color=%23B1440E&amp;ctz=America%2FLos_Angeles" style="border-width:0" width="550" height="600" frameborder="0" scrolling="no"></iframe>
-		</div>
-		 <div class="responsive-iframe-container small-container">
-			<iframe src="https://calendar.google.com/calendar/embed?title=HUM&amp;mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=greerjl%40plu.edu&amp;color=%23875509&amp;src=jaymelgreer%40gmail.com&amp;color=%23B1440E&amp;ctz=America%2FLos_Angeles" style="border-width:0" width="550" height="600" frameborder="0" scrolling="no"></iframe>
-		</div>
-        </div><!-- content -->
-=======
             <h2 class="content-subhead">House Schedule: </h2>
             <p>
               <?php
                 $group = $_SESSION["gid"];
-                $sql = "SELECT title, description FROM event WHERE task.GID = '$group'";
+                $sql = "SELECT name, time FROM event WHERE event.GID = '$group'";
                 $result = mysqli_query($db, $sql);
 
                 $count = mysqli_num_rows($result);
@@ -234,17 +224,21 @@ if($_SESSION["valid"]==true){?>
                 else{
                   $i = 1;
                   while ($line = mysqli_fetch_assoc($result)) {
-                      $name = $line['title'];
-                      $desc = $line['description'];
-                      echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> by $desc</td></tr>";
+                      $name = $line['name'];
+                      $time = $line['time'];
+                      echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
                       $i = $i+1;
                   }//while
                 }//else
               ?>
             </p>
             <p>
-	          <iframe src="https://calendar.google.com/calendar/embed?title=My%20Calendar&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=greerjl%40plu.edu&amp;color=%2329527A&amp;ctz=America%2FLos_Angeles"
-                  style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+              <div class="responsive-iframe-container big-container">
+ 			            <iframe src="https://calendar.google.com/calendar/embed?title=HUM&amp;mode=WEEK&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=greerjl%40plu.edu&amp;color=%23875509&amp;src=jaymelgreer%40gmail.com&amp;color=%23B1440E&amp;ctz=America%2FLos_Angeles" style="border-width:0" width="550" height="600" frameborder="0" scrolling="no"></iframe>
+ 		          </div>
+ 		          <div class="responsive-iframe-container small-container">
+ 			            <iframe src="https://calendar.google.com/calendar/embed?title=HUM&amp;mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=greerjl%40plu.edu&amp;color=%23875509&amp;src=jaymelgreer%40gmail.com&amp;color=%23B1440E&amp;ctz=America%2FLos_Angeles" style="border-width:0" width="550" height="600" frameborder="0" scrolling="no"></iframe>
+ 		          </div>
 	          </p>
 
         <?php } elseif($userGID == '0') { ?>
@@ -256,7 +250,6 @@ if($_SESSION["valid"]==true){?>
 
       </div><!--content-->
 
->>>>>>> origin/master
     </div><!--main-->
 </div><!--layout-->
 
