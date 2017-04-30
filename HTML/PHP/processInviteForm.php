@@ -16,11 +16,14 @@
 			$emailErr = validate($email, 'email');
 			$dbErr = dbCheck($email, 'email');
 			if(!empty($emailErr) && !empty($dbErr)){
+				 echo "emailErr = ".$emailErr."\n";
+				 echo "dbErr = ".$dbErr."\n";
 				 $hasErrors = true;
-				 redirect("../houseSettings.php");
+				 //redirect("../houseSettings.php");
 			}else{
 				include 'sendGroupInvite.php';
-				redirect("../houseSettings.php");
+				echo "no errors... maybe in send mail file";
+				//redirect("../houseSettings.php");
 			}//ifelse
 	}//if
 
