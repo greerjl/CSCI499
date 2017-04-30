@@ -138,15 +138,16 @@ if($_SESSION["valid"]==true){?>
 		            <div class="form_main">
                   <h4 class="heading"><strong>Remove Chores</strong> <span></span></h4>
                   <div class="form">
-                    <form action="./PHP/processChoreRemoveForm.php" method="POST" id="removeChoreForm" name="removeChoreForm">
+                    <form action="./PHP/processChoreRemoveForm.php" method="POST" id="removeChoreRemoveForm" name="removeChoreForm">
                       <?php
+                      $groupId = $_SESSION["gid"];
                         $sql = "SELECT title, CID FROM chore WHERE GID = '$groupId'";
                         $result = mysqli_query($db, $sql);
                       ?>
                       <select name="choreList" class="form-control">
                        <option value="">--What chore do you want to remove?--</option>
                        <?php while($chore = mysqli_fetch_row($result)):?>
-                               <option value="<?php echo $chore[1]; ?>"><?php echo $room[0]; ?></option>
+                               <option value="<?php echo $chore[1]; ?>"><?php echo $chore[0]; ?></option>
                        <?php endwhile; ?>
                       </select>
                       <br><br>
