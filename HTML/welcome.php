@@ -28,7 +28,7 @@ if($_SESSION["valid"]==true){?>
 	 <!--[if lt IE 9]>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
 	 <![endif]-->
-	
+
 	<style>
 		@media (max-width: 550px) {
 		    .big-container {
@@ -48,8 +48,8 @@ if($_SESSION["valid"]==true){?>
 		    height: 0;
 		    overflow: hidden;
 		}
-		.responsive-iframe-container iframe,   
-		.vresponsive-iframe-container object,  
+		.responsive-iframe-container iframe,
+		.vresponsive-iframe-container object,
 		.vresponsive-iframe-container embed {
 		    position: absolute;
 		    top: 0;
