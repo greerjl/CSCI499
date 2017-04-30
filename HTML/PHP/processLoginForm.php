@@ -31,7 +31,7 @@
 		//$booltest = password_verify($mypassword, $dbpassword);
 
 		global $loginErr;
-		$loginErr = false;
+		$loginErr = 0;
 		echo "before password_verify = ".$loginErr;
 
 		//if statement to allow login and start session if account exists and password is correct
@@ -56,7 +56,7 @@
 				redirect("../welcome.php");
 			}//if
 		} else {
-			$loginErr = true;
+			$loginErr = 1;
 			echo "after password_verify = ".$loginErr;
 			//redirect("../login.php");
 		}//ifelse
