@@ -29,7 +29,7 @@ $mail->Port = 587;
 $mail->From = "HouseUtilitiesManager@gmail.com";
 $mail->FromName = "HUM";
 
-$mail->addAddress($memEmail);
+$mail->addAddress($email);
 $mail->Subject  = 'Welcome to HUM!';
 
 //SQL to fetch GID and username of sender
@@ -47,7 +47,7 @@ $mail->Body = '
     <meta charset="utf-8"></head><body style="padding-left: 1cm; padding-right: 1cm;"><div class="header"><h1>House Utilities Manager</h1><h4>An application for all your house management needs. </h4></div>
     <div class="content" style="padding-left: 1.25cm; padding-right: 1.25cm;"><h4>Hello! </h4><p> You have been invited to a group on House Utilities Manager
     by '. $sentUserName .'. We are very excited to have you on board.</p> <p> To get started using HUM, please create an account by selecting the link below: </p><br>
-    <a href="http://www.houseutil.com/HTML/signup.php?email='.$memEmail.'&gid='.$GID.'">Sign Up</a> <p> If you already have a verified account then please click this link: <p><br>
+    <a href="http://www.houseutil.com/HTML/signup.php?email='.$email.'&gid='.$GID.'">Sign Up</a> <p> If you already have a verified account then please click this link: <p><br>
     <a href="http://www.houseutil.com/HTML/login.php?gid='.$GID.'"> Log In </a> <p> Thanks, <br> The HUM Team </br> </p></body></html>';
 
 $mail->AltBody = "Hello! You have been invited to a group on House Utilities Manager by '.$sentUserName. '. We are very
