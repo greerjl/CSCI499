@@ -140,6 +140,7 @@ if($_SESSION["valid"]==true){?>
                   <div class="form">
                     <form action="./PHP/processChoreRemoveForm.php" method="POST" id="removeChoreForm" name="removeChoreForm">
                       <?php
+                      $groupId = $_SESSION["gid"];
                         $sql = "SELECT title, CID FROM chore WHERE GID = '$groupId'";
                         $result = mysqli_query($db, $sql);
                       ?>
