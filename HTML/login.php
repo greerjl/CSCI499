@@ -79,8 +79,8 @@ require_once("./PHP/functions.php");
       </div>
     <?php }//if
 
+  require('./PHP/processLoginForm.php');
   if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
-    require_once('./PHP/processLoginForm.php');
     echo "loginErr = ".$loginErr;
     if($loginErr == true){ ?>
       <div class="alert alert-danger">
