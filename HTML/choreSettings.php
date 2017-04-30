@@ -138,7 +138,7 @@ if($_SESSION["valid"]==true){?>
 		            <div class="form_main">
                   <h4 class="heading"><strong>Remove Chores</strong> <span></span></h4>
                   <div class="form">
-                    <form action="./PHP/processChoreRemoveForm.php" method="POST" id="removeChoreRemoveForm" name="removeChoreForm">
+                    <form action="./PHP/processChoreRemoveForm.php" method="POST" id="removeChoreForm" name="removeChoreForm">
                       <?php
                       $groupId = $_SESSION["gid"];
                         $sql = "SELECT title, CID FROM chore WHERE GID = '$groupId'";
@@ -150,7 +150,6 @@ if($_SESSION["valid"]==true){?>
                                <option value="<?php echo $chore[1]; ?>"><?php echo $chore[0]; ?></option>
                        <?php endwhile; ?>
                       </select>
->>>>>>> origin/master
                       <br><br>
                       <input type="submit" value="submit" name="submit" class="txt2">
                     </form>
