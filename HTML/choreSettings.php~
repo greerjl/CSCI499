@@ -116,17 +116,25 @@ if($_SESSION["valid"]==true){?>
           </div>
         <?php $_SESSION["assignErr"] = 0;
             }//elseif
-        if($_SESSION["remErr"] == 1){ ?>
+        if($_SESSION["roomErr"] == 1){ ?>
           <div class="alert alert-danger">
-            <strong>Error!</strong> Unsuccessful, Chore may not exist.
+            <strong>Error!</strong> Invalid room name.
           </div>
-        <?php $_SESSION["remErr"] = 0;
-            }elseif($_SESSION["remSuc"] == 1){ ?>
+        <?php $_SESSION["roomErr"] = 0;
+            }elseif($_SESSION["roomErr"] == 0){ ?>
           <div class="alert alert-success">
-            <strong>Success!</strong> Chore removed!
+            <strong>Success!</strong> Room successfully submitted!
           </div>
-        <?php $_SESSION["remSuc"] == 0;
-        		}//elseif ?>
+        <?php }//elseif
+        if($_SESSION["inviteMemErr"] == 1){ ?>
+          <div class="alert alert-danger">
+            <strong>Error!</strong> User was unable to be invited.
+          </div>
+        <?php }elseif($_SESSION["inviteMemErr"] == 0){ ?>
+          <div class="alert alert-success">
+            <strong>Success!</strong> User succesfully invited!
+          </div>
+        <?php }//elseif ?>
 
 
         <div class="container">
