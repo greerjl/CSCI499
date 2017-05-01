@@ -285,7 +285,7 @@ if($_SESSION["valid"]==true){?>
         </div>
     </div><!-- /.row -->
 </footer>
-<script src="http://cs.plu.edu/~greerjl/CSCI499/ui.js"></script>
+<script src="./ui.js"></script>
 
 </body>
 </html>
