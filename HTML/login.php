@@ -100,7 +100,7 @@ require_once("./PHP/functions.php");
 
   //global $loginErr;
   include './PHP/processLoginForm.php';
-  if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
+  if($_SERVER["REQUEST_METHOD"] == "GET") {
     if($_SESSION["loginErr"] == 1){ ?>
       <div class="alert alert-danger">
         <strong>Error!</strong> User credentials are incorrect. Enter correct username and password.

@@ -3,7 +3,6 @@
 	//error_reporting(E_ALL);
 	require_once("functions.php");
 	include '../../../dbconnect.php';
-	$hasErrors = false;
 
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 
@@ -20,10 +19,10 @@
 		$rpswd = mysqli_real_escape_string($db, $_POST['rpswd']);
 		$rpswd = cleanData($rpswd);
 
-		$accesskey = uniqid();
-		$sql = "INSERT INTO user_info (username, password, email, accesskey) VALUES ('$username','$hash', '$email', '$accesskey')";
 		//check if password = repeat password && if password meets regex && if email exists in database
-		if($password_verify($pswd, $rpswd) && preg_match('/^(?=.*\d)(?=.*[a-zA-Z])(?!.*[\W_\x7B-\xFF]).{6,15}$/', $pswd) && dbCheck($email, ['email'])){
+		if($password_verify($pswd, $rpswd) && preg_match('/^(?=.*\d)(?=.*[a-zA-Z])(?!.*[\W_\x7B-\xFF]).{6,15}$/', $pswd) && dbCheck($email)){
+			$accesskey = uniqid();
+			$sql = "INSERT INTO user_info (username, password, email, accesskey) VALUES ('$username','$hash', '$email', '$accesskey')";
 			//if sign up credentials pass the requirements then query db to insert sql
 			$result = mysqli_query($db, $sql);
 			if($result == 1){
@@ -67,7 +66,7 @@
 	}//cleanData
 
 	//dbCheck function still used
-	function dbCheck($data, $field){
+	function dbCheck($data){
 				$sql = "SELECT email FROM user_info WHERE email = '$data'";
 
 				$result = mysqli_query($GLOBALS['db'], $sql);
