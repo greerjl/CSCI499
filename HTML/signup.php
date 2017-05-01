@@ -49,6 +49,7 @@ require_once("./PHP/functions.php");
 
 	<?php include '../../dbconnect.php'; ?>
 	<?php include './PHP/processSignupForm.php';
+	//GET URL variables if they exist
 	$urlEmail = $_GET['email'];
 	$urlGID = $_GET['gid'];
 
@@ -63,7 +64,7 @@ require_once("./PHP/functions.php");
 		$result2 = mysqli_query($db, $sql2);
 	}
 
-	 if($_SERVER['REQUEST_METHOD']=="GET"){
+	 if($_SERVER['REQUEST_METHOD']=="GET" || $hasErrors){
 		 if($_SESSION["signupRepeatPswdErr"] == 1){ ?>
  				<div class="alert alert-danger">
  					<strong>Error!</strong> Passwords must match. Enter same password and repeat password.
@@ -79,6 +80,8 @@ require_once("./PHP/functions.php");
  				<strong>Error!</strong> Passwords must contain a number and be at least 6 characters long.
  			</div>
  <?php	}//if
+ }//hasErrors if
+ if($_SERVER['REQUEST_METHOD']=="GET" || !$hasErrors){
  		if($_SESSION["signupRegexErr"] == 0 && $_SESSION["signupRepeatEmailErr"] == 0 && $_SESSION["signupRepeatPswdErr"] == 0) { ?>
 			<div class="alert alert-success">
 				<strong>Congratulations!</strong> You have successfully registered.
@@ -106,7 +109,8 @@ require_once("./PHP/functions.php");
 
 						 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
 						 Already have an account? <a href="./login.php"> Log in </a>
-	 </form>
+	 			 	</form>
+	<?php }//request method if ?>
 
 			 </div><!-- /.content -->
 		 </div><!--/.starter template -->
