@@ -107,7 +107,7 @@ if($_SESSION["valid"]==true){?>
         <?php $_SESSION["choreSuc"] = 0;
             }else if($_SESSION["uErr"] == 1){ ?>
           <div class="alert alert-danger">
-            <strong>Error!</strong> Group successfully created!
+            <strong>Error!</strong> The chore must be assigned to a group member.
           </div>
         <?php $_SESSION["uErr"] = 0;
             }else if($_SESSION["assignErr"] == 1){ ?>

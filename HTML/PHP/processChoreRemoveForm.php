@@ -6,14 +6,17 @@ error_reporting(E_ALL);
 	include '../../../dbconnect.php';
  	$sql = "";
 	$cErr = "";
-	$hasErrors = false;
+	$_SESSION["remErr"] = $_SESSION["remSuc"] = 0;
 
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 			$cid = $_POST['choreList'];
-			if($cid != ""){
+			if(!empty($cid)){
 				$cErr = remove($cid);
 				if(!empty($cErr)){
-					$hasErrors = true;
+					$_SESSION["remErr"] = 1;
+				}
+				else {
+					$_SESSION["remSuc"] = 1;
 				}
 			}//if
 			redirect("../choreSettings.php");
@@ -24,10 +27,12 @@ error_reporting(E_ALL);
 				$sql = "DELETE FROM chore WHERE CID = '$data';";
 				$result = mysqli_query($GLOBALS['db'], $sql);
 
-				if($result){
-						return "Chore successfully deleted!";
+				if(!$result){
+						return "error";
 				}
-				return "Nope.";
+				else{
+						return "";			
+				}
 	}//function remove
 
 ?>

@@ -10,7 +10,7 @@ if($_SESSION["valid"]==true){?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Server" >
+    <meta name="author" content="Capstone" >
 
 
     <title>Chore Settings</title>
@@ -94,6 +94,40 @@ if($_SESSION["valid"]==true){?>
             </div>
         </div>
         <!-- /.row -->
+        
+		  <?php if($_SESSION["tErr"] == 1){ ?>
+          <div class="alert alert-danger">
+            <strong>Error!</strong> That chore already exists!
+          </div>
+        <?php $_SESSION["tErr"] = 0;
+            }else if($_SESSION["choreSuc"] == 1){ ?>
+          <div class="alert alert-success">
+            <strong>Success!</strong> Chore created and assigned!
+          </div>
+        <?php $_SESSION["choreSuc"] = 0;
+            }else if($_SESSION["uErr"] == 1){ ?>
+          <div class="alert alert-danger">
+            <strong>Error!</strong> The chore must be assigned to a group member.
+          </div>
+        <?php $_SESSION["uErr"] = 0;
+            }else if($_SESSION["assignErr"] == 1){ ?>
+          <div class="alert alert-danger">
+            <strong>Error!</strong> Something went wrong, chore could not be assigned to that user.
+          </div>
+        <?php $_SESSION["assignErr"] = 0;
+            }//elseif
+        if($_SESSION["remErr"] == 1){ ?>
+          <div class="alert alert-danger">
+            <strong>Error!</strong> Unsuccessful, Chore may not exist.
+          </div>
+        <?php $_SESSION["remErr"] = 0;
+            }elseif($_SESSION["remSuc"] == 1){ ?>
+          <div class="alert alert-success">
+            <strong>Success!</strong> Chore removed!
+          </div>
+        <?php $_SESSION["remSuc"] == 0;
+        		}//elseif ?>
+
 
         <div class="container">
 	         <div class="row">
