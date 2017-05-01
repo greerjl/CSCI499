@@ -90,8 +90,21 @@
 			if($_SERVER['REQUEST_METHOD']=="POST" && !$hasErrors && !$hasErrorsEmail && !$hasErrorsPw){
 					$accesskey = uniqid();
 					$sql = "INSERT INTO user_info (username, password, email, accesskey) VALUES ('$username','$hash', '$email', '$accesskey')";
-          			$result = mysqli_query($db, $sql);
+          $result = mysqli_query($db, $sql);
 								if($result){
+									$urlEmail = $_GET['email'];
+									$urlGID = $_GET['gid'];
+
+									if(isset($urlGID)) {
+								    //select UID
+								    $sql = "SELECT UID FROM user_info WHERE email='$urlEmail'";
+								    $result2 = mysqli_query($db, $sql);
+								    $temp = mysqli_fetch_object($result2);
+								    $dbUID = $temp->UID;
+								    //update GID
+								    $sql2 = "UPDATE user_info SET GID='$urlGID' WHERE UID='$dbUID'";
+								    $result2 = mysqli_query($db, $sql2);
+									}
 									include './PHP/sendUserConfirmMail.php';
 									?>
 									<div class="alert alert-success">
