@@ -224,7 +224,7 @@ if($_SESSION["valid"]==true){?>
                     <div class="form-group">
                       <input type="email" class="form-control" id="idtxt" required="" name="newMem" placeholder="jane.doe@example.com">
                     </div>
-                    <button type="submit" name="submit" class="btn btn-default">Send invitation</button>
+                    <input type="submit" name="submit" class="txt2" value="Send invitation"/>
                 </form>
 
                 <!--  <div class="form">
