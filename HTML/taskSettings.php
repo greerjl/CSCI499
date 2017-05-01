@@ -94,6 +94,22 @@ if($_SESSION["valid"]==true){?>
             </div>
         </div>
         <!-- /.row -->
+        
+        <?php if($_SESSION["tErr"] == 1){ ?>
+          <div class="alert alert-danger">
+            <strong>Error!</strong> That task already exists!
+          </div>
+        <?php $_SESSION["tErr"] = 0;
+            }else if($_SESSION["taskSuc"] == 1){ ?>
+          <div class="alert alert-success">
+            <strong>Success!</strong> Task successfully created!
+          </div>
+        <?php $_SESSION["taskSuc"] = 0;
+            }else if($_SESSION["createErr"] == 1){ ?>
+          <div class="alert alert-danger">
+            <strong>Error!</strong> Something went wrong, task was not created. Try again later.
+          </div>
+        <?php $_SESSION["createErr"] = 0; }?>
 
         <div class="container">
 	         <div class="row">
