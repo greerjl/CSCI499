@@ -79,15 +79,14 @@ require_once("./PHP/functions.php");
       </div>
     <?php }//if
 
-  global $loginErr;
+  //global $loginErr;
   include './PHP/processLoginForm.php';
   if($_SERVER["REQUEST_METHOD"] == "GET" || $hasErrors) {
-    echo "loginErr = ".$loginErr;
-    if($loginErr == 1){ ?>
+    if($_SESSION["loginErr"] == 1){ ?>
       <div class="alert alert-danger">
         <strong>Error!</strong> User credentials are incorrect. Enter correct username and password.
       </div>
-  <?php }//if?>
+  <?php logout(); }//if ?>
 
         <div class="content">
           <form id="LogIn" class="form-signin" method="POST" action="./PHP/processLoginForm.php">

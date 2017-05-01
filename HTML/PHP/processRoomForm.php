@@ -1,28 +1,17 @@
 <?php
 ini_set("display_errors", true);
 error_reporting(E_ALL);
-	$roomName = $sql = $memEmail = $memInviteErr = "";
+	$roomName = $sql = "";
 	$roomErr = "";
-	$hasErrors = false;
 
 	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
+		$_SESSION["roomErr"] = 0;
 		$roomName = cleanData($_POST['room1']); //will need to fix when js increments name for added boxes
 		$roomErr = validate($roomName, 'room1');
 			if(!empty($roomErr)){
-				$hasErrors = true;
+				$_SESSION["roomErr"] = 1;
 			}//if
-			//else{
-				/*for testing*/
-				//$giD = $_SESSION["gid"];
-			//	sendData($roomName, $giD);
-			//}//ifelse
-			$memEmail = cleanData($_POST['memInvite']);
-		  $memInviteErr = validate($memEmail, 'memInvite');
-		  if(!empty($memInviteErr)) $hasErrors = true;
-		  if(!empty($memEmail)){
-				include './sendGroupInvite.php';
-		  	redirect("../houseSettings.php");
-			}
+			redirect("../houseSettings.php");
 	}//if
 
 	//FUNCTIONS
@@ -49,16 +38,7 @@ error_reporting(E_ALL);
 					return "";
 				}//ifelse
 			}//case room1
-			case 'memInvite': {
-	      if(!empty($data)){
-	        if(!filter_var($data, FILTER_VALIDATE_EMAIL)){
-	          return "Invalid email address.";
-	        }//if
-	      }else{
-	        return "Email address is required.";
-	      }//ifelse
-	      return "";
-	    }//case memInvite
+
 		}//switch
 	}//function validate
 

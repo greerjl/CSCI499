@@ -4,12 +4,15 @@ ini_set("display_errors", true);
 error_reporting(E_ALL);
 
 $memEmail = $memInviteErr = "";
-$hasErrors = false;
 
 if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
+  $_SESSION["inviteMemErr"] = 0;
   $memEmail = cleanData($_POST['memInvite']);
     $memInviteErr = validate($memEmail, 'memInvite');
-    if(!empty($memInviteErr)) $hasErrors = true;
+    if(!empty($memInviteErr)){
+       $_SESSION["inviteMemErr"] = 1;
+       redirect("../houseSettings.php");
+    }//if
   include './sendGroupInvite.php';
   redirect("../houseSettings.php");
 }//POST if

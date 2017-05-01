@@ -2,19 +2,20 @@
 session_start();
 include '../../../dbconnect.php';
 require_once("functions.php");
-ini_set("display_errors", true);
-error_reporting(E_ALL);
+//ini_set("display_errors", true);
+//error_reporting(E_ALL);
 	$gName = $sql = "";
 	$nameErr = "";
-	$hasErrors = false;
+	$_SESSION["gnameErr"] = $_SESSION["groupSuc"] = $_SESSION["groupErr"] = $_SESSION["gnameSuc"] = 0;
 
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 		$gName = cleanData($_POST['groupName']);
-		$nameErr = validate($gName, 'groupname');
+		$nameErr = validate($gName);
 		if(!empty($nameErr)){
-			$hasErrors = true;
-		}//if
-
+			$_SESSION["gnameErr"] = 1;
+			redirect("../houseSettings.php");
+		}
+		else{
 			if($_SESSION["gid"]==0){
 				//create random accesscode for group here
 				//$acode = ;
@@ -26,19 +27,21 @@ error_reporting(E_ALL);
 				$userGID = $temp -> GID;
 				$uid = $_SESSION["login_user"];
 				$sql2 = "UPDATE user_info SET GID = '$userGID' WHERE UID = '$uid'";
-				$result = mysqli_query($db, $sql2) or die("Error: ".mysqli_error($db));
+				$result = mysqli_query($db, $sql2);
 				if($result){
 					$_SESSION["gid"] = $userGID;
-					echo "Success!";
+					$_SESSION["groupSuc"] = 1;
 				}
 				else{
 					die("Error: ".mysqli_error($db));
+					$_SESSION["groupErr"] = 1;
 				}
 				redirect("../houseSettings.php");
 			}else{
 				sendData($gName, $_SESSION["gid"]);
 				redirect("../houseSettings.php");
 			}//ifelse
+		}//elseif nameErr empty
 	}//if
 
 	//FUNCTIONS
@@ -49,23 +52,17 @@ error_reporting(E_ALL);
 		return $data;
 	}//cleanData
 
-	function validate($data, $field){
-		switch($field){
-
-			case 'groupname': {
-				$regex = '/^(*[a-zA-Z0-9][^\'])$/';
+	function validate($data){
+				$regex = '/^(.*[a-zA-Z0-9][^\'])$/';
 				if(!empty($data)){
 					if(!preg_match($regex, $data)){
 						return "Groupname cannot have single quotes.";
 					}//if pregmatch
 					else {
-						return "Enter a new name if you want to change it.";
+						return "";
 					}
 				}//if empty
-				return "";
-			}//case groupname
-
-		}//switch
+				return "Empty field";
 	}//function validate
 
 	function sendData($name, $gid){
@@ -76,7 +73,7 @@ error_reporting(E_ALL);
 				die('Error: ' . mysqli_error($GLOBALS['db']));
 			}
 			else{
-				//echo "Group name changed!";
+				$_SESSION["gnameSuc"] = 1;
 			}//ifelse
 	}//function sendData
 ?>

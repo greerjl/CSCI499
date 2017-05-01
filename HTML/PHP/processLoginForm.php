@@ -30,10 +30,6 @@
 		/*DEBUG BLOCK*/
 		//$booltest = password_verify($mypassword, $dbpassword);
 
-		global $loginErr;
-		$loginErr = 0;
-		//echo "before password_verify = ".$loginErr;
-
 		//if statement to allow login and start session if account exists and password is correct
 		if(password_verify($mypassword, $dbpassword) && $dbVerified=='1'){
 			$sql = "SELECT UID, GID FROM user_info WHERE email = '$myemail'";
@@ -49,6 +45,7 @@
 
 				/* NEED TO SET SESSION ID FIRST USE PHPs session_id()*/
     		session_start();
+				$_SESSION["loginErr"] = 0;
 				$_SESSION["login_user"] = $myuid;
 				$_SESSION["valid"] = true;
 				$_SESSION["gid"] = $GID;
@@ -56,8 +53,8 @@
 				redirect("../welcome.php");
 			}//if
 		} else {
-			$loginErr = 1;
-			//echo "after password_verify = ".$loginErr;
+			session_start();
+			$_SESSION["loginErr"] = 1;
 			redirect("../login.php");
 		}//ifelse
 	}//POST if

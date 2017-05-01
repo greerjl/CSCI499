@@ -99,6 +99,46 @@ if($_SESSION["valid"]==true){?>
                 </h1>
             </div>
         </div><!-- /.row -->
+        <?php if($_SESSION["gnameErr"] == 1){ ?>
+          <div class="alert alert-danger">
+            <strong>Error!</strong> Invalid group name. Must be 6-30 characters without single quotes.
+          </div>
+        <?php $_SESSION["gnameErr"] = 0;
+            }else if($_SESSION["gnameSuc"] == 1){ ?>
+          <div class="alert alert-success">
+            <strong>Success!</strong> Group name changed!
+          </div>
+        <?php $_SESSION["gnameSuc"] = 0;
+            }else if($_SESSION["groupSuc"] == 1){ ?>
+          <div class="alert alert-success">
+            <strong>Success!</strong> Group successfully created!
+          </div>
+        <?php $_SESSION["groupSuc"] = 0;
+            }else if($_SESSION["groupErr"] == 1){ ?>
+          <div class="alert alert-success">
+            <strong>Error!</strong> Something went wrong, try a different group name!
+          </div>
+        <?php $_SESSION["groupErr"] = 0;
+            }//elseif
+        if($_SESSION["roomErr"] == 1){ ?>
+          <div class="alert alert-danger">
+            <strong>Error!</strong> Invalid room name.
+          </div>
+        <?php $_SESSION["roomErr"] = 0;
+            }elseif($_SESSION["roomErr"] == 0){ ?>
+          <div class="alert alert-success">
+            <strong>Success!</strong> Room successfully submitted!
+          </div>
+        <?php }//elseif
+        if($_SESSION["inviteMemErr"] == 1){ ?>
+          <div class="alert alert-danger">
+            <strong>Error!</strong> User was unable to be invited.
+          </div>
+        <?php }elseif($_SESSION["inviteMemErr"] == 0){ ?>
+          <div class="alert alert-success">
+            <strong>Success!</strong> User succesfully invited!
+          </div>
+        <?php }//elseif ?>
 
         <div class="container">
 	         <div class="row">
