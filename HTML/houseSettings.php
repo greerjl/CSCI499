@@ -1,7 +1,7 @@
 <?php session_start();
 include '../../dbconnect.php';
 require_once("./PHP/functions.php");
-include './PHP/processRoomForm.php';
+//include './PHP/processRoomForm.php';
 //include 'processGroupNameFrom.php';
 //include 'processInviteMemForm.php';
 
@@ -100,45 +100,60 @@ if($_SESSION["valid"]==true){?>
             </div>
         </div><!-- /.row -->
         <?php if($_SESSION["gnameErr"] == 1){ ?>
+<!--INVALID GROUPNAME -->
           <div class="alert alert-danger">
             <strong>Error!</strong> Invalid group name. Must be 6-30 characters without single quotes.
           </div>
         <?php $_SESSION["gnameErr"] = 0;
             }else if($_SESSION["gnameSuc"] == 1){ ?>
+<!--SUCCESSFUL GROUPNAME CHANGE -->
           <div class="alert alert-success">
             <strong>Success!</strong> Group name changed!
           </div>
         <?php $_SESSION["gnameSuc"] = 0;
             }else if($_SESSION["groupSuc"] == 1){ ?>
+<!--SUCCESSFUL GROUPNAME CREATION -->
           <div class="alert alert-success">
             <strong>Success!</strong> Group successfully created!
           </div>
         <?php $_SESSION["groupSuc"] = 0;
             }else if($_SESSION["groupErr"] == 1){ ?>
-          <div class="alert alert-success">
+<!--OTHER ERROR -->
+          <div class="alert alert-danger">
             <strong>Error!</strong> Something went wrong, try a different group name!
           </div>
         <?php $_SESSION["groupErr"] = 0;
             }//elseif
         if($_SESSION["roomErr"] == 1){ ?>
+<!--INVALID ROOM NAME -->
           <div class="alert alert-danger">
-            <strong>Error!</strong> Invalid room name.
+            <strong>Error!</strong> Invalid room name. No single quotes allowed.
           </div>
         <?php $_SESSION["roomErr"] = 0;
-            }elseif($_SESSION["roomErr"] == 0){ ?>
-          <div class="alert alert-success">
-            <strong>Success!</strong> Room successfully submitted!
-          </div>
-        <?php }//elseif
-        if($_SESSION["inviteMemErr"] == 1){ ?>
+            }elseif($_SESSION["roomDup"] == 1){ ?>
+<!--ROOM ALREADY EXISTS -->
           <div class="alert alert-danger">
-            <strong>Error!</strong> User was unable to be invited.
+            <strong>Error!</strong> Room already exists.
           </div>
-        <?php }elseif($_SESSION["inviteMemErr"] == 0){ ?>
+        <?php $_SESSION["roomDup"] = 0;
+            } elseif($_SESSION["roomSuc"] == 1){ ?>
+<!--ROOM SUCCESS -->
+          <div class="alert alert-success">
+            <strong>Success!</strong> Room successfully added!
+          </div>
+        <?php $_SESSION["roomSuc"] = 0; }//elseif
+        if($_SESSION["inviteMemErr"] == 1){ ?>
+<!--USER WASN'T INVITED -->
+          <div class="alert alert-danger">
+            <strong>Error!</strong> User was unable to be invited. Check for valid email.
+          </div>
+        <?php $_SESSION["inviteMemErr"] = 0;
+      }elseif($_SESSION["inviteMemSuc"] == 1){ ?>
+<!--USER SUCCESSFULLY INVITED -->
           <div class="alert alert-success">
             <strong>Success!</strong> User succesfully invited!
           </div>
-        <?php }//elseif ?>
+        <?php  $_SESSION["inviteMemSuc"] = 0; }//elseif ?>
 
         <div class="container">
 	         <div class="row">

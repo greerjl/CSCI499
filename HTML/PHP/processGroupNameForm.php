@@ -9,7 +9,7 @@ require_once("functions.php");
 	$_SESSION["gnameErr"] = $_SESSION["groupSuc"] = $_SESSION["groupErr"] = $_SESSION["gnameSuc"] = 0;
 
 	if($_SERVER['REQUEST_METHOD']=='POST'){
-		$gName = cleanData($_POST['groupName']);
+		$gName = cleanData($GLOBALS['db'], $_POST['groupName']);
 		$nameErr = validate($gName);
 		if(!empty($nameErr)){
 			$_SESSION["gnameErr"] = 1;
@@ -45,10 +45,11 @@ require_once("functions.php");
 	}//if
 
 	//FUNCTIONS
-	function cleanData($data){
+	function cleanData($db, $data){
 		$data = trim($data);
 		$data = stripslashes($data);
 		$data = htmlspecialchars($data);
+		$data = mysqli_real_escape_string($db, $data);
 		return $data;
 	}//cleanData
 
@@ -58,11 +59,8 @@ require_once("functions.php");
 					if(!preg_match($regex, $data)){
 						return "Groupname cannot have single quotes.";
 					}//if pregmatch
-					else {
-						return "";
-					}
 				}//if empty
-				return "Empty field";
+				return "";
 	}//function validate
 
 	function sendData($name, $gid){
