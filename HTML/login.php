@@ -62,32 +62,40 @@ require_once("./PHP/functions.php");
   $urlHash = $_GET['hash'];
   $urlVerified = $_GET['verified'];
   $urlGID = $_GET['gid'];
-  echo "before outer if";
+  $urlEmail2 = $_get['email2'];
 
-  if($urlVerified == '0' || isset($urlGID)) {
+  if($urlVerified == '0') {
     //select UID
     $sql = "SELECT UID FROM user_info WHERE email='$urlEmail' AND accesskey='$urlHash'";
     $result = mysqli_query($db, $sql);
     $temp = mysqli_fetch_object($result);
     $dbUID = $temp->UID;
-    echo "Outer if\n";
-    if(isset($urlHash)) {
-      //update verify new user
-      $sql2 = "UPDATE user_info SET Verified='1' WHERE UID='$dbUID'";
-      $result2 = mysqli_query($db, $sql2);
-      echo "result2: " .$result2;
-    }
-    else {
-      //update GID
-      $sql3 = "UPDATE user_info SET GID='$urlGID' WHERE UID='$dbUID'";
-      $result3 = mysqli_query($db, $sql3);
-      echo "result3: " .$result3;
-    }
+    //update verify new user
+    $sql2 = "UPDATE user_info SET Verified='1' WHERE UID='$dbUID'";
+    $result2 = mysqli_query($db, $sql2);
+    //Bootstrap Alert Banner
     ?>
       <div class="alert alert-success">
         <strong>Success!</strong> Your account has been verified. Please log in.
       </div>
     <?php }//if
+
+  if(isset($urlGID)) {
+    //select UID
+    $sql = "SELECT UID FROM user_info WHERE email2='$urlEmail2'";
+    $result = mysqli_query($db, $sql);
+    $temp = mysqli_fetch_object($result);
+    $dbUID = $temp->UID;
+    //update GID
+    $sql2 = "UPDATE user_info SET GID='$urlGID' WHERE UID='$dbUID'";
+    $result2 = mysqli_query($db, $sql2);
+    //Bootstrap Alert Banner
+    ?>
+      <div class="alert alert-success">
+        <strong>Success!</strong> You are now part of a new group!
+      </div>
+    <?php
+    }//if
 
   //global $loginErr;
   include './PHP/processLoginForm.php';
