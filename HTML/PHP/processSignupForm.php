@@ -30,7 +30,6 @@
 			$rpswdErr = validate2($rpswd, $pswd);
 			if(!empty($rpswdErr)) $hasErrors = true;
 
-		
 	}//if
 
 	//FUNCTIONS
@@ -100,7 +99,7 @@
 				return "";
 			}//case email
 
-			
+
 		}//switch
 	}//function dbCheck
 
