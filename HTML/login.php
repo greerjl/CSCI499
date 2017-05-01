@@ -67,7 +67,7 @@ require_once("./PHP/functions.php");
   if($urlVerified == '0' || isset($urlGID)) {
     //select UID
     $sql = "SELECT UID FROM user_info WHERE email='$urlEmail' AND accesskey='$urlHash'";
-    $result = mysqli_query($db, $sql2);
+    $result = mysqli_query($db, $sql);
     $temp = mysqli_fetch_object($result);
     $dbUID = $temp->UID;
     echo "Outer if\n";
