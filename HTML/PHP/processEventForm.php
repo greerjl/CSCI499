@@ -14,12 +14,17 @@ error_reporting(E_ALL);
 			$titleErr = validate($eTitle, 'eTitle');
 			if(!empty($titleErr)){
 				$hasErrors = true;
+				session_start();
+				$_SESSION["repeatEventErr"] = 1;
+				redirect("../eventSettings.php");
 			}//if
 			if(!$hasErrors){
 				$eTime = $_POST['eventTime'];
 				$eDate = $_POST['eventDate'];
 				$roomID = $_POST['roomSelect'];
 				sendData($eTitle, $eTime, $eDate, $roomID, $gid);
+				session_start();
+				$_SESSION["eventSuccess"] = 1;
 				redirect("../eventSettings.php");
 			}
 
@@ -33,6 +38,7 @@ error_reporting(E_ALL);
 		return $data;
 	}//cleanData
 
+//SHOULDN'T CHECK FOR SAME NAME, BUT FOR SAME TIME/DATE IN THE SAME ROOM (TOGETHER)
 	function validate($data, $gid) {
 				$data = strtolower($data);
 				$data = ucfirst($data);

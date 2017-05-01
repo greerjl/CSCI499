@@ -82,6 +82,14 @@ if($_SESSION["valid"]==true){?>
         <!-- /.row -->
 
         <!--BANNERS HERE-->
+        <?php
+        if($_SESSION["eventSuccess"] == 1){ ?>
+          <div class="alert alert-success">
+            <strong>Success!</strong> Your event was created.
+          </div>
+        <?php $_SESSION["repeatEventErr"]=0;
+        //elseif($_SESSION["repeatEventErr"] == 1){}
+        ?>
 
 
         <div class="container">
