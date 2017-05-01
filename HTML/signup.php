@@ -64,7 +64,7 @@ require_once("./PHP/functions.php");
 		$result2 = mysqli_query($db, $sql2);
 	}
 
-	 if($_SERVER['REQUEST_METHOD']=="GET" || $hasErrors){
+	 if($_SERVER['REQUEST_METHOD']=="GET" ){
 		 if($_SESSION["signupRepeatPswdErr"] == 1){ ?>
  				<div class="alert alert-danger">
  					<strong>Error!</strong> Passwords must match. Enter same password and repeat password.
@@ -85,10 +85,7 @@ require_once("./PHP/functions.php");
 		 <strong>Congratulations!</strong> You have successfully registered.
 		 You should receive an account activation email shortly. Click on the link in the email to activate your account.
 	 </div>
-<?php	}
- }//hasErrors if
- if($_SERVER['REQUEST_METHOD']=="GET" || !$hasErrors){
- 		 ?>
+<?php	} ?>
 				 <div class="content">
 						 <form id="SignUp" class="form-signin" method="POST" action="./PHP/processSignupForm.php">
 						 <h2 class="form-signin-heading"> Sign Up </h2>
