@@ -70,13 +70,13 @@ require_once("./PHP/functions.php");
     $temp = mysqli_fetch_object($result);
     $dbUID = $temp->UID;
     echo "Outer if\n";
-    if($urlVerified == '0') {
+    if(isset($urlHash)) {
       //update verify new user
       $sql2 = "UPDATE user_info SET Verified='1' WHERE UID='$dbUID'";
       $result2 = mysqli_query($db, $sql2);
       echo "result2: " .$result2;
     }
-    if(isset($urlGID)) {
+    else {
       //update GID
       $sql3 = "UPDATE user_info SET GID='$urlGID' WHERE UID='$dbUID'";
       $result3 = mysqli_query($db, $sql);
