@@ -285,9 +285,9 @@ if($_SESSION["valid"]==true){?>
         </div>
     </div><!-- /.row -->
 </footer>
+<script src="./ui.js" defer></script>
 
 </body>
-<script src="./ui.js" defer></script>
 </html>
 <?php }//if
 else{
