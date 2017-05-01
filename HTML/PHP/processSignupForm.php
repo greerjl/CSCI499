@@ -1,36 +1,55 @@
 <?php
-	include '../../../dbconnect.php';
 	//ini_set("display_errors", true);
 	//error_reporting(E_ALL);
+	require_once("functions.php");
+	include '../../../dbconnect.php';
+	$hasErrors = false;
 
-	$email = $pswd = $rpswd = $username = "";
-	$sql = ""; $hash = "";
-	$emailErr = $pswdErr = $rpswdErr = $dbErr = "";
-	$hasErrorsEmail = $hasErrorsPw = $hasErrors = false;
-
-	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
+	if($_SERVER['REQUEST_METHOD']=='POST'){
 
 		/*USER CREDENTIALS*/
-		$email = cleanData($_POST['email']);
-			$emailErr = validate($email, 'email');
-			if(!empty($emailErr)) $hasErrors = true;
-			$dbErr = dbCheck($email, 'email');
-			if(!empty($dbErr)) $hasErrorsEmail = true;
+		$email = mysqli_real_escape_string($db, $_POST['email']);
+		$email = cleanData($email);
 
-		$username = cleanData($_POST['username']);
+		$username = mysqli_real_escape_string($db, $_POST['username']);
+		$username = cleanData($username);
 
-		$pswd = cleanData($_POST['pswd']);
-			$pswdErr = validate($pswd, 'password');
-			if(!empty($pswdErr)){$hasErrorsPw = true;}
-			else{
-					$hash = password_hash($pswd, PASSWORD_BCRYPT);
-			}//else
+		$pswd = mysqli_real_escape_string($db, $_POST['pswd']);
+		$pswd = cleanData($pswd);
 
-		$rpswd = cleanData($_POST['rpswd']);
-			$rpswdErr = validate2($rpswd, $pswd);
-			if(!empty($rpswdErr)) $hasErrors = true;
+		$rpswd = mysqli_real_escape_string($db, $_POST['rpswd']);
+		$rpswd = cleanData($rpswd);
 
-	}//if
+		$accesskey = uniqid();
+		$sql = "INSERT INTO user_info (username, password, email, accesskey) VALUES ('$username','$hash', '$email', '$accesskey')";
+		if($password_verify($pswd, $rpswd)){
+			$result = mysqli_query($db, $sql);
+			if($result == 1){
+				$obj = mysqli_fetch_object($result);
+				$myuid = $obj->UID;
+				include './PHP/sendUserConfirmMail.php';
+
+				session_start();
+				$_SESSION["signupRepeatEmailErr"] = 0;
+				$_SESSION["signupRepeatPswdErr"] = 0;
+				$_SESSION["signupRegexErr"] = 0;
+				redirect("../signup.php");
+			}//result if
+		}//password verify if
+		else if(!($password_verify($pswd, $rpswd))) {
+			session_start();
+			$_SESSION["signupRepeatPswdErr"] = 1;
+			redirect("../signup.php");
+		} else if(!preg_match('/^(?=.*\d)(?=.*[a-zA-Z])(?!.*[\W_\x7B-\xFF]).{6,15}$/', $pswd)){
+			$_SESSION["signupRegexErr"] = 1;
+		}//if
+		else {
+			session_start();
+			$_SESSION["signupRepeatEmailErr"] = 1;
+			redirect("../signup.php");
+		}
+
+	}//POST if
 
 	//FUNCTIONS
 	function cleanData($data){
