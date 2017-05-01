@@ -37,8 +37,14 @@ require_once("./PHP/functions.php");
 
  </head>
 
- <body data-gr-c-s-loaded="true">
-   <nav class="navbar navbar-default">
+ <div id="layout">
+   <div id="main">
+
+     <div class="header">
+       <h1>House Utilities Manager</h1>
+       <h2>An application housing all your home management needs. </h2>
+     </div>
+    <nav class="navbar navbar-default">
      <div class="container-fluid">
        <div class="navbar-header">
            <a class="navbar-brand" href="../index.html">House Utilities Manager</a>
@@ -51,16 +57,10 @@ require_once("./PHP/functions.php");
      </div><!-- /.container-fluid -->
    </nav>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
-      <div class="container">
 
-        <!-- Page Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">House Settings
-                    <small>Create a group and edit group name, add rooms, and invite members to join.</small>
-                </h1>
-            </div>
-        </div><!-- /.row -->
+<div class="container">
+
+
 <?php
 
   include '../../dbconnect.php';
@@ -141,6 +141,8 @@ require_once("./PHP/functions.php");
     </div><!--/.starter template -->
   </div> <!-- /.container -->
 
+</div><!--main-->
+</div><!--layout-->
     <!-- Footer -->
     <div id="footer">
         <div class="container">

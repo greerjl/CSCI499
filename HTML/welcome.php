@@ -287,7 +287,7 @@ if($_SESSION["valid"]==true){?>
               <button class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
        </div>
-    </div>
+     </div>
     </div> <!--footer-->
  </body>
  </html>
