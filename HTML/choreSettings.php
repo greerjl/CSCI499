@@ -62,8 +62,8 @@ if($_SESSION["valid"]==true){?>
         </div>
         <div class="collapse navbar-collapse" id="mainNavBar">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="./houseSettings.php">House</a></li>
-            <li><a href="./choreSettings.php">Chores <span class="sr-only">(current)</span></a></li>
+            <li><a href="./houseSettings.php">House</a></li>
+            <li class="active"><a href="./choreSettings.php">Chores <span class="sr-only">(current)</span></a></li>
             <li><a href="./taskSettings.php">Tasks</a></li>
             <li><a href="./eventSettings.php">Events</a></li>
             <li><a href="./userSettings.php">My Settings</a></li>

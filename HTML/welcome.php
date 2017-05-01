@@ -65,11 +65,11 @@ if($_SESSION["valid"]==true){?>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
              </button>
-             <a class="navbar-brand" href="#">My Dashboard</a>
+             <a class="navbar-brand active" href="#">My Dashboard<span class="sr-only">(current)</span></a>
          </div>
          <div class="collapse navbar-collapse" id="mainNavBar">
            <ul class="nav navbar-nav">
-             <li class="active"><a href="./houseSettings.php">House <span class="sr-only">(current)</span></a></li>
+             <li><a href="./houseSettings.php">House</a></li>
              <li><a href="./choreSettings.php">Chores</a></li>
              <li><a href="./taskSettings.php">Tasks</a></li>
              <li><a href="./eventSettings.php">Events</a></li>
