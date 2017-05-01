@@ -63,19 +63,22 @@ require_once("./PHP/functions.php");
   $urlVerified = $_GET['verified'];
   $urlGID = $_GET['gid'];
 
-  if($urlVerified == '0' || isset($urlGID)){
+  if($urlVerified == '0' || isset($urlGID)) {
     //select UID
-    $sql2 = "SELECT UID FROM user_info WHERE email='$urlEmail' AND accesskey='$urlHash'";
-    $result2 = mysqli_query($db, $sql2);
-    $temp = mysqli_fetch_object($result2);
+    $sql = "SELECT UID FROM user_info WHERE email='$urlEmail' AND accesskey='$urlHash'";
+    $result = mysqli_query($db, $sql2);
+    $temp = mysqli_fetch_object($result);
     $dbUID = $temp->UID;
-    //update user
-    $sql = "UPDATE user_info SET Verified='1' WHERE UID='$dbUID'";
-    $result = mysqli_query($db, $sql);
-    //update GID
-    $sql3 = "UPDATE user_info SET GID='$urlGID' WHERE UID='$dbUID'";
-    $result3 = mysqli_query($db, $sql);
-
+    if($urlVerified == '0') {
+      //update verify new user
+      $sql2 = "UPDATE user_info SET Verified='1' WHERE UID='$dbUID'";
+      $result2 = mysqli_query($db, $sql2);
+    }
+    if(isset($urlGID)) {
+      //update GID
+      $sql3 = "UPDATE user_info SET GID='$urlGID' WHERE UID='$dbUID'";
+      $result3 = mysqli_query($db, $sql);
+    }
     ?>
       <div class="alert alert-success">
         <strong>Success!</strong> Your account has been verified. Please log in.
