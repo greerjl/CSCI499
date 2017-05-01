@@ -20,7 +20,7 @@ error_reporting(E_ALL);
 				$eDate = $_POST['eventDate'];
 				$roomID = $_POST['roomSelect'];
 				sendData($eTitle, $eTime, $eDate, $roomID, $gid);
-				redirect("../eventSettings.php");		
+				redirect("../eventSettings.php");
 			}
 
 	}//if

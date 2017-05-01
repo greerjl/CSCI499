@@ -4,7 +4,7 @@ require '/var/app/current/DocRoot/CSCI499/PHPMailer/PHPMailerAutoload.php';
 //require '/PHPMailer/PHPMailerAutoload.php';
 
 include './processSignupForm.php';
-include '../signup.php';
+//include '../signup.php';
 
 $mail = new PHPMailer;
 //Enable SMTP debugging

@@ -81,6 +81,9 @@ if($_SESSION["valid"]==true){?>
         </div>
         <!-- /.row -->
 
+        <!--BANNERS HERE-->
+        
+
         <div class="container">
 	         <div class="row">
              <?php
