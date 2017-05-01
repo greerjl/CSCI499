@@ -62,7 +62,9 @@ require_once("./PHP/functions.php");
   $urlHash = $_GET['hash'];
   $urlVerified = $_GET['verified'];
   $urlGID = $_GET['gid'];
+  echo $urlGID;
   $urlEmail2 = $_GET['email2'];
+  echo $urlEmail2;
 
   if($urlVerified == '0') {
     //select UID
