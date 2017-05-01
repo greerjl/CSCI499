@@ -62,7 +62,7 @@ require_once("./PHP/functions.php");
   $urlHash = $_GET['hash'];
   $urlVerified = $_GET['verified'];
   $urlGID = $_GET['gid'];
-  $urlEmail2 = $_get['email2'];
+  $urlEmail2 = $_GET['email2'];
 
   if($urlVerified == '0') {
     //select UID
@@ -78,11 +78,12 @@ require_once("./PHP/functions.php");
       <div class="alert alert-success">
         <strong>Success!</strong> Your account has been verified. Please log in.
       </div>
-    <?php }//if
+    <?php
+  }//if
 
   if(isset($urlGID)) {
     //select UID
-    $sql = "SELECT UID FROM user_info WHERE email2='$urlEmail2'";
+    $sql = "SELECT UID FROM user_info WHERE email='$urlEmail2'";
     $result = mysqli_query($db, $sql);
     $temp = mysqli_fetch_object($result);
     $dbUID = $temp->UID;
