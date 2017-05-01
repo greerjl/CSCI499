@@ -62,6 +62,7 @@ require_once("./PHP/functions.php");
   $urlHash = $_GET['hash'];
   $urlVerified = $_GET['verified'];
   $urlGID = $_GET['gid'];
+  echo "before outer if";
 
   if($urlVerified == '0' || isset($urlGID)) {
     //select UID
