@@ -40,7 +40,7 @@ require_once("./PHP/functions.php");
 				</div>
 				<div class="collapse navbar-collapse" id="mainNavBar">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="./login">Log In<span class="sr-only">(current)</span></a></li>
+						<li class="active"><a href="./login">Log In</a></li>
 
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
