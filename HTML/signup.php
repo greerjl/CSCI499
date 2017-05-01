@@ -12,10 +12,11 @@ require_once("./PHP/functions.php");
 		<link rel="stylesheet" type="text/css" href="../CSS/signup.css"/>
 		<link rel="icon" href="../images/logo.png"/>
 		<link rel="stylesheet" type="text/css" href="../CSS/psuedoWelcome.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 		<title>HUM Signup</title>
 		<!-- bootstrap -->
-		<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
 		<link href="../bootstrap/css/starter-template.css" rel="stylesheet">
 		<link href="../bootstrap/css/sticky-footer-navbar.css" rel="stylesheet">
 		<link href="../bootstrap/css/signin.css" rel="stylesheet">
@@ -32,13 +33,19 @@ require_once("./PHP/functions.php");
 	</head>
 
 	<body data-gr-c-s-loaded="true">
-		<nav class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="../index.html"> House Utilities Manager </a>
+						<a class="navbar-brand" href="../index.html">House Utilities Manager</a>
 				</div>
-			</div><!--./container -->
+				<div class="collapse navbar-collapse" id="mainNavBar">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="./login">Log In<span class="sr-only">(current)</span></a></li>
+
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
 		</nav>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">        </script>
 
 		<div class="container">
 			<div class="starter-template">

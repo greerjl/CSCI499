@@ -13,12 +13,11 @@ require_once("./PHP/functions.php");
     <link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/>
     <link rel="stylesheet" type="text/css" href="../CSS/login.css"/>
     <link rel="stylesheet" type="text/css" href="../CSS/psuedoWelcome.css"/>
-    <link rel="icon" href="../images/logo.png">
 
     <title>HUM Login</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link rel="icon" href="../images/logo.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -39,13 +38,19 @@ require_once("./PHP/functions.php");
  </head>
 
  <body data-gr-c-s-loaded="true">
- <nav class="navbar navbar-inverse navbar-fixed-top">
-   <div class="container">
-     <div class="navbar-header">
-       <a class="navbar-brand" href="../index.html"> House Utilities Manager </a>
-     </div>
-   </div><!--./container -->
- </nav>
+   <nav class="navbar navbar-default">
+     <div class="container-fluid">
+       <div class="navbar-header">
+           <a class="navbar-brand" href="../index.html">House Utilities Manager</a>
+       </div>
+       <div class="collapse navbar-collapse" id="mainNavBar">
+         <ul class="nav navbar-nav">
+           <li class="active"><a href="./signup.">Sign Up<span class="sr-only">(current)</span></a></li>
+
+       </div><!-- /.navbar-collapse -->
+     </div><!-- /.container-fluid -->
+   </nav>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
       <div class="container">
 
       <div class="starter-template">
@@ -142,9 +147,5 @@ require_once("./PHP/functions.php");
             </div>
         </div><!-- /.row -->
     </footer>
-
-    <!-- Bootstrap core JavaScript Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../bootsrap/js/bootstrap.min.js"></script>
   </body>
 </html>
