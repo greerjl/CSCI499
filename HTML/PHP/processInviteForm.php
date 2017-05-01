@@ -4,18 +4,23 @@
 	//ini_set("display_errors", true);
 	//error_reporting(E_ALL);
 
-	$email = "";
+	$email = $username = "";
 	$sql = "";
 	$emailErr = "";
 
 	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
 		/*USER CREDENTIALS*/
+		$username = $_POST['uname'];
+		$username = trim($username);
+		$username = stripslashes($username);
+		$username = htmlspecialchars($username);
+
 		$email = $_POST['newMem'];
 		$email = trim($email);
 		$email = stripslashes($email);
 		$email = htmlspecialchars($email);
 			//$emailErr = validate($email, 'email');
-			if(!empty($email)){
+			if(!empty($email) && !empty($username)){
 				if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 				 //echo "emailErr = ".$emailErr."\n";
 				 $_SESSION["inviteMemErr"]= 1;

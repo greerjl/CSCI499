@@ -219,7 +219,7 @@ if($_SESSION["valid"]==true){?>
                   <h4 class="heading"><strong>Invite Members</strong> <span></span></h4>
                   <form action="./PHP/processInviteForm.php" method="POST" id="inviteForm" name="inviteForm" class="form-inline">
                     <div class="form-group">
-                      <input type="text" class="form-control" id="idtxt" required="" placeholder="Name">
+                      <input type="text" name="uname" class="form-control" id="idtxt" required="" placeholder="Name">
                     </div>
                     <div class="form-group">
                       <input type="email" class="form-control" id="idtxt" required="" name="newMem" placeholder="jane.doe@example.com">
