@@ -125,7 +125,7 @@ if($_SESSION["valid"]==true){?>
           <div class="alert alert-success">
             <strong>Success!</strong> Chore removed!
           </div>
-        <?php $_SESSION["remSuc"] == 0;
+        <?php $_SESSION["remSuc"] = 0;
         		}//elseif ?>
 
 
