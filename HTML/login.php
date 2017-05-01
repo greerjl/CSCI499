@@ -80,7 +80,7 @@ require_once("./PHP/functions.php");
     else {
       //update GID
       $sql3 = "UPDATE user_info SET GID='$urlGID' WHERE UID='$dbUID'";
-      $result3 = mysqli_query($db, $sql);
+      $result3 = mysqli_query($db, $sql3);
       echo "result3: " .$result3;
     }
     ?>
