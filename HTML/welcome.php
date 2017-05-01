@@ -13,7 +13,7 @@ if($_SESSION["valid"]==true){?>
     <link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/>
     <link rel="stylesheet" type="text/css" href="../CSS/welcome.css"/>
     <link rel="icon" href="../images/logo.png">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel='stylesheet' href='http://fullcalendar.io/js/fullcalendar-2.2.3/fullcalendar.css' />
     <script src='http://fullcalendar.io/js/fullcalendar-2.2.3/lib/moment.min.js'></script>

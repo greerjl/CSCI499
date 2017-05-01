@@ -16,7 +16,7 @@ if($_SESSION["valid"]==true){?>
 
     <title>Event Settings</title>
     <link rel="icon" href="../images/logo.png">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <!-- room form css -->
@@ -81,17 +81,6 @@ if($_SESSION["valid"]==true){?>
         </div>
         <!-- /.row -->
 
-        <!--BANNERS HERE-->
-        <?php
-        if($_SESSION["eventSuccess"] == 1){ ?>
-          <div class="alert alert-success">
-            <strong>Success!</strong> Your event was created.
-          </div>
-        <?php $_SESSION["repeatEventErr"]=0;
-        //elseif($_SESSION["repeatEventErr"] == 1){}
-        ?>
-
-
         <div class="container">
 	         <div class="row">
              <?php
@@ -107,7 +96,18 @@ if($_SESSION["valid"]==true){?>
                <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
              </div><!--header-->
              <?php }//if
-                else { ?>
+                else {
+
+                  //BANNERS HERE
+
+                  if($_SESSION["eventSuccess"] == 1){ ?>
+                    <div class="alert alert-success">
+                      <strong>Success!</strong> Your event was created.
+                    </div>
+                  <?php $_SESSION["repeatEventErr"] = 0;
+                  }//elseif($_SESSION["repeatEventErr"] == 1){}
+                  ?>
+
              <div class="col-md-4">
 		             <div class="form_main">
                    <h4 class="heading"><strong>Add an Event</strong> <span></span></h4>
@@ -144,9 +144,9 @@ if($_SESSION["valid"]==true){?>
 		                   <input type="date" required="" value="" name="eventDate" class="date">
 		                   <hr>
 		                  <input type="submit" value="submit" name="submit" class="txt2">
-		    </form>
-		  </div>
-		</div>
+		                </form>
+		              </div>
+		            </div>
 
             </div><!-- col-md-4 -->
 	        </div><!-- row -->
