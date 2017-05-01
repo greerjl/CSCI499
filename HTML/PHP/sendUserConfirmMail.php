@@ -1,10 +1,8 @@
 <?php
 date_default_timezone_set('America/Los_Angeles');
-<<<<<<< HEAD
 require '/var/app/current/DocRoot/CSCI499/PHPMailer/PHPMailerAutoload.php';
-=======
-require '/CSCI499/PHPMailer/PHPMailerAutoload.php';
->>>>>>> origin/master
+//require '/PHPMailer/PHPMailerAutoload.php';
+
 include './processSignupForm.php';
 include '../signup.php';
 
