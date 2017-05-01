@@ -62,9 +62,7 @@ require_once("./PHP/functions.php");
   $urlHash = $_GET['hash'];
   $urlVerified = $_GET['verified'];
   $urlGID = $_GET['gid'];
-  echo "urlGID = " .$urlGID;
   $urlEmail2 = $_GET['email2'];
-  echo "urlEmail2 = " .$urlEmail2;
 
   if($urlVerified == '0') {
     //select UID
@@ -89,11 +87,9 @@ require_once("./PHP/functions.php");
     $result = mysqli_query($db, $sql);
     $temp = mysqli_fetch_object($result);
     $dbUID = $temp->UID;
-    echo $dbUID;
     //update GID
     $sql2 = "UPDATE user_info SET GID='$urlGID' WHERE UID='$dbUID'";
     $result2 = mysqli_query($db, $sql2);
-    echo $result2;
     //Bootstrap Alert Banner
     ?>
       <div class="alert alert-success">

@@ -6,36 +6,40 @@ ini_set("display_errors", true);
 error_reporting(E_ALL);
 	$tTitle = $taskDate = $sql = "";
 	$titleErr = $taskDateErr = "";
-	$_SESSION["tErr"] = $_SESSION["taskSuc"] = $_SESSION["createErr"] = 0;
+	$hasErrors = false;
 
 	if($_SERVER['REQUEST_METHOD']=='POST'){
-		$tTitle = cleanData($GLOBALS['db'], $_POST['task']);
-			$titleErr = validate($tTitle);
-			$time = $_POST['taskDate'];
+		$tTitle = cleanData($_POST['task']);
+			$titleErr = validate($tTitle, 'tTitle');
 			if(!empty($titleErr)){
-				$_SESSION["tErr"] = 1;
-				redirect("../taskSettings.php");
+				$hasErrors = true;
 			}//if
-			else{
-				sendData($tTitle, $_SESSION["gid"], $time);
-				redirect("../taskSettings.php");
-			}
+		$time = $_POST['taskDate'];
+		if(!$hasErrors){
+			sendData($tTitle, $_SESSION["gid"], $time);
+			redirect("../taskSettings.php");
+		}
+		else{
+			redirect("../taskSettings.php");
+		}
 	}//if
 
 	//FUNCTIONS
-	function cleanData($db, $data){
+	function cleanData($data){
 		$data = trim($data);
 		$data = stripslashes($data);
 		$data = htmlspecialchars($data);
-		$data = mysqli_real_escape_string($db, $data);
 		return $data;
 	}//cleanData
 
-	function validate($data) {
+	function validate($data, $field) {
 			$data = strtolower($data);
 			$data = ucfirst($data);
 			$gid = $_SESSION["gid"];
 
+			switch($field){
+
+				case 'tTitle':{
 					$sql = "SELECT * FROM task WHERE name = '$data' AND GID = '$gid'";
 					$result = mysqli_query($GLOBALS['db'], $sql);
 
@@ -46,6 +50,12 @@ error_reporting(E_ALL);
 					else {
 						return "";
 					}
+				}//case tTitle
+			 case 'taskDate':{
+
+			 }//case taskDate
+
+			}//switch
 
 	}//function validate
 
@@ -54,10 +64,10 @@ error_reporting(E_ALL);
 			$result = mysqli_query($GLOBALS['db'], $sql);
 
 			if(!$result){
-				$_SESSION["createErr"] = 1;
+				die('Error: ' . mysqli_error($GLOBALS['db']));
 			}
 			else{
-				$_SESSION["taskSuc"] = 1;
+				//echo "Task successfully created and assigned!";
 			}//ifelse
 	}//function sendData
 ?>
