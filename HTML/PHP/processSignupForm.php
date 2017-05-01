@@ -22,17 +22,17 @@
 
 		$accesskey = uniqid();
 		$sql = "INSERT INTO user_info (username, password, email, accesskey) VALUES ('$username','$hash', '$email', '$accesskey')";
-		if($password_verify($pswd, $rpswd)){
+		if($password_verify($pswd, $rpswd) && preg_match('/^(?=.*\d)(?=.*[a-zA-Z])(?!.*[\W_\x7B-\xFF]).{6,15}$/', $pswd) && dbCheck($email, ['email'])){
 			$result = mysqli_query($db, $sql);
 			if($result == 1){
 				$obj = mysqli_fetch_object($result);
 				$myuid = $obj->UID;
-				include './PHP/sendUserConfirmMail.php';
 
 				session_start();
 				$_SESSION["signupRepeatEmailErr"] = 0;
 				$_SESSION["signupRepeatPswdErr"] = 0;
 				$_SESSION["signupRegexErr"] = 0;
+				include './PHP/sendUserConfirmMail.php';
 				redirect("../signup.php");
 			}//result if
 		}//password verify if
@@ -41,7 +41,9 @@
 			$_SESSION["signupRepeatPswdErr"] = 1;
 			redirect("../signup.php");
 		} else if(!preg_match('/^(?=.*\d)(?=.*[a-zA-Z])(?!.*[\W_\x7B-\xFF]).{6,15}$/', $pswd)){
+			session_start();
 			$_SESSION["signupRegexErr"] = 1;
+			redirect("../signup.php");
 		}//if
 		else {
 			session_start();
