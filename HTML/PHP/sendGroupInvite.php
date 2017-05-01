@@ -46,7 +46,7 @@ $mail->Body = '
     <html><head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8"></head><body style="padding-left: 1cm; padding-right: 1cm;"><div class="header"><h1>House Utilities Manager</h1><h4>An application for all your house management needs. </h4></div>
     <div class="content" style="padding-left: 1.25cm; padding-right: 1.25cm;"><h4>Hello! </h4><p> You have been invited to a group on House Utilities Manager
-    by '. $sentUserName .'. We are very excited to have you on board.</p> <p> To get started using HUM, please create an account by selecting the link below: </p><br>
+    by '. $sentUserName .'. We are very excited to have you on board.</p> <p> To get started using HUM, please create an account by selecting the link below: </p>
     <a href="http://www.houseutil.com/HTML/signup.php?email='.$email.'&gid='.$GID.'">Sign Up</a> <br><p> If you already have a verified account then please click this link: <p>
     <a href="http://www.houseutil.com/HTML/login.php?gid='.$GID.'&email2='.$email.'"> Log In </a> <p> Thanks, <br> The HUM Team </br> </p></body></html>';
 
