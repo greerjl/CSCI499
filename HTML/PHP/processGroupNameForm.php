@@ -17,11 +17,10 @@ require_once("functions.php");
 		}
 		else{
 			if($_SESSION["gid"]==0){
-				//create random accesscode for group here
-				//$acode = ;
-				$sql2 = "INSERT INTO group_info (group_name) VALUES ('$gName');";
+				$accesscode = uniqid();
+				$sql2 = "INSERT INTO group_info (group_name, access_code) VALUES ('$gName', '$accesscode');";
 				mysqli_query($db, $sql2) or die("Error: ".mysqli_error($db));
-				$sql2 = "SELECT GID FROM group_info WHERE group_name = '$gName'";//and access_code = acode
+				$sql2 = "SELECT GID FROM group_info WHERE group_name = '$gName' AND access_code = '$accesscode'";//and access_code = acode
 				$result = mysqli_query($db, $sql2) or die("Error: ".mysqli_error($db));
 				$temp = mysqli_fetch_object($result);
 				$userGID = $temp -> GID;

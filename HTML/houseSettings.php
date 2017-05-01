@@ -124,13 +124,7 @@ if($_SESSION["valid"]==true){?>
           </div>
         <?php $_SESSION["groupErr"] = 0;
             }//elseif
-        if($_SESSION["roomErr"] == 1){ ?>
-<!--INVALID ROOM NAME -->
-          <div class="alert alert-danger">
-            <strong>Error!</strong> Invalid room name. No single quotes allowed.
-          </div>
-        <?php $_SESSION["roomErr"] = 0;
-            }elseif($_SESSION["roomDup"] == 1){ ?>
+        if($_SESSION["roomDup"] == 1){ ?>
 <!--ROOM ALREADY EXISTS -->
           <div class="alert alert-danger">
             <strong>Error!</strong> Room already exists.

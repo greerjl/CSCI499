@@ -12,14 +12,15 @@ require("functions.php");
 		$_SESSION["roomErr"] = 0;
 		$roomName = $_POST['room1'];
 		$roomName = cleanData($GLOBALS['db'], $roomName);
-		$roomErr = validate($roomName, 'room1', $_SESSION["gid"], $GLOBALS['db']);
-			if(empty($roomName)){
-				$_SESSION["roomErr"] = 1;
-			}else{
-				$_SESSION["roomSuc"] = 1;
+		$roomErr = validate($roomName, $_SESSION["gid"], $GLOBALS['db']);
+			if(empty($roomErr)){
 				sendData($roomName, $_SESSION["gid"]);
-			}
-			redirect("../houseSettings.php");
+				redirect("../houseSettings.php");
+			}else{
+				$_SESSION["roomErr"] = 1;
+				redirect("../houseSettings.php");
+			}//ifelse
+
 	}//if
 
 	//FUNCTIONS
@@ -31,9 +32,8 @@ require("functions.php");
 		return $data;
 	}//cleanData
 
-	function validate($data, $field, $gid, $db1) {
-		switch($field) {
-			case 'room1':{
+	function validate($data, $gid, $db1) {
+
 				$data = strtolower($data);
 				$data = ucfirst($data);
 				$sql = "SELECT * FROM room WHERE name = '$data' AND GID = '$gid'";
@@ -41,13 +41,11 @@ require("functions.php");
 
 				$count = mysqli_num_rows($result);
 				if($count != 0){
+					$_SESSION["roomDup"] = 1;
 					return "Room already exists";
-					$_SESSION["dupRoom"] = 1;
 				}//if
 				return "";
-			}//case room1
 
-		}//switch
 	}//function validate
 
 	function sendData($name, $group){
@@ -58,7 +56,7 @@ require("functions.php");
         die('Error: ' . mysqli_error($db). ' Error: '. mysqli_errno($db));
       }//if
       else{
-        echo "Room(s) successfully created!";
+        $_SESSION["roomSuc"] = 1;
       }//else
 		}//if
 	}//function sendData
