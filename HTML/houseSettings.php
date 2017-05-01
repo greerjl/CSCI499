@@ -244,7 +244,6 @@ if($_SESSION["valid"]==true){?>
         <hr>
 
         <!-- Footer -->
-        <!-- Footer -->
       <div id="footer">
         <div class="container">
           <p class="text-muted">Copyright ©2016-2017 PLU Capstone. House Utilities Manager.
@@ -275,7 +274,7 @@ if($_SESSION["valid"]==true){?>
              </div>
           </div>
       </div>
-    </div>
+    </div> <!--footer-->
     </div>  <!-- /.container -->
 
 

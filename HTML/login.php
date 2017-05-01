@@ -53,11 +53,14 @@ require_once("./PHP/functions.php");
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
       <div class="container">
 
-      <div class="starter-template">
-        <div class="header">
-          <h1>House Utilities Manager</h1>
-          <h2>An application for all your home management needs. </h2>
-        </div><!-- header -->
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">House Settings
+                    <small>Create a group and edit group name, add rooms, and invite members to join.</small>
+                </h1>
+            </div>
+        </div><!-- /.row -->
 <?php
 
   include '../../dbconnect.php';
@@ -139,13 +142,36 @@ require_once("./PHP/functions.php");
   </div> <!-- /.container -->
 
     <!-- Footer -->
-    <footer class="navbar-fixed-bottom">
-        <div class="row">
-            <div class="col-lg-12 footer l-box is-center">
-                <p>Copyright &copy; 2016-2017 PLU Capstone. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
-    <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
-            </div>
-        </div><!-- /.row -->
-    </footer>
+    <div id="footer">
+        <div class="container">
+          <p class="text-muted">Copyright ©2016-2017 PLU Capstone. House Utilities Manager.
+          Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
+            <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
+        </div>
+      </div>
+
+      <ul class="nav pull-right scroll-top">
+        <li><a href="#" title="Scroll to top"><i class="glyphicon glyphicon-chevron-up"></i></a></li>
+      </ul>
+
+      <div class="modal" id="myModal" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+             <div class="modal-header">
+                 <button class="close" type="button" data-dismiss="modal">×</button>
+                 <h3 class="modal-title"></h3>
+             </div>
+             <div class="modal-body">
+               <div id="modalCarousel" class="carousel">
+                 <a class="carousel-control left" href="#modaCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                 <a class="carousel-control right" href="#modalCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+               </div>
+             </div>
+             <div class="modal-footer">
+                 <button class="btn btn-default" data-dismiss="modal">Close</button>
+             </div>
+          </div>
+      </div>
+    </div> <!--footer-->
   </body>
 </html>
