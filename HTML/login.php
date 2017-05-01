@@ -138,10 +138,8 @@ require_once("./PHP/functions.php");
 	        </form>
           <?php }//request method if ?>
       </div><!-- /.content -->
-    </div><!--/.starter template -->
-  </div> <!-- /.container -->
-
-</div><!--main-->
+    </div> <!-- /.container -->
+  </div><!--main-->
 </div><!--layout-->
     <!-- Footer -->
     <div id="footer">
