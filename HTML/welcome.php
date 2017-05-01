@@ -287,7 +287,7 @@ if($_SESSION["valid"]==true){?>
 </footer>
 
 </body>
-<script src="./ui.js"></script>
+<script src="./ui.js" defer></script>
 </html>
 <?php }//if
 else{
