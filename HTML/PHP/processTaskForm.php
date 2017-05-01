@@ -11,11 +11,11 @@ error_reporting(E_ALL);
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 		$tTitle = cleanData($GLOBALS['db'], $_POST['task']);
 			$titleErr = validate($tTitle);
+			$time = $_POST['taskDate'];
 			if(!empty($titleErr)){
 				$_SESSION["tErr"] = 1;
 				redirect("../taskSettings.php");
 			}//if
-			$time = $_POST['taskDate'];
 			else{
 				sendData($tTitle, $_SESSION["gid"], $time);
 				redirect("../taskSettings.php");

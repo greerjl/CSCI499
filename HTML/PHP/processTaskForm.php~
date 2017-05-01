@@ -6,7 +6,7 @@ ini_set("display_errors", true);
 error_reporting(E_ALL);
 	$tTitle = $taskDate = $sql = "";
 	$titleErr = $taskDateErr = "";
-	$_SESSION["tErr"] = $_SESSION["uErr"] = $_SESSION["choreSuc"] = $_SESSION["createErr"] = 0;
+	$_SESSION["tErr"] = $_SESSION["taskSuc"] = $_SESSION["createErr"] = 0;
 
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 		$tTitle = cleanData($GLOBALS['db'], $_POST['task']);
