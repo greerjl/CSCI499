@@ -80,14 +80,15 @@ require_once("./PHP/functions.php");
  				<strong>Error!</strong> Passwords must contain a number and be at least 6 characters long.
  			</div>
  <?php	}//if
+ if($_SESSION["signupRegexErr"] == 0 && $_SESSION["signupRepeatEmailErr"] == 0 && $_SESSION["signupRepeatPswdErr"] == 0) { ?>
+	 <div class="alert alert-success">
+		 <strong>Congratulations!</strong> You have successfully registered.
+		 You should receive an account activation email shortly. Click on the link in the email to activate your account.
+	 </div>
+<?php	}
  }//hasErrors if
  if($_SERVER['REQUEST_METHOD']=="GET" || !$hasErrors){
- 		if($_SESSION["signupRegexErr"] == 0 && $_SESSION["signupRepeatEmailErr"] == 0 && $_SESSION["signupRepeatPswdErr"] == 0) { ?>
-			<div class="alert alert-success">
-				<strong>Congratulations!</strong> You have successfully registered.
-				You should receive an account activation email shortly. Click on the link in the email to activate your account.
-			</div>
-<?php	} ?>
+ 		 ?>
 				 <div class="content">
 						 <form id="SignUp" class="form-signin" method="POST" action="./PHP/processSignupForm.php">
 						 <h2 class="form-signin-heading"> Sign Up </h2>
