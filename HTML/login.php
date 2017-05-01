@@ -141,6 +141,7 @@ require_once("./PHP/functions.php");
     </div> <!-- /.container -->
   </div><!--main-->
 </div><!--layout-->
+<br><br><br><br><br><br><br><br>
     <!-- Footer -->
     <div id="footer">
         <div class="container">
