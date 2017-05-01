@@ -1,16 +1,14 @@
 <?php
 	session_start();
-	ini_set("display_errors", true);
-	error_reporting(E_ALL);
+	//ini_set("display_errors", true);
+	//error_reporting(E_ALL);
 	include '../../../dbconnect.php';
 	require_once("functions.php");
 	$emptyPwErr1 = $emptyPwErr2 = $mismatchPwErr = $invalidPwErr = "";
-	$passFlag = 0;
 
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-		$currentPass = mysqli_real_escape_string($db, $_POST['currentpass']);
-		if(!empty($currentPass)){
+			$currentPass = mysqli_real_escape_string($db, $_POST['currentpass']);
 
 			$uid = $_SESSION["login_user"];
 			//grab stored hashed password
@@ -37,21 +35,29 @@
 					$sql = "UPDATE user_info SET password = '$hash' WHERE user_info.UID = '$uid'";
 					$result = mysqli_query($db, $sql) or die("Error: ".mysqli_error($db));
 					if($result){
-						$passFlag = 1;
+						$_SESSION["successPwChange"] = 1;
 						redirect("../userSettings.php");
 					}//if result is not false
-				}//if hasErrors is empty
-				else {
+				} elseif(!empty($emptyPwErr1)){
+					$_SESSION["emptyPwErr"] = 1;
 					redirect("../userSettings.php");
-				}
-			}
-			else{
-				$hasErrors = "That is not your current password, please try again.";
+				} elseif(!empty($emptyPwErr2)){
+					$_SESSION["emptyRPwErr"] = 1;
+					redirect("../userSettings.php");
+				} elseif(!empty($mismatchPwErr)){
+					$_SESSION["mismatchPwErr"] = 1;
+					redirect("../userSettings.php");
+				} elseif(!empty($invalidPwErr)){
+					$_SESSION["invalidPwErr"] = 1;
+					redirect("../userSettings.php");
+				} else {
+					$_SESSION["internalErr"] = 1;
+					redirect("../userSettings.php");
+				}//ifelses
+			}else{
+				$_SESSION["incorrectOldPw"] = 1;
 				redirect("../userSettings.php");
-			}//if else password_verify
-
-		}//if current password field is not empty
-
+			}//ifelse password_verify
 	}//request method post if()
 
 	function cleanData($data){

@@ -1,14 +1,12 @@
 <?php
 	session_start();
-	ini_set("display_errors", true);
-	error_reporting(E_ALL);
+	//ini_set("display_errors", true);
+	//error_reporting(E_ALL);
 	include '../../../dbconnect.php';
 	require_once("functions.php");
-	$hasErrors = "";
-	$aliasFlag = 0;
 
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
-	
+
 		$newAlias = mysqli_real_escape_string($db, $_POST['newAlias']);
 		if(!empty($newAlias)){
 			$newAlias = cleanData($newAlias);
@@ -16,13 +14,15 @@
 			$sql = "UPDATE user_info SET username = '$newAlias' WHERE user_info.UID = '$uid'";
 			$result = mysqli_query($db, $sql);
 			if($result){
-				$aliasFlag = 1;
+				$_SESSION["changeUnameSuc"] = 1;
 				redirect("../userSettings.php");
-			}
-			else{
-				$hasErrors = "An error occurred, username has not been changed";
-			}//if else
-		}//if new username is not empty
+			}else{
+				$_SESSION["usernameErr"] = 1;
+			}//ifelse result
+		}elseif(empty($newAlias)){
+			$_SESSION["emptyUsernameErr"] = 1;
+			redirect("../userSettings.php");
+		}//elseif empty
 
 	}//request method post if()
 

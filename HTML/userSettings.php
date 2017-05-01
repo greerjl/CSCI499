@@ -86,23 +86,54 @@ if($_SESSION["valid"]==true){?>
         </div>
         <!-- /.row -->
 
-      <?php if($_SERVER['REQUEST_METHOD']=="GET" || !empty($hasErrors) || $passFlag > 0 || $aliasFlag > 0){
-					if(!empty($hasErrors)){ ?>
-						<div class="alert alert-danger">
-							<strong>Error! <?php echo $hasErrors; ?> </strong>
-						</div>
-					<?php }//if (error thrown)
-					if($passFlag == 1){ ?>
-						<div class="alert alert-success">
-							<strong>Password change successful!</strong>
-						</div>
-					<?php }//if (password change)
-					if($aliasFlag == 1) { ?>
-						<div class="alert alert-success">
-							<strong>Username change successful!</strong>
-						</div>
-					<?php }//if (name change)
-				}//if POST (success/error banners?>
+      <?php //CHANGE PASSWORD FORM
+      if($_SERVER['REQUEST_METHOD']=="GET"){
+        if($_SESSION["successPwChange"] == 1){?>
+          <div class="alert alert-success">
+      			<strong>Success!</strong> Your password has been changed.
+      		</div>
+        <?php $_SESSION["successPwChange"] = 0;}
+        elseif($_SESSION["emptyPwErr"] == 1){?>
+          <div class="alert alert-danger">
+      			<strong>Error!</strong> Please enter a new password.
+      		</div>
+        <?php $_SESSION["emptyPwErr"] = 0;}
+        elseif($_SESSION["emptyRPwErr"] == 1){?>
+          <div class="alert alert-danger">
+      			<strong>Error!</strong> Please enter your new password twice.
+      		</div>
+        <?php $_SESSION["emptyRPwErr"] = 0; }
+        elseif($_SESSION["mismatchPwErr"] == 1){?>
+          <div class="alert alert-danger">
+      			<strong>Error!</strong> Make sure you entered the same password twice.
+      		</div>
+        <?php $_SESSION["mismatchPwErr"] = 0; }
+        elseif($_SESSION["invalidPwErr"] == 1){?>
+          <div class="alert alert-danger">
+      			<strong>Error!</strong> Your password must contain a number and be at least 6 characters long.
+      		</div>
+        <?php $_SESSION["invalidPwErr"] = 0; }
+        elseif($_SESSION["internalErr"] == 1){?>
+          <div class="alert alert-danger">
+      			<strong>Error!</strong> We've encountered a problem. Our bad.
+      		</div>
+        <?php $_SESSION["internalErr"] = 0; }
+        //CHANGE USERNAME FORM
+        if($_SESSION["changeUnameSuc"] == 1){?>
+          <div class="alert alert-success">
+      			<strong>Success!</strong> Your password has been changed.
+      		</div>
+        <?php $_SESSION["changeUnameSuc"] = 0;}
+        elseif($_SESSION["usernameErr"] == 1){?>
+          <div class="alert alert-danger">
+      			<strong>Error!</strong> Your username failed to update.
+      		</div>
+        <?php $_SESSION["usernameErr"] = 0;}
+        elseif($_SESSION["emptyUsernameErr"] == 1){?>
+          <div class="alert alert-danger">
+      			<strong>Error!</strong> Your username failed to update.
+      		</div>
+        <?php $_SESSION["emptyUsernameErr"] = 0;}?>
 
         <div class="container">
 	         <div class="row">
