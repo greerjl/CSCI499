@@ -107,7 +107,7 @@ require_once("./PHP/functions.php");
 		<div class="alert alert-danger">
 			<strong>Error!</strong> Whoops, something went wrong.
 		</div>
-<?php $_SESSION["signupInternalErr"] = 0; ?>
+<?php $_SESSION["signupInternalErr"] = 0; } //elseifs?>
 				 <div class="content">
 						 <form id="SignUp" class="form-signin" method="POST" action="./PHP/processSignupForm.php">
 						 <h2 class="form-signin-heading"> Sign Up </h2>
