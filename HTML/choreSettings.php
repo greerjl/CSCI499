@@ -28,7 +28,6 @@ if($_SESSION["valid"]==true){?>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
     <script type="text/javascript">
       $(function()
       {
@@ -63,8 +62,8 @@ if($_SESSION["valid"]==true){?>
         </div>
         <div class="collapse navbar-collapse" id="mainNavBar">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="./houseSettings.php">House <span class="sr-only">(current)</span></a></li>
-            <li><a href="./choreSettings.php">Chores</a></li>
+            <li class="active"><a href="./houseSettings.php">House</a></li>
+            <li><a href="./choreSettings.php">Chores <span class="sr-only">(current)</span></a></li>
             <li><a href="./taskSettings.php">Tasks</a></li>
             <li><a href="./eventSettings.php">Events</a></li>
             <li><a href="./userSettings.php">My Settings</a></li>
