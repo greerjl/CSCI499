@@ -13,7 +13,7 @@ if($_SESSION["valid"]==true){?>
     <link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/>
     <link rel="stylesheet" type="text/css" href="../CSS/welcome.css"/>
     <link rel="icon" href="../images/logo.png">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <title>Home Utilities Manager &ndash; </title>

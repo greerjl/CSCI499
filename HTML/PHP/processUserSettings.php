@@ -4,7 +4,7 @@
 	error_reporting(E_ALL);
 	include '../../../dbconnect.php';
 	require_once("functions.php");
-	$hasErrors = "";
+	$emptyPwErr1 = $emptyPwErr2 = $mismatchPwErr = $invalidPwErr = "";
 	$passFlag = 0;
 
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -27,10 +27,13 @@
 				$rNewPass = mysqli_real_escape_string($db, $_POST['rnewpass']);
 				$rNewPass = cleanData($rNewPass);
 
-				$hasErrors = passVerify($newPass,$rNewPass);
-				
-				if(empty($hasErrors)){
-					$hash = password_hash($newPass, PASSWORD_BCRYPT);				
+				$emptyPwErr1 = passVerify1a($newPass);
+				$emptyPwErr2 = passVerify1b($rNewPass);
+				$mismatchPwErr = passVerify2($newPass, $rNewPass);
+				$invalidPwErr = passVerify3($newPass);
+
+				if(empty($emptyPwErr1) && empty($emptyPwErr2) && empty($mismatchPwErr) && empty($invalidPwErr)){
+					$hash = password_hash($newPass, PASSWORD_BCRYPT);
 					$sql = "UPDATE user_info SET password = '$hash' WHERE user_info.UID = '$uid'";
 					$result = mysqli_query($db, $sql) or die("Error: ".mysqli_error($db));
 					if($result){
@@ -39,7 +42,7 @@
 					}//if result is not false
 				}//if hasErrors is empty
 				else {
-					redirect("../userSettings.php");				
+					redirect("../userSettings.php");
 				}
 			}
 			else{
@@ -58,20 +61,31 @@
 		return $data;
 	}//cleanData
 
-	function passVerify($data, $data2){
+	function passVerify1a($data){
 			if(empty($data)){
 				return "Please enter password.";
-			}else{
-				if(strcmp($data, $data2) !== 0){
-					return "Passwords must match.";
-				}//if
-			}//else
-			if(!empty($data)){
-				if(!preg_match('/^(?=.*\d)(?=.*[a-zA-Z])(?!.*[\W_\x7B-\xFF]).{6,15}$/', $data)){
-					return "Invalid password.";
-				}//if
-			}
+			}//if
 			return "";
+	}//passVerify1
 
-	}//passVerify
+	function passVerify1b($data){
+			if(empty($data)){
+				return "Please enter password.";
+			}//if
+			return "";
+	}//passVerify1
+
+	function passVerify2($data, $data2){
+		if(strcmp($data, $data2) !== 0){
+			return "Passwords must match.";
+		}//if
+		return "";
+	}//passVerify2
+
+	function passVerify3($data){
+		if(!preg_match('/^(?=.*\d)(?=.*[a-zA-Z])(?!.*[\W_\x7B-\xFF]).{6,15}$/', $data)){
+			return "Invalid password.";
+		}//if
+		return "";
+	}//passVerify3
 ?>
