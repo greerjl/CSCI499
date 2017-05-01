@@ -217,7 +217,17 @@ if($_SESSION["valid"]==true){?>
                     //otherwise display bootstrap banner saying "must create group before inviting members"
                   ?>
                   <h4 class="heading"><strong>Invite Members</strong> <span></span></h4>
-                  <div class="form">
+                  <form action="./PHP/processInviteForm.php" method="POST" id="inviteForm" name="inviteForm" class="form-inline">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="idtxt" required="" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                      <input type="email" class="form-control" id="idtxt" required="" name="newMem" placeholder="jane.doe@example.com">
+                    </div>
+                    <button type="submit" name="submit" class="btn btn-default">Send invitation</button>
+                </form>
+
+                <!--  <div class="form">
                     <form action="./PHP/processInviteForm.php" method="POST" id="inviteForm" name="inviteForm">
                       <input type="text" id="idtxt" required="" placeholder="Add Member" value="" name="newMem" class="txt"/>
                       <br><br>
@@ -225,7 +235,7 @@ if($_SESSION["valid"]==true){?>
                     </form>
                   </div>
                </div>
-
+             -->
             </div><!-- col-md-4 -->
 	        </div><!-- row -->
         </div><!-- container -->
