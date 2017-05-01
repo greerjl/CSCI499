@@ -22,30 +22,35 @@
 
 		$accesskey = uniqid();
 		$sql = "INSERT INTO user_info (username, password, email, accesskey) VALUES ('$username','$hash', '$email', '$accesskey')";
+		//check if password = repeat password && if password meets regex && if email exists in database
 		if($password_verify($pswd, $rpswd) && preg_match('/^(?=.*\d)(?=.*[a-zA-Z])(?!.*[\W_\x7B-\xFF]).{6,15}$/', $pswd) && dbCheck($email, ['email'])){
+			//if sign up credentials pass the requirements then query db to insert sql
 			$result = mysqli_query($db, $sql);
 			if($result == 1){
-				$obj = mysqli_fetch_object($result);
-				$myuid = $obj->UID;
-
+				//if user was inserted in to database start session to access errors
 				session_start();
 				$_SESSION["signupRepeatEmailErr"] = 0;
 				$_SESSION["signupRepeatPswdErr"] = 0;
 				$_SESSION["signupRegexErr"] = 0;
+				//include mailer script to send user an email for verification
 				include './PHP/sendUserConfirmMail.php';
+				//redirect to sign up and display success message
 				redirect("../signup.php");
 			}//result if
 		}//password verify if
 		else if(!($password_verify($pswd, $rpswd))) {
+			//if password and repeat password don't match, set error to 1, and redirect to signup with error message
 			session_start();
 			$_SESSION["signupRepeatPswdErr"] = 1;
 			redirect("../signup.php");
 		} else if(!preg_match('/^(?=.*\d)(?=.*[a-zA-Z])(?!.*[\W_\x7B-\xFF]).{6,15}$/', $pswd)){
+			//if password doesn't match regex, set error to 1, and redirect to signup with error message
 			session_start();
 			$_SESSION["signupRegexErr"] = 1;
 			redirect("../signup.php");
 		}//if
 		else {
+		// should catch if email has been used to sign up already, set error to 1, and redirect to signup with error message
 			session_start();
 			$_SESSION["signupRepeatEmailErr"] = 1;
 			redirect("../signup.php");
@@ -53,7 +58,7 @@
 
 	}//POST if
 
-	//FUNCTIONS
+	//cleanData function still used
 	function cleanData($data){
 		$data = trim($data);
 		$data = stripslashes($data);
@@ -61,6 +66,24 @@
 		return $data;
 	}//cleanData
 
+	//dbCheck function still used
+	function dbCheck($data, $field){
+				$sql = "SELECT email FROM user_info WHERE email = '$data'";
+
+				$result = mysqli_query($GLOBALS['db'], $sql);
+				$count = mysqli_num_rows($result);
+
+				if(!$result || mysqli_num_rows($result) != 0){
+					return "This email has already been registered.";
+				}//if
+				else{
+					return "";
+				}//ifelse
+				return "";
+
+	}//function dbCheck
+
+	//UNUSED FUNCTIONS BELOW
 	function validate($data, $field){
 		switch($field){
 			case 'email': {
@@ -102,26 +125,5 @@
 			return "";
 
 	}//validate2
-
-	function dbCheck($data, $field){
-		switch($field){
-			case 'email': {
-				$sql = "SELECT email FROM user_info WHERE email = '$data'";
-
-				$result = mysqli_query($GLOBALS['db'], $sql);
-				$count = mysqli_num_rows($result);
-
-				if(!$result || mysqli_num_rows($result) != 0){
-					return "This email has already been registered.";
-				}//if
-				else{
-					return "";
-				}//ifelse
-				return "";
-			}//case email
-
-
-		}//switch
-	}//function dbCheck
 
 ?>
