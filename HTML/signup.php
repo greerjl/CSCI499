@@ -74,25 +74,30 @@ require_once("./PHP/functions.php");
 	 if($_SERVER['REQUEST_METHOD']=="GET" ){
 		 if($_SESSION["signupRepeatPswdErr"] == 1){ ?>
  				<div class="alert alert-danger">
- 					<strong>Error!</strong> Passwords must match. Enter same password and repeat password.
+ 					<strong>Error!</strong> Passwords must match. Enter the same password twice for verification.
 	 			</div>
 <?php	}//if
+		$_SESSION["signupRepeatPswdErr"] = 0;
+
  		if($_SESSION["signupRepeatEmailErr"] == 1) { ?>
  			<div class="alert alert-danger">
  				<strong>Error!</strong> Email has already been used for an account. Please use a different email.
  			</div>
 <?php } //if
+		$_SESSION["signupRepeatEmailErr"] = 0;
+
  		if($_SESSION["signupRegexErr"] == 1) { ?>
  			<div class="alert alert-danger">
  				<strong>Error!</strong> Passwords must contain a number and be at least 6 characters long.
  			</div>
  <?php	}//if
- if($_SESSION["signupRegexErr"] == 0 && $_SESSION["signupRepeatEmailErr"] == 0 && $_SESSION["signupRepeatPswdErr"] == 0) { ?>
-	 <div class="alert alert-success">
-		 <strong>Congratulations!</strong> You have successfully registered.
-		 You should receive an account activation email shortly. Click on the link in the email to activate your account.
-	 </div>
-<?php	} ?>
+		$_SESSION["signupRegexErr"] = 0;
+ 		if($_SESSION["signupSuccess"] == 1) { ?>
+	 	<div class="alert alert-success">
+		 	<strong>Congratulations!</strong> You have successfully registered.
+		 		You should receive an account activation email shortly. Click on the link in the email to activate your account.
+	 	</div>
+<?php	} $_SESSION["signupSuccess"] = 0; ?>
 				 <div class="content">
 						 <form id="SignUp" class="form-signin" method="POST" action="./PHP/processSignupForm.php">
 						 <h2 class="form-signin-heading"> Sign Up </h2>
