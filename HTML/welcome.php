@@ -46,6 +46,34 @@ if($_SESSION["valid"]==true){?>
           width: 100%;
           height: 100%;
       }
+      .agenda {  }
+
+      /* Dates */
+      .agenda .agenda-date { width: 170px; }
+      .agenda .agenda-date .dayofmonth {
+        width: 40px;
+        font-size: 36px;
+        line-height: 36px;
+        float: left;
+        text-align: right;
+        margin-right: 10px;
+      }
+      .agenda .agenda-date .shortdate {
+        font-size: 0.75em;
+      }
+
+
+      /* Times */
+      .agenda .agenda-time { width: 140px; }
+
+
+      /* Events */
+      .agenda .agenda-events {  }
+      .agenda .agenda-events .agenda-event {  }
+
+      @media (max-width: 767px) {
+
+      }
     </style>
   </head>
   <body>
@@ -181,75 +209,79 @@ if($_SESSION["valid"]==true){?>
  <!-- EVENTS/SCHEDULE -->
        <h2 class="content-subhead">House schedule: </h2>
         <div class="responsive-iframe-container big-container">
-           <p>
-             <?php
-               $group = $_SESSION["gid"];
-               $sql = "SELECT name, time FROM event WHERE event.GID = '$group'";
-               $result = mysqli_query($db, $sql);
 
-               $count = mysqli_num_rows($result);
-               //php end tag here
 
-               if($count == 0){
-                 $emptyMessage = "Your House currently has no upcoming events.";
-                 echo $emptyMessage;
-               }
-               else{
-                 $i = 1;
-                 while ($line = mysqli_fetch_assoc($result)) {
-                     $name = $line['name'];
-                     $time = $line['time'];
-                     echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
-                     $i = $i+1;
-                 }//while
-               }//else
-
-               $y = $_GET['y'] ?  $_GET['y'] : date('Y');
-               $m = $_GET['m'] ?  $_GET['m'] : date('m');
-               //display 5 next and 5 previous years of selected year
-               for ($i=$y-5; $i<=$y+5; $i++){
-                   echo '<a href="index.php?y='.$i.'&m='.$m.'">'.$i.'</a>&nbsp&nbsp;';
-               }
-               echo "<br><br>";
-
-               //months array just like Jan,Feb,Mar,Apr in short format
-               $m_array = array('1'=>'Jan', '2'=>'Feb', '3'=>'Mar', '4'=>'Apr', '5'=>'May', '6'=>'Jun', '7'=>'Jul', '8'=>'Aug', '9'=>'Sep', '10'=>'Oct', '11'=>'Nov', '12'=>'Dec');
-               //display months
-               foreach ($m_array as $key=>$val){
-                   echo '<a href="index.php?y='.$y.'&m='.$key.'">'.$val.'</a>&nbsp&nbsp;';
-               }
-               echo "<br><br>";
-
-               $d_array = array('1'=>31, '2'=>28, '3'=>31, '4'=>30, '5'=>31, '6'=>30, '7'=>31, '8'=>31, '9'=>30, '10'=>31, '11'=>30, '12'=>31);
-               $d_m = ($m==2 && $y%4==0)?29:$d_array[$m];
-               echo '<table><tr><th colspan="7">'.$m_array[$m].'&nbsp'.$y.'</th></tr><tr>';
-               //days array
-               $days_array = array('1'=>'Mon', '2'=>'Tue', '3'=>'Wed', '4'=>'Thu', '5'=>'Fri', '6'=>'Sat', '7'=>'Sun');
-               //display days
-               foreach ($days_array as $key=>$val){
-                   echo '<th>'.$val.'</th>';
-               }
-               echo "</tr></tr>";
-               $date = $y.'-'.$m.'-01';
-               //find start day of the month
-               $startday = array_search(date('D',strtotime($date)), $days_array);
-               //daisplay month dates
-               for($i=0; $i<($d_m+$startday); $i++){
-                   $day = ($i-$startday+1<=9)?'0'.($i-$startday+1):$i-$startday+1;
-                   echo ($i<$startday)?'<td></td>':'<td>'.$day.'</td>';
-                   echo ($i%7==0)?'</tr><tr>':'';
-               }
-               //calculate next & prev month
-               $next_y=(($m+1)>12)?($y+1):$y;
-               $next_m=(($m+1)>12)?1:($m+1);
-               $prev_y=(($m-1)<=0)?($y-1):$y;
-               $prev_m=(($m-1)<=0)?12:($m-1);
-               //daisplay next prev
-               echo '<tr><td><a href="index.php?y='.$prev_y.'&m='.$prev_m.'">Prev</a></td><td></td><td></td><td></td><td></td><td></td><td><a href="index.php?y='.$next_y.'&m='.$next_m.'">Next</a></td></tr>';
-             ?>
        </div>
         <div class="responsive-iframe-container small-container">
-         <iframe src="https://calendar.google.com/calendar/embed?title=HUM&amp;mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=greerjl%40plu.edu&amp;color=%23875509&amp;src=jaymelgreer%40gmail.com&amp;color=%23B1440E&amp;ctz=America%2FLos_Angeles" style="border-width:0" width="550" height="600" frameborder="0" scrolling="no"></iframe>
+          <div class="agenda">
+        <div class="table-responsive">
+            <table class="table table-condensed table-bordered">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Event</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Single event in a single day -->
+                    <tr>
+                        <td class="agenda-date" class="active" rowspan="1">
+                            <div class="dayofmonth">26</div>
+                            <div class="dayofweek">Saturday</div>
+                            <div class="shortdate text-muted">July, 2014</div>
+                        </td>
+                        <td class="agenda-time">
+                            5:30 AM
+                        </td>
+                        <td class="agenda-events">
+                            <div class="agenda-event">
+                                <i class="glyphicon glyphicon-repeat text-muted" title="Repeating event"></i> 
+                                Fishing
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Multiple events in a single day (note the rowspan) -->
+                    <tr>
+                        <td class="agenda-date" class="active" rowspan="3">
+                            <div class="dayofmonth">24</div>
+                            <div class="dayofweek">Thursday</div>
+                            <div class="shortdate text-muted">July, 2014</div>
+                        </td>
+                        <td class="agenda-time">
+                            8:00 - 9:00 AM
+                        </td>
+                        <td class="agenda-events">
+                            <div class="agenda-event">
+                                Doctor's Appointment
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="agenda-time">
+                            10:15 AM - 12:00 PM
+                        </td>
+                        <td class="agenda-events">
+                            <div class="agenda-event">
+                                Meeting with executives
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="agenda-time">
+                            7:00 - 9:00 PM
+                        </td>
+                        <td class="agenda-events">
+                            <div class="agenda-event">
+                                Aria's dance recital
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
        </div>
    </div><!-- content -->
    <?php }//elseif ?>
