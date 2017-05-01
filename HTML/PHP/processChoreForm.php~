@@ -10,7 +10,7 @@ error_reporting(E_ALL);
 
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 			$giD = $_SESSION["gid"];
-			$cTitle = cleanData($_POST['chore']);
+			$cTitle = cleanData($GLOBALS['db'], $_POST['chore']);
 			$titleErr = validate($cTitle, 'chore', $giD);
 			$username = $_POST['choreOwner'];
 			$uidErr = validate($username, 'choreOwner', $giD);
@@ -30,7 +30,7 @@ error_reporting(E_ALL);
 	}//if
 
 	//FUNCTIONS
-	function cleanData($data){
+	function cleanData($db, $data){
 		$data = trim($data);
 		$data = stripslashes($data);
 		$data = htmlspecialchars($data);
