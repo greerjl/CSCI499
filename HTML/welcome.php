@@ -18,6 +18,8 @@ if($_SESSION["valid"]==true){?>
 
   <!-- Bootstrap Core CSS -->
   <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <!--[if lte IE 8]>
         <link rel="stylesheet" href="/combo/1.18.13?/css/layouts/side-menu-old-ie.css">
     <![endif]-->
