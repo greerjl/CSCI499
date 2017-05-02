@@ -221,7 +221,7 @@ if($_SESSION["valid"]==true){?>
                           <tbody>
                           <!-- Single event in a single day -->
                           <tr>
-                          <td class="agenda-date" class="active" rowspan="3">
+                          <td class="agenda-date" class="active" rowspan="1">
                           <div class="dayofmonth">
                             <?php $day ?>
                           </div>
