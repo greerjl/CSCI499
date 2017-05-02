@@ -247,12 +247,13 @@ if($_SESSION["valid"]==true){?>
                     <?php
                     $i = $i+1;
                 }//while
+              }//else
              } elseif($userGID == '0') { ?>
                  <div class="header">
                  <h2>Please create a group in order to view its information.</h2>
                  <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
                  </div><!--header-->
-        <?php }//elseif ?>
+      <?php }//elseif ?>
    </div><!-- content -->
  </div><!--main-->
  </div><!--layout-->
