@@ -222,21 +222,21 @@ if($_SESSION["valid"]==true){?>
                           <tr>
                           <td class="agenda-date" class="active" rowspan="1">
                           <div class="dayofmonth">
-                            <?php $day ?>
+                            <?php echo $day ?>
                           </div>
                           <div class="dayofweek">
-                              <?php $dayOfWeek ?>
+                              <?php echo $dayOfWeek ?>
                           </div>
                           <div class="shortdate text-muted">
-                              <?php $monthYear ?>
+                              <?php echo $monthYear ?>
                           </div>
                           </td>
                           <td class="agenda-time">
-                              <?php $timeEvent ?>
+                              <?php echo $timeEvent ?>
                           </td>
                           <td class="agenda-events">
                           <div class="agenda-event">
-                              <?php $name ?>
+                              <?php echo $name ?>
                           </div>
                       </td>
                     </tr>
