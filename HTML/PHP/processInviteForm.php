@@ -1,8 +1,8 @@
 <?php
 	include '../../../dbconnect.php';
 	require("functions.php");
-	//ini_set("display_errors", true);
-	//error_reporting(E_ALL);
+	ini_set("display_errors", true);
+	error_reporting(E_ALL);
 
 	$email = $username = "";
 	$sql = "";
@@ -21,17 +21,20 @@
 		$email = htmlspecialchars($email);
 			//$emailErr = validate($email, 'email');
 			if(!empty($email) && !empty($username)){
-				if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+				if(filter_var($email, FILTER_VALIDATE_EMAIL) == false){
+					session_start();
 				 //echo "emailErr = ".$emailErr."\n";
 				 $_SESSION["inviteMemErr"]= 1;
 				 redirect("../houseSettings.php");
 				}else{
+					session_start();
 					include 'sendGroupInvite.php';
 					$_SESSION["inviteMemSuc"] = 1;
 					redirect("../houseSettings.php");
 				}//inner ifelse
 			}else{
-				$emptyEmailError = true;
+				session_start();
+				$_SESSION["emptyEmailErr"] = 1;
 			}//outer ifelse
 	}//if
 

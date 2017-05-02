@@ -1,9 +1,6 @@
 <?php session_start();
 include '../../dbconnect.php';
 require_once("./PHP/functions.php");
-//include './PHP/processRoomForm.php';
-//include 'processGroupNameFrom.php';
-//include 'processInviteMemForm.php';
 
 if($_SESSION["valid"]==true){?>
 <!DOCTYPE html>
@@ -14,7 +11,7 @@ if($_SESSION["valid"]==true){?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Capstone" >
+    <meta name="author" content="Server" >
 
     <title>House Settings</title>
     <link rel="icon" href="../images/logo.png">
@@ -136,12 +133,17 @@ if($_SESSION["valid"]==true){?>
             <strong>Error!</strong> User was unable to be invited. Check for valid email.
           </div>
         <?php $_SESSION["inviteMemErr"] = 0;
-      }elseif($_SESSION["inviteMemSuc"] == 1){ ?>
+        }elseif($_SESSION["inviteMemSuc"] == 1){ ?>
 <!--USER SUCCESSFULLY INVITED -->
           <div class="alert alert-success">
             <strong>Success!</strong> User succesfully invited!
           </div>
-        <?php  $_SESSION["inviteMemSuc"] = 0; }//elseif ?>
+        <?php  $_SESSION["inviteMemSuc"] = 0; }//elseif
+          elseif($_SESSION["emptyEmailErr"] == 1){?>
+            <div class="alert alert-danger">
+              <strong>Error!</strong> Please enter a valid email address.
+            </div>
+          <?php $_SESSION["emptyEmailErr"] = 0;}?>
 
         <div class="container">
 	         <div class="row">
@@ -227,17 +229,8 @@ if($_SESSION["valid"]==true){?>
                     <input type="submit" name="submit" class="txt2" value="Send invite"/>
                 </form>
 
-                <!--  <div class="form">
-                    <form action="./PHP/processInviteForm.php" method="POST" id="inviteForm" name="inviteForm">
-                      <input type="text" id="idtxt" required="" placeholder="Add Member" value="" name="newMem" class="txt"/>
-                      <br><br>
-                      <input type="submit" value="Submit" name="submit" class="txt2"/>
-                    </form>
-                  </div>
-               </div>
-             -->
-            </div><!-- col-md-4 -->
-	        </div><!-- row -->
+            </div><!-- form_main -->
+	        </div><!-- col-md-4 -->
         </div><!-- container -->
         <?php }//else ?>
 

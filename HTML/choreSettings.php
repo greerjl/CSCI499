@@ -182,11 +182,11 @@ if($_SESSION["valid"]==true){?>
                   </div>
                </div>
             </div><!-- col-md-4 -->
-            
+
           <!-- CHORES LIST -->
           <div class="col-md-4">
 		       <div class="form_main">
-		       <h4 class="heading"><strong>Chore List</strong> <span></span></h4>
+		       <h4 class="heading"><strong>Chore List</strong><small>- bolded chores are yours.</small><span></span></h4>
 		       <p>
 		         <table>
 		             <?php
@@ -194,9 +194,9 @@ if($_SESSION["valid"]==true){?>
 		               $user = $_SESSION["login_user"];
 		               $sql = "SELECT title, UID FROM chore WHERE GID = $gid";
 		               $result = mysqli_query($db, $sql);
-		
+
 		               $count = mysqli_num_rows($result);
-		
+
 		               if($count == 0){
 		                 $emptyMessage = "<tr><td>Your group has no chores yet.</td></tr>";
 		                 echo $emptyMessage;
@@ -209,8 +209,8 @@ if($_SESSION["valid"]==true){?>
 		                 			echo "\t\t<tr><td><b>$chore</b></td></tr>";//as bold
 		                 		}
 		                 		else{
-										echo "\t\t<tr><td>$chore</td></tr>";		                 		
-		                 		}	
+										echo "\t\t<tr><td>$chore</td></tr>";
+		                 		}
 		                 }//while
 		               }//else
 		             ?>
@@ -218,7 +218,7 @@ if($_SESSION["valid"]==true){?>
 		       </p>
 		       </div><!-- chores list form_main -->
 	       </div><!-- col-md-4 -->
-	       
+
 	        </div><!-- row -->
         </div><!-- container -->
 

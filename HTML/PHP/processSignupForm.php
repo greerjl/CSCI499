@@ -112,6 +112,7 @@
 			}//case email
 
 			//NOT USED RIGHT NOW
+			/*
 			case 'password': {
 				if(!empty($data)){
 					if(!preg_match('/^(?=.*\d)(?=.*[a-zA-Z])(?!.*[\W_\x7B-\xFF]).{6,15}$/', $data)){
@@ -122,31 +123,18 @@
 				}//ifelse
 				return "";
 			}//case pswd
+			*/
 
 			default: break;
 
 		}//switch statement
 	}//validate
 
-	//data = rpswd, data2 = pswd
-	//NOT USED RIGHT NOW
-	function validate2($data, $data2){
-			if(empty($data)){
-				return "Please re-enter password.";
-			}else{
-				if(strcmp($data, $data2) !== 0){
-					return "Passwords must match.";
-				}//if
-			}//ifelse
-			return "";
-
-	}//validate2
-
 	function sendMail($email, $username, $accesskey, $Verified){
 		date_default_timezone_set('America/Los_Angeles');
 
-		//require '/var/app/current/DocRoot/CSCI499/PHPMailer/PHPMailerAutoload.php';
-		require '/var/www/html/CSCI499/PHPMailer/PHPMailerAutoload.php';
+		require '/var/app/current/DocRoot/CSCI499/PHPMailer/PHPMailerAutoload.php';
+		//require '/var/www/html/CSCI499/PHPMailer/PHPMailerAutoload.php';
 
 		//include '../signup.php';
 

@@ -186,11 +186,11 @@ if($_SESSION["valid"]==true){?>
           <!-- CHORES LIST -->
           <div class="col-md-4">
 		       <div class="form_main">
-		       <h4 class="heading"><strong>Chore List</strong> <span></span></h4>
+		       <h4 class="heading"><strong>Chore List</strong>Your chores are in bold<span></span></h4>
 		       <p>
 		         <table>
 		             <?php
-		             	$gid = $_SESSION["GID"];
+		             	$gid = $_SESSION["gid"];
 		               $user = $_SESSION["login_user"];
 		               $sql = "SELECT title, UID FROM chore WHERE GID = $gid";
 		               $result = mysqli_query($db, $sql);

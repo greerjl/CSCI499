@@ -3,13 +3,15 @@
 <?php session_start();
 include '../../dbconnect.php';
 require_once("./PHP/functions.php");
+//ini_set("display_errors", true);
+//error_reporting(E_ALL);
 if($_SESSION["valid"]==true){?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Capstone" >
+    <meta name="author" content="Server" >
     <link rel="icon" href="../images/logo.png">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -124,6 +126,7 @@ if($_SESSION["valid"]==true){?>
                    <div class="form">
                      <form action="./PHP/processTaskForm.php" method="POST" id="taskForm" name="taskForm">
                        <input type="text" id="idtxt" required="" placeholder="Add a Task" value="" name="task" class="txt">
+                       <label class="">Date to be done by: </label>
                        <input type="date" required="" value="" name="taskDate" class="date">
                        <!--input type="button" id="idbtn" value="Add Task" /-->
                        <br><br>
@@ -134,6 +137,46 @@ if($_SESSION["valid"]==true){?>
 
 
             </div><!-- col-md-4 -->
+
+	            <div class="col-md-4">
+			       <div class="form_main">
+			       <h4 class="heading"><strong>Task List</strong><small>- bolded tasks are due today.<span></span></h4>
+			       <p>
+			         <table>
+			             <?php
+			             	$gid = $_SESSION["gid"];
+			               $sql = "SELECT name, time FROM task WHERE GID = $gid";
+			               $result = mysqli_query($db, $sql);
+
+			               $count = mysqli_num_rows($result);
+
+			               if($count == 0){
+			                 $emptyMessage = "<tr><td>Your group has no tasks yet.</td></tr>";
+			                 echo $emptyMessage;
+			               }
+			               else{
+			                 while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+			                 		$task = $line['name'];
+			                 		$date = $line['time'];
+
+										$format = 'm-d-Y';
+
+			                 		if(date($format) == date($format, strtotime($date))) {
+			                 			echo "\t\t<tr><td style=\"font-size: 14px;\"><b>$task</b></td><td style=\"font-size: 14px;\"><b>"."---by---"."</b></td>
+                              <td style=\"font-size: 14px;\"><b>".date($format, strtotime($date))."</b></td></tr>";//as bold
+			                 		}
+			                 		else{
+											      echo "\t\t<tr><td style=\"font-size: 14px;\">$task</td><td style=\"font-size: 14px;\">"."---by---"."</td>
+                              <td style=\"font-size: 14px;\">".date($format, strtotime($date))."</td></tr>";
+			                 		}//ifelse
+			                 }//while
+			               }//else
+			             ?>
+			       </table>
+			       </p>
+			       </div><!-- task list form_main -->
+		       </div><!-- col-md-4 -->
+
 	        </div><!-- row -->
         </div><!-- container -->
 

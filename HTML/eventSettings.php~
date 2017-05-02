@@ -3,8 +3,8 @@
 <?php session_start();
 require("../../dbconnect.php");
 require_once("./PHP/functions.php");
-ini_set("display_errors", true);
-error_reporting(E_ALL);
+//ini_set("display_errors", true);
+//error_reporting(E_ALL);
 if($_SESSION["valid"]==true){?>
 <head>
 
@@ -12,7 +12,7 @@ if($_SESSION["valid"]==true){?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Capstone" >
+    <meta name="author" content="Server" >
 
     <title>Event Settings</title>
     <link rel="icon" href="../images/logo.png">
@@ -180,6 +180,84 @@ if($_SESSION["valid"]==true){?>
 		            </div>
 
             </div><!-- col-md-4 -->
+            
+				<div class="col-md-4">
+			       <div class="form_main">
+			       	 <h4 class="heading"><strong>Upcoming Events</strong> <span></span></h4>
+				       <p>
+				       <div id="" style="overflow-y: scroll; height:100px">
+				         <table>
+				             <?php
+				             	$gid = $_SESSION["gid"];
+				               $sql = "SELECT name, time FROM event WHERE GID = $gid";
+				               $result = mysqli_query($db, $sql);
+				
+				               $count = mysqli_num_rows($result);
+				
+				               if($count == 0){
+				                 $emptyMessage = "<tr><td>Your group does not have any upcoming events.</td></tr>";
+				                 echo $emptyMessage;
+				               }
+				               else{
+				                 while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+				                 		$event = $line['name'];
+				                 		$date = $line['time'];
+											
+											$formatDate = 'm-d-Y';
+											$formatAll = 'm-d-Y H:i:s';
+											
+				                 		if(date($format) == date($formatDate, strtotime($date))) {
+				                 			echo "\t\t<tr><td><b>$event</b></td><td><b>"."---on---"."</b></td><td><b>".date($formatAll, strtotime($date))."</b></td></tr>";//as bold
+				                 		}
+				                 		else{
+												echo "\t\t<tr><td>$event</td><td>"."---on---"."</td><td>".date($formatAll, strtotime($date))."</td></tr>";		                 		
+				                 		}	
+				                 }//while
+				               }//else
+				             ?>
+				       </table>
+				       </div><!--scroll box-->
+				       </p>       
+			       </div><!-- task list form_main -->
+			       <div class="form_main">
+			       	 <h4 class="heading"><strong>Laundry Reservations</strong> <span></span></h4>
+				       <p>
+				       <div id="" style="overflow-y: scroll; height:100px">
+				         <table>
+				             <?php
+				             	$gid = $_SESSION["gid"];
+				               $sql = "SELECT username, time FROM laundry, user_info WHERE GID = $gid AND user_info.UID = laundry.UID";
+				               $result = mysqli_query($db, $sql);
+				
+				               $count = mysqli_num_rows($result);
+				
+				               if($count == 0){
+				                 $emptyMessage = "<tr><td>Laundry machines are free for the foreseeable future.</td></tr>";
+				                 echo $emptyMessage;
+				               }
+				               else{
+				                 while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+				                 		$user = $line['username'];
+				                 		$date = $line['time'];
+											
+											$formatDate = 'm-d-Y';
+											$formatAll = 'm-d-Y H:i:s';
+											
+				                 		if(date($formatDate) == date($formatDate, strtotime($date))) {
+				                 			echo "\t\t<tr><td><b>$user</b></td><td><b>"."---on---"."</b></td><td><b>".date($formatAll, strtotime($date))."</b></td></tr>";//as bold
+				                 		}
+				                 		else{
+												echo "\t\t<tr><td>$user</td><td>"."---on---"."</td><td>".date($formatAll, strtotime($date))."</td></tr>";		                 		
+				                 		}	
+				                 }//while
+				               }//else
+				             ?>
+				       </table>
+				       </div><!--scroll box-->
+				       </p>       
+			       </div><!-- task list form_main -->
+		       </div><!-- col-md-4 -->            
+            
 	        </div><!-- row -->
         </div><!-- container -->
 
