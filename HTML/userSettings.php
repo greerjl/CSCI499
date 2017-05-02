@@ -184,7 +184,6 @@ if($_SESSION["valid"]==true){?>
                        		<input type="password" required="" placeholder="Repeat New Password" value="" id="rnewpass" name="rnewpass" class="txt" />
 							  </div>
 							  
-							  <br>
                        <input type="submit" value="Submit" name="submit" class="txt2"/>
                      </form>
                   </div>
