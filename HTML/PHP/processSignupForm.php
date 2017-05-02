@@ -35,7 +35,9 @@
 				session_start();
 				$_SESSION["signupSuccess"] = 1;
 				//include mailer script to send user an email for verification
+echo "right here before email<br/>";
 				include './sendUserConfirmMail.php';
+echo "right here after email<br/>";
 				//redirect to sign up and display success message
 				redirect("../signup.php");
 			}//result if

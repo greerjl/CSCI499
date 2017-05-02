@@ -134,7 +134,7 @@ require_once("./PHP/functions.php");
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 
-            Don't have an account? <a href="./signup.php"> Sign up </a>
+            Forgot Password? <a href="./forgotPassword.php"> Click here. </a><br/>
 	        </form>
           <?php }//request method if ?>
       </div><!-- /.content -->
