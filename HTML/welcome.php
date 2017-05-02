@@ -191,35 +191,9 @@ if($_SESSION["valid"]==true){?>
                 while ($line = mysqli_fetch_assoc($result)) {
                     $name = $line['name'];
                     $time = $line['time'];
-                    date_parse($time); ?>
 
-                    <div class="agenda">
-                      <div class="table-responsive">
-                        <table class="table table-condensed table-bordered">
-                          <thead>
-                            <tr>
-                              <th> Date </th>
-                              <th> Time </th>
-                              <th> Event </th>
-                            <tr>
-                          </thead>
-                          <tbody>
-                          <tr>
-                            <td class="agenda-date" class="active" rowspan="1">
-                              <div class ="dayofmonth"> <?php ['day'] ?></div>
-                              <div class="shortdate text-muted"> <?php ['month'] ?> / <?php ['year'] ?></div>
-                            </td>
-                            <td class="agenda-time"><?php ['hour'] ?> : <?php['minute'] ?></td>
-                              <div class="agenda-event"> <?php $name ?> </div>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                  <?php
-                    //echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
-                    $i = $i+1; 
+                    echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
+                    $i = $i+1;
                 }//while
               }//else
 
