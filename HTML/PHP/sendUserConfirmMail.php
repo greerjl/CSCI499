@@ -1,7 +1,10 @@
 <?php
-echo "at beginning of file<br/>";
+ini_set("display_errors", true);
+error_reporting(E_ALL);
 
 date_default_timezone_set('America/Los_Angeles');
+
+echo "before require<br/>";
 //require '/var/app/current/DocRoot/CSCI499/PHPMailer/PHPMailerAutoload.php';
 require '/PHPMailer/PHPMailerAutoload.php';
 
