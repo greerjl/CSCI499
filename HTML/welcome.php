@@ -199,9 +199,12 @@ if($_SESSION["valid"]==true){?>
                 while ($line = mysqli_fetch_assoc($result)) {
                     $name = $line['name'];
                     $time = $line['time'];
-                    echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
+
+                    //echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
                     $phpdate = strtotime( $time );
-                    echo $myFormatForView = date("m/d/y g:i A", $phpdate);
+                    echo $day = date("d", $phpdate);
+                    echo $monthYear = date("m/y", $phpdate);
+                    echo $timeEvent = date("g:i A", $phpdate);
 
                     $i = $i+1;
                 }//while
