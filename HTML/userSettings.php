@@ -175,10 +175,14 @@ if($_SESSION["valid"]==true){?>
                    <div class="form">
                      <form action="./PHP/processUserSettings.php" method="POST" id="passwordForm" name="passwordForm">
                        <input type="password" required="" placeholder="Current Password" value="" name="currentpass" class="txt"/>
-                       <input type="password" required="" name="newpass" id="newpass" value="" placeholder="New Password" class="txt" />
-                       <input type="button" id="showPassword1" value="Show" class="button" />
-                       <input type="password" required="" placeholder="Repeat New Password" value="" id="rnewpass" name="rnewpass" class="txt"/>
-							  <input type="button" id="showPassword2" value="Show" class="button" />
+                       <input type="button" id="showPassword1" value="Show" class="txt4" style="float: right" />
+                       <div style="overflow: hidden; padding-right: 1em;">
+                       		<input type="password" required="" name="newpass" id="newpass" value="" placeholder="New Password" class="txt" />
+							  </div>                       
+                       <input type="button" id="showPassword2" value="Show" class="txt4" style="float: right" />
+                       <div style="overflow: hidden; padding-right: 1em;">
+                       		<input type="password" required="" placeholder="Repeat New Password" value="" id="rnewpass" name="rnewpass" class="txt" />
+							  </div>
 							  
 							  <br>
                        <input type="submit" value="Submit" name="submit" class="txt2"/>
