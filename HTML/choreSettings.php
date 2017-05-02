@@ -10,7 +10,7 @@ if($_SESSION["valid"]==true){?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Capstone" >
+    <meta name="author" content="Server" >
 
     <title>Chore Settings</title>
     <link rel="icon" href="../images/logo.png">
@@ -181,35 +181,44 @@ if($_SESSION["valid"]==true){?>
                     </form>
                   </div>
                </div>
-               
-	       <!-- CHORES -->
-	       <h2 class="content-subhead">Your Chore: </h2>
-	       <p>
-	         <table>
-	             <?php
-	               $user = $_SESSION["login_user"];
-	               $sql = "SELECT title FROM user_info, chore WHERE user_info.UID = '$user' AND user_info.UID = chore.UID";
-	               $result = mysqli_query($db, $sql);
-	
-	               $count = mysqli_num_rows($result);
-	               //php end tag here
-	
-	               if($count == 0){
-	                 $emptyMessage = "<tr><td>You currently have no chores.</td></tr>";
-	                 echo $emptyMessage;
-	               }
-	               else{
-	                 while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-	                     foreach ($line as $col_value) {
-	                         echo "\t\t<tr><td>$col_value</td></tr>";
-	                     }//foreach
-	                 }//while
-	               }//else
-	             ?>
-	       </table>
-	       </p>
-
             </div><!-- col-md-4 -->
+            
+          <!-- CHORES LIST -->
+          <div class="col-md-4">
+		       <div class="form_main">
+		       <h4 class="heading"><strong>Chore List</strong> <span></span></h4>
+		       <p>
+		         <table>
+		             <?php
+		             	$gid = $_SESSION["gid"];
+		               $user = $_SESSION["login_user"];
+		               $sql = "SELECT title, UID FROM chore WHERE GID = $gid";
+		               $result = mysqli_query($db, $sql);
+		
+		               $count = mysqli_num_rows($result);
+		
+		               if($count == 0){
+		                 $emptyMessage = "<tr><td>Your group has no chores yet.</td></tr>";
+		                 echo $emptyMessage;
+		               }
+		               else{
+		                 while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+		                 		$chore = $line['title'];
+		                 		$cUID = $line['UID'];
+		                 		if($cUID == $user){
+		                 			echo "\t\t<tr><td><b>$chore</b></td></tr>";//as bold
+		                 		}
+		                 		else{
+										echo "\t\t<tr><td>$chore</td></tr>";		                 		
+		                 		}	
+		                 }//while
+		               }//else
+		             ?>
+		       </table>
+		       </p>
+		       </div><!-- chores list form_main -->
+	       </div><!-- col-md-4 -->
+	       
 	        </div><!-- row -->
         </div><!-- container -->
 
