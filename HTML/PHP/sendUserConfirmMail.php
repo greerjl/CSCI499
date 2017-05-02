@@ -1,9 +1,15 @@
 <?php
+echo "at beginning of file<br/>";
+
 date_default_timezone_set('America/Los_Angeles');
-require '/var/app/current/DocRoot/CSCI499/PHPMailer/PHPMailerAutoload.php';
-//require '/PHPMailer/PHPMailerAutoload.php';
+//require '/var/app/current/DocRoot/CSCI499/PHPMailer/PHPMailerAutoload.php';
+require '/PHPMailer/PHPMailerAutoload.php';
+
+echo "after require PHPMailerAutoload<br/>";
 
 include './processSignupForm.php';
+
+echo "after include processSignupForm for variables<br/>";
 //include '../signup.php';
 
 $mail = new PHPMailer;
@@ -50,10 +56,11 @@ $mail->AltBody = "Hi '.$username.', Thanks for signing up for House Utilities Ma
     excited to have you on board! To get started using HUM, please confirm your account below:";
     //http://www.houseutil.com/HTML/login.php?email='.$email.'&hash='.$accesskey.'verified=1;"
 
+echo "before mail->send()<br/>";
     if(!$mail->send()) {
       //echo 'Message was not sent.';
       echo 'Mailer error: ' . $mail->ErrorInfo;
     } else {
-      //echo 'Message has been sent.';
-    }
+      echo "Message has been sent.";
+    }//ifelse
 ?>

@@ -32,6 +32,7 @@ require_once("./PHP/functions.php");
 
 	</head>
 
+<body>
 	<div id="layout">
     <div id="main">
 
@@ -130,7 +131,6 @@ require_once("./PHP/functions.php");
 						 		placeholder="Re-Enter Password" required/>
 
 						 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
-						 Already have an account? <a href="./login.php"> Log in </a>
 	 			 	</form>
 	<?php }//request method if ?>
 
