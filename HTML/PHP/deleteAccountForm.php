@@ -13,7 +13,8 @@
     $sql = "DELETE FROM user_info WHERE UID = '$uid';";
     $result = mysqli_query($db, $sql);
     if($result){
-		logout();    
+		logout();
+		redirect("../userSettings.php");    
     }//if
     else{
 	    $_SESSION["deleteErr"] = 1;
