@@ -86,7 +86,7 @@ if($_SESSION["valid"]==true){?>
         </div>
         <!-- /.row -->
 
-      <?php //CHANGE PASSWORD FORM
+      <?php
       if($_SERVER['REQUEST_METHOD']=="GET"){
         if($_SESSION["successPwChange"] == 1){?>
           <div class="alert alert-success">
@@ -102,26 +102,30 @@ if($_SESSION["valid"]==true){?>
           <div class="alert alert-danger">
       			<strong>Error!</strong> Please enter your new password twice.
       		</div>
-        <?php $_SESSION["emptyRPwErr"] = 0; }
+        <?php $_SESSION["emptyRPwErr"] = 0;}
         elseif($_SESSION["mismatchPwErr"] == 1){?>
           <div class="alert alert-danger">
       			<strong>Error!</strong> Make sure you entered the same password twice.
       		</div>
-        <?php $_SESSION["mismatchPwErr"] = 0; }
+        <?php $_SESSION["mismatchPwErr"] = 0;}
         elseif($_SESSION["invalidPwErr"] == 1){?>
           <div class="alert alert-danger">
       			<strong>Error!</strong> Your password must contain a number and be at least 6 characters long.
       		</div>
-        <?php $_SESSION["invalidPwErr"] = 0; }
+        <?php $_SESSION["invalidPwErr"] = 0;}
+        elseif($_SESSION["incorrectOldPw"] == 1){?>
+          <div class="alert alert-danger">
+      			<strong>Error!</strong> Your current password is incorrect.
+      		</div>
+        <?php $_SESSION["incorrectOldPw"] = 0;}
         elseif($_SESSION["internalErr"] == 1){?>
           <div class="alert alert-danger">
       			<strong>Error!</strong> We've encountered a problem. Our bad.
       		</div>
-        <?php $_SESSION["internalErr"] = 0; }
-        //CHANGE USERNAME FORM
-        if($_SESSION["changeUnameSuc"] == 1){?>
+        <?php $_SESSION["internalErr"] = 0;}
+        elseif($_SESSION["changeUnameSuc"] == 1){?>
           <div class="alert alert-success">
-      			<strong>Success!</strong> Your password has been changed.
+      			<strong>Success!</strong> Your username has been changed.
       		</div>
         <?php $_SESSION["changeUnameSuc"] = 0;}
         elseif($_SESSION["usernameErr"] == 1){?>
@@ -143,9 +147,9 @@ if($_SESSION["valid"]==true){?>
                    <h4 class="heading"><strong>Change Password</strong> <span></span></h4>
                    <div class="form">
                      <form action="./PHP/processUserSettings.php" method="POST" id="passwordForm" name="passwordForm">
-                       <input type="text" required="" placeholder="Current Password" value="" name="currentpass" class="txt"/>
-                       <input type="text" required="" placeholder="New Password" value="" name="newpass" class="txt"/>
-                       <input type="text" required="" placeholder="Repeat New Password" value="" name="rnewpass" class="txt"/>
+                       <input type="password" required="" placeholder="Current Password" value="" name="currentpass" class="txt"/>
+                       <input type="password" required="" placeholder="New Password" value="" name="newpass" class="txt"/>
+                       <input type="password" required="" placeholder="Repeat New Password" value="" name="rnewpass" class="txt"/>
 
                        <input type="submit" value="Submit" name="submit" class="txt2"/>
                      </form>
@@ -195,12 +199,17 @@ if($_SESSION["valid"]==true){?>
                   </div><!--form-->
                  </div><!--form_main-->
             </div><!-- col-md-4 -->
+            <div class="col-md-4">
+
+            </div>
           </div><!--row-->
         </div><!--container-->
 
         <hr>
 
-        <?php }//else ?>
+        <?php }//else gid != 0
+
+      }//if Request = GET ?>
 
       <ul class="nav pull-right scroll-top">
         <li><a href="#" title="Scroll to top"><i class="glyphicon glyphicon-chevron-up"></i></a></li>
@@ -241,7 +250,7 @@ if($_SESSION["valid"]==true){?>
 
 </html>
 <?php
-}//if
+}//if validated
 else{
   redirect("./login.php");
 }//else?>
