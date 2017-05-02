@@ -5,8 +5,8 @@ error_reporting(E_ALL);
 date_default_timezone_set('America/Los_Angeles');
 
 echo "before require<br/>";
-//require '/var/app/current/DocRoot/CSCI499/PHPMailer/PHPMailerAutoload.php';
-require '/PHPMailer/PHPMailerAutoload.php';
+require '/var/app/current/DocRoot/CSCI499/PHPMailer/PHPMailerAutoload.php';
+//require '/PHPMailer/PHPMailerAutoload.php';
 
 echo "after require PHPMailerAutoload<br/>";
 
