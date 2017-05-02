@@ -234,41 +234,43 @@ if($_SESSION["valid"]==true){?>
                     $timeEvent = date("g:i A", $phpdate);
                     $tempDate = date("y-m-d", $phpdate);
                     $dayOfWeek = date('l', strtotime( $tempDate)); ?>
-                    <div class="agenda">
-                      <div class="table-responsive">
-                        <table class="table table-condensed table-bordered">
-                          <thead>
+                    <div id="" style="overflow-y: scroll; height:100px">
+                      <div class="agenda">
+                        <div class="table-responsive">
+                          <table class="table table-condensed table-bordered">
+                            <thead>
+                              <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Event</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <!-- Single event in a single day -->
                             <tr>
-                              <th>Date</th>
-                              <th>Time</th>
-                              <th>Event</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                          <!-- Single event in a single day -->
-                          <tr>
-                          <td class="agenda-date" class="active" rowspan="1">
-                          <div class="dayofmonth">
-                            <?php echo $day; ?>
-                          </div>
-                          <div class="dayofweek">
-                              <?php echo $dayOfWeek; ?>
-                          </div>
-                          <div class="shortdate text-muted">
-                              <?php echo $monthYear; ?>
-                          </div>
-                          </td>
-                          <td class="agenda-time">
-                              <?php echo $timeEvent; ?>
-                          </td>
-                          <td class="agenda-events">
-                          <div class="agenda-event">
-                              <?php echo $name; ?>
-                          </div>
-                      </td>
-                    </tr>
-                  <thead>
-                </table>
+                            <td class="agenda-date" class="active" rowspan="1">
+                            <div class="dayofmonth">
+                              <?php echo $day; ?>
+                            </div>
+                            <div class="dayofweek">
+                                <?php echo $dayOfWeek; ?>
+                            </div>
+                            <div class="shortdate text-muted">
+                                <?php echo $monthYear; ?>
+                            </div>
+                            </td>
+                            <td class="agenda-time">
+                                <?php echo $timeEvent; ?>
+                            </td>
+                            <td class="agenda-events">
+                            <div class="agenda-event">
+                                <?php echo $name; ?>
+                            </div>
+                        </td>
+                      </tr>
+                    <thead>
+                  </table>
+                </div>
               </div>
             </div>
                     <?php
@@ -296,10 +298,6 @@ if($_SESSION["valid"]==true){?>
          <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
      </div>
     </div>
-
-    <ul class="nav pull-right scroll-top">
-     <li><a href="#" title="Scroll to top"><i class="glyphicon glyphicon-chevron-up"></i></a></li>
-    </ul>
 
     <div class="modal" id="myModal" role="dialog">
      <div class="modal-dialog">
