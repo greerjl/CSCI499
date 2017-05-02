@@ -219,7 +219,7 @@ if($_SESSION["valid"]==true){?>
                   </div>
                   <?php
                     //echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
-                    $i = $i+1; ?
+                    $i = $i+1; 
                 }//while
               }//else
 
