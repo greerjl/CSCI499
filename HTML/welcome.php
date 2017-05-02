@@ -222,7 +222,7 @@ if($_SESSION["valid"]==true){?>
                 echo $emptyMessage;
               }
               else{
-              ?>  <div id="" style="overflow-y: scroll; height:100px">
+              ?>  <div id="" style="overflow: scroll; height:100px">
                 <?php
                 $i = 1;
                 while ($line = mysqli_fetch_assoc($result)) {
