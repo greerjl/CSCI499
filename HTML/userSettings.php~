@@ -137,12 +137,7 @@ if($_SESSION["valid"]==true){?>
           <div class="alert alert-danger">
       			<strong>Error!</strong> Your username failed to update.
       		</div>
-        <?php $_SESSION["emptyUsernameErr"] = 0;}
-        elseif($_SESSION["deleteErr"] == 1){?>
-          <div class="alert alert-danger">
-      			<strong>Error!</strong> System failed to remove your account, please try again later.
-      		</div>
-        <?php $_SESSION["deleteErr"] = 0;}?>
+        <?php $_SESSION["emptyUsernameErr"] = 0;}?>
 
         <div class="container">
 	         <div class="row">
