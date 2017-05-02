@@ -190,7 +190,7 @@ if($_SESSION["valid"]==true){?>
                 $i = 1;
                 while ($line = mysqli_fetch_assoc($result)) {
                     $name = $line['name'];
-                    $time = $line['time'];
+                    $time = $line['time']; ?>
                     <div class="agenda">
                       <div class="table-responsive">
                         <table class="table table-condensed table-bordered">
@@ -204,19 +204,19 @@ if($_SESSION["valid"]==true){?>
                           <tbody>
                           <tr>
                             <td class="agenda-date" class="active" rowspan="1">
-                              date_parse($time);
-                              <div class ="dayofmonth"> ['day'] </div>
-                              <div class="shortdate text-muted"> ['month']/['year']</div>
+                            <?php  date_parse($time); ?>
+                              <div class ="dayofmonth"> <?php ['day'] ?></div>
+                              <div class="shortdate text-muted"> <?php ['month']/['year'] ?></div>
                             </td>
-                            <td class="agenda-time"> ['hour']:['minute']</td>
-                              <div class="agenda-event"> $name </div>
+                            <td class="agenda-time"><?php ['hour']?>:<?php['minute'] ?></td>
+                              <div class="agenda-event"><?php $name ?></div>
                             </td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
                   </div>
-
+                  <?php
                     //echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
                     $i = $i+1;
                 }//while
