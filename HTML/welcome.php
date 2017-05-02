@@ -200,7 +200,7 @@ if($_SESSION["valid"]==true){?>
                     $name = $line['name'];
                     $time = $line['time'];
                     echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
-                    echo date("l M j, Y",$time['timep']);
+                    echo date("l M j, Y",$time['time']);
                     $i = $i+1;
                 }//while
               }//else
