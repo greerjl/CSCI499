@@ -205,7 +205,7 @@ if($_SESSION["valid"]==true){?>
                     $day = date("d", $phpdate);
                     $monthYear = date("m/y", $phpdate);
                     $timeEvent = date("g:i A", $phpdate);
-                    $tempDate = date("y-m-d");
+                    $tempDate = date("y-m-d", $phpdate);
                     echo date('l', strtotime( $tempDate));
 
                     $i = $i+1;
