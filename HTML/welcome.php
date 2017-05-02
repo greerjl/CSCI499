@@ -200,7 +200,7 @@ if($_SESSION["valid"]==true){?>
                     $name = $line['name'];
                     $time = $line['time'];
                     echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
-                    echo $phpdate = strtotime( $time );
+                    $phpdate = strtotime( $time );
                     echo $myFormatForView = date("m/d/y g:i A", $phpdate);
 
                     $i = $i+1;
