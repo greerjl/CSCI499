@@ -5,7 +5,7 @@ date_default_timezone_set('America/Los_Angeles');
 ini_set("display_errors", true);
 error_reporting(E_ALL);
 //require '/var/app/current/DocRoot/CSCI499/PHPMailer/PHPMailerAutoload.php';
-require '/var/www/html/CSCI499/PHPMailer/PHPMailerAutoload.php';
+//require '/var/www/html/CSCI499/PHPMailer/PHPMailerAutoload.php';
 //include './processInviteForm.php';
 
 $mail = new PHPMailer;
