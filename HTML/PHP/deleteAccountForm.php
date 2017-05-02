@@ -17,11 +17,13 @@
     }//if
     else{
 	    $_SESSION["deleteErr"] = 1;
-	    redirect("../userSettings.php");
+	    echo "   inner result err   ";
+	    //redirect("../userSettings.php");
 	 }//else
   }//if
   else{
 	    $_SESSION["deleteErr"] = 1;
-	    redirect("../userSettings.php");
+	    echo "   outer result err   ";
+	    //redirect("../userSettings.php");
 	}//else
 ?>

@@ -6,7 +6,9 @@
   $uid = $_SESSION["login_user"];
   $sql = "UPDATE user_info SET GID='0' WHERE UID='$uid';";
   $result = mysqli_query($db, $sql);
-  if($result){
+  $sql = "UPDATE chore SET UID='0' WHERE UID='$uid';";
+  $result2 = mysqli_query($db, $sql);
+  if($result && $result2){
     $_SESSION["gid"] = 0;
     $sql = "DELETE FROM user_info WHERE UID = '$uid'";
     $result = mysqli_query($db, $sql);
