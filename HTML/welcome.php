@@ -184,15 +184,42 @@ if($_SESSION["valid"]==true){?>
  <!-- EVENTS/SCHEDULE -->
        <h2 class="content-subhead">House schedule: </h2>
         <div class="responsive-iframe-container big-container">
+          <p>
+            <?php
+              $group = $_SESSION["gid"];
+              $sql = "SELECT name, time FROM event WHERE event.GID = '$group'";
+              $result = mysqli_query($db, $sql);
 
+              $count = mysqli_num_rows($result);
+              //php end tag here
+
+              if($count == 0){
+                $emptyMessage = "Your House currently has no upcoming events.";
+                echo $emptyMessage;
+              }
+              else{
+                $i = 1;
+                while ($line = mysqli_fetch_assoc($result)) {
+                    $name = $line['name'];
+                    $time = $line['time'];
+                    echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
+                    $i = $i+1;
+                }//while
+              }//else
+            ?>
+          </p>
 
        </div>
         <div class="responsive-iframe-container small-container">
 
        </div>
+       <?php } elseif($userGID == '0') { ?>
+       <div class="header">
+       <h2>Please create a group in order to view its information.</h2>
+       <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
+       </div><!--header-->
+       <?php }//elseif ?>
    </div><!-- content -->
-   <?php }//elseif ?>
-
  </div><!--main-->
  </div><!--layout-->
 
