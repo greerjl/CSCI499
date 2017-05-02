@@ -272,7 +272,6 @@ if($_SESSION["valid"]==true){?>
                   </table>
                 </div>
               </div>
-            </div>
                     <?php
                     $i = $i+1;
                 }//while
@@ -284,6 +283,8 @@ if($_SESSION["valid"]==true){?>
                  </div><!--header-->
       <?php }//elseif ?>
     </div>
+  </div>
+
     <div class="responsive-iframe-container small-container">
     </div>
    </div><!-- content -->
