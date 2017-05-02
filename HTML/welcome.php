@@ -202,8 +202,11 @@ if($_SESSION["valid"]==true){?>
 
                     //echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
                     $phpdate = strtotime( $time );
+                    echo "day: ";
                     echo $day = date("d", $phpdate);
+                    echo "month Year = ";
                     echo $monthYear = date("m/y", $phpdate);
+                    echo "time of event= ";
                     echo $timeEvent = date("g:i A", $phpdate);
 
                     $i = $i+1;
