@@ -249,21 +249,21 @@ if($_SESSION["valid"]==true){?>
                           <tr>
                           <td class="agenda-date" class="active" rowspan="1">
                           <div class="dayofmonth">
-                            <?php echo $day ?>
+                            <?php echo $day; ?>
                           </div>
                           <div class="dayofweek">
-                              <?php echo $dayOfWeek ?>
+                              <?php echo $dayOfWeek; ?>
                           </div>
                           <div class="shortdate text-muted">
-                              <?php echo $monthYear ?>
+                              <?php echo $monthYear; ?>
                           </div>
                           </td>
                           <td class="agenda-time">
-                              <?php echo $timeEvent ?>
+                              <?php echo $timeEvent; ?>
                           </td>
                           <td class="agenda-events">
                           <div class="agenda-event">
-                              <?php echo $name ?>
+                              <?php echo $name; ?>
                           </div>
                       </td>
                     </tr>
