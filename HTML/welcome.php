@@ -19,6 +19,33 @@ if($_SESSION["valid"]==true){?>
     <title>Home Utilities Manager &ndash; </title>
     <!--<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">-->
     <style>
+    @media (max-width: 550px) {
+        .big-container {
+        display: none;
+        }
+    }
+    @media (min-width: 550px) {
+        .small-container {
+        display: none;
+        }
+    }
+    /* Responsive iFrame */
+    .responsive-iframe-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        padding-top: 30px;
+        height: 0;
+        overflow: hidden;
+    }
+    .responsive-iframe-container iframe,
+    .vresponsive-iframe-container object,
+    .vresponsive-iframe-container embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
     .agenda {  }
 
     /* Dates */
@@ -181,7 +208,7 @@ if($_SESSION["valid"]==true){?>
 
  <!-- EVENTS/SCHEDULE -->
        <h2 class="content-subhead">House schedule: </h2>
-
+        <div class="responsive-iframe-container big-container">
             <?php
               $group = $_SESSION["gid"];
               $sql = "SELECT name, time FROM event WHERE event.GID = '$group'";
@@ -203,7 +230,7 @@ if($_SESSION["valid"]==true){?>
                     //echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
                     $phpdate = strtotime( $time );
                     $day = date("d", $phpdate);
-                    $monthYear = date("m, y", $phpdate);
+                    $monthYear = date("m/y", $phpdate);
                     $timeEvent = date("g:i A", $phpdate);
                     $tempDate = date("y-m-d", $phpdate);
                     $dayOfWeek = date('l', strtotime( $tempDate)); ?>
@@ -254,6 +281,78 @@ if($_SESSION["valid"]==true){?>
                  <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
                  </div><!--header-->
       <?php }//elseif ?>
+    </div>
+    <div class="responsive-iframe-container small-container">
+      <?php
+        $group = $_SESSION["gid"];
+        $sql = "SELECT name, time FROM event WHERE event.GID = '$group'";
+        $result = mysqli_query($db, $sql);
+
+        $count = mysqli_num_rows($result);
+        //php end tag here
+
+        if($count == 0){
+          $emptyMessage = "Your House currently has no upcoming events.";
+          echo $emptyMessage;
+        }
+        else{
+          $i = 1;
+          while ($line = mysqli_fetch_assoc($result)) {
+              $name = $line['name'];
+              $time = $line['time'];
+
+              //echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
+              $phpdate = strtotime( $time );
+              $day = date("d", $phpdate);
+              $monthYear = date("m/y", $phpdate);
+              $timeEvent = date("g:i A", $phpdate);
+              $tempDate = date("y-m-d", $phpdate);
+              $dayOfWeek = date('l', strtotime( $tempDate)); ?>
+              <div class="agenda">
+                <div class="table-responsive">
+                  <table class="table table-condensed table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Event</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Single event in a single day -->
+                    <tr>
+                    <td class="agenda-date" class="active" rowspan="1">
+                    <div class="dayofmonth">
+                      <?php echo $day ?>
+                    </div>
+                    <div class="shortdate text-muted">
+                        <?php echo $monthYear ?>
+                    </div>
+                    </td>
+                    <td class="agenda-time">
+                        <?php echo $timeEvent ?>
+                    </td>
+                    <td class="agenda-events">
+                    <div class="agenda-event">
+                        <?php echo $name ?>
+                    </div>
+                </td>
+              </tr>
+            <thead>
+          </table>
+        </div>
+      </div>
+              <?php
+              $i = $i+1;
+          }//while
+        }//else
+       } elseif($userGID == '0') { ?>
+           <div class="header">
+           <h2>Please create a group in order to view its information.</h2>
+           <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
+           </div><!--header-->
+<?php }//elseif ?>
+    </div>
    </div><!-- content -->
  </div><!--main-->
  </div><!--layout-->
