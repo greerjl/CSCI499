@@ -15,9 +15,6 @@ if($_SESSION["valid"]==true){?>
     <link rel="icon" href="../images/logo.png">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <link rel='stylesheet' href='http://fullcalendar.io/js/fullcalendar-2.2.3/fullcalendar.css' />
-    <script src='http://fullcalendar.io/js/fullcalendar-2.2.3/lib/moment.min.js'></script>
-    <script src='http://fullcalendar.io/js/fullcalendar-2.2.3/fullcalendar.min.js'></script>
 
     <title>Home Utilities Manager &ndash; </title>
     <!--<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">-->
@@ -175,7 +172,7 @@ if($_SESSION["valid"]==true){?>
 
  <!-- EVENTS/SCHEDULE -->
        <h2 class="content-subhead">House schedule: </h2>
-
+          <p>
             <?php
               $group = $_SESSION["gid"];
               $sql = "SELECT name, time FROM event WHERE event.GID = '$group'";
@@ -191,18 +188,44 @@ if($_SESSION["valid"]==true){?>
                 while ($line = mysqli_fetch_assoc($result)) {
                     $name = $line['name'];
                     $time = $line['time'];
+                    <div class="agenda">
+                      <div class="table-responsive">
+                        <table class="table table-condensed table-bordered">
+                          <thead>
+                            <tr>
+                              <th> Date </th>
+                              <th> Time </th>
+                              <th> Event </th>
+                            <tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td class="agenda-date" class="active" rowspan="1">
+                              date_parse($time);
+                              <div class ="dayofmonth"> ['day'] </div>
+                              <div class="shortdate text-muted"> ['month']/['year']</div>
+                            </td>
+                            <td class="agenda-time"> ['hour']:['minute']</td>
+                              <div class="agenda-event"> $name </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
 
-                    echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
+                    //echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
                     $i = $i+1;
                 }//while
               }//else
+            ?>
+          </p>
 
-
-        elseif($userGID == '0') { ?>
-          <div class="header">
-            <h2>Please create a group in order to view its information.</h2>
-            <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
-          </div><!--header-->
+       <?php } elseif($userGID == '0') { ?>
+       <div class="header">
+       <h2>Please create a group in order to view its information.</h2>
+       <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
+       </div><!--header-->
        <?php }//elseif ?>
    </div><!-- content -->
  </div><!--main-->
