@@ -16,12 +16,12 @@ error_reporting(E_ALL);
 				$conflictErr = validate($datetime);
 				if(!empty($conflictErr)){
 					$hasErrors = true;
-					echo $conflictErr;
-					//redirect("../eventSettings.php");
+					//echo $conflictErr;
+					redirect("../eventSettings.php");
 				}//if
 				else{
 					sendData($datetime, $uid, $gid);
-					//redirect("../eventSettings.php");
+					redirect("../eventSettings.php");
 				}//else
 						
 	}//if
@@ -47,7 +47,7 @@ error_reporting(E_ALL);
 					die('Error: ' . mysqli_error($GLOBALS['db']));
 				}//if
 				else{
-					echo "Successfully reserved!";
+					//echo "Successfully reserved!";
 				}//else
 	}//function
 ?>

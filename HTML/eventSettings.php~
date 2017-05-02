@@ -14,17 +14,15 @@ if($_SESSION["valid"]==true){?>
     <meta name="description" content="">
     <meta name="author" content="Capstone" >
 
+    <title>Event Settings</title>
+    <link rel="icon" href="../images/logo.png">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-    <title>Profile Settings</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
     <!-- room form css -->
     <link href="../CSS/roomForm.css" rel="stylesheet">
-
     <link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/> <!-- normalize -->
     <link rel="stylesheet" type="text/css" href="../CSS/psuedoWelcome.css"/> <!-- css -->
-    <link rel="icon" href="../images/logo.png">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,39 +39,34 @@ if($_SESSION["valid"]==true){?>
 
     <div class="header">
         <h1>House Utilities Manager</h1>
-        <h2>An application housing all your home management needs. </h2>
+        <h2>An application for all your home management needs. </h2>
     </div>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top2" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="./welcome.php">Dashboard</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="./houseSettings.php">House</a></li>
-                    <li><a href="./choreSettings.php">Chores</a></li>
-                    <li><a href="./taskSettings.php">Tasks</a></li>
-                    <li><a href="./eventSettings.php">Events</a></li>
-                    <li><a href="./userSettings.php"> My Settings </a></li>
-                    <li><a href="./logout.php"> <span class="glyphicon glyphicon-log-out">
-                        </span>Logout </a></li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNavBar" aria-expanded="false">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="./welcome.php">My Dashboard</a>
         </div>
-        <!-- /.container -->
+        <div class="collapse navbar-collapse" id="mainNavBar">
+          <ul class="nav navbar-nav">
+            <li><a href="./houseSettings.php">House</a></li>
+            <li><a href="./choreSettings.php">Chores</a></li>
+            <li><a href="./taskSettings.php">Tasks</a></li>
+            <li class="active"><a href="./eventSettings.php">Events <span class="sr-only">(current)</span></a></li>
+            <li><a href="./userSettings.php">My Settings</a></li>
+            <li><a href="./logout.php">Logout</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
     </nav>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
 
     <!-- Page Content -->
     <div class="container">
@@ -87,11 +80,51 @@ if($_SESSION["valid"]==true){?>
             </div>
         </div>
         <!-- /.row -->
+        
+        <?php if($_SESSION["repeatEventErr"] == 1){ ?>
+          <div class="alert alert-danger">
+            <strong>Error!</strong> There is already something going on in that room at that time.
+          </div>
+        <?php $_SESSION["repeatEventErr"] = 0;
+            }else if($_SESSION["eventSuccess"] == 1){ ?>
+          <div class="alert alert-success">
+            <strong>Success!</strong> Event has been created.
+          </div>
+        <?php $_SESSION["eventSuccess"] = 0;
+            }else if($_SESSION["eventDbErr"] == 1){ ?>
+          <div class="alert alert-danger">
+            <strong>Error!</strong> Something went wrong, event was not created. Try again later.
+          </div>
+        <?php $_SESSION["eventDbErr"] = 0; }?>
 
         <div class="container">
 	         <div class="row">
-             <div class="col-md-4">
+             <?php
+               $userID = $_SESSION["login_user"];
+               $sql = "SELECT GID FROM sys.user_info WHERE UID = '$userID'";
+               $result = mysqli_query($db, $sql);
+               $obj = mysqli_fetch_object($result);
+               $userGID = $obj->GID;
+               if($userGID == '0'){
+             ?>
+             <div class="header">
+               <h2>Please create a group before editing these settings.</h2>
+               <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
+             </div><!--header-->
+             <?php }//if
+                else {
 
+                  //BANNERS HERE
+
+                  if($_SESSION["eventSuccess"] == 1){ ?>
+                    <div class="alert alert-success">
+                      <strong>Success!</strong> Your event was created.
+                    </div>
+                  <?php $_SESSION["repeatEventErr"] = 0;
+                  }//elseif($_SESSION["repeatEventErr"] == 1){}
+                  ?>
+
+             <div class="col-md-4">
 		             <div class="form_main">
                    <h4 class="heading"><strong>Add an Event</strong> <span></span></h4>
                    <div class="form">
@@ -127,36 +160,50 @@ if($_SESSION["valid"]==true){?>
 		                   <input type="date" required="" value="" name="eventDate" class="date">
 		                   <hr>
 		                  <input type="submit" value="submit" name="submit" class="txt2">
-		    </form>
-		  </div>
-		</div>
+		                </form>
+		              </div>
+		            </div>
 
             </div><!-- col-md-4 -->
 	        </div><!-- row -->
         </div><!-- container -->
 
         <hr>
+        <?php }//else ?>
 
         <!-- Footer -->
-        <footer class="navbar-fixed-bottom">
-            <div class="row">
-                <div class="col-lg-12 footer l-box is-center">
-                    <p>Copyright &copy; 2016-2017 PLU Capstone. Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
-        <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
-                </div>
-            </div>
-            <!-- /.row -->
-        </footer>
+      <div id="footer">
+        <div class="container">
+          <p class="text-muted">Copyright ©2016-2017 PLU Capstone. House Utilities Manager.
+          Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
+            <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
+        </div>
+      </div>
 
-    </div>
-    <!-- /.container -->
+      <ul class="nav pull-right scroll-top">
+        <li><a href="#" title="Scroll to top"><i class="glyphicon glyphicon-chevron-up"></i></a></li>
+      </ul>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
+      <div class="modal" id="myModal" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+             <div class="modal-header">
+                 <button class="close" type="button" data-dismiss="modal">×</button>
+                 <h3 class="modal-title"></h3>
+             </div>
+             <div class="modal-body">
+               <div id="modalCarousel" class="carousel">
+                 <a class="carousel-control left" href="#modaCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                 <a class="carousel-control right" href="#modalCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+               </div>
+             </div>
+             <div class="modal-footer">
+                 <button class="btn btn-default" data-dismiss="modal">Close</button>
+             </div>
+          </div>
+      </div>
+    </div> <!--footer-->
+    </div><!-- /.container -->
 </body>
 
 </html>

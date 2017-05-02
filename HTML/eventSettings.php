@@ -80,6 +80,37 @@ if($_SESSION["valid"]==true){?>
             </div>
         </div>
         <!-- /.row -->
+        
+        <?php if($_SESSION["repeatEventErr"] == 1){ ?>
+          <div class="alert alert-danger">
+            <strong>Error!</strong> There is already something going on in that room at that time.
+          </div>
+        <?php $_SESSION["repeatEventErr"] = 0;
+            }else if($_SESSION["eventSuccess"] == 1){ ?>
+          <div class="alert alert-success">
+            <strong>Success!</strong> Event has been created.
+          </div>
+        <?php $_SESSION["eventSuccess"] = 0;
+            }else if($_SESSION["eventDbErr"] == 1){ ?>
+          <div class="alert alert-danger">
+            <strong>Error!</strong> Something went wrong, event was not created. Try again later.
+          </div>
+        <?php $_SESSION["eventDbErr"] = 0; }
+        if($_SESSION["conflictErr"] == 1){ ?>
+          <div class="alert alert-danger">
+            <strong>Error!</strong> There are schedule conflicts within an hour of your reservation. Please select an alternate time.
+          </div>
+        <?php $_SESSION["conflictErr"] = 0;
+            }else if($_SESSION["laundrySuccess"] == 1){ ?>
+          <div class="alert alert-success">
+            <strong>Success!</strong> Laundry machines have been reserved.
+          </div>
+        <?php $_SESSION["laundrySuccess"] = 0;
+            }else if($_SESSION["laundryDbErr"] == 1){ ?>
+          <div class="alert alert-danger">
+            <strong>Error!</strong> Something went wrong, machines were not reserved. Try again later.
+          </div>
+        <?php $_SESSION["laundryDbErr"] = 0; }?>
 
         <div class="container">
 	         <div class="row">
