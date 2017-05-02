@@ -175,7 +175,7 @@ if($_SESSION["valid"]==true){?>
 
  <!-- EVENTS/SCHEDULE -->
        <h2 class="content-subhead">House schedule: </h2>
-          <p>
+
             <?php
               $group = $_SESSION["gid"];
               $sql = "SELECT name, time FROM event WHERE event.GID = '$group'";
@@ -190,7 +190,9 @@ if($_SESSION["valid"]==true){?>
                 $i = 1;
                 while ($line = mysqli_fetch_assoc($result)) {
                     $name = $line['name'];
-                    $time = $line['time']; ?>
+                    $time = $line['time'];
+                    date_parse($time); ?>
+
                     <div class="agenda">
                       <div class="table-responsive">
                         <table class="table table-condensed table-bordered">
@@ -204,12 +206,11 @@ if($_SESSION["valid"]==true){?>
                           <tbody>
                           <tr>
                             <td class="agenda-date" class="active" rowspan="1">
-                            <?php  date_parse($time); ?>
                               <div class ="dayofmonth"> <?php ['day'] ?></div>
-                              <div class="shortdate text-muted"> <?php ['month']/['year'] ?></div>
+                              <div class="shortdate text-muted"> <?php ['month'] ?> / <?php ['year'] ?></div>
                             </td>
-                            <td class="agenda-time"><?php ['hour']?>:<?php['minute'] ?></td>
-                              <div class="agenda-event"><?php $name ?></div>
+                            <td class="agenda-time"><?php ['hour'] ?> : <?php['minute'] ?></td>
+                              <div class="agenda-event"> <?php $name ?> </div>
                             </td>
                           </tr>
                         </tbody>
@@ -218,17 +219,16 @@ if($_SESSION["valid"]==true){?>
                   </div>
                   <?php
                     //echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
-                    $i = $i+1;
+                    $i = $i+1; ?
                 }//while
               }//else
-            ?>
-          </p>
 
-       <?php } elseif($userGID == '0') { ?>
-       <div class="header">
-       <h2>Please create a group in order to view its information.</h2>
-       <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
-       </div><!--header-->
+
+        elseif($userGID == '0') { ?>
+          <div class="header">
+            <h2>Please create a group in order to view its information.</h2>
+            <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
+          </div><!--header-->
        <?php }//elseif ?>
    </div><!-- content -->
  </div><!--main-->
