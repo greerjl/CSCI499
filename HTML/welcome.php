@@ -123,39 +123,38 @@ if($_SESSION["valid"]==true){?>
    <?php }//if
      elseif($userGID!='0'){ ?>
 
- <!--House info-->
- <!-- Collapsible sidebar menu -->
-<ul class="sidebar-menu">
-  <!-- Open menu item -->
-  <li class="sidebar-menu-item open">
-    <a href="#" class="sidebar-menu-button" data-toggle="sidebar-collapse">House Info</a>
-  </li>
-  <!-- Menu item -->
-  <li class="sidebar-menu-item">
-    <h4> Members </h4>
-    <p> <?php
-      $groupId = $_SESSION["gid"];
-      $sql = "SELECT username FROM user_info WHERE GID = '$groupId'";
-      $result = mysqli_query($db, $sql);
-      while($username = mysqli_fetch_row($result)):
-          echo $username[0]."<br/>";
-      endwhile;
-      ?>
-    </p>
-  </li>
-  <li class="sidebar-menu-item">
-    <h4> Rooms </h4>
-    <p>
-      <?php
-        $sql = "SELECT name FROM room WHERE GID = '$groupId'";
+  <!-- Sidebar menu -->
+ 	<ul class="sidebar-menu sm-active-button-bg">
+ 		<!-- Menu item -->
+ 	  	<li class="sidebar-menu-item open">
+ 			<a href="#" class="sidebar-menu-button" data-toggle="sidebar-collapse">
+ 				<i class="sidebar-menu-icon material-icons">home</i> House Info
+ 			</a>
+ 	  	</li>
+
+ 	  	<!-- Menu item -->
+ 	  	<li class="sidebar-menu-item">
+ 			<a href="#" class="sidebar-menu-button" data-toggle="sidebar-collapse">
+ 				<i class="sidebar-menu-icon material-icons">pie_chart</i> Members:
+ 			</a>
+
+ 			<!-- Submenu -->
+ 			<ul class="sidebar-submenu sm-condensed">
+        <?php
+        $groupId = $_SESSION["gid"];
+        $sql = "SELECT username FROM user_info WHERE GID = '$groupId'";
         $result = mysqli_query($db, $sql);
-        while($roomNames = mysqli_fetch_row($result)):
-            echo $roomNames[0]."<br/>";
+        while($username = mysqli_fetch_row($result)):
+            echo $username[0]."<br/>";
         endwhile;
-      ?>
-    </p>
-  </li>
-</ul>
+        ?>
+ 			</ul>
+ 	  	</li>
+
+ 	</ul>
+
+
+
 <!--
    <div class="houseinfo col-md-4">
        <h2 class="content-subhead2">House: </h2>
