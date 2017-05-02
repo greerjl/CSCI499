@@ -75,6 +75,15 @@ if($_SESSION["valid"]==true){?>
 
     }
     </style>
+    <script>
+    if (!isTouchDevice()) {
+      $('[data-toggle*="tooltip"]').tooltip();
+    }
+
+    function isTouchDevice() {
+      return !!('ontouchstart' in window || navigator.msMaxTouchPoints);
+    }
+    </script>
   </head>
   <body>
     <div id="layout">
@@ -146,7 +155,7 @@ if($_SESSION["valid"]==true){?>
              </h4>
              <div id="group-1" class="list-group collapse in">
                <a class="list-group-item" href="#">
-                 <span class="badge">3</span> <?php
+                  <?php
                    $groupId = $_SESSION["gid"];
                    $sql = "SELECT username FROM user_info WHERE GID = '$groupId'";
                    $result = mysqli_query($db, $sql);
@@ -166,7 +175,7 @@ if($_SESSION["valid"]==true){?>
              </h4>
              <div id="group-2" class="list-group collapse in">
                <a class="list-group-item" href="#">
-                 <span class="badge">3</span> <?php
+                  <?php
                    $sql = "SELECT name FROM room WHERE GID = '$groupId'";
                    $result = mysqli_query($db, $sql);
                    while($roomNames = mysqli_fetch_row($result)):
