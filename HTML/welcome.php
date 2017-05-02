@@ -203,11 +203,48 @@ if($_SESSION["valid"]==true){?>
                     //echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
                     $phpdate = strtotime( $time );
                     $day = date("d", $phpdate);
-                    $monthYear = date("m/y", $phpdate);
+                    $monthYear = date("m, y", $phpdate);
                     $timeEvent = date("g:i A", $phpdate);
                     $tempDate = date("y-m-d", $phpdate);
-                    echo date('l', strtotime( $tempDate));
-
+                    $dayOfWeek = date('l', strtotime( $tempDate)); ?>
+                    <div class="agenda">
+                      <div class="table-responsive">
+                        <table class="table table-condensed table-bordered">
+                          <thead>
+                            <tr>
+                              <th>Date</th>
+                              <th>Time</th>
+                              <th>Event</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                          <!-- Single event in a single day -->
+                          <tr>
+                          <td class="agenda-date" class="active" rowspan="3">
+                          <div class="dayofmonth">
+                            <?php $day ?>
+                          </div>
+                          <div class="dayofweek">
+                              <?php $dayOfWeek ?>
+                          </div>
+                          <div class="shortdate text-muted">
+                              <?php $monthYear ?>
+                          </div>
+                          </td>
+                          <td class="agenda-time">
+                              <?php $timeEvent ?>
+                          </td>
+                          <td class="agenda-events">
+                          <div class="agenda-event">
+                              <?php $name ?>
+                          </div>
+                      </td>
+                    </tr>
+                  <thead>
+                </table>
+              </div>
+            </div>
+                    <?php
                     $i = $i+1;
                 }//while
               }//else
