@@ -200,8 +200,8 @@ if($_SESSION["valid"]==true){?>
                     $name = $line['name'];
                     $time = $line['time'];
                     echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
-                    $new_date = DateTime::createFromFormat('d/m/Y H:i:s', $time);
-                    echo $new_date->format('Y-m-d H:i:s');;
+                    echo $dt->format('m/d/Y');
+                    echo $dt->format('H:i:s');
                     $i = $i+1;
                 }//while
               }//else
