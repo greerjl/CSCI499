@@ -2,8 +2,8 @@
 session_start();
 include '../../../dbconnect.php';
 require_once("functions.php");
-ini_set("display_errors", true);
-error_reporting(E_ALL);
+//ini_set("display_errors", true);
+//error_reporting(E_ALL);
 	$eTime = $eDate = $sql = "";
 	$_SESSION["conflictErr"] = $_SESSION["laundrySuccess"] = $_SESSION["laundryDbErr"] = 0;
 

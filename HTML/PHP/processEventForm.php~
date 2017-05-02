@@ -18,7 +18,7 @@ error_reporting(E_ALL);
 		$eTitle = cleanData($_POST['eventName'], $GLOBALS['db']);
 		
 			$eventErr = validate($gid, $datetime, $roomID);
-			if(!empty($titleErr)){
+			if(!empty($eventErr)){
 				$_SESSION["repeatEventErr"] = 1;
 				redirect("../eventSettings.php");
 			}//if

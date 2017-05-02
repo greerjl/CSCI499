@@ -5,7 +5,7 @@ require_once("functions.php");
 ini_set("display_errors", true);
 error_reporting(E_ALL);
 	$eTime = $eDate = $sql = "";
-	$hasErrors = false;
+	$_SESSION["conflictErr"] = $_SESSION["laundrySuccess"] = $_SESSION["laundryDbErr"] = 0;
 
 	if($_SERVER['REQUEST_METHOD']=='POST' && $_POST){
 		$gid = $_SESSION["gid"];
@@ -15,8 +15,7 @@ error_reporting(E_ALL);
 				$datetime = date('Y-m-d H:i:s', strtotime("$eDate $eTime"));
 				$conflictErr = validate($datetime);
 				if(!empty($conflictErr)){
-					$hasErrors = true;
-					//echo $conflictErr;
+					$_SESSION["conflictErr"] = 1;
 					redirect("../eventSettings.php");
 				}//if
 				else{
@@ -44,10 +43,11 @@ error_reporting(E_ALL);
 				$sql = "INSERT INTO laundry (time, UID, GID) VALUES ('$eDatetime','$uid','$gid')";
 				$result = mysqli_query($GLOBALS['db'], $sql);
 				if(!$result){
+					$_SESSION["laundryDbErr"] = 1;
 					die('Error: ' . mysqli_error($GLOBALS['db']));
 				}//if
 				else{
-					//echo "Successfully reserved!";
+					$_SESSION["laundrySuccess"] = 1;
 				}//else
 	}//function
 ?>

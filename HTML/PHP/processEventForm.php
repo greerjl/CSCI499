@@ -2,8 +2,8 @@
 session_start();
 include '../../../dbconnect.php';
 require_once("functions.php");
-ini_set("display_errors", true);
-error_reporting(E_ALL);
+//ini_set("display_errors", true);
+//error_reporting(E_ALL);
 	$eTitle = $eTime = $eDate = $roomName = $sql = "";
 	$titleErr = "";
 	$_SESSION["repeatEventErr"] = $_SESSION["eventSuccess"] = $_SESSION["eventDbErr"] = 0;

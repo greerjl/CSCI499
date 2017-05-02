@@ -3,8 +3,8 @@
 <?php session_start();
 require("../../dbconnect.php");
 require_once("./PHP/functions.php");
-ini_set("display_errors", true);
-error_reporting(E_ALL);
+//ini_set("display_errors", true);
+//error_reporting(E_ALL);
 if($_SESSION["valid"]==true){?>
 <head>
 
