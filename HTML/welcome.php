@@ -249,21 +249,21 @@ if($_SESSION["valid"]==true){?>
                           <tr>
                           <td class="agenda-date" class="active" rowspan="1">
                           <div class="dayofmonth">
-                            <?php echo $day ?>
+                            <?php echo $day; ?>
                           </div>
                           <div class="dayofweek">
-                              <?php echo $dayOfWeek ?>
+                              <?php echo $dayOfWeek; ?>
                           </div>
                           <div class="shortdate text-muted">
-                              <?php echo $monthYear ?>
+                              <?php echo $monthYear; ?>
                           </div>
                           </td>
                           <td class="agenda-time">
-                              <?php echo $timeEvent ?>
+                              <?php echo $timeEvent; ?>
                           </td>
                           <td class="agenda-events">
                           <div class="agenda-event">
-                              <?php echo $name ?>
+                              <?php echo $name; ?>
                           </div>
                       </td>
                     </tr>
@@ -283,75 +283,6 @@ if($_SESSION["valid"]==true){?>
       <?php }//elseif ?>
     </div>
     <div class="responsive-iframe-container small-container">
-      <?php
-        $group = $_SESSION["gid"];
-        $sql = "SELECT name, time FROM event WHERE event.GID = '$group'";
-        $result = mysqli_query($db, $sql);
-
-        $count = mysqli_num_rows($result);
-        //php end tag here
-
-        if($count == 0){
-          $emptyMessage = "Your House currently has no upcoming events.";
-          echo $emptyMessage;
-        }
-        else{
-          $i = 1;
-          while ($line = mysqli_fetch_assoc($result)) {
-              $name = $line['name'];
-              $time = $line['time'];
-
-              //echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
-              $phpdate = strtotime( $time );
-              $day = date("d", $phpdate);
-              $monthYear = date("m/y", $phpdate);
-              $timeEvent = date("g:i A", $phpdate);
-              $tempDate = date("y-m-d", $phpdate);
-              $dayOfWeek = date('l', strtotime( $tempDate)); ?>
-              <div class="agenda">
-                <div class="table-responsive">
-                  <table class="table table-condensed table-bordered">
-                    <thead>
-                      <tr>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Event</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <!-- Single event in a single day -->
-                    <tr>
-                    <td class="agenda-date" class="active" rowspan="1">
-                    <div class="dayofmonth">
-                      <?php echo $day ?>
-                    </div>
-                    <div class="shortdate text-muted">
-                        <?php echo $monthYear ?>
-                    </div>
-                    </td>
-                    <td class="agenda-time">
-                        <?php echo $timeEvent ?>
-                    </td>
-                    <td class="agenda-events">
-                    <div class="agenda-event">
-                        <?php echo $name ?>
-                    </div>
-                </td>
-              </tr>
-            <thead>
-          </table>
-        </div>
-      </div>
-              <?php
-              $i = $i+1;
-          }//while
-        }//else
-       } elseif($userGID == '0') { ?>
-           <div class="header">
-           <h2>Please create a group in order to view its information.</h2>
-           <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
-           </div><!--header-->
-<?php }//elseif ?>
     </div>
    </div><!-- content -->
  </div><!--main-->
