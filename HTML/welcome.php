@@ -123,35 +123,63 @@ if($_SESSION["valid"]==true){?>
    <?php }//if
      elseif($userGID!='0'){ ?>
 
-  <!-- Sidebar menu -->
- 	<ul class="sidebar-menu sm-active-button-bg">
- 		<!-- Menu item -->
- 	  	<li class="sidebar-menu-item open">
- 			<a href="#" class="sidebar-menu-button" data-toggle="sidebar-collapse">
- 				<i class="sidebar-menu-icon material-icons">home</i> House Info
- 			</a>
- 	  	</li>
+       <div class="navbar navbar-default visible-xs">
+       <div class="container-fluid">
+         <button class="btn btn-default navbar-btn" data-toggle="collapse" data-target="#filter-sidebar">
+           <i class="fa fa-tasks"></i> House Info
+         </button>
+       </div>
+     </div>
 
- 	  	<!-- Menu item -->
- 	  	<li class="sidebar-menu-item">
- 			<a href="#" class="sidebar-menu-button" data-toggle="sidebar-collapse">
- 				<i class="sidebar-menu-icon material-icons">pie_chart</i> Members:
- 			</a>
+     <div class="container-fluid">
 
- 			<!-- Submenu -->
- 			<ul class="sidebar-submenu sm-condensed">
-        <?php
-        $groupId = $_SESSION["gid"];
-        $sql = "SELECT username FROM user_info WHERE GID = '$groupId'";
-        $result = mysqli_query($db, $sql);
-        while($username = mysqli_fetch_row($result)):
-            echo $username[0]."<br/>";
-        endwhile;
-        ?>
- 			</ul>
- 	  	</li>
+       <div class="row">
 
- 	</ul>
+         <!-- filter sidebar -->
+         <div id="filter-sidebar" class="col-xs-6 col-sm-3 visible-sm visible-md visible-lg collapse sliding-sidebar">
+
+           <div>
+             <h4 data-toggle="collapse" data-target="#group-1">
+               <i class="fa fa-fw fa-caret-down parent-expanded"></i>
+               <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
+               Members
+             </h4>
+             <div id="group-1" class="list-group collapse in">
+               <a class="list-group-item" href="#">
+                 <span class="badge">3</span> <?php
+                   $groupId = $_SESSION["gid"];
+                   $sql = "SELECT username FROM user_info WHERE GID = '$groupId'";
+                   $result = mysqli_query($db, $sql);
+                   while($username = mysqli_fetch_row($result)):
+                       echo $username[0]."<br/>";
+                   endwhile;
+                  ?>
+               </a>
+             </div>
+           </div>
+
+           <div>
+             <h4 data-toggle="collapse" data-target="#group-2">
+               <i class="fa fa-fw fa-caret-down parent-expanded"></i>
+               <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
+               Rooms
+             </h4>
+             <div id="group-2" class="list-group collapse in">
+               <a class="list-group-item" href="#">
+                 <span class="badge">3</span> <?php
+                   $sql = "SELECT name FROM room WHERE GID = '$groupId'";
+                   $result = mysqli_query($db, $sql);
+                   while($roomNames = mysqli_fetch_row($result)):
+                       echo $roomNames[0]."<br/>";
+                   endwhile;
+                  ?>
+               </a>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+
 
 
 
