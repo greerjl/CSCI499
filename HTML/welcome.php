@@ -22,33 +22,25 @@ if($_SESSION["valid"]==true){?>
     <title>Home Utilities Manager &ndash; </title>
     <!--<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">-->
     <style>
-      @media (max-width: 550px) {
-          .big-container {
-          display: none;
-          }
-      }
-      @media (min-width: 550px) {
-          .small-container {
-          display: none;
-          }
-      }
-      /* Responsive iFrame */
-      .responsive-iframe-container {
-          position: relative;
-          padding-bottom: 56.25%;
-          padding-top: 30px;
-          height: 0;
-          overflow: hidden;
-      }
-      .responsive-iframe-container iframe,
-      .vresponsive-iframe-container object,
-      .vresponsive-iframe-container embed {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-      }
+      .agenda {  }
+      /* Dates */
+      .agenda .agenda-date { width: 170px; }
+      .agenda .agenda-date .dayofmonth {
+      width: 40px;
+      font-size: 36px;
+      line-height: 36px;
+      float: left;
+      text-align: right;
+      margin-right: 10px; }
+      .agenda .agenda-date .shortdate {
+      font-size: 0.75em; }
+      /* Times */
+      .agenda .agenda-time { width: 140px; }
+      /* Events */
+      .agenda .agenda-events {  }
+      .agenda .agenda-events .agenda-event {  }
+
+      @media (max-width: 767px) { }
     </style>
   </head>
   <body>
@@ -57,7 +49,7 @@ if($_SESSION["valid"]==true){?>
 
         <div class="header">
           <h1>House Utilities Manager</h1>
-          <h2>An application housing all your home management needs. </h2>
+          <h2>An application for all your home management needs. </h2>
         </div>
      <nav class="navbar navbar-default">
        <div class="container-fluid">
@@ -183,15 +175,12 @@ if($_SESSION["valid"]==true){?>
 
  <!-- EVENTS/SCHEDULE -->
        <h2 class="content-subhead">House schedule: </h2>
-        <div class="responsive-iframe-container big-container">
           <p>
             <?php
               $group = $_SESSION["gid"];
               $sql = "SELECT name, time FROM event WHERE event.GID = '$group'";
               $result = mysqli_query($db, $sql);
-
               $count = mysqli_num_rows($result);
-              //php end tag here
 
               if($count == 0){
                 $emptyMessage = "Your House currently has no upcoming events.";
@@ -202,17 +191,39 @@ if($_SESSION["valid"]==true){?>
                 while ($line = mysqli_fetch_assoc($result)) {
                     $name = $line['name'];
                     $time = $line['time'];
-                    echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
+                    <div class="agenda">
+                      <div class="table-responsive">
+                        <table class="table table-condensed table-bordered">
+                          <thead>
+                            <tr>
+                              <th> Date </th>
+                              <th> Time </th>
+                              <th> Event </th>
+                            <tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td class="agenda-date" class="active" rowspan="1">
+                              date_parse($time);
+                              <div class ="dayofmonth"> ['day'] </div>
+                              <div class="shortdate text-muted"> ['month']/['year']</div>
+                            </td>
+                            <td class="agenda-time"> ['hour']:['minute']</td>
+                              <div class="agenda-event"> $name </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                    //echo "\t\t<tr><td><strong>Event $i: <strong></td><td><strong>$name</strong></td><td> at $time.</td></tr><br/>";
                     $i = $i+1;
                 }//while
               }//else
             ?>
           </p>
 
-       </div>
-        <div class="responsive-iframe-container small-container">
-
-       </div>
        <?php } elseif($userGID == '0') { ?>
        <div class="header">
        <h2>Please create a group in order to view its information.</h2>
