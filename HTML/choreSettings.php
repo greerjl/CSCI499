@@ -181,6 +181,33 @@ if($_SESSION["valid"]==true){?>
                     </form>
                   </div>
                </div>
+               
+	       <!-- CHORES -->
+	       <h2 class="content-subhead">Your Chore: </h2>
+	       <p>
+	         <table>
+	             <?php
+	               $user = $_SESSION["login_user"];
+	               $sql = "SELECT title FROM user_info, chore WHERE user_info.UID = '$user' AND user_info.UID = chore.UID";
+	               $result = mysqli_query($db, $sql);
+	
+	               $count = mysqli_num_rows($result);
+	               //php end tag here
+	
+	               if($count == 0){
+	                 $emptyMessage = "<tr><td>You currently have no chores.</td></tr>";
+	                 echo $emptyMessage;
+	               }
+	               else{
+	                 while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+	                     foreach ($line as $col_value) {
+	                         echo "\t\t<tr><td>$col_value</td></tr>";
+	                     }//foreach
+	                 }//while
+	               }//else
+	             ?>
+	       </table>
+	       </p>
 
             </div><!-- col-md-4 -->
 	        </div><!-- row -->
