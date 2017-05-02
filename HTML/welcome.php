@@ -235,7 +235,6 @@ if($_SESSION["valid"]==true){?>
                     $timeEvent = date("g:i A", $phpdate);
                     $tempDate = date("y-m-d", $phpdate);
                     $dayOfWeek = date('l', strtotime( $tempDate)); ?>
-                    <div id="" style="overflow-y: scroll; height:100px">
                       <div class="agenda">
                         <div class="table-responsive">
                           <table class="table table-condensed table-bordered">
