@@ -9,7 +9,7 @@ if($_SESSION["valid"]==true){?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Capstone" >
+    <meta name="author" content="Server" >
     <link rel="icon" href="../images/logo.png">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -23,19 +23,41 @@ if($_SESSION["valid"]==true){?>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+    <!--[if lt IE 9]-->
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]
+    <!--[endif]-->
     <script type="text/javascript">
-      $(function()
-      {
-          $('#idbtn').click(function()
-          {
-              $('#idtxt').clone().attr('id', 'idtxt' + $(this).index()).insertAfter('#idtxt');
-          })
-      })
-    </script>-->
+		$(document).ready(function(){
+  			$('#showPassword1').on('click', function(){
+    
+    			var passwordField = $('#newpass');
+    			var passwordFieldType = passwordField.attr('type');
+    			if(passwordFieldType == 'password')
+    			{
+        			passwordField.attr('type', 'text');
+        			$(this).val('Hide');
+    			} else {
+        			passwordField.attr('type', 'password');
+        			$(this).val('Show');
+    			}
+  			});
+  			$('#showPassword2').on('click', function(){
+    
+    			var passwordField = $('#rnewpass');
+    			var passwordFieldType = passwordField.attr('type');
+    			if(passwordFieldType == 'password')
+    			{
+        			passwordField.attr('type', 'text');
+        			$(this).val('Hide');
+    			} else {
+        			passwordField.attr('type', 'password');
+        			$(this).val('Show');
+    			}
+  			});
+  		});
+       
+    </script>
 </head>
 
 <body>
@@ -153,9 +175,12 @@ if($_SESSION["valid"]==true){?>
                    <div class="form">
                      <form action="./PHP/processUserSettings.php" method="POST" id="passwordForm" name="passwordForm">
                        <input type="password" required="" placeholder="Current Password" value="" name="currentpass" class="txt"/>
-                       <input type="password" required="" placeholder="New Password" value="" name="newpass" class="txt"/>
-                       <input type="password" required="" placeholder="Repeat New Password" value="" name="rnewpass" class="txt"/>
-
+                       <input type="password" required="" name="newpass" id="newpass" value="" placeholder="New Password" class="txt" />
+                       <input type="button" id="showPassword1" value="Show" class="button" />
+                       <input type="password" required="" placeholder="Repeat New Password" value="" id="rnewpass" name="rnewpass" class="txt"/>
+							  <input type="button" id="showPassword2" value="Show" class="button" />
+							  
+							  <br>
                        <input type="submit" value="Submit" name="submit" class="txt2"/>
                      </form>
                   </div>
@@ -210,7 +235,7 @@ if($_SESSION["valid"]==true){?>
                     <h4 class="heading"><strong>Need to delete your account?<strong> <span></span></h4>
                     <div class="form">
                       <form action="./PHP/deleteAccountForm.php" method="POST" id="deleteAccountForm" name="deleteAccountForm">
-                        <input type="submit" value="Delete Account" name="submit" class="txt2"/>
+                        <input type="submit" value="Delete" name="submit" class="txt2"/>
                       </form><!-- action -->
                   </div><!--form-->
                  </div><!--form_main-->
