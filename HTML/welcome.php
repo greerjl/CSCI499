@@ -209,6 +209,7 @@ if($_SESSION["valid"]==true){?>
  <!-- EVENTS/SCHEDULE -->
        <h2 class="content-subhead">House schedule: </h2>
         <div class="responsive-iframe-container big-container">
+          <div id="" style="overflow: scroll; height:300px">
             <?php
               $group = $_SESSION["gid"];
               $sql = "SELECT name, time FROM event WHERE event.GID = '$group'";
@@ -222,8 +223,6 @@ if($_SESSION["valid"]==true){?>
                 echo $emptyMessage;
               }
               else{
-              ?>  <div id="" style="overflow: scroll; height:100px">
-                <?php
                 $i = 1;
                 while ($line = mysqli_fetch_assoc($result)) {
                     $name = $line['name'];
