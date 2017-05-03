@@ -46,8 +46,7 @@ require_once("./PHP/functions.php");
 						<a class="navbar-brand" href="../index.html">House Utilities Manager</a>
 				</div>
 				<div class="collapse navbar-collapse" id="mainNavBar">
-					<ul class="nav navbar-nav">
-						<li><a href="./login.php">Log In</a></li>
+					
 
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
@@ -61,7 +60,7 @@ require_once("./PHP/functions.php");
 	<?php include './PHP/processForgotPwForm.php';?>
 				 <div class="content">
 						 <form id="SignUp" class="form-signin" method="POST" action="./PHP/processforgotPwForm.php">
-						 <h2 class="form-signin-heading"> Sign Up </h2>
+						 <h2 class="form-signin-heading"> Forgot Password? </h2>
 
 						 <input type="email" id="useremail" class="form-control"
 						 		name="email" placeholder="Email Address" autofocus required/>

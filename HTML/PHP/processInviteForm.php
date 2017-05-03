@@ -69,8 +69,8 @@
 
 		//SQL to fetch GID and username of sender
 		$uid = $_SESSION["login_user"];
-		$sql = "SELECT GID, username FROM user_info WHERE UID='$uid'";
-		$result = mysqli_query($db, $sql);
+		$sql = "SELECT GID, username FROM user_info WHERE UID='$uid';";
+		$result = mysqli_query($GLOBALS['db'], $sql);
 		$obj = mysqli_fetch_object($result);
 		$sentUserName = $obj->username;
 		$GID = $obj->GID;
