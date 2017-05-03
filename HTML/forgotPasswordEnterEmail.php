@@ -46,8 +46,9 @@ require_once("./PHP/functions.php");
 						<a class="navbar-brand" href="../index.html">House Utilities Manager</a>
 				</div>
 				<div class="collapse navbar-collapse" id="mainNavBar">
-
-
+					<ul class="nav navbar-nav">
+						<li><a href="./login.php">Log In</a></li>
+					</ul>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
 		</nav>

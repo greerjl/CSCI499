@@ -54,7 +54,7 @@ require_once("./PHP/functions.php");
 				<div class="collapse navbar-collapse" id="mainNavBar">
 					<ul class="nav navbar-nav">
 						<li><a href="./login.php">Log In</a></li>
-
+					</ul>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
 		</nav>
