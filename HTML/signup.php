@@ -73,12 +73,13 @@ require_once("./PHP/functions.php");
 		echo "urlGID = ".$urlGID."<br/>";
 		//select UID
 		$sql = "SELECT UID FROM user_info WHERE email='$urlEmail'";
-		$result2 = mysqli_query($db, $sql);
-		$temp = mysqli_fetch_object($result2);
+		$result = mysqli_query($GLOBALS['db'], $sql);
+		$temp = mysqli_fetch_object($result);
 		$dbUID = $temp->UID;
+		echo "uid from query = ".$dbUID."<br/>";
 		//update GID
 		$sql2 = "UPDATE user_info SET GID='$urlGID' WHERE UID='$dbUID'";
-		$result2 = mysqli_query($db, $sql2);
+		$result2 = mysqli_query($GLOBALS['db'], $sql2);
 	}
 
 	 if($_SERVER['REQUEST_METHOD']=="GET" ){
