@@ -91,7 +91,7 @@ if($_SESSION["valid"]==true){?>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
              </button>
-             <a class="navbar-brand active" href="#">My Dashboard<span class="sr-only">(current)</span></a>
+             <a class="navbar-brand active" href="./welcome.php">My Dashboard<span class="sr-only">(current)</span></a>
          </div>
          <div class="collapse navbar-collapse" id="mainNavBar">
            <ul class="nav navbar-nav">
@@ -139,6 +139,8 @@ if($_SESSION["valid"]==true){?>
         <li> <h5> Members: </h5>
           <p> <?php/*
            $groupId = $_SESSION["gid"];
+          <p> <?php
+            $groupId = $_SESSION["gid"];
             $sql = "SELECT username FROM user_info WHERE GID = '$groupId'";
             $result = mysqli_query($db, $sql);
             while($username = mysqli_fetch_row($result)):
@@ -170,6 +172,7 @@ if($_SESSION["valid"]==true){?>
       </div>
 */
    <div class="houseinfo col-md-4">
+    <div class="houseinfo col-md-4">
        <h2 class="content-subhead2">House: </h2>
        <h4 class="content-subhead2">Members: </h4>
          <div class="phptext">
@@ -325,12 +328,7 @@ if($_SESSION["valid"]==true){?>
                     $i = $i+1;
                 }//while
               }//else
-             } elseif($userGID == '0') { ?>
-                 <div class="header">
-                 <h2>Please create a group in order to view its information.</h2>
-                 <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
-                 </div><!--header-->
-      <?php }//elseif ?>
+            } ?>
     </div>
   </div>
 
