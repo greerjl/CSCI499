@@ -48,7 +48,7 @@ body {
   border-top-right-radius: 0;
 }
 .form-signin input[type="submit"] {
-  margin-top: 2px;
+  margin-bottom: 2px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
