@@ -16,8 +16,8 @@ require_once("./PHP/functions.php");
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 		<title>HUM Signup</title>
-		<!-- bootstrap -->
-		<link href="../bootstrap/css/starter-template.css" rel="stylesheet">
+		<!-- bootstrap
+		<link href="../bootstrap/css/starter-template.css" rel="stylesheet">-->
 		<link href="../bootstrap/css/sticky-footer-navbar.css" rel="stylesheet">
 		<link href="../bootstrap/css/signin.css" rel="stylesheet">
 
