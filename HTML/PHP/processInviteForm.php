@@ -23,14 +23,13 @@
 			if(!empty($email) && !empty($username)){
 				if(filter_var($email, FILTER_VALIDATE_EMAIL) == false){
 					session_start();
-				 //echo "emailErr = ".$emailErr."\n";
 				 $_SESSION["inviteMemErr"]= 1;
 				 redirect("../houseSettings.php");
 				}else{
 					session_start();
 					sendMail($username, $email);
 					$_SESSION["inviteMemSuc"] = 1;
-					//redirect("../houseSettings.php");
+					redirect("../houseSettings.php");
 				}//inner ifelse
 			}else{
 				session_start();
@@ -74,7 +73,6 @@
 		$obj = mysqli_fetch_object($result);
 		$sentUserName = $obj->username;
 		$GID = $obj->GID;
-		echo "GID = ".$GID."<br/>";
 
 		//$mail->msgHTML(file_get_contents('content.html'));
 		$mail->isHTML(true);
