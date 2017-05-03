@@ -223,7 +223,8 @@ if($_SESSION["valid"]==true){?>
                   ?>
              </table>
        </p>
-
+    </div>
+    <div class = "col-xs-12">
  <!-- EVENTS/SCHEDULE -->
        <h2 class="content-subhead ">House schedule: </h2>
           <div id="" style="overflow: scroll; height:300px">
@@ -305,7 +306,6 @@ if($_SESSION["valid"]==true){?>
        Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
          <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
     </div>
-</div>
 
    </div><!-- content -->
  </div><!--main-->
