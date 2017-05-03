@@ -213,7 +213,7 @@ if($_SESSION["valid"]==true){?>
                     else{
                       while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                           foreach ($line as $col_value) {
-                              echo "\t\t<tr><form action=\"./PHP/completeTaskForm.php\">
+                              echo "\t\t<tr><form action=\"./PHP/completeTaskForm.php\" method=\"POST\">
                                   <td>$col_value</td><td><input type=\"hidden\" name=\"taskname\" value=\"".$col_value."\"/></td>
                                   <td><input type=\"submit\" name=\"submit\" class=\"txt3\" value=\"Complete\"/></td></form></tr>";
                           }//foreach

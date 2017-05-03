@@ -9,10 +9,10 @@
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 
 		/*USER CREDENTIALS*/
-		$taskname = mysqli_real_escape_string($db, $_POST['taskname']);
+		$taskname = mysqli_real_escape_string($GLOBALS['db'], $_POST['taskname']);
 
 		$sql = "SELECT TID FROM task WHERE name = '$taskname';"; //sql statement
-		$result = mysqli_query($db, $sql); //query db
+		$result = mysqli_query($GLOBALS['db'], $sql); //query db
 		$count = mysqli_num_rows($result); //get number of rows in query
 		if($count == 1){
 			$query = mysqli_fetch_object($result); //get the task id
