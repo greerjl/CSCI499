@@ -15,6 +15,7 @@ This is the parent `<div>` that contains the menu and the content area.
     position: relative;
     display: grid;
     padding-left: 0;
+    background-color: white;
 }
     #layout.active #menu {
         left: 150px;
@@ -27,11 +28,11 @@ This is the parent `<div>` that contains the menu and the content area.
 
     .header {
          margin: 0;
-         color: white;
+         color: black;
          text-align: center;
          padding: 2.5em 2em 0;
          border-bottom: 1px solid #eee;
-         background-color: #1f8dd6;
+         background-color: white;
      }
         .header h1 {
             margin: 0.2em 0;
