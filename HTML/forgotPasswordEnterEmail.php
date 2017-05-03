@@ -58,81 +58,16 @@ require_once("./PHP/functions.php");
 
 
 	<?php include '../../dbconnect.php'; ?>
-	<?php include './PHP/processSignupForm.php';
-	//GET URL variables if they exist
-	$urlEmail = $_GET['email'];
-	$urlGID = $_GET['gid'];
-
-	if(isset($urlGID)) {
-		//select UID
-		$sql = "SELECT UID FROM user_info WHERE email='$urlEmail'";
-		$result2 = mysqli_query($db, $sql);
-		$temp = mysqli_fetch_object($result2);
-		$dbUID = $temp->UID;
-		//update GID
-		$sql2 = "UPDATE user_info SET GID='$urlGID' WHERE UID='$dbUID'";
-		$result2 = mysqli_query($db, $sql2);
-	}
-
-	 if($_SERVER['REQUEST_METHOD']=="GET" ){
-		 if($_SESSION["signupRepeatPswdErr"] == 1){ ?>
- 				<div class="alert alert-danger">
- 					<strong>Error!</strong> Passwords must match. Enter the same password twice for verification.
-	 			</div>
-<?php
-		$_SESSION["signupRepeatPswdErr"] = 0;
-		}elseif($_SESSION["signupRepeatEmailErr"] == 1) { ?>
- 			<div class="alert alert-danger">
- 				<strong>Error!</strong> Email has already been used for an account. Please use a different email.
- 			</div>
-<?php
-		$_SESSION["signupRepeatEmailErr"] = 0;
-		}elseif($_SESSION["signupRegexErr"] == 1) { ?>
- 			<div class="alert alert-danger">
- 				<strong>Error!</strong> Passwords must contain a number and be at least 6 characters long.
- 			</div>
- <?php
-		$_SESSION["signupRegexErr"] = 0;
-		}elseif($_SESSION["invalidEmailErr"] == 1) { ?>
-			<div class="alert alert-danger">
-				<strong>Error!</strong> Invalid Email.
-			</div>
-<?php
-		$_SESSION["invalidEmailErr"] = 0;
-		}elseif($_SESSION["signupSuccess"] == 1) { ?>
-		<div class="alert alert-success">
-			<strong>Congratulations!</strong> You have successfully registered.
-				You should receive an account activation email shortly. Click on the link in the email to activate your account.
-		</div>
-<?php
- 		$_SESSION["signupSuccess"] = 0;
-	}elseif($_SESSION["signupInternalErr"] == 1){?>
-		<div class="alert alert-danger">
-			<strong>Error!</strong> Whoops, something went wrong.
-		</div>
-<?php $_SESSION["signupInternalErr"] = 0; } //elseifs?>
+	<?php include './PHP/processForgotPwForm.php';?>
 				 <div class="content">
-						 <form id="SignUp" class="form-signin" method="POST" action="./PHP/processSignupForm.php">
+						 <form id="SignUp" class="form-signin" method="POST" action="./PHP/processforgotPwForm.php">
 						 <h2 class="form-signin-heading"> Sign Up </h2>
 
 						 <input type="email" id="useremail" class="form-control"
 						 		name="email" placeholder="Email Address" autofocus required/>
 
-						 <input type="username" id="username" class="form-control"
-							  name="username" placeholder="Username" required/>
-
-						 <input type="password" id="pswd" name="pswd"
-						 		pattern="(?=.*\d).{6,}" class="form-control"
-						 		placeholder="Password" required/>
-
-						 <input type="password" id="rpswd" name="rpswd"
-						 		pattern="(?=.*\d).{6,}" class="form-control"
-						 		placeholder="Re-Enter Password" required/>
-
-						 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+						 <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
 	 			 	</form>
-	<?php }//request method if ?>
-
 			 </div><!-- /.content -->
 	 </div> <!-- /.container -->
  	</div><!--main-->

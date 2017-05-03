@@ -138,9 +138,9 @@ div.phpinfo {
 strong {
 
 }
-html, body {
+/*html, body {
   height: 100%;
-}
+}*/
 
 .navbar-toggle {
   margin-top: 50px;

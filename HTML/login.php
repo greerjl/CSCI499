@@ -134,7 +134,7 @@ require_once("./PHP/functions.php");
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 
-            Forgot Password? <a href="./forgotPassword.php"> Click here. </a><br/>
+            Forgot Password? <a href="./forgotPasswordEnterEmail.php"> Click here. </a><br/>
 	        </form>
           <?php }//request method if ?>
       </div><!-- /.content -->
