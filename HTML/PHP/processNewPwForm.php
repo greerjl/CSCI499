@@ -19,11 +19,12 @@
 		$rpswd = cleanData($rpswd);
 
 		//check if password = repeat password && if password meets regex
-		if(strcmp($pswd, $rpswd)==0 && preg_match('/^(?=.*\d)(?=.*[a-zA-Z])(?!.*[\W_\x7B-\xFF]).{6,}$/', $pswd)){
+		if(strcmp($pswd, $rpswd)==0 && preg_match('/^(?=.*\d)(?=.*[a-zA-Z])(?!.*[\W_\x7B-\xFF]).{6,}$/', $pswd)==1){
+			echo "in success if -> strcmp = 0 and preg_match = 0<br/>";
 			$hash = password_hash($pswd, PASSWORD_BCRYPT);
 			$sql = "UPDATE user_info (password) VALUES ('$hash') WHERE email='$email';";
 			//if sign up credentials pass the requirements then query db to insert sql
-			$result = mysqli_query($db, $sql);
+			$result = mysqli_query($GLOBALS['db'], $sql);
 			if($result == 1){
 				//if user was inserted in to database start session to access errors
 				session_start();
@@ -32,21 +33,25 @@
 			}//result if
 		}//password verify if
 		elseif(!strcmp($pswd, $rpswd)) {
+			echo "inside !strcmp<br/>";
 			//if password and repeat password don't match, set error to 1, and redirect to signup with error message
 			session_start();
 			$_SESSION["pwRepeatErr"] = 1;
 			redirect("../newPassword.php");
 		}elseif(!preg_match('/^(?=.*\d)(?=.*[a-zA-Z])(?!.*[\W_\x7B-\xFF]).{6,}$/', $pswd)){
+			echo "inside !preg_match(pwsd)<br/>";
 			//if password doesn't match regex, set error to 1, and redirect to signup with error message
 			session_start();
 			$_SESSION["pwRegexErr"] = 1;
 			redirect("../newPassword.php");
 		}elseif(!empty($emailErr)){
+			echo "emailErr is not empty<br/>";
 			//otherwise the email is Invalid
 			session_start();
 			$_SESSION["invalidEmailErr"] = 1;
 			redirect("../newPassword.php");
 		}else{
+			echo "this is not good<br/>";
 			session_start();
 			$_SESSION["internalErr"] = 1;
 			redirect("../newPassword.php");
