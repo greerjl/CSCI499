@@ -17,7 +17,7 @@ if($_SESSION["valid"]==true){?>
     <link rel="stylesheet" href="../bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="../bootstrap/js/jasny-bootstrap.min.css"> </script>
+    <script src="../bootstrap/js/jasny-bootstrap.min.js"> </script>
 
     <title>House Utilities Manager &ndash; </title>
     <!--<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">-->
