@@ -18,7 +18,7 @@
 		if(!empty($dbResult)){
       session_start();
       $_SESSION["userDNE"] = 1;
-      redirect("../processForgotPwForm.php");
+      redirect("../forgotPasswordEnterEmail.php");
     }//if user email dne in database
     elseif(empty($dbResult)){//else the user is in the db and we should send them a forgot password email
       //get their access_code first
