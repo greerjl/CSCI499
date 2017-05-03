@@ -131,8 +131,8 @@ if($_SESSION["valid"]==true){?>
      if($userGID == '0'){
    ?>
      <div class="header">
-     <h2>Please create a group in order to view its information.</h2>
-     <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
+       <h2>Please create a group in order to view its information.</h2>
+       <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
      </div><!--header-->
    <?php }//if
        elseif($userGID!='0'){
@@ -148,7 +148,7 @@ if($_SESSION["valid"]==true){?>
         <?php $_SESSION["taskDeleteSuc"] = 0; } ?>
 
  <!--House info-->
-   <div class="houseinfo col-xs-3">
+   <div class="houseinfo col-xs-3 col-md-3">
        <h2 class="content-subhead2">House: </h2>
        <h4 class="content-subhead2">Members: </h4>
          <div class="phptext">
@@ -173,8 +173,7 @@ if($_SESSION["valid"]==true){?>
        </div><!--phptext-->
    </div><!--houseinfo-->
 
-   <div class="col-xs-4 col-md-4 col-md-offset-4">
-
+   <div class="col-xs-4 col-md-9">
  <!-- CHORES -->
        <h2 class="content-subhead">Your Chore: </h2>
        <p>
@@ -233,7 +232,7 @@ if($_SESSION["valid"]==true){?>
              </table>
        </p>
     </div>
-    <div class = "col-xs-12 col-md-4 col-md-offset-4">
+    <div class = "col-xs-12 col-md-9">
  <!-- EVENTS/SCHEDULE -->
        <h2 class="content-subhead ">House schedule: </h2>
           <div id="" style="overflow: scroll; height:300px">
