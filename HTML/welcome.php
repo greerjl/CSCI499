@@ -16,6 +16,7 @@ if($_SESSION["valid"]==true){?>
     <link rel="icon" href="../images/logo.png">
     <link rel="stylesheet" href="../bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../CSS/roomForm.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="../bootstrap/js/jasny-bootstrap.min.js"> </script>
 
@@ -81,7 +82,7 @@ if($_SESSION["valid"]==true){?>
           <h1>House Utilities Manager</h1>
           <h2>An application housing all your home management needs. </h2>
         </div>
-     <nav class="navbar navbar-default">
+     <!--nav class="navbar navbar-default">
        <div class="container-fluid">
          <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNavBar" aria-expanded="false">
@@ -101,10 +102,10 @@ if($_SESSION["valid"]==true){?>
              <li><a href="./userSettings.php">My Settings</a></li>
              <li><a href="./logout.php">Logout</a></li>
            </ul>
-         </div><!-- /.navbar-collapse -->
-       </div><!-- /.container-fluid -->
+         </div><!-- /.navbar-collapse >
+       </div><!-- /.container-fluid >
      </nav>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">        </script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">        </script-->
    <?php
      $userID = $_SESSION["login_user"];
      $sql = "SELECT GID FROM sys.user_info WHERE UID = '$userID'";
@@ -118,7 +119,17 @@ if($_SESSION["valid"]==true){?>
      <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
      </div><!--header-->
    <?php }//if
-     elseif($userGID!='0'){ ?>
+     elseif($userGID!='0'){
+        if($_SESSION["taskDeleteErr"] == 1){ ?>
+          <div class="alert alert-danger">
+            <strong>Error!</strong> Task failed to be deleted.
+          </div>
+      <?php $_SESSION["taskDeleteErr"] = 0; }
+        elseif($_SESSION["taskDeleteSuc"] == 1){ ?>
+          <div class="alert alert-success">
+   					<strong>Success!</strong> Task was deleted.
+  	 			</div
+      <?php $_SESSION["taskDeleteSuc"] = 0; } ?>
 
     <div class="navmenu navmenu-default navmenu-fixed-left">
       <a class="navmenu-brand" href="#">House Info</a>
@@ -231,7 +242,10 @@ if($_SESSION["valid"]==true){?>
                     else{
                       while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                           foreach ($line as $col_value) {
-                              echo "\t\t<tr><td>$col_value</td></tr>";
+                              echo "\t\t<tr><form action=\"./PHP/completeTaskForm.php\">
+                                  <td>$col_value</td><td><input type=\"hidden\" name=\"taskname\" value=\"".$col_value."\"/></td>
+                                  <td><input type=\"submit\" name=\"submit\" class=\"txt3\" value=\"Complete\"/></td></form></tr>";
+                              }//if count
                           }//foreach
                       }//while
                     }//else
