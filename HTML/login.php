@@ -35,7 +35,7 @@ require_once("./PHP/functions.php");
     <![endif]-->
 
  </head>
-
+<body>
  <div id="layout">
    <div id="main">
 
