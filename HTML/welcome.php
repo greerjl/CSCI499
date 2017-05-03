@@ -60,7 +60,7 @@ if($_SESSION["valid"]==true){?>
     font-size: 36px;
     line-height: 36px;
     float: left;
-    text-align: right;
+    text-align: left;
     margin-right: 10px;
     }
     .agenda .agenda-date .shortdate {
