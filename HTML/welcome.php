@@ -224,8 +224,7 @@ if($_SESSION["valid"]==true){?>
        </p>
 
  <!-- EVENTS/SCHEDULE -->
-       <h2 class="content-subhead">House schedule: </h2>
-        <div class="responsive-iframe-container big-container">
+       <h2 class="content-subhead col-xs-6 col-md-4">House schedule: </h2>
           <div id="" style="overflow: scroll; height:300px">
             <?php
               $group = $_SESSION["gid"];
@@ -305,7 +304,6 @@ if($_SESSION["valid"]==true){?>
        Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
          <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
     </div>
-  </div>
 </div>
 
    </div><!-- content -->
