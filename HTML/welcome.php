@@ -139,7 +139,7 @@ if($_SESSION["valid"]==true){?>
         <?php $_SESSION["taskDeleteSuc"] = 0; } ?>
 
  <!--House info-->
-   <div class="houseinfo col-xs-3 col-md-2">
+   <div class="houseinfo col-xs-1 col-md-3">
        <h2 class="content-subhead2">House: </h2>
        <h4 class="content-subhead2">Members: </h4>
          <div class="phptext">
@@ -164,7 +164,7 @@ if($_SESSION["valid"]==true){?>
        </div><!--phptext-->
    </div><!--houseinfo-->
 
-   <div class="col-xs-3 col-md-2 col-md-offset-4">
+   <div class="col-xs-3 col-md-9 col-md-offset-4">
 
  <!-- CHORES -->
        <h2 class="content-subhead">Your Chore: </h2>
