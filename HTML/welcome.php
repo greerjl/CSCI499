@@ -12,6 +12,7 @@ if($_SESSION["valid"]==true){?>
     <!--<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">-->
     <link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/>
     <link rel="stylesheet" type="text/css" href="../CSS/welcome.css"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="icon" href="../images/logo.png">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -47,7 +48,6 @@ if($_SESSION["valid"]==true){?>
         height: 100%;
     }
     .agenda {  }
-
     /* Dates */
     .agenda .agenda-date { width: 170px; }
     .agenda .agenda-date .dayofmonth {
@@ -61,12 +61,8 @@ if($_SESSION["valid"]==true){?>
     .agenda .agenda-date .shortdate {
     font-size: 0.75em;
     }
-
-
     /* Times */
     .agenda .agenda-time { width: 140px; }
-
-
     /* Events */
     .agenda .agenda-events {  }
     .agenda .agenda-events .agenda-event {  }
@@ -75,15 +71,6 @@ if($_SESSION["valid"]==true){?>
 
     }
     </style>
-    <script>
-    if (!isTouchDevice()) {
-      $('[data-toggle*="tooltip"]').tooltip();
-    }
-
-    function isTouchDevice() {
-      return !!('ontouchstart' in window || navigator.msMaxTouchPoints);
-    }
-    </script>
   </head>
   <body>
     <div id="layout">
@@ -132,65 +119,12 @@ if($_SESSION["valid"]==true){?>
    <?php }//if
      elseif($userGID!='0'){ ?>
 
-       <div class="navbar navbar-default visible-xs">
-       <div class="container-fluid">
-         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNavBar" aria-expanded="false">
-           <i class="fa fa-tasks"></i> House Info
-          </button>
-       </div>
-     </div>
-
-     <div class="container-fluid">
-
-       <div class="row">
-
-         <!-- filter sidebar -->
-         <div id="filter-sidebar" class="col-xs-6 col-sm-3 visible-sm visible-md visible-lg collapse sliding-sidebar">
-
-           <div>
-             <h4 data-toggle="collapse" data-target="#group-1">
-               <i class="fa fa-fw fa-caret-down parent-expanded"></i>
-               <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
-               Members
-             </h4>
-             <div id="group-1" class="list-group collapse in">
-               <a class="list-group-item" href="#">
-                  <?php
-                   $groupId = $_SESSION["gid"];
-                   $sql = "SELECT username FROM user_info WHERE GID = '$groupId'";
-                   $result = mysqli_query($db, $sql);
-                   while($username = mysqli_fetch_row($result)):
-                       echo $username[0]."<br/>";
-                   endwhile;
-                  ?>
-               </a>
-             </div>
-           </div>
-
-           <div>
-             <h4 data-toggle="collapse" data-target="#group-2">
-               <i class="fa fa-fw fa-caret-down parent-expanded"></i>
-               <i class="fa fa-fw fa-caret-right parent-collapsed"></i>
-               Rooms
-             </h4>
-             <div id="group-2" class="list-group collapse in">
-               <a class="list-group-item" href="#">
-                  <?php
-                   $sql = "SELECT name FROM room WHERE GID = '$groupId'";
-                   $result = mysqli_query($db, $sql);
-                   while($roomNames = mysqli_fetch_row($result)):
-                       echo $roomNames[0]."<br/>";
-                   endwhile;
-                  ?>
-               </a>
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
-
-
-
+<div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left" style="display:none" id="mySidebar">
+  <button class="w3-bar-item w3-button w3-large"
+  onclick="w3_close()">Close &times;</button>
+  <a href="#" class="w3-bar-item w3-button">Members</a>
+  <a href="#" class="w3-bar-item w3-button">Rooms/a>
+</div>
 
 <!--
    <div class="houseinfo col-md-4">
@@ -388,6 +322,19 @@ if($_SESSION["valid"]==true){?>
        </div>
      </div>
     </div> <!--footer-->
+    <script>
+  function w3_open() {
+    document.getElementById("main").style.marginLeft = "25%";
+    document.getElementById("mySidebar").style.width = "25%";
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("openNav").style.display = 'none';
+  }
+  function w3_close() {
+    document.getElementById("main").style.marginLeft = "0%";
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("openNav").style.display = "inline-block";
+  }
+</script>
  </body>
  </html>
  <?php }//if
