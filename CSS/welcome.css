@@ -171,6 +171,7 @@ html, body {
     padding: 0;
   }
   .navbar {
+    margin-top: 50px;
     right: auto;
     background: none;
     border: none;
