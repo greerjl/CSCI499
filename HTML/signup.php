@@ -64,6 +64,7 @@ require_once("./PHP/functions.php");
 	$urlGID = $_GET['gid'];
 
 	if(isset($urlGID)) {
+		echo "urlGID = ".$urlGID."<br/>";
 		//select UID
 		$sql = "SELECT UID FROM user_info WHERE email='$urlEmail'";
 		$result2 = mysqli_query($db, $sql);
