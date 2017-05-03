@@ -135,7 +135,7 @@ require_once("./PHP/functions.php");
 						 <input type="password" id="rpswd" name="rpswd"
 						 		pattern="(?=.*\d).{6,}" class="form-control"
 						 		placeholder="Re-Enter Password" required/>
-
+								<br><br>
 						 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
 	 			 	</form>
 	<?php }//request method if ?>
