@@ -82,7 +82,7 @@ if($_SESSION["valid"]==true){?>
           <h1>House Utilities Manager</h1>
           <h2>An application housing all your home management needs. </h2>
         </div>
-     <!--nav class="navbar navbar-default">
+     <nav class="navbar navbar-default">
        <div class="container-fluid">
          <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNavBar" aria-expanded="false">
@@ -102,10 +102,10 @@ if($_SESSION["valid"]==true){?>
              <li><a href="./userSettings.php">My Settings</a></li>
              <li><a href="./logout.php">Logout</a></li>
            </ul>
-         </div><!-- /.navbar-collapse >
-       </div><!-- /.container-fluid >
+         </div><!-- /.navbar-collapse -->
+       </div><!-- /.container-fluid -->
      </nav>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">        </script-->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">        </script>
    <?php
      $userID = $_SESSION["login_user"];
      $sql = "SELECT GID FROM sys.user_info WHERE UID = '$userID'";
@@ -166,12 +166,12 @@ if($_SESSION["valid"]==true){?>
           <span class="icon-bar"></span>
         </button>
       </div>
-<!--
+
    <div class="houseinfo col-md-4">
        <h2 class="content-subhead2">House: </h2>
        <h4 class="content-subhead2">Members: </h4>
          <div class="phptext">
-           /*
+           <?php
              $groupId = $_SESSION["gid"];
              $sql = "SELECT username FROM user_info WHERE GID = '$groupId'";
              $result = mysqli_query($db, $sql);
@@ -179,17 +179,17 @@ if($_SESSION["valid"]==true){?>
                  echo $username[0]."<br/>";
              endwhile;
            ?>
-         </div><!--phptext
+         </div><!--phptext-->
        <h4 class="content-subhead2">Rooms: </h4>
        <div class="phptext">
-
+          <?php
            $sql = "SELECT name FROM room WHERE GID = '$groupId'";
            $result = mysqli_query($db, $sql);
            while($roomNames = mysqli_fetch_row($result)):
                echo $roomNames[0]."<br/>";
            endwhile;
-         ?>
-       </div><!--phptext
+          ?>
+       </div><!--phptext-->
    </div><!--houseinfo-->
 <div class="container">
 
@@ -245,7 +245,6 @@ if($_SESSION["valid"]==true){?>
                               echo "\t\t<tr><form action=\"./PHP/completeTaskForm.php\">
                                   <td>$col_value</td><td><input type=\"hidden\" name=\"taskname\" value=\"".$col_value."\"/></td>
                                   <td><input type=\"submit\" name=\"submit\" class=\"txt3\" value=\"Complete\"/></td></form></tr>";
-                              }//if count
                           }//foreach
                       }//while
                     }//else
