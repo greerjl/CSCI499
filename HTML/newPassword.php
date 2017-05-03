@@ -126,6 +126,11 @@ require_once("./PHP/functions.php");
 		<?php
 			}//dbUID if
 		}//isset if
+		else{?>
+			<div class="alert alert-danger">
+				<strong>Error!</strong> an error occurred.
+			</div>
+		<?php }
  }//request method if ?>
 
 			 </div><!-- /.content -->

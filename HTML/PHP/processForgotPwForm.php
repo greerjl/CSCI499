@@ -24,12 +24,12 @@
       //get their access_code first
       $sql = "SELECT accesskey, username FROM user_info WHERE email='$email';";
       $query = mysqli_query($GLOBALS['db'], $sql);
-      $array = mysqli_fetch_array($query);
-      $accesscode = $array->accesskey;
-      $username = $array->username;
+      $array = mysqli_fetch_assoc($query);
+      $accesscode = $array['accesskey'];
+      $username = $array['username'];
       session_start();
       $_SESSION["forgotPwSuc"] = 1;
-      sendMail($email, $username, $accesskey);
+      sendMail($email, $username, $accesscode);
       //redirect to sign up and display success message
       redirect("../forgotPasswordEnterEmail.php");
     }else{
