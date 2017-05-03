@@ -36,7 +36,7 @@ require_once("./PHP/functions.php");
 
  </head>
 
- <div id="layout">-->
+ <div id="layout">
    <div id="main">
 
      <div class="header">
@@ -46,13 +46,14 @@ require_once("./PHP/functions.php");
     <nav class="navbar navbar-default">
      <div class="container-fluid">
        <div class="navbar-header">
+
            <a class="navbar-brand" href="../index.html">House Utilities Manager</a>
        </div>
-       <div class="collapse navbar-collapse" id="mainNavBar">
+    <!--   <div class="collapse navbar-collapse" id="mainNavBar">-->
          <ul class="nav navbar-nav">
            <li><a href="./signup.php">Sign Up</a></li>
 
-       </div><!-- /.navbar-collapse -->
+      <!-- </div><!-- /.navbar-collapse -->
      </div><!-- /.container-fluid -->
    </nav>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
