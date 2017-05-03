@@ -14,10 +14,12 @@ if($_SESSION["valid"]==true){?>
     <link rel="stylesheet" type="text/css" href="../CSS/welcome.css"/>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="icon" href="../images/logo.png">
+    <link rel="stylesheet" href="../bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../bootstrap/js/jasny-bootstrap.min.css"> </script>
 
-    <title>Home Utilities Manager &ndash; </title>
+    <title>House Utilities Manager &ndash; </title>
     <!--<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">-->
     <style>
     @media (max-width: 550px) {
@@ -75,7 +77,6 @@ if($_SESSION["valid"]==true){?>
   <body>
     <div id="layout">
       <div id="main">
-
         <div class="header">
           <h1>House Utilities Manager</h1>
           <h2>An application housing all your home management needs. </h2>
@@ -118,14 +119,41 @@ if($_SESSION["valid"]==true){?>
      </div><!--header-->
    <?php }//if
      elseif($userGID!='0'){ ?>
+    <div class="navmenu navmenu-default navmenu-fixed-left">
+      <a class="navmenu-brand" href="#">House Info/a>
+      <ul class="nav navmenu-nav">
+        <li>Members:
+          <p> <?php
+            $groupId = $_SESSION["gid"];
+            $sql = "SELECT username FROM user_info WHERE GID = '$groupId'";
+            $result = mysqli_query($db, $sql);
+            while($username = mysqli_fetch_row($result)):
+                echo $username[0]."<br/>";
+            endwhile;
+            ?>
+          </p>
+        </li>
+        <li>Rooms:
+          <p> <?php
+              $sql = "SELECT name FROM room WHERE GID = '$groupId'";
+              $result = mysqli_query($db, $sql);
+              while($roomNames = mysqli_fetch_row($result)):
+                  echo $roomNames[0]."<br/>";
+              endwhile;
+           ?>
+         </p>
+        </li>
+      </ul>
+    </div>
 
-<div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left" style="display:none" id="mySidebar">
-  <button class="w3-bar-item w3-button w3-large"
-  onclick="w3_close()">Close &times;</button>
-  <a href="#" class="w3-bar-item w3-button">Members</a>
-  <a href="#" class="w3-bar-item w3-button">Rooms/a>
-</div>
-
+    <div class="canvas">
+      <div class="navbar navbar-default navbar-fixed-top">
+        <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".navmenu" data-canvas=".canvas">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
 <!--
    <div class="houseinfo col-md-4">
        <h2 class="content-subhead2">House: </h2>
@@ -322,19 +350,6 @@ if($_SESSION["valid"]==true){?>
        </div>
      </div>
     </div> <!--footer-->
-    <script>
-  function w3_open() {
-    document.getElementById("main").style.marginLeft = "25%";
-    document.getElementById("mySidebar").style.width = "25%";
-    document.getElementById("mySidebar").style.display = "block";
-    document.getElementById("openNav").style.display = 'none';
-  }
-  function w3_close() {
-    document.getElementById("main").style.marginLeft = "0%";
-    document.getElementById("mySidebar").style.display = "none";
-    document.getElementById("openNav").style.display = "inline-block";
-  }
-</script>
  </body>
  </html>
  <?php }//if
