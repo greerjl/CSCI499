@@ -141,7 +141,7 @@ if($_SESSION["valid"]==true){?>
 
    <div class="col-xs-4 col-md-9">
  <!-- CHORES -->
-       <h2 class="content-subhead">Your Chore: </h2>
+       <h2 class="content-subhead">Your Chores: </h2>
        <p>
          <table>
              <?php
@@ -204,7 +204,7 @@ if($_SESSION["valid"]==true){?>
           <div id="" style="overflow: scroll; height:300px">
             <?php
               $group = $_SESSION["gid"];
-              $sql = "SELECT name, time FROM event WHERE event.GID = '$group'";
+              $sql = "SELECT name, time FROM event WHERE event.GID = '$group' ORDER BY time";
               $result = mysqli_query($db, $sql);
 
               $count = mysqli_num_rows($result);

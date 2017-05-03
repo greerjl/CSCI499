@@ -190,7 +190,7 @@ if($_SESSION["valid"]==true){?>
 				         <table>
 				             <?php
 				             	$gid = $_SESSION["gid"];
-				               $sql = "SELECT name, time FROM event WHERE GID = $gid";
+				               $sql = "SELECT name, time FROM event WHERE GID = $gid ORDER BY time";
 				               $result = mysqli_query($db, $sql);
 
 				               $count = mysqli_num_rows($result);
@@ -227,7 +227,7 @@ if($_SESSION["valid"]==true){?>
 				         <table>
 				             <?php
 				             	$gid = $_SESSION["gid"];
-				               $sql = "SELECT username, time FROM laundry, user_info WHERE laundry.GID = '$gid' AND user_info.UID = laundry.UID";
+				               $sql = "SELECT username, time FROM laundry, user_info WHERE laundry.GID = '$gid' AND user_info.UID = laundry.UID ORDER BY time";
 				               $result = mysqli_query($db, $sql);
 
 				               $count = mysqli_num_rows($result);
