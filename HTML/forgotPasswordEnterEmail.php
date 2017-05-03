@@ -59,7 +59,17 @@ require_once("./PHP/functions.php");
 
 	<?php include '../../dbconnect.php'; ?>
 	<?php include './PHP/processForgotPwForm.php';?>
-				 <div class="content">
+	<?php if($_SESSION["userDNE"] == 1){ ?>
+		<div class="alert alert-danger">
+			<strong>Error!</strong> User does not exist.
+		</div>
+	<?php $_SESSION["userDNE"] = 0; }//if
+			elseif($_SESSION["internalErr"] == 1){ ?>
+				<div class="alert alert-danger">
+					<strong>Error!</strong> User does not exist.
+				</div>
+			<?php $_SESSION["internalErr"] = 0; } ?>
+				<div class="content">
 						 <form id="SignUp" class="form-signin" method="POST" action="./PHP/processForgotPwForm.php">
 						 <h2 class="form-signin-heading"> Forgot Password? </h2>
 

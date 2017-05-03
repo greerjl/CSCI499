@@ -31,11 +31,11 @@
       $_SESSION["forgotPwSuc"] = 1;
       sendMail($email, $username, $accesskey);
       //redirect to sign up and display success message
-      redirect("../signup.php");
+      redirect("../login.php");
     }else{
 			session_start();
-			$_SESSION["signupInternalErr"] = 1;
-			redirect("../signup.php");
+			$_SESSION["internalErr"] = 1;
+			redirect("../forgotPasswordEnterEmail.php");
 		}//ifelses
 
 	}//POST if
