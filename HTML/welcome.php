@@ -119,7 +119,7 @@ if($_SESSION["valid"]==true){?>
      </div><!--header-->
    <?php }//if
      elseif($userGID!='0'){ ?>
-       
+
     <div class="navmenu navmenu-default navmenu-fixed-left">
       <h4>House Info</h4>
       <ul class="nav navmenu-nav">
@@ -155,6 +155,7 @@ if($_SESSION["valid"]==true){?>
           <span class="icon-bar"></span>
         </button>
       </div>
+    </div>
 <!--
    <div class="houseinfo col-md-4">
        <h2 class="content-subhead2">House: </h2>
@@ -180,6 +181,7 @@ if($_SESSION["valid"]==true){?>
          ?>
        </div><!--phptext
    </div><!--houseinfo-->
+<div class="container">
 
    <div class="content col-md-4">
  <!-- CHORES -->
@@ -320,6 +322,7 @@ if($_SESSION["valid"]==true){?>
     <div class="responsive-iframe-container small-container">
     </div>
    </div><!-- content -->
+  </div><!-- container -->
  </div><!--main-->
  </div><!--layout-->
 
