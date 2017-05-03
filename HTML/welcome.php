@@ -91,7 +91,7 @@ if($_SESSION["valid"]==true){?>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
              </button>
-             <a class="navbar-brand active" href="#">My Dashboard<span class="sr-only">(current)</span></a>
+             <a class="navbar-brand active" href="./welcome.php">My Dashboard<span class="sr-only">(current)</span></a>
          </div>
          <div class="collapse navbar-collapse" id="mainNavBar">
            <ul class="nav navbar-nav">
@@ -119,8 +119,7 @@ if($_SESSION["valid"]==true){?>
      <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
      </div><!--header-->
    <?php }//if
-     elseif($userGID!='0'){ ?>
-<!--
+
      elseif($userGID!='0'){
         if($_SESSION["taskDeleteErr"] == 1){ ?>
           <div class="alert alert-danger">
@@ -130,7 +129,7 @@ if($_SESSION["valid"]==true){?>
         elseif($_SESSION["taskDeleteSuc"] == 1){ ?>
           <div class="alert alert-success">
    					<strong>Success!</strong> Task was deleted.
-  	 			</div
+  	 			</div>
       <?php $_SESSION["taskDeleteSuc"] = 0; } ?>
 
     <div class="navmenu navmenu-default navmenu-fixed-left">
@@ -138,7 +137,7 @@ if($_SESSION["valid"]==true){?>
       <ul class="nav navmenu-nav">
         <li> <h5> Members: </h5>
           <p> <?php
-      /*      $groupId = $_SESSION["gid"];
+            $groupId = $_SESSION["gid"];
             $sql = "SELECT username FROM user_info WHERE GID = '$groupId'";
             $result = mysqli_query($db, $sql);
             while($username = mysqli_fetch_row($result)):
@@ -168,8 +167,7 @@ if($_SESSION["valid"]==true){?>
           <span class="icon-bar"></span>
         </button>
       </div>
-*/
-   <div class="houseinfo col-md-4">
+    <div class="houseinfo col-md-4">
        <h2 class="content-subhead2">House: </h2>
        <h4 class="content-subhead2">Members: </h4>
          <div class="phptext">
@@ -245,7 +243,6 @@ if($_SESSION["valid"]==true){?>
                     else{
                       while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                           foreach ($line as $col_value) {
-                              echo "\t\t<tr><td>$col_value</td></tr>";
                               echo "\t\t<tr><form action=\"./PHP/completeTaskForm.php\">
                                   <td>$col_value</td><td><input type=\"hidden\" name=\"taskname\" value=\"".$col_value."\"/></td>
                                   <td><input type=\"submit\" name=\"submit\" class=\"txt3\" value=\"Complete\"/></td></form></tr>";
@@ -326,12 +323,7 @@ if($_SESSION["valid"]==true){?>
                     $i = $i+1;
                 }//while
               }//else
-             } elseif($userGID == '0') { ?>
-                 <div class="header">
-                 <h2>Please create a group in order to view its information.</h2>
-                 <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
-                 </div><!--header-->
-      <?php }//elseif ?>
+            } ?>
     </div>
   </div>
 
