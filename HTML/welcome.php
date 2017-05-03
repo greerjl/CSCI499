@@ -16,6 +16,7 @@ if($_SESSION["valid"]==true){?>
     <link rel="icon" href="../images/logo.png">
     <link rel="stylesheet" href="../bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../CSS/roomForm.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="../bootstrap/js/jasny-bootstrap.min.js"> </script>
 
@@ -120,6 +121,18 @@ if($_SESSION["valid"]==true){?>
    <?php }//if
      elseif($userGID!='0'){ ?>
 <!--
+     elseif($userGID!='0'){
+        if($_SESSION["taskDeleteErr"] == 1){ ?>
+          <div class="alert alert-danger">
+            <strong>Error!</strong> Task failed to be deleted.
+          </div>
+      <?php $_SESSION["taskDeleteErr"] = 0; }
+        elseif($_SESSION["taskDeleteSuc"] == 1){ ?>
+          <div class="alert alert-success">
+   					<strong>Success!</strong> Task was deleted.
+  	 			</div
+      <?php $_SESSION["taskDeleteSuc"] = 0; } ?>
+
     <div class="navmenu navmenu-default navmenu-fixed-left">
       <a class="navmenu-brand" href="#">House Info</a>
       <ul class="nav navmenu-nav">
@@ -178,6 +191,7 @@ if($_SESSION["valid"]==true){?>
                echo $roomNames[0]."<br/>";
            endwhile;
          ?>
+          ?>
        </div><!--phptext-->
    </div><!--houseinfo-->
 <div class="container">
@@ -232,6 +246,9 @@ if($_SESSION["valid"]==true){?>
                       while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                           foreach ($line as $col_value) {
                               echo "\t\t<tr><td>$col_value</td></tr>";
+                              echo "\t\t<tr><form action=\"./PHP/completeTaskForm.php\">
+                                  <td>$col_value</td><td><input type=\"hidden\" name=\"taskname\" value=\"".$col_value."\"/></td>
+                                  <td><input type=\"submit\" name=\"submit\" class=\"txt3\" value=\"Complete\"/></td></form></tr>";
                           }//foreach
                       }//while
                     }//else
