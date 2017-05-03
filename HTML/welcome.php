@@ -56,7 +56,7 @@ if($_SESSION["valid"]==true){?>
     /* Dates */
     .agenda .agenda-date { width: 170px; }
     .agenda .agenda-date .dayofmonth {
-    width: 40px;
+    width: 100px;
     font-size: 36px;
     line-height: 36px;
     float: left;
