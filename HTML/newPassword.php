@@ -105,7 +105,7 @@ require_once("./PHP/functions.php");
 			<?php }//ifelses
 			?>
 				<div class="content">
-						<form id="forgotPw" class="form-signin" method="POST" action="./PHP/processNewPasswordForm.php">
+						<form id="forgotPw" class="form-signin" method="POST" action="./PHP/processNewPwForm.php">
 						<h2 class="form-signin-heading"> Forgot Password? </h2>
 
 						<input type="email" id="useremail" class="form-control"
@@ -120,9 +120,6 @@ require_once("./PHP/functions.php");
 							 placeholder="Re-Enter Password" required/>
 
 						<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-						<?php if($_SESSION["pwChangeSuccess"] == 1){?>
-							Log in <a href="./login.php">here.</a><br/>
-						<?php $_SESSION["pwChangeSuccess"] = 0; }?>
 				 </form>
 		<?php
 			}//dbUID if

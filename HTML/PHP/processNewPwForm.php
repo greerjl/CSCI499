@@ -28,7 +28,7 @@
 				//if user was inserted in to database start session to access errors
 				session_start();
 				$_SESSION["pwChangeSuccess"] = 1;
-				redirect("../newPassword.php");
+				redirect("../login.php");
 			}//result if
 		}//password verify if
 		elseif(!strcmp($pswd, $rpswd)) {
