@@ -134,9 +134,9 @@ if($_SESSION["valid"]==true){?>
 
        <div class="navbar navbar-default visible-xs">
        <div class="container-fluid">
-         <button class="btn btn-default navbar-btn" data-toggle="collapse" data-target="#filter-sidebar">
+         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNavBar" aria-expanded="false">
            <i class="fa fa-tasks"></i> House Info
-         </button>
+          </button>
        </div>
      </div>
 
