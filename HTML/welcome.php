@@ -12,15 +12,11 @@ if($_SESSION["valid"]==true){?>
     <!--<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">-->
     <link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/>
     <link rel="stylesheet" type="text/css" href="../CSS/welcome.css"/>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="icon" href="../images/logo.png">
-    <link rel="stylesheet" href="../bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="../CSS/roomForm.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="../bootstrap/js/jasny-bootstrap.min.js"> </script>
 
-    <title>House Utilities Manager &ndash; </title>
+    <title>Home Utilities Manager &ndash; </title>
     <!--<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">-->
     <style>
     @media (max-width: 550px) {
@@ -51,6 +47,7 @@ if($_SESSION["valid"]==true){?>
         height: 100%;
     }
     .agenda {  }
+
     /* Dates */
     .agenda .agenda-date { width: 170px; }
     .agenda .agenda-date .dayofmonth {
@@ -64,8 +61,12 @@ if($_SESSION["valid"]==true){?>
     .agenda .agenda-date .shortdate {
     font-size: 0.75em;
     }
+
+
     /* Times */
     .agenda .agenda-time { width: 140px; }
+
+
     /* Events */
     .agenda .agenda-events {  }
     .agenda .agenda-events .agenda-event {  }
@@ -78,6 +79,7 @@ if($_SESSION["valid"]==true){?>
   <body>
     <div id="layout">
       <div id="main">
+
         <div class="header">
           <h1>House Utilities Manager</h1>
           <h2>An application housing all your home management needs. </h2>
@@ -91,7 +93,7 @@ if($_SESSION["valid"]==true){?>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
              </button>
-             <a class="navbar-brand active" href="./welcome.php">My Dashboard<span class="sr-only">(current)</span></a>
+             <a class="navbar-brand active" href="#">My Dashboard<span class="sr-only">(current)</span></a>
          </div>
          <div class="collapse navbar-collapse" id="mainNavBar">
            <ul class="nav navbar-nav">
@@ -119,59 +121,20 @@ if($_SESSION["valid"]==true){?>
      <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
      </div><!--header-->
    <?php }//if
-     //elseif($userGID!='0'){
+       elseif($userGID!='0'){
+          if($_SESSION["taskDeleteErr"] == 1){ ?>
+            <div class="alert alert-danger">
+              <strong>Error!</strong> Task failed to be deleted.
+            </div>
+        <?php $_SESSION["taskDeleteErr"] = 0; }
+          elseif($_SESSION["taskDeleteSuc"] == 1){ ?>
+            <div class="alert alert-success">
+              <strong>Success!</strong> Task was deleted.
+            </div>
+        <?php $_SESSION["taskDeleteSuc"] = 0; } ?>
 
-     elseif($userGID!='0'){
-        if($_SESSION["taskDeleteErr"] == 1){ ?>
-          <div class="alert alert-danger">
-            <strong>Error!</strong> Task failed to be deleted.
-          </div>
-      <?php $_SESSION["taskDeleteErr"] = 0; }
-        elseif($_SESSION["taskDeleteSuc"] == 1){ ?>
-          <div class="alert alert-success">
-   					<strong>Success!</strong> Task was deleted.
-  	 			</div>
-      <?php $_SESSION["taskDeleteSuc"] = 0; } ?>
-<!--
-    <div class="navmenu navmenu-default navmenu-fixed-left">
-      <a class="navmenu-brand" href="#">House Info</a>
-      <ul class="nav navmenu-nav">
-        <li> <h5> Members: </h5>
-          <p> <?php/*
-           $groupId = $_SESSION["gid"];
-          <p> <?php
-            $groupId = $_SESSION["gid"];
-            $sql = "SELECT username FROM user_info WHERE GID = '$groupId'";
-            $result = mysqli_query($db, $sql);
-            while($username = mysqli_fetch_row($result)):
-                echo $username[0]."<br/>";
-            endwhile;
-            ?>
-          </p>
-        </li>
-        <li> <h5> Rooms: </h5>
-          <p> <?php
-              $sql = "SELECT name FROM room WHERE GID = '$groupId'";
-              $result = mysqli_query($db, $sql);
-              while($roomNames = mysqli_fetch_row($result)):
-                  echo $roomNames[0]."<br/>";
-              endwhile;*/
-           ?>
-         </p>
-        </li>
-      </ul>
-    </div>
-
-    <div class="canvas">
-      <div class="navbar navbar-default navbar-fixed-top">
-        <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".navmenu" data-canvas=".canvas">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div-->
-
-    <div class="houseinfo col-md-4">
+ <!--House info-->
+   <div class="houseinfo col-md-4">
        <h2 class="content-subhead2">House: </h2>
        <h4 class="content-subhead2">Members: </h4>
          <div class="phptext">
@@ -186,17 +149,15 @@ if($_SESSION["valid"]==true){?>
          </div><!--phptext-->
        <h4 class="content-subhead2">Rooms: </h4>
        <div class="phptext">
-          <?php
+         <?php
            $sql = "SELECT name FROM room WHERE GID = '$groupId'";
            $result = mysqli_query($db, $sql);
            while($roomNames = mysqli_fetch_row($result)):
                echo $roomNames[0]."<br/>";
            endwhile;
          ?>
-          ?>
        </div><!--phptext-->
    </div><!--houseinfo-->
-<div class="container">
 
    <div class="content col-md-4">
  <!-- CHORES -->
@@ -327,15 +288,18 @@ if($_SESSION["valid"]==true){?>
                     $i = $i+1;
                 }//while
               }//else
-            } ?>
+             } elseif($userGID == '0') { ?>
+                 <div class="header">
+                 <h2>Please create a group in order to view its information.</h2>
+                 <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
+                 </div><!--header-->
+      <?php }//elseif ?>
     </div>
   </div>
 
     <div class="responsive-iframe-container small-container">
     </div>
    </div><!-- content -->
-  </div><!-- container -->
-</div>
  </div><!--main-->
  </div><!--layout-->
 
@@ -367,7 +331,6 @@ if($_SESSION["valid"]==true){?>
        </div>
      </div>
     </div> <!--footer-->
-
  </body>
  </html>
  <?php }//if
