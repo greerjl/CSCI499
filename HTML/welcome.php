@@ -21,73 +21,40 @@ if($_SESSION["valid"]==true){?>
     <title>Home Utilities Manager &ndash; </title>
     <!--<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">-->
     <style>
-    @media screen and (max-width: 500px) {
-        .big-container {
-            display: none;
+      .agenda {  }
 
-        }
-
-    }
-    @media screen and (min-width: 400px) {
-        .small-container {
-            display: none;
-        }
-
-    }
-    /* Responsive iFrame */
-    .responsive-iframe-container {
-        position: relative;
-        padding-bottom: 56.25%;
-        padding-top: 30px;
-        height: 0;
-        overflow: hidden;
-    }
-    .responsive-iframe-container iframe,
-    .vresponsive-iframe-container object,
-    .vresponsive-iframe-container embed {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-    .agenda {  }
-
-    /* Dates */
-    .agenda .agenda-date { width: 170px; }
-    .agenda .agenda-date .dayofmonth .dayofweek .shortdate{
-    width: 100px;
-    font-size: 36px;
-    line-height: 36px;
-    float: left;
-    text-align: left;
-    margin-right: 10px;
-    }
-    .dayofmonth{
+      /* Dates */
+      .agenda .agenda-date { width: 170px; }
+      .agenda .agenda-date .dayofmonth .dayofweek .shortdate{
       width: 100px;
       font-size: 36px;
       line-height: 36px;
       float: left;
-      text-align: right;
+      text-align: left;
       margin-right: 10px;
-    }
+      }
+      .dayofmonth{
+        width: 100px;
+        font-size: 36px;
+        line-height: 36px;
+        float: left;
+        text-align: right;
+        margin-right: 10px;
+      }
 
-    .agenda .agenda-date .shortdate {
-    font-size: 0.75em;
-    }
+      .agenda .agenda-date .shortdate {
+      font-size: 0.75em;
+      }
 
 
-    /* Times */
-    .agenda .agenda-time { width: 140px; }
+      /* Times */
+      .agenda .agenda-time { width: 140px; }
 
 
-    /* Events */
-    .agenda .agenda-events {  }
-    .agenda .agenda-events .agenda-event {  }
+      /* Events */
+      .agenda .agenda-events {  }
+      .agenda .agenda-events .agenda-event {  }
 
-    @media (max-width: 767px) {
-
-    }
     </style>
   </head>
   <body>
