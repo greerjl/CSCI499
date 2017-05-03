@@ -164,7 +164,7 @@ if($_SESSION["valid"]==true){?>
        </div><!--phptext-->
    </div><!--houseinfo-->
 
-   <div class="col-md-4 col-md-offset-4">
+   <div class="col-xs-3 col-md-2 col-md-offset-4">
 
  <!-- CHORES -->
        <h2 class="content-subhead">Your Chore: </h2>
