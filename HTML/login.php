@@ -36,7 +36,7 @@ require_once("./PHP/functions.php");
 
  </head>
 
- <!--<div id="layout">-->
+ <div id="layout">-->
    <div id="main">
 
      <div class="header">
@@ -139,7 +139,7 @@ require_once("./PHP/functions.php");
       </div><!-- /.content -->
     </div> <!-- /.container -->
   </div><!--main-->
-<!--</div><!--layout-->
+</div><!--layout-->
 <br><br><br><br><br><br><br><br>
     <!-- Footer -->
     <div id="footer">
