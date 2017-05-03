@@ -30,7 +30,7 @@ if($_SESSION["valid"]==true){?>
     <script type="text/javascript">
 		$(document).ready(function(){
   			$('#showPassword1').on('click', function(){
-    
+
     			var passwordField = $('#newpass');
     			var passwordFieldType = passwordField.attr('type');
     			if(passwordFieldType == 'password')
@@ -43,7 +43,7 @@ if($_SESSION["valid"]==true){?>
     			}
   			});
   			$('#showPassword2').on('click', function(){
-    
+
     			var passwordField = $('#rnewpass');
     			var passwordFieldType = passwordField.attr('type');
     			if(passwordFieldType == 'password')
@@ -56,7 +56,7 @@ if($_SESSION["valid"]==true){?>
     			}
   			});
   		});
-       
+
     </script>
 </head>
 
@@ -178,12 +178,12 @@ if($_SESSION["valid"]==true){?>
                        <input type="button" id="showPassword1" value="Show" class="txt4" style="float: right" />
                        <div style="overflow: hidden; padding-right: 1em;">
                        		<input type="password" required="" name="newpass" id="newpass" value="" placeholder="New Password" class="txt" />
-							  </div>                       
+							  </div>
                        <input type="button" id="showPassword2" value="Show" class="txt4" style="float: right" />
                        <div style="overflow: hidden; padding-right: 1em;">
                        		<input type="password" required="" placeholder="Repeat New Password" value="" id="rnewpass" name="rnewpass" class="txt" />
 							  </div>
-							  
+
                        <input type="submit" value="Submit" name="submit" class="txt2"/>
                      </form>
                   </div>
@@ -205,23 +205,32 @@ if($_SESSION["valid"]==true){?>
 	        </div><!-- row -->
         </div><!-- container -->
 
-        <br/>
-        <?php
-          $userID = $_SESSION["login_user"];
-          $sql = "SELECT GID FROM sys.user_info WHERE UID = '$userID'";
-          $result = mysqli_query($db, $sql);
-          $obj = mysqli_fetch_object($result);
-          $userGID = $obj->GID;
-          if($userGID == '0'){
-        ?>
-        <div class="header">
-          <h2>Please create a group before you can leave a group.</h2>
-          <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
-        </div><!--header-->
-        <?php }//if
-           else { ?>
-        <div class="container">
+        <div class="container" style="">
           <div class="row">
+            <div class="col-md-4">
+                <div class="form_main">
+                    <h4 class="heading"><strong>Need to delete your account?<strong> <span></span></h4>
+                    <div class="form">
+                      <form action="./PHP/deleteAccountForm.php" method="POST" id="deleteAccountForm" name="deleteAccountForm">
+                        <input type="submit" value="Delete" name="submit" class="txt2"/>
+                      </form><!-- action -->
+                  </div><!--form-->
+                 </div><!--form_main-->
+            </div><!-- col-md-4 -->
+            <?php
+              $userID = $_SESSION["login_user"];
+              $sql = "SELECT GID FROM sys.user_info WHERE UID = '$userID'";
+              $result = mysqli_query($db, $sql);
+              $obj = mysqli_fetch_object($result);
+              $userGID = $obj->GID;
+              if($userGID == '0'){
+            ?>
+            <div class="header">
+              <h2>Please create a group before you can leave a group.</h2>
+              <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
+            </div><!--header-->
+            <?php }//if
+               else { ?>
             <div class="col-md-4">
                 <div class="form_main">
                     <h4 class="heading"><strong>Ready to Move Out?<strong> <span></span></h4>
@@ -232,18 +241,7 @@ if($_SESSION["valid"]==true){?>
                   </div><!--form-->
                  </div><!--form_main-->
             </div><!-- col-md-4 -->
-            
-            <div class="col-md-4">
-					<div class="form_main">
-                    <h4 class="heading"><strong>Need to delete your account?<strong> <span></span></h4>
-                    <div class="form">
-                      <form action="./PHP/deleteAccountForm.php" method="POST" id="deleteAccountForm" name="deleteAccountForm">
-                        <input type="submit" value="Delete" name="submit" class="txt2"/>
-                      </form><!-- action -->
-                  </div><!--form-->
-                 </div><!--form_main-->
-            </div><!-- col-md-4 -->
-            
+
           </div><!--row-->
         </div><!--container-->
 
