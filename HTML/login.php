@@ -36,12 +36,12 @@ require_once("./PHP/functions.php");
 
  </head>
 
- <div id="layout">
+ <!--<div id="layout">-->
    <div id="main">
 
      <div class="header">
        <h1>House Utilities Manager</h1>
-       <h2>An application for all your home management needs. </h2>
+       <h2>An application for all your house management needs. </h2>
      </div>
     <nav class="navbar navbar-default">
      <div class="container-fluid">
@@ -139,7 +139,7 @@ require_once("./PHP/functions.php");
       </div><!-- /.content -->
     </div> <!-- /.container -->
   </div><!--main-->
-</div><!--layout-->
+<!--</div><!--layout-->
 <br><br><br><br><br><br><br><br>
     <!-- Footer -->
     <div id="footer">
