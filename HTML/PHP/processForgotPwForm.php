@@ -54,7 +54,7 @@
 
 				$result = mysqli_query($GLOBALS['db'], $sql);
 				$count = mysqli_num_rows($result);
-				if(!$result || mysqli_num_rows($result) != 0){
+				if(!$result || $count == 0){
 					return "This user does not exist.";
 				}//if
 				else{
