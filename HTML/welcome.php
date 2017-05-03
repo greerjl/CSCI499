@@ -77,7 +77,7 @@ if($_SESSION["valid"]==true){?>
   <body>
     <div id="layout">
       <div id="main">
-        <div class="header">
+        <div class="page-header">
           <h1>House Utilities Manager</h1>
           <h2>An application housing all your home management needs. </h2>
         </div>
@@ -121,7 +121,7 @@ if($_SESSION["valid"]==true){?>
      elseif($userGID!='0'){ ?>
 
     <div class="navmenu navmenu-default navmenu-fixed-left">
-      <h4>House Info</h4>
+      <a class="navmenu-brand" href="#">House Info</a>
       <ul class="nav navmenu-nav">
         <li> <h5> Members: </h5>
           <p> <?php
@@ -155,7 +155,6 @@ if($_SESSION["valid"]==true){?>
           <span class="icon-bar"></span>
         </button>
       </div>
-    </div>
 <!--
    <div class="houseinfo col-md-4">
        <h2 class="content-subhead2">House: </h2>
@@ -323,6 +322,7 @@ if($_SESSION["valid"]==true){?>
     </div>
    </div><!-- content -->
   </div><!-- container -->
+</div>
  </div><!--main-->
  </div><!--layout-->
 
@@ -354,6 +354,7 @@ if($_SESSION["valid"]==true){?>
        </div>
      </div>
     </div> <!--footer-->
+
  </body>
  </html>
  <?php }//if
