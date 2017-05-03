@@ -276,14 +276,15 @@ if($_SESSION["valid"]==true){?>
                             <!-- Single event in a single day -->
                             <tr>
                             <td class="agenda-date" class="active" rowspan="1">
-                            <div class="dayofmonth">
-                              <?php echo $day; ?>
-                            </div>
+
                             <div class="dayofweek">
                                 <?php echo $dayOfWeek; ?>
                             </div>
                             <div class="shortdate text-muted">
                                 <?php echo $monthYear; ?>
+                            </div>
+                            <div class="dayofmonth">
+                              <?php echo $day; ?>
                             </div>
                             </td>
                             <td class="agenda-time">
