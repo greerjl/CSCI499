@@ -69,19 +69,6 @@ require_once("./PHP/functions.php");
 	$urlEmail = $_GET['email'];
 	$urlGID = $_GET['gid'];
 
-	if(isset($urlGID)) {
-		echo "urlGID = ".$urlGID."<br/>";
-		//select UID
-		$sql = "SELECT UID FROM user_info WHERE email='$urlEmail'";
-		$result = mysqli_query($GLOBALS['db'], $sql);
-		$dbUID = mysqli_fetch_object($result);
-		//$dbUID = $temp->UID;
-		echo "uid from query = ".$dbUID."<br/>";
-		//update GID
-		$sql2 = "UPDATE user_info SET GID='$urlGID' WHERE UID='$dbUID'";
-		$result2 = mysqli_query($GLOBALS['db'], $sql2);
-	}
-
 	 if($_SERVER['REQUEST_METHOD']=="GET" ){
 		 if($_SESSION["signupRepeatPswdErr"] == 1){ ?>
  				<div class="alert alert-danger">
@@ -125,6 +112,9 @@ require_once("./PHP/functions.php");
 
 						 <input type="email" id="useremail" class="form-control"
 						 		name="email" placeholder="Email Address" autofocus required/>
+
+							<input type="hidden" id="urlgid" class="form-control"
+	 							name="urlgid" value="<?echo $urlGID;?>" required/>
 
 						 <input type="username" id="username" class="form-control"
 							  name="username" placeholder="Username" required/>

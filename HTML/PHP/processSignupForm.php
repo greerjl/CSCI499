@@ -12,6 +12,8 @@
 		$email = cleanData($email);
 		$emailErr = validate($email, 'email');
 
+		$urlGID = $_POST['urlgid'];
+
 		$username = mysqli_real_escape_string($db, $_POST['username']);
 		$username = cleanData($username);
 
@@ -34,6 +36,16 @@
 			//if sign up credentials pass the requirements then query db to insert sql
 			$result = mysqli_query($db, $sql);
 			if($result == 1){
+				if($urlGID!=0 || $urlGID!="") {
+					//select UID
+					$sql = "SELECT UID FROM user_info WHERE email='$email';";
+					$result = mysqli_query($GLOBALS['db'], $sql);
+					$temp = mysqli_fetch_object($result);
+					$dbUID = $temp->UID;
+					//update GID
+					$sql2 = "UPDATE user_info SET GID='$urlGID' WHERE UID='$dbUID';";
+					$result2 = mysqli_query($GLOBALS['db'], $sql2);
+				}//if urlGID is set (means it came from an invite)
 				//if user was inserted in to database start session to access errors
 				session_start();
 				$_SESSION["signupSuccess"] = 1;
