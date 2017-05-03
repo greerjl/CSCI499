@@ -119,12 +119,7 @@ require_once("./PHP/functions.php");
       <div class="alert alert-danger">
         <strong>Error!</strong> User credentials are incorrect. Enter correct username and password.
       </div>
-  <?php logout(); $_SESSION["loginErr"] = 0; }//if
-    elseif($_SESSION["forgotPwSuc"] == 1){ ?>
-      <div class="alert alert-success">
-        <strong>Success!</strong> Your password has been changed.
-      </div>
-      <?php $_SESSION["forgotPwSuc"] = 0; } ?>
+  <?php logout(); $_SESSION["loginErr"] = 0; }//if ?>
 
         <div class="content">
           <form id="LogIn" class="form-signin" method="POST" action="./PHP/processLoginForm.php">

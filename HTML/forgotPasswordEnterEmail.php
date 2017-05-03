@@ -68,7 +68,12 @@ require_once("./PHP/functions.php");
 				<div class="alert alert-danger">
 					<strong>Error!</strong> User does not exist.
 				</div>
-			<?php $_SESSION["internalErr"] = 0; } ?>
+			<?php $_SESSION["internalErr"] = 0; }
+			elseif($_SESSION["forgotPwSuc"] == 1){ ?>
+	      <div class="alert alert-success">
+	        <strong>Success!</strong> Check your email for a change password link.
+	      </div>
+	      <?php $_SESSION["forgotPwSuc"] = 0; }?>
 				<div class="content">
 						 <form id="SignUp" class="form-signin" method="POST" action="./PHP/processForgotPwForm.php">
 						 <h2 class="form-signin-heading"> Forgot Password? </h2>
