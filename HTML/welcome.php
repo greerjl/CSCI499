@@ -155,7 +155,7 @@ if($_SESSION["valid"]==true){?>
               $result = mysqli_query($db, $sql);
               while($roomNames = mysqli_fetch_row($result)):
                   echo $roomNames[0]."<br/>";
-              endwhile;
+              endwhile;*/
            ?>
          </p>
         </li>
@@ -169,9 +169,8 @@ if($_SESSION["valid"]==true){?>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-      </div>
-*/
-   <div class="houseinfo col-md-4">
+      </div-->
+
     <div class="houseinfo col-md-4">
        <h2 class="content-subhead2">House: </h2>
        <h4 class="content-subhead2">Members: </h4>
