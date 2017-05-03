@@ -63,6 +63,15 @@ if($_SESSION["valid"]==true){?>
     text-align: left;
     margin-right: 10px;
     }
+    .dayofmonth{
+      width: 100px;
+      font-size: 36px;
+      line-height: 36px;
+      float: left;
+      text-align: right;
+      margin-right: 10px;
+    }
+
     .agenda .agenda-date .shortdate {
     font-size: 0.75em;
     }
