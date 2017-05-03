@@ -156,7 +156,7 @@ if($_SESSION["valid"]==true){?>
                $userGID = $obj->GID;
                if($userGID == '0'){
              ?>
-             <div class="col-md-4">
+             <div class="col-xs-12 col-md-3">
               <div class="form_main">
                 <h4 class="heading"><strong>Create a Group</strong> <span></span></h4>
                 <div class="form">
@@ -172,7 +172,7 @@ if($_SESSION["valid"]==true){?>
           </div><!--row-->
             <?php }//if
               else { ?>
-             <div class="col-md-4">
+             <div class="col-xs-12 col-md-3">
               <div class="form_main">
                  <h4 class="heading"><strong>Edit Group Name</strong> <span></span></h4>
                  <div class="form">
@@ -193,7 +193,7 @@ if($_SESSION["valid"]==true){?>
               </div>
             </div>
 
-             <div class="col-md-4">
+             <div class="col-xs-12 col-md-3">
                 <div class="form_main">
                    <h4 class="heading"><strong>Add Rooms</strong> <span></span></h4>
                    <div class="form">
@@ -212,7 +212,7 @@ if($_SESSION["valid"]==true){?>
 
             <div class="row">
 
-					    <div class="col-md-4">
+					    <div class="col-xs-12 col-md-3">
 		            <div class="form_main">
                   <?php
                     //sql statement that selects gid for logged in user
