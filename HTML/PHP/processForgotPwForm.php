@@ -18,7 +18,7 @@
 		if(!empty($dbResult)){
       session_start();
       $_SESSION["userDNE"] = 1;
-      redirect("../forgotPasswordPage.php");
+      redirect("../processForgotPwForm.php");
     }//if user email dne in database
     elseif(empty($dbResult)){//else the user is in the db and we should send them a forgot password email
       //get their access_code first
@@ -50,12 +50,12 @@
 
 	//dbCheck function still used
 	function dbCheck($data){
-				$sql = "SELECT email FROM user_info WHERE email = '$data'";
+				$sql = "SELECT UID FROM user_info WHERE email = '$data'";
 
 				$result = mysqli_query($GLOBALS['db'], $sql);
 				$count = mysqli_num_rows($result);
 				if(!$result || mysqli_num_rows($result) != 0){
-					return "This email has already been registered.";
+					return "This user does not exist.";
 				}//if
 				else{
 					return "";
