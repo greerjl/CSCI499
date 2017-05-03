@@ -11,6 +11,7 @@ if($_SESSION["valid"]==true){?>
     <meta name="description" content="">
     <meta name="author" content="Server" >
     <link rel="icon" href="../images/logo.png">
+    <link href="../bootstrap/css/sticky-footer-navbar.css" rel="stylesheet">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
@@ -260,32 +261,12 @@ if($_SESSION["valid"]==true){?>
 </div><!--main-->
 </div><!--layout-->
 <!-- Footer -->
-<div id="footer">
-  <div class="container">
-    <p class="text-muted">Copyright ©2016-2017 PLU Capstone. House Utilities Manager.
-    Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
-      <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
-  </div>
-</div>
-<div class="modal" id="myModal" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-       <div class="modal-header">
-           <button class="close" type="button" data-dismiss="modal">×</button>
-           <h3 class="modal-title"></h3>
-       </div>
-       <div class="modal-body">
-         <div id="modalCarousel" class="carousel">
-           <a class="carousel-control left" href="#modaCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-           <a class="carousel-control right" href="#modalCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
-         </div>
-       </div>
-       <div class="modal-footer">
-           <button class="btn btn-default" data-dismiss="modal">Close</button>
-       </div>
+    <div class="footer">
+        <p class="text-muted">Copyright ©2016-2017 PLU Capstone. House Utilities Manager.
+        Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
+          <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
     </div>
-</div>
-</div> <!--footer-->
+
 </body>
 
 </html>

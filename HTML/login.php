@@ -147,7 +147,6 @@ require_once("./PHP/functions.php");
     </div> <!-- /.container -->
   </div><!--main-->
 </div><!--layout-->
-<br><br><br><br><br><br><br><br>
     <!-- Footer -->
     <div class="footer">
           <p class="text-muted">Copyright ©2016-2017 PLU Capstone. House Utilities Manager.
