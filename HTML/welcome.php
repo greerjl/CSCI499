@@ -20,15 +20,18 @@ if($_SESSION["valid"]==true){?>
     <title>Home Utilities Manager &ndash; </title>
     <!--<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">-->
     <style>
-    @media (max-width: 550px) {
+    @media screen and (max-width: 500px) {
         .big-container {
-        display: none;
+            display: none;
+
         }
+
     }
-    @media (min-width: 550px) {
+    @media screen and (min-width: 400px) {
         .small-container {
-        display: none;
+            display: none;
         }
+
     }
     /* Responsive iFrame */
     .responsive-iframe-container {
