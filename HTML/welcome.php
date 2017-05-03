@@ -119,8 +119,8 @@ if($_SESSION["valid"]==true){?>
      <h4>Click <a href="./houseSettings.php">here</a> to do so.</h4>
      </div><!--header-->
    <?php }//if
-     elseif($userGID!='0'){ ?>
-<!--
+     //elseif($userGID!='0'){
+
      elseif($userGID!='0'){
         if($_SESSION["taskDeleteErr"] == 1){ ?>
           <div class="alert alert-danger">
@@ -130,15 +130,15 @@ if($_SESSION["valid"]==true){?>
         elseif($_SESSION["taskDeleteSuc"] == 1){ ?>
           <div class="alert alert-success">
    					<strong>Success!</strong> Task was deleted.
-  	 			</div
+  	 			</div>
       <?php $_SESSION["taskDeleteSuc"] = 0; } ?>
-
+<!--
     <div class="navmenu navmenu-default navmenu-fixed-left">
       <a class="navmenu-brand" href="#">House Info</a>
       <ul class="nav navmenu-nav">
         <li> <h5> Members: </h5>
-          <p> <?php
-      /*      $groupId = $_SESSION["gid"];
+          <p> <?php/*
+           $groupId = $_SESSION["gid"];
             $sql = "SELECT username FROM user_info WHERE GID = '$groupId'";
             $result = mysqli_query($db, $sql);
             while($username = mysqli_fetch_row($result)):
@@ -245,7 +245,6 @@ if($_SESSION["valid"]==true){?>
                     else{
                       while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                           foreach ($line as $col_value) {
-                              echo "\t\t<tr><td>$col_value</td></tr>";
                               echo "\t\t<tr><form action=\"./PHP/completeTaskForm.php\">
                                   <td>$col_value</td><td><input type=\"hidden\" name=\"taskname\" value=\"".$col_value."\"/></td>
                                   <td><input type=\"submit\" name=\"submit\" class=\"txt3\" value=\"Complete\"/></td></form></tr>";
