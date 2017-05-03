@@ -1,6 +1,6 @@
 /* Sticky footer styles*/
 html {
-  position: fixed;
+  position: relative;
   min-height: 100%;
 }
 body {
@@ -9,7 +9,6 @@ body {
 }
 .footer {
   position: fixed;
-  left: 0px;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
