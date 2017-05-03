@@ -74,8 +74,8 @@ require_once("./PHP/functions.php");
 		//select UID
 		$sql = "SELECT UID FROM user_info WHERE email='$urlEmail'";
 		$result = mysqli_query($GLOBALS['db'], $sql);
-		$temp = mysqli_fetch_array($result);
-		$dbUID = $temp->UID;
+		$dbUID = mysqli_fetch_object($result);
+		//$dbUID = $temp->UID;
 		echo "uid from query = ".$dbUID."<br/>";
 		//update GID
 		$sql2 = "UPDATE user_info SET GID='$urlGID' WHERE UID='$dbUID'";
