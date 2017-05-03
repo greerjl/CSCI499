@@ -27,7 +27,7 @@ This is the parent `<div>` that contains the menu and the content area.
 
     .header {
          margin: 0;
-         color: #333;
+         color: white;
          text-align: center;
          padding: 2.5em 2em 0;
          border-bottom: 1px solid #eee;
