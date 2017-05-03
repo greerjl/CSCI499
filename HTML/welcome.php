@@ -119,10 +119,11 @@ if($_SESSION["valid"]==true){?>
      </div><!--header-->
    <?php }//if
      elseif($userGID!='0'){ ?>
+       
     <div class="navmenu navmenu-default navmenu-fixed-left">
-      <a class="navmenu-brand" href="#">House Info/a>
+      <h4>House Info</h4>
       <ul class="nav navmenu-nav">
-        <li>Members:
+        <li> <h5> Members: </h5>
           <p> <?php
             $groupId = $_SESSION["gid"];
             $sql = "SELECT username FROM user_info WHERE GID = '$groupId'";
@@ -133,7 +134,7 @@ if($_SESSION["valid"]==true){?>
             ?>
           </p>
         </li>
-        <li>Rooms:
+        <li> <h5> Rooms: </h5>
           <p> <?php
               $sql = "SELECT name FROM room WHERE GID = '$groupId'";
               $result = mysqli_query($db, $sql);
