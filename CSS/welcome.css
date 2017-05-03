@@ -143,11 +143,13 @@ html, body {
 }
 
 .navbar-toggle {
+  margin-top: 50px;
   float: left;
   margin-left: 15px;
 }
 
 .navmenu {
+  margin-top: 50px;
   z-index: 1;
 }
 
