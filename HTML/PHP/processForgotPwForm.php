@@ -121,7 +121,7 @@
 		    <meta charset="utf-8"></head><body style="padding-left: 1cm; padding-right: 1cm;"><div class="header"><h1>House Utilities Manager</h1><h4>An application for all your house management needs. </h4></div>
 		    <div class="content" style="padding-left: 1.25cm; padding-right: 1.25cm;"><h4>Hello '.$username.',</h4><p> Whoops! We are sorry you forgot your password, but don\'t worry! We got your back.</p>
 				<p> To create a new password, please click the link below: </p><br>
-		    <a href="http://www.houseutil.com/HTML/newPassword.php?email='.$email.'&hash='.$accesskey.'">Create new password</a>
+		    <a href="http://www.houseutil.com/HTML/newPassword.php?email='.$email.'&accesskey='.$accesskey.'">Create new password</a>
 		    <p> Thanks, <br> The HUM Team </br> </p></body></html>';
 
 		$mail->AltBody = "Hi '.$username.', Thanks for signing up for House Utilities Manager. We are very
