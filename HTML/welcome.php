@@ -164,7 +164,8 @@ if($_SESSION["valid"]==true){?>
        </div><!--phptext-->
    </div><!--houseinfo-->
 
-   <div class="col-xs-12 col-md-8">
+   <div class="col-md-4 col-md-offset-4">
+
  <!-- CHORES -->
        <h2 class="content-subhead">Your Chore: </h2>
        <p>
@@ -224,7 +225,7 @@ if($_SESSION["valid"]==true){?>
        </p>
 
  <!-- EVENTS/SCHEDULE -->
-       <h2 class="content-subhead col-xs-6 col-md-4">House schedule: </h2>
+       <h2 class="content-subhead ">House schedule: </h2>
           <div id="" style="overflow: scroll; height:300px">
             <?php
               $group = $_SESSION["gid"];
