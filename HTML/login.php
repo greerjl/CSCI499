@@ -11,12 +11,11 @@ require_once("./PHP/functions.php");
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="stylesheet" type="text/css" href="../CSS/normalize.css"/>
-    <link rel="stylesheet" type="text/css" href="../CSS/login.css"/>
     <link rel="stylesheet" type="text/css" href="../CSS/psuedoWelcome.css"/>
 
     <title>HUM Login</title>
     <link rel="icon" href="../images/logo.png">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

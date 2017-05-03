@@ -31,6 +31,7 @@ This is the parent `<div>` that contains the menu and the content area.
          text-align: center;
          padding: 2.5em 2em 0;
          border-bottom: 1px solid #eee;
+         background-color: #1f8dd6;
      }
         .header h1 {
             margin: 0.2em 0;
