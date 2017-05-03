@@ -119,13 +119,13 @@ if($_SESSION["valid"]==true){?>
      </div><!--header-->
    <?php }//if
      elseif($userGID!='0'){ ?>
-
+<!--
     <div class="navmenu navmenu-default navmenu-fixed-left">
       <a class="navmenu-brand" href="#">House Info</a>
       <ul class="nav navmenu-nav">
         <li> <h5> Members: </h5>
           <p> <?php
-            $groupId = $_SESSION["gid"];
+      /*      $groupId = $_SESSION["gid"];
             $sql = "SELECT username FROM user_info WHERE GID = '$groupId'";
             $result = mysqli_query($db, $sql);
             while($username = mysqli_fetch_row($result)):
@@ -155,12 +155,12 @@ if($_SESSION["valid"]==true){?>
           <span class="icon-bar"></span>
         </button>
       </div>
-<!--
+*/
    <div class="houseinfo col-md-4">
        <h2 class="content-subhead2">House: </h2>
        <h4 class="content-subhead2">Members: </h4>
          <div class="phptext">
-           /*
+           <?php
              $groupId = $_SESSION["gid"];
              $sql = "SELECT username FROM user_info WHERE GID = '$groupId'";
              $result = mysqli_query($db, $sql);
@@ -168,17 +168,17 @@ if($_SESSION["valid"]==true){?>
                  echo $username[0]."<br/>";
              endwhile;
            ?>
-         </div><!--phptext
+         </div><!--phptext-->
        <h4 class="content-subhead2">Rooms: </h4>
        <div class="phptext">
-
+          <?php
            $sql = "SELECT name FROM room WHERE GID = '$groupId'";
            $result = mysqli_query($db, $sql);
            while($roomNames = mysqli_fetch_row($result)):
                echo $roomNames[0]."<br/>";
            endwhile;
          ?>
-       </div><!--phptext
+       </div><!--phptext-->
    </div><!--houseinfo-->
 <div class="container">
 
