@@ -19,7 +19,6 @@ if($_SESSION["valid"]==true){?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <title>Home Utilities Manager &ndash; </title>
-    <!--<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">-->
     <style>
       .agenda {  }
 
