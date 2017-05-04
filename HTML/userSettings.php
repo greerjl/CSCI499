@@ -203,9 +203,7 @@ if($_SESSION["valid"]==true){?>
                   </div>
                </div>
 	        </div>
-	       </div>
 
-          <div class="row">
             <div class="col-md-3">
                 <div class="form_main">
                     <h4 class="heading"><strong>Delete account?</strong> <span></span></h4>
