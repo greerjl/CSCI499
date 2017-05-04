@@ -202,7 +202,7 @@ if($_SESSION["valid"]==true){?>
 				               else{
 				                 while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 				                 		$event = $line['name'];
-				                 		$date = $line['time'];
+				                 		$time = $line['time'];
 											
 											$phpdate = strtotime( $time );
 				                 		$timeEvent = date("g:i A", $phpdate);
@@ -212,7 +212,7 @@ if($_SESSION["valid"]==true){?>
 											$formatDate = 'm-d-Y';
 											$formatAll = 'm-d-Y H:i:s';
 
-				                 		if(date($formatDate) == date($formatDate, strtotime($date))) {
+				                 		if(date($formatDate) == date($formatDate, strtotime($time))) {
 				                 			echo "<tr><td><b>$event</b></td><td><b>"."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"."</b></td><td><b>".$tempDate."&nbsp;".$timeEvent."</b></td></tr>";
 				                 		}
 				                 		else{

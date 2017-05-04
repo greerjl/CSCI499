@@ -206,7 +206,7 @@ if($_SESSION["valid"]==true){?>
 											
 											$phpdate = strtotime( $time );
 				                 		$timeEvent = date("g:i A", $phpdate);
-                   					$tempDate = date("y-m-d", $phpdate);
+                   					$tempDate = date("m/d", $phpdate);
 											
 											
 											$formatDate = 'm-d-Y';
@@ -248,7 +248,7 @@ if($_SESSION["valid"]==true){?>
 				                 		
 				                 		$phpdate = strtotime( $time );
 				                 		$timeEvent = date("g:i A", $phpdate);
-                   					$tempDate = date("y-m-d", $phpdate);
+                   					$tempDate = date("m/d", $phpdate);
 
 											$formatDate = 'm-d-Y';
 											$formatAll = 'm-d-Y H:i:s';
