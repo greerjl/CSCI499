@@ -233,13 +233,13 @@ if($_SESSION["valid"]==true){?>
                     <h4 class="heading"><strong>Ready to Move Out?<strong> <span></span></h4>
                     <div class="form">
                       <form action="./PHP/leaveGroupForm.php" method="POST" id="leaveGroupForm" name="leaveGroupForm">
-                        <input type="submit" value="Leave Group" name="submit" class="txt2"/>
+                        <input style="font-weight: normal;" type="submit" value="Leave Group" name="submit" class="txt2"/>
                       </form><!-- action = "./PHP/leaveGroup.php" or something like that -->
                   </div><!--form-->
                  </div><!--form_main-->
             </div><!-- col-md-4 -->
-
           </div><!--row-->
+
         </div><!--container-->
 
         <hr>
