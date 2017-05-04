@@ -202,15 +202,13 @@ if($_SESSION["valid"]==true){?>
                     </form>
                   </div>
                </div>
+	        </div>
+	       </div>
 
-	        </div><!-- row -->
-        </div><!-- container -->
-
-        <div class="container" style="">
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="form_main">
-                    <h4 class="heading"><strong>Need to delete your account?<strong> <span></span></h4>
+                    <h4 class="heading"><strong>Delete account?</strong> <span></span></h4>
                     <div class="form">
                       <form action="./PHP/deleteAccountForm.php" method="POST" id="deleteAccountForm" name="deleteAccountForm">
                         <input type="submit" value="Delete" name="submit" class="txt2"/>
