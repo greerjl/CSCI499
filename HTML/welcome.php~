@@ -129,7 +129,6 @@ if($_SESSION["valid"]==true){?>
              $result = mysqli_query($db, $sql);
              $groupname = mysqli_fetch_row($result)
              echo $groupname;
-
            ?>
          </div><!--phptext-->
        <h4 class="content-subhead2">Members: </h4>
