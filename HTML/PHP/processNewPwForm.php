@@ -32,6 +32,11 @@
 				$_SESSION["pwChangeSuccess"] = 1;
 				redirect("../login.php");
 			}//result if
+			else{
+				session_start();
+				$_SESSION["internalErr"] = 1;
+				redirect("../newPassword.php");
+			}
 		}//password verify if
 		elseif(!strcmp($pswd, $rpswd)) {
 			echo "inside !strcmp<br/>";
