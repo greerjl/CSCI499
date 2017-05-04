@@ -20,12 +20,15 @@
 
 		//check if password = repeat password && if password meets regex
 		if(strcmp($pswd, $rpswd)==0 && preg_match('/^(?=.*\d)(?=.*[a-zA-Z])(?!.*[\W_\x7B-\xFF]).{6,}$/', $pswd)==1){
+			echo "inside strcmp if<br/>";
 			$hash = password_hash($pswd, PASSWORD_BCRYPT);
+			echo "has = ".$hash."<br/>";
 			//first sql statement gets uid from useremail
 			$sql = "SELECT UID FROM user_info WHERE email='$email';";
 			$result = mysqli_query($GLOBALS['db'], $sql);
 			$array = mysqli_fetch_assoc($result);
 			$UID = $array['UID'];
+			echo "UID = ".$UID."<br/>";
 			//second sql statement updates user password
 			$sql2 = "UPDATE user_info SET password = '$hash' WHERE UID='$UID';";
 			$result2 = mysqli_query($GLOBALS['db'], $sql2);
@@ -35,12 +38,12 @@
 				//if user was inserted in to database start session to access errors
 				session_start();
 				$_SESSION["pwChangeSuccess"] = 1;
-				redirect("../login.php");
+				//redirect("../login.php");
 			}//result if
 			else{
 				session_start();
 				$_SESSION["internalErr"] = 1;
-				redirect("../newPassword.php");
+				//redirect("../newPassword.php");
 			}
 		}//password verify if
 		elseif(!strcmp($pswd, $rpswd)) {
