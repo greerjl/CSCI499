@@ -9,7 +9,7 @@ if($_SESSION["valid"]==true){?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Server" >
+    <meta name="author" content="Capstone" >
     <link rel="icon" href="../images/logo.png">
     <link href="../bootstrap/css/sticky-footer-navbar.css" rel="stylesheet">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
@@ -217,7 +217,7 @@ if($_SESSION["valid"]==true){?>
                       </form><!-- action -->
                   </div><!--form-->
                  </div><!--form_main-->
-            </div><!-- col-md-4 -->
+
             <?php
               $userID = $_SESSION["login_user"];
               $sql = "SELECT GID FROM sys.user_info WHERE UID = '$userID'";
@@ -232,7 +232,7 @@ if($_SESSION["valid"]==true){?>
             </div><!--header-->
             <?php }//if
                else { ?>
-            <div class="col-md-4">
+
                 <div class="form_main">
                     <h4 class="heading"><strong>Ready to Move Out?<strong> <span></span></h4>
                     <div class="form">
