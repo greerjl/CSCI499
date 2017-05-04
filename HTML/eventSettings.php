@@ -254,10 +254,10 @@ if($_SESSION["valid"]==true){?>
 											$formatAll = 'm-d-Y H:i:s';
 
 				                 		if(date($formatDate) == date($formatDate, strtotime($time))) {
-				                 			echo "<tr><td><b>$user</b></td><td><b>"."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"."</b></td><td><b>".$tempDate."&nbsp;".$timeEvent."</b></td></tr>";//as bold
+				                 			echo "<tr><td><b>$user</b></td><td><b>"."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"."</b></td><td><b>".$tempDate."&nbsp;".$timeEvent."</b></td></tr>";//as bold
 				                 		}
 				                 		else{
-												echo "<tr><td>$user</td><td>"."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"."</td><td>".$tempDate."&nbsp;".$timeEvent."</td></tr>";
+												echo "<tr><td>$user</td><td>"."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"."</td><td>".$tempDate."&nbsp;".$timeEvent."</td></tr>";
 				                 		}
 				                 }//while
 				               }//else
