@@ -6,6 +6,7 @@ require_once("./PHP/functions.php");
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cache-control" content="no-cache"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
@@ -16,7 +17,7 @@ require_once("./PHP/functions.php");
     <title>HUM Login</title>
     <link rel="icon" href="../images/logo.png">
     <link href="../bootstrap/css/sticky-footer-navbar.css" rel="stylesheet">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

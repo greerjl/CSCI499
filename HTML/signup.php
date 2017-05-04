@@ -7,9 +7,8 @@ require_once("./PHP/functions.php");
 		<meta charset="utf-8">
 		<title>HUM signup</title>
 		<meta http-equiv="cache-control" content="no-cache"/>
-		<link rel="stylesheet" href="../CSS/pure-min.css"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="../CSS/normalize.css">
-		<link rel="stylesheet" type="text/css" href="../CSS/signup.css"/>
 		<link rel="icon" href="../images/logo.png"/>
 		<link rel="stylesheet" type="text/css" href="../CSS/psuedoWelcome.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
