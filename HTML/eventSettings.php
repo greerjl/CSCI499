@@ -203,15 +203,20 @@ if($_SESSION["valid"]==true){?>
 				                 while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 				                 		$event = $line['name'];
 				                 		$date = $line['time'];
-
+											
+											$phpdate = strtotime( $time );
+				                 		$timeEvent = date("g:i A", $phpdate);
+                   					$tempDate = date("y-m-d", $phpdate);
+											
+											
 											$formatDate = 'm-d-Y';
 											$formatAll = 'm-d-Y H:i:s';
 
 				                 		if(date($formatDate) == date($formatDate, strtotime($date))) {
-				                 			echo "\t\t<tr><td><b>$event</b></td><td><b>"."---on---"."</b></td><td><b>".date($formatAll, strtotime($date))."</b></td></tr>";//as bold
+				                 			echo "<tr><td><b>$event</b></td><td><b>"."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"."</b></td><td><b>".$tempDate."&nbsp;".$timeEvent."</b></td></tr>";
 				                 		}
 				                 		else{
-												echo "\t\t<tr><td>$event</td><td>"."---on---"."</td><td>".date($formatAll, strtotime($date))."</td></tr>";
+												echo "<tr><td>$event</td><td>"."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"."</td><td>".$tempDate."&nbsp;".$timeEvent."</td></tr>";
 				                 		}
 				                 }//while
 				               }//else
@@ -249,7 +254,7 @@ if($_SESSION["valid"]==true){?>
 											$formatAll = 'm-d-Y H:i:s';
 
 				                 		if(date($formatDate) == date($formatDate, strtotime($date))) {
-				                 			echo "\t\t<tr><td><b>$user</b></td><td><b>"."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"."</b></td><td><b>".$tempDate."&nbsp;".$timeEvent."</b></td></tr>";//as bold
+				                 			echo "<tr><td><b>$user</b></td><td><b>"."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"."</b></td><td><b>".$tempDate."&nbsp;".$timeEvent."</b></td></tr>";//as bold
 				                 		}
 				                 		else{
 												echo "<tr><td>$user</td><td>"."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"."</td><td>".$tempDate."&nbsp;".$timeEvent."</td></tr>";
