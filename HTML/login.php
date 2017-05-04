@@ -21,15 +21,10 @@ require_once("./PHP/functions.php");
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../bootstrap/css/starter-template.css" rel="stylesheet">
-    <link href="../bootstrap/css/sticky-footer-navbar.css" rel="stylesheet">
     <!--<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">-->
     <link href="../bootstrap/css/signin.css" rel="stylesheet">
-
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
