@@ -225,12 +225,14 @@ a.pure-button-primary {
     background: #111;
 }
 
+/*
 @media (max-device-width: 48em) {
     .pure-menu-list {
       width: 50%;
       font-size: 12px;
     }
 }
+*/
 /*
  * -- TABLET (AND UP) MEDIA QUERIES --
  * On tablets and other medium-sized devices, we want to customize some
