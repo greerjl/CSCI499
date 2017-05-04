@@ -116,10 +116,20 @@ if($_SESSION["valid"]==true){?>
  <!--House info-->
    <div class="houseinfo col-xs-3 col-md-3">
        <h2 class="content-subhead2">House: </h2>
-       <h4 class="content-subhead2">Members: </h4>
+       <h4 class="content-subhead2">House Name: </h4>
          <div class="phptext">
            <?php
              $groupId = $_SESSION["gid"];
+             $sql = "SELECT group_name FROM group_info WHERE GID = '$groupId'";
+             $result = mysqli_query($db, $sql);
+             while($groupname = mysqli_fetch_row($result)):
+                 echo $groupname[0]."<br/>";
+             endwhile;
+           ?>
+         </div><!--phptext-->
+       <h4 class="content-subhead2">Members: </h4>
+         <div class="phptext">
+           <?php
              $sql = "SELECT username FROM user_info WHERE GID = '$groupId'";
              $result = mysqli_query($db, $sql);
              while($username = mysqli_fetch_row($result)):
