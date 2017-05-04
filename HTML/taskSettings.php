@@ -11,7 +11,7 @@ if($_SESSION["valid"]==true){?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Server" >
+    <meta name="author" content="Capstone" >
     <link rel="icon" href="../images/logo.png">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <link href="../bootstrap/css/sticky-footer-navbar.css" rel="stylesheet">
@@ -159,16 +159,19 @@ if($_SESSION["valid"]==true){?>
 			                 while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 			                 		$task = $line['name'];
 			                 		$date = $line['time'];
+			                 		$phpdate = strtotime( $date );
+				                 	$timeEvent = date("g:i A", $phpdate);
+                   				$tempDate = date("m/d", $phpdate);
 
 										$format = 'm-d-Y';
 
 			                 		if(date($format) == date($format, strtotime($date))) {
-			                 			echo "\t\t<tr><td style=\"font-size: 14px;\"><b>$task</b></td><td style=\"font-size: 14px;\"><b>"."---by---"."</b></td>
-                              <td style=\"font-size: 14px;\"><b>".date($format, strtotime($date))."</b></td></tr>";//as bold
+			                 			echo "\t\t<tr><td style=\"font-size: 14px;\"><b>$task</b></td><td style=\"font-size: 14px;\"><b>"."&nbsp;&nbsp;&nbsp;by&nbsp;&nbsp;&nbsp;"."</b></td>
+                              <td style=\"font-size: 14px;\"><b>".$tempDate."&nbsp;".$timeEvent."</b></td></tr>";//as bold
 			                 		}
 			                 		else{
-											      echo "\t\t<tr><td style=\"font-size: 14px;\">$task</td><td style=\"font-size: 14px;\">"."---by---"."</td>
-                              <td style=\"font-size: 14px;\">".date($format, strtotime($date))."</td></tr>";
+											      echo "\t\t<tr><td style=\"font-size: 14px;\">$task</td><td style=\"font-size: 14px;\">"."&nbsp;&nbsp;&nbsp;by&nbsp;&nbsp;&nbsp;"."</td>
+                              <td style=\"font-size: 14px;\">".$tempDate."&nbsp;".$timeEvent."</td></tr>";
 			                 		}//ifelse
 			                 }//while
 			               }//else
