@@ -22,6 +22,7 @@
 		if(strcmp($pswd, $rpswd)==0 && preg_match('/^(?=.*\d)(?=.*[a-zA-Z])(?!.*[\W_\x7B-\xFF]).{6,}$/', $pswd)==1){
 			echo "in success if -> strcmp = 0 and preg_match = 0<br/>";
 			$hash = password_hash($pswd, PASSWORD_BCRYPT);
+			echo "hash = ".$hash."<br/>";
 			$sql = "UPDATE user_info (password) VALUES ('$hash') WHERE email='$email';";
 			//if sign up credentials pass the requirements then query db to insert sql
 			$result = mysqli_query($GLOBALS['db'], $sql);

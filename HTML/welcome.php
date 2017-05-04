@@ -102,6 +102,11 @@ if($_SESSION["valid"]==true){?>
      </div><!--header-->
    <?php }//if
        elseif($userGID!='0'){
+
+         
+
+
+
           if($_SESSION["taskDeleteErr"] == 1){ ?>
             <div class="alert alert-danger">
               <strong>Error!</strong> Task failed to be deleted.
