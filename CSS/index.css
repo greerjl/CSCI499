@@ -233,6 +233,9 @@ a.pure-button-primary {
     .pure-menu-horizontal{
       padding: 0;
     }
+    .pure-menu-heading{
+      font-size: 100%;
+    }
 }
 
 /*
