@@ -27,9 +27,10 @@
 			$array = mysqli_fetch_assoc($result);
 			$UID = $array['UID'];
 			//second sql statement updates user password
-			$sql2 = "UPDATE user_info (password) VALUES ('$hash') WHERE UID='$UID';";
+			$sql2 = "UPDATE user_info SET password = '$hash' WHERE UID='$UID';";
 			$result2 = mysqli_query($GLOBALS['db'], $sql2);
 			//if sign up credentials pass the requirements then query db to insert sql
+			echo "result 2 = ".$result2."<br/>";
 			if($result2 == 1){
 				//if user was inserted in to database start session to access errors
 				session_start();

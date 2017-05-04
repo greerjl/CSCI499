@@ -95,7 +95,7 @@ require_once("./PHP/functions.php");
 				$_SESSION["invalidEmailErr"] = 0;
 	 			}elseif($_SESSION["internalErr"] == 1) { ?>
 	 					<div class="alert alert-danger">
-	 						<strong>Error!</strong> Please enter a valid email address.
+	 						<strong>Error!</strong> Something went wrong.
 	 					</div>
 	 		<?php $_SESSION["internalErr"] = 0;
 				}elseif($_SESSION["pwChangeSuccess"] == 1) { ?>
@@ -113,7 +113,7 @@ require_once("./PHP/functions.php");
 
 						<input type="password" id="pswd" name="pswd"
 							 pattern="(?=.*\d).{6,}" class="form-control"
-							 placeholder="Password" required/>
+							 placeholder="Password" autofocus required/>
 
 						<input type="password" id="rpswd" name="rpswd"
 							 pattern="(?=.*\d).{6,}" class="form-control"
