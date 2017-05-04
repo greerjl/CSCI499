@@ -12,7 +12,7 @@ if($_SESSION["valid"]==true){?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Server" >
+    <meta name="author" content="Capstone" >
 
     <title>Event Settings</title>
     <link rel="icon" href="../images/logo.png">
@@ -240,6 +240,10 @@ if($_SESSION["valid"]==true){?>
 				                 while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 				                 		$user = $line['username'];
 				                 		$date = $line['time'];
+				                 		
+				                 		$phpdate = strtotime( $time );
+				                 		$timeEvent = date("g:i A", $phpdate);
+                   					$tempDate = date("y-m-d", $phpdate);
 
 											$formatDate = 'm-d-Y';
 											$formatAll = 'm-d-Y H:i:s';

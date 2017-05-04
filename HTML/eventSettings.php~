@@ -16,6 +16,7 @@ if($_SESSION["valid"]==true){?>
 
     <title>Event Settings</title>
     <link rel="icon" href="../images/logo.png">
+    <link href="../bootstrap/css/sticky-footer-navbar.css" rel="stylesheet">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
@@ -80,7 +81,7 @@ if($_SESSION["valid"]==true){?>
             </div>
         </div>
         <!-- /.row -->
-        
+
         <?php if($_SESSION["repeatEventErr"] == 1){ ?>
           <div class="alert alert-danger">
             <strong>Error!</strong> There is already something going on in that room at that time.
@@ -180,7 +181,7 @@ if($_SESSION["valid"]==true){?>
 		            </div>
 
             </div><!-- col-md-4 -->
-            
+
 				<div class="col-md-4">
 			       <div class="form_main">
 			       	 <h4 class="heading"><strong>Upcoming Events</strong> <span></span></h4>
@@ -191,9 +192,9 @@ if($_SESSION["valid"]==true){?>
 				             	$gid = $_SESSION["gid"];
 				               $sql = "SELECT name, time FROM event WHERE GID = $gid";
 				               $result = mysqli_query($db, $sql);
-				
+
 				               $count = mysqli_num_rows($result);
-				
+
 				               if($count == 0){
 				                 $emptyMessage = "<tr><td>Your group does not have any upcoming events.</td></tr>";
 				                 echo $emptyMessage;
@@ -202,22 +203,22 @@ if($_SESSION["valid"]==true){?>
 				                 while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 				                 		$event = $line['name'];
 				                 		$date = $line['time'];
-											
+
 											$formatDate = 'm-d-Y';
 											$formatAll = 'm-d-Y H:i:s';
-											
-				                 		if(date($format) == date($formatDate, strtotime($date))) {
+
+				                 		if(date($formatDate) == date($formatDate, strtotime($date))) {
 				                 			echo "\t\t<tr><td><b>$event</b></td><td><b>"."---on---"."</b></td><td><b>".date($formatAll, strtotime($date))."</b></td></tr>";//as bold
 				                 		}
 				                 		else{
-												echo "\t\t<tr><td>$event</td><td>"."---on---"."</td><td>".date($formatAll, strtotime($date))."</td></tr>";		                 		
-				                 		}	
+												echo "\t\t<tr><td>$event</td><td>"."---on---"."</td><td>".date($formatAll, strtotime($date))."</td></tr>";
+				                 		}
 				                 }//while
 				               }//else
 				             ?>
 				       </table>
 				       </div><!--scroll box-->
-				       </p>       
+				       </p>
 			       </div><!-- task list form_main -->
 			       <div class="form_main">
 			       	 <h4 class="heading"><strong>Laundry Reservations</strong> <span></span></h4>
@@ -226,11 +227,11 @@ if($_SESSION["valid"]==true){?>
 				         <table>
 				             <?php
 				             	$gid = $_SESSION["gid"];
-				               $sql = "SELECT username, time FROM laundry, user_info WHERE GID = $gid AND user_info.UID = laundry.UID";
+				               $sql = "SELECT username, time FROM laundry, user_info WHERE laundry.GID = '$gid' AND user_info.UID = laundry.UID";
 				               $result = mysqli_query($db, $sql);
-				
+
 				               $count = mysqli_num_rows($result);
-				
+
 				               if($count == 0){
 				                 $emptyMessage = "<tr><td>Laundry machines are free for the foreseeable future.</td></tr>";
 				                 echo $emptyMessage;
@@ -239,25 +240,25 @@ if($_SESSION["valid"]==true){?>
 				                 while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 				                 		$user = $line['username'];
 				                 		$date = $line['time'];
-											
+
 											$formatDate = 'm-d-Y';
 											$formatAll = 'm-d-Y H:i:s';
-											
+
 				                 		if(date($formatDate) == date($formatDate, strtotime($date))) {
 				                 			echo "\t\t<tr><td><b>$user</b></td><td><b>"."---on---"."</b></td><td><b>".date($formatAll, strtotime($date))."</b></td></tr>";//as bold
 				                 		}
 				                 		else{
-												echo "\t\t<tr><td>$user</td><td>"."---on---"."</td><td>".date($formatAll, strtotime($date))."</td></tr>";		                 		
-				                 		}	
+												echo "\t\t<tr><td>$user</td><td>"."---on---"."</td><td>".date($formatAll, strtotime($date))."</td></tr>";
+				                 		}
 				                 }//while
 				               }//else
 				             ?>
 				       </table>
 				       </div><!--scroll box-->
-				       </p>       
+				       </p>
 			       </div><!-- task list form_main -->
-		       </div><!-- col-md-4 -->            
-            
+		       </div><!-- col-md-4 -->
+
 	        </div><!-- row -->
         </div><!-- container -->
 
@@ -265,37 +266,12 @@ if($_SESSION["valid"]==true){?>
         <?php }//else ?>
 
         <!-- Footer -->
-      <div id="footer">
-        <div class="container">
+      <div class="footer">
           <p class="text-muted">Copyright ©2016-2017 PLU Capstone. House Utilities Manager.
           Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
             <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
-        </div>
       </div>
 
-      <ul class="nav pull-right scroll-top">
-        <li><a href="#" title="Scroll to top"><i class="glyphicon glyphicon-chevron-up"></i></a></li>
-      </ul>
-
-      <div class="modal" id="myModal" role="dialog">
-        <div class="modal-dialog">
-          <div class="modal-content">
-             <div class="modal-header">
-                 <button class="close" type="button" data-dismiss="modal">×</button>
-                 <h3 class="modal-title"></h3>
-             </div>
-             <div class="modal-body">
-               <div id="modalCarousel" class="carousel">
-                 <a class="carousel-control left" href="#modaCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                 <a class="carousel-control right" href="#modalCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
-               </div>
-             </div>
-             <div class="modal-footer">
-                 <button class="btn btn-default" data-dismiss="modal">Close</button>
-             </div>
-          </div>
-      </div>
-    </div> <!--footer-->
     </div><!-- /.container -->
 </body>
 
