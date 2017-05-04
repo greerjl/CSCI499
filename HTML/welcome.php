@@ -128,7 +128,9 @@ if($_SESSION["valid"]==true){?>
              $sql = "SELECT group_name FROM group_info WHERE GID = '$groupId'";
              $result = mysqli_query($db, $sql);
              $groupname = mysqli_fetch_row($result);
-             echo $groupname;
+				 $temp = mysqli_fetch_assoc($groupname);
+				 $name = $temp['groupname'];             
+             echo $name;
            ?>
          </div><!--phptext-->
        <h4 class="content-subhead2">Members: </h4>

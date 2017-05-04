@@ -127,7 +127,7 @@ if($_SESSION["valid"]==true){?>
              $groupId = $_SESSION["gid"];
              $sql = "SELECT group_name FROM group_info WHERE GID = '$groupId'";
              $result = mysqli_query($db, $sql);
-             $groupname = mysqli_fetch_row($result)
+             $groupname = mysqli_fetch_row($result);
              echo $groupname;
            ?>
          </div><!--phptext-->
