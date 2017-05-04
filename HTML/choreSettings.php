@@ -199,7 +199,7 @@ if($_SESSION["valid"]==true){?>
 		               $count = mysqli_num_rows($result);
 
 		               if($count == 0){
-		                 $emptyMessage = "<tr><td>Your group has no chores yet.</td></tr>";
+		                 $emptyMessage = "<tr><td style=\"font-size: 14px;\">Your group has no chores yet.</td></tr>";
 		                 echo $emptyMessage;
 		               }
 		               else{
@@ -230,11 +230,11 @@ if($_SESSION["valid"]==true){?>
     </div><!-- /.container -->
   </div><!--main-->
   <!-- Footer -->
-<div class="footer">
-    <p class="text-muted">Copyright ©2016-2017 PLU Capstone. House Utilities Manager.
-    Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
-      <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
-</div>
+  <div class="footer">
+     <p class="text-muted">Copyright ©2016-2017 PLU Capstone. House Utilities Manager.
+     Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
+       <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
+  </div>
 
 
   </body><!--layout-->

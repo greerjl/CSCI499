@@ -242,9 +242,9 @@ if($_SESSION["valid"]==true){?>
 </div><!--layout-->
 <!-- Footer -->
 <div class="footer">
-  <p class="text-muted">Copyright ©2016-2017 PLU Capstone. House Utilities Manager.
-  Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
-    <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
+   <p class="text-muted">Copyright ©2016-2017 PLU Capstone. House Utilities Manager.
+   Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
+     <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
 </div>
 
 </body>

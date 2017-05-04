@@ -18,6 +18,7 @@ require_once("./PHP/functions.php");
 		<!-- bootstrap
 		<link href="../bootstrap/css/starter-template.css" rel="stylesheet">-->
 		<link href="../bootstrap/css/sticky-footer-navbar.css" rel="stylesheet">
+		<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
 		<link href="../bootstrap/css/signin.css" rel="stylesheet">
 
 		<!--[if lte IE 8]>
@@ -135,13 +136,11 @@ require_once("./PHP/functions.php");
  	</div><!--main-->
  </div><!--layout-->
 			 <!-- Footer -->
-		 <div class="footer">
-
-				 <p class="text-muted">Copyright ©2016-2017 PLU Capstone. House Utilities Manager.
-				 Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
-					 <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
-
-		 </div>
+			 <div class="footer">
+	        <p class="text-muted">Copyright ©2016-2017 PLU Capstone. House Utilities Manager.
+	        Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
+	          <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
+	     </div>
 
 
 	</body>

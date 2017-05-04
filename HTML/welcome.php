@@ -286,6 +286,7 @@ if($_SESSION["valid"]==true){?>
                  </div><!--header-->
       <?php }//elseif ?>
     </div>
+
     <div class="footer">
        <p class="text-muted">Copyright ©2016-2017 PLU Capstone. House Utilities Manager.
        Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
@@ -302,6 +303,3 @@ if($_SESSION["valid"]==true){?>
  else{
  redirect("./login.php");
  }?>
- 
- 
- 
