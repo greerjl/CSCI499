@@ -11,12 +11,12 @@ require_once("./PHP/functions.php");
 		<link rel="stylesheet" type="text/css" href="../CSS/normalize.css">
 		<link rel="icon" href="../images/logo.png"/>
 		<link rel="stylesheet" type="text/css" href="../CSS/psuedoWelcome.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 		<title>HUM Signup</title>
-		<!-- bootstrap-->
-		<link href="../bootstrap/css/starter-template.css" rel="stylesheet">
+		<!-- bootstrap
+		<link href="../bootstrap/css/starter-template.css" rel="stylesheet">-->
 		<link href="../bootstrap/css/sticky-footer-navbar.css" rel="stylesheet">
 		<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
 		<link href="../bootstrap/css/signin.css" rel="stylesheet">
