@@ -227,7 +227,7 @@ a.pure-button-primary {
 
 @media (max-width: 40em) {
     .pure-menu-list {
-      width: 50%;
+      max-width: 40em;
       font-size: 12px;
     }
     .pure-menu-horizontal{
