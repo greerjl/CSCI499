@@ -227,7 +227,7 @@ a.pure-button-primary {
 
 @media (max-width: 48em) {
     /* We increase the header font size even more */
-    .pure-menu {
+    .pure-menu-list {
       width: 50%;
       font-size: 12px;
     }
