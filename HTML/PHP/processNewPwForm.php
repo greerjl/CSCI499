@@ -20,13 +20,17 @@
 
 		//check if password = repeat password && if password meets regex
 		if(strcmp($pswd, $rpswd)==0 && preg_match('/^(?=.*\d)(?=.*[a-zA-Z])(?!.*[\W_\x7B-\xFF]).{6,}$/', $pswd)==1){
-			echo "in success if -> strcmp = 0 and preg_match = 0<br/>";
 			$hash = password_hash($pswd, PASSWORD_BCRYPT);
-			echo "hash = ".$hash."<br/>";
-			$sql = "UPDATE user_info (password) VALUES ('$hash') WHERE email='$email';";
-			//if sign up credentials pass the requirements then query db to insert sql
+			//first sql statement gets uid from useremail
+			$sql = "SELECT UID FROM user_info WHERE email='$email';";
 			$result = mysqli_query($GLOBALS['db'], $sql);
-			if($result == 1){
+			$array = mysqli_fetch_assoc($result);
+			$UID = $array['UID'];
+			//second sql statement updates user password
+			$sql2 = "UPDATE user_info (password) VALUES ('$hash') WHERE UID='$UID';";
+			$result2 = mysqli_query($GLOBALS['db'], $sql2);
+			//if sign up credentials pass the requirements then query db to insert sql
+			if($result2 == 1){
 				//if user was inserted in to database start session to access errors
 				session_start();
 				$_SESSION["pwChangeSuccess"] = 1;
