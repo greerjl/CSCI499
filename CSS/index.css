@@ -225,20 +225,7 @@ a.pure-button-primary {
     background: #111;
 }
 
-/* UNCOMMENT IF WE WANT, UNNECESSARY THOUGH
-@media (max-device-width: 480px) {
-    .pure-menu-list {
-      max-width: 40em;
-      font-size: 12px;
-    }
-    .pure-menu-horizontal{
-      padding: 0;
-    }
-    .pure-menu-heading{
-      font-size: 100%;
-    }
-}
-*/
+
 /*
  * -- TABLET (AND UP) MEDIA QUERIES --
  * On tablets and other medium-sized devices, we want to customize some
@@ -260,14 +247,13 @@ a.pure-button-primary {
     .home-menu {
         text-align: left;
     }
-        .home-menu ul {
-            float: right;
-        }
+    .home-menu ul {
+        float: right;
+    }
 
-    /* We increase the height of the splash-container */
-/*    .splash-container {
-        height: 500px;
-    }*/
+    .mobile-header {
+      display: hidden;
+    }
 
     /* We decrease the width of the .splash, since we have more width
     to work with */
