@@ -185,7 +185,7 @@ if($_SESSION["valid"]==true){?>
                     //ini_set("display_errors", true);
                     //error_reporting(E_ALL);
                     $group = $_SESSION["gid"];
-                    $sql = "SELECT name FROM task WHERE task.GID = '$group'";
+                    $sql = "SELECT name, TID FROM task WHERE task.GID = '$group'";
                     $result = mysqli_query($db, $sql);
 
                     $count = mysqli_num_rows($result);
@@ -197,11 +197,13 @@ if($_SESSION["valid"]==true){?>
                     }
                     else{
                       while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                          foreach ($line as $col_value) {
+                          //foreach ($line as $col_value) {
+                              $TID = $line['TID'];
+                              $name = $line['name'];
                               echo "\t\t<tr><form action=\"./PHP/completeTaskForm.php\" method=\"POST\">
-                                  <td>$col_value</td><td><input type=\"hidden\" name=\"taskname\" value=\"".$col_value."\"/></td>
+                                  <td>$name</td><td><input type=\"hidden\" name=\"taskid\" value=\"".$TID."\"/></td>
                                   <td><input type=\"submit\" name=\"submit\" class=\"txt3\" value=\"Complete\"/></td></form></tr>";
-                          }//foreach
+                        //  }//foreach
                       }//while
                     }//else
                   ?>
@@ -214,7 +216,7 @@ if($_SESSION["valid"]==true){?>
           <div id="" style="overflow: scroll; height:300px">
             <?php
               $group = $_SESSION["gid"];
-              $sql = "SELECT name, time FROM event WHERE event.GID = '$group'";
+              $sql = "SELECT name, time FROM event WHERE event.GID = '$group' ORDER BY time";
               $result = mysqli_query($db, $sql);
 
               $count = mysqli_num_rows($result);
