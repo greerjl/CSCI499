@@ -12,7 +12,7 @@ if($_SESSION["valid"]==true){?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Capstone" >
+    <meta name="author" content="Server" >
 
     <title>Event Settings</title>
     <link rel="icon" href="../images/logo.png">
@@ -190,7 +190,7 @@ if($_SESSION["valid"]==true){?>
 				         <table>
 				             <?php
 				             	$gid = $_SESSION["gid"];
-				               $sql = "SELECT name, time FROM event WHERE GID = $gid ORDER BY time";
+				               $sql = "SELECT i.name as e_name, time, j.name as r_name FROM event i JOIN room j ON i.GID = j.GID WHERE i.GID = '$gid' AND i.RID = j.RID ORDER BY time ASC;";
 				               $result = mysqli_query($db, $sql);
 
 				               $count = mysqli_num_rows($result);
@@ -201,8 +201,9 @@ if($_SESSION["valid"]==true){?>
 				               }
 				               else{
 				                 while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-				                 		$event = $line['name'];
+				                 		$event = $line['e_name'];
 				                 		$time = $line['time'];
+				                 		$room = $line['r_name'];
 
 											$phpdate = strtotime( $time );
 				                 		$timeEvent = date("g:i A", $phpdate);
@@ -213,10 +214,10 @@ if($_SESSION["valid"]==true){?>
 											$formatAll = 'm-d-Y H:i:s';
 
 				                 		if(date($formatDate) == date($formatDate, strtotime($time))) {
-				                 			echo "<tr><td><b>$event</b></td><td><b>"."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"."</b></td><td><b>".$tempDate."&nbsp;".$timeEvent."</b></td></tr>";
+				                 			echo "<tr><td><b>$event</b></td><td><b>"."&nbsp;&nbsp;&nbsp;&nbsp;"."</b></td><td><b>".$tempDate."&nbsp;".$timeEvent."&nbsp;&nbsp;&nbsp;".$room."</b></td></tr>";
 				                 		}
 				                 		else{
-												echo "<tr><td>$event</td><td>"."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"."</td><td>".$tempDate."&nbsp;".$timeEvent."</td></tr>";
+												echo "<tr><td>$event</td><td>"."&nbsp;&nbsp;&nbsp;&nbsp;"."</td><td>".$tempDate."&nbsp;".$timeEvent."&nbsp;&nbsp;&nbsp;".$room."</td></tr>";
 				                 		}
 				                 }//while
 				               }//else
