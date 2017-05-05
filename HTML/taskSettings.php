@@ -11,7 +11,7 @@ if($_SESSION["valid"]==true){?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Capstone" >
+    <meta name="author" content="Server" >
     <link rel="icon" href="../images/logo.png">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <link href="../bootstrap/css/sticky-footer-navbar.css" rel="stylesheet">
@@ -146,7 +146,7 @@ if($_SESSION["valid"]==true){?>
 			         <table>
 			             <?php
 			             	$gid = $_SESSION["gid"];
-			               $sql = "SELECT name, time FROM task WHERE GID = $gid";
+			               $sql = "SELECT name, time FROM task WHERE GID = '$gid' ORDER BY time ASC;";
 			               $result = mysqli_query($db, $sql);
 
 			               $count = mysqli_num_rows($result);
@@ -167,11 +167,11 @@ if($_SESSION["valid"]==true){?>
 
 			                 		if(date($format) == date($format, strtotime($date))) {
 			                 			echo "\t\t<tr><td style=\"font-size: 14px;\"><b>$task</b></td><td style=\"font-size: 14px;\"><b>"."&nbsp;&nbsp;&nbsp;by&nbsp;&nbsp;&nbsp;"."</b></td>
-                              <td style=\"font-size: 14px;\"><b>".$tempDate."&nbsp;".$timeEvent."</b></td></tr>";//as bold
+                              <td style=\"font-size: 14px;\"><b>".$tempDate."&nbsp;"."</b></td></tr>";//as bold .$timeEvent
 			                 		}
 			                 		else{
 											      echo "\t\t<tr><td style=\"font-size: 14px;\">$task</td><td style=\"font-size: 14px;\">"."&nbsp;&nbsp;&nbsp;by&nbsp;&nbsp;&nbsp;"."</td>
-                              <td style=\"font-size: 14px;\">".$tempDate."&nbsp;".$timeEvent."</td></tr>";
+                              <td style=\"font-size: 14px;\">".$tempDate."&nbsp;"."</td></tr>";//.$timeEvent
 			                 		}//ifelse
 			                 }//while
 			               }//else

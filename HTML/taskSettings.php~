@@ -152,23 +152,26 @@ if($_SESSION["valid"]==true){?>
 			               $count = mysqli_num_rows($result);
 
 			               if($count == 0){
-			                 $emptyMessage = "<tr><td>Your group has no tasks yet.</td></tr>";
+			                 $emptyMessage = "<tr><td style=\"font-size: 14px;\">Your group has no tasks yet.</td></tr>";
 			                 echo $emptyMessage;
 			               }
 			               else{
 			                 while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 			                 		$task = $line['name'];
 			                 		$date = $line['time'];
+			                 		$phpdate = strtotime( $date );
+				                 	$timeEvent = date("g:i A", $phpdate);
+                   				$tempDate = date("m/d", $phpdate);
 
 										$format = 'm-d-Y';
 
 			                 		if(date($format) == date($format, strtotime($date))) {
-			                 			echo "\t\t<tr><td style=\"font-size: 14px;\"><b>$task</b></td><td style=\"font-size: 14px;\"><b>"."---by---"."</b></td>
-                              <td style=\"font-size: 14px;\"><b>".date($format, strtotime($date))."</b></td></tr>";//as bold
+			                 			echo "\t\t<tr><td style=\"font-size: 14px;\"><b>$task</b></td><td style=\"font-size: 14px;\"><b>"."&nbsp;&nbsp;&nbsp;by&nbsp;&nbsp;&nbsp;"."</b></td>
+                              <td style=\"font-size: 14px;\"><b>".$tempDate."&nbsp;"."</b></td></tr>";//as bold .$timeEvent
 			                 		}
 			                 		else{
-											      echo "\t\t<tr><td style=\"font-size: 14px;\">$task</td><td style=\"font-size: 14px;\">"."---by---"."</td>
-                              <td style=\"font-size: 14px;\">".date($format, strtotime($date))."</td></tr>";
+											      echo "\t\t<tr><td style=\"font-size: 14px;\">$task</td><td style=\"font-size: 14px;\">"."&nbsp;&nbsp;&nbsp;by&nbsp;&nbsp;&nbsp;"."</td>
+                              <td style=\"font-size: 14px;\">".$tempDate."&nbsp;"."</td></tr>";//.$timeEvent
 			                 		}//ifelse
 			                 }//while
 			               }//else
@@ -190,11 +193,11 @@ if($_SESSION["valid"]==true){?>
   </div><!--main-->
 </div><!--layout-->
 <!-- Footer -->
-  <div class="footer">
-    <p class="text-muted">Copyright ©2016-2017 PLU Capstone. House Utilities Manager.
-    Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
-      <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
-  </div>
+<div class="footer">
+   <p class="text-muted">Copyright ©2016-2017 PLU Capstone. House Utilities Manager.
+   Authors <a target="_blank" href="https://www.linkedin.com/in/gagedgibson">Gage Gibson</a>,
+     <a target="_blank" href="https://www.linkedin.com/in/jaymegreer">Jayme Greer</a> and Caleb LaVergne.</p>
+</div>
 </body>
 
 </html>
