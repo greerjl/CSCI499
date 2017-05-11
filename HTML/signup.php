@@ -120,7 +120,7 @@ require_once("./PHP/functions.php");
 
 						 <input type="password" id="pswd" name="pswd"
 						 		pattern="(?=.*\d).{6,}" class="form-control"
-						 		placeholder="Password" required/>
+						 		placeholder="Password - 6+ chars with a number" required/>
 
 						 <input type="password" id="rpswd" name="rpswd"
 						 		pattern="(?=.*\d).{6,}" class="form-control"
